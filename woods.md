@@ -1,9 +1,9 @@
 # woods
 
-Two woods diverged in the woods and I...
-{{if _.eaten}} (this time try not to get eaten by wolves) {{/if}}
-
 `document.body.style.background = "#ddd"`
+
+Two roads diverged in the woods and I...
+{{if _.eaten}} (this time try not to get eaten by wolves) {{/if}}
 
 [Took the one less travelled by](#woods-less)
 
@@ -13,17 +13,16 @@ Two woods diverged in the woods and I...
 
 # woods-less
 
-And that's how I got lost in the woods and was eaten by wolves
-
 `document.body.style.background = "#ff4040"`
+
+And that's how I got lost in the woods and was eaten by wolves
+{{if _.eaten}} (...again.) {{/if}}
 
 `_.eaten = true`
 
 `_.played_less = true`
 
 [Try again](#woods)
-
-[Goodbye](#end)
 
 # woods-more
 
@@ -34,8 +33,6 @@ And that's how I found my way back to civilization and was not eaten by wolves
 `_.played_more = true`
 
 [Try again](#woods)
-
-[Goodbye](#end)
 
 # home
 

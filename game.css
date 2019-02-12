@@ -15,33 +15,130 @@ body{
 
 	width: 360px;
 	height: 600px;
-	background: #fff;
+	background: #ccc;
 
 	font-size: 20px;
 	font-family: Helvetica, Arial, sans-serif;
 	font-weight: 100;
 	line-height: 1.3em;
 
-}
-#game_text{
+	overflow: hidden;
 
+}
+#game_words{
 	width: auto;
-	height: 450px;
-
-	overflow: scroll;
-
+	position: relative;
+	top: 80px;
 }
-#game_text > div{
-	margin: 30px;
+
+.human-bubble {
+	position: relative;
+	background: #ffffff;
+	color: #000000;
+	border-radius: .4em;
+	padding: 15px;
+	margin: 10px 30px;
+
+	opacity: 0;
+	left: -15px;
+	transition: all 0.3s ease-in-out;
 }
+.human-bubble:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-right-color: #ffffff;
+	border-left: 0;
+	margin-top: -15px;
+	margin-left: -15px;
+}
+
+.wolf-bubble {
+	position: relative;
+	background: #000000;
+	color: #ffffff;
+	border-radius: .4em;
+	padding: 15px;
+	margin: 10px 30px;
+
+	opacity: 0;
+	left: 15px;
+	transition: all 0.3s ease-in-out;
+}
+.wolf-bubble:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-left-color: #000000;
+	border-right: 0;
+	margin-top: -15px;
+	margin-right: -15px;
+}
+
 #game_choices{
 	
 	width: 100%;
-	height: 150px;
+	height: 110px;
+	padding: 20px 0; 
 	
 	position: absolute;
 	bottom:0;
 
 	background: #666;
+	text-align: center;
+	color: #fff;
+	font-weight: normal;
 
+}
+#game_choices > div{
+	margin-bottom:0.5em;
+	cursor: pointer;
+}
+
+/***********************************/
+/***********************************/
+/***********************************/
+
+#game_hp{
+	position: absolute;
+	width: 360px;
+	height: 80px;
+	top: 0px;
+	left: 0px;
+
+	background: rgb(204,204,204);
+	background: linear-gradient(180deg, rgba(204,204,204,1) 80%, rgba(204,204,204,0) 100%);
+}
+#game_hp > div{
+	position: absolute;
+	top:25px;
+	width: 150px;
+	height: 20px;
+	background: #ff4040;
+}
+#game_hp > #hp_human{
+	left: 20px;
+	transform: skew(15deg);
+}
+#game_hp > #hp_wolf{
+	right: 20px;
+	transform: skew(-15deg);
+}
+
+/***********************************/
+/***********************************/
+/***********************************/
+
+#game_canvas{
+	position: absolute;
+	top:0; left:0;
+	border: none;
 }

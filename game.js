@@ -18,8 +18,10 @@ Game.sections = {};
 Game.startSectionID = null;
 
 Game.dom = document.querySelector("#game_container");
-Game.textDOM = document.querySelector("#game_text");
+Game.wordsDOM = document.querySelector("#game_words");
 Game.choicesDOM = document.querySelector("#game_choices");
+
+Game.queue = [];
 
 // Parse data!
 Game.onload = function(data){
@@ -54,6 +56,14 @@ Game.onload = function(data){
 
 	});
 
+	// Animation!
+	Game.wordsDOM.style.top = "80px";
+	var animloop = function(){
+		Game.update();
+		requestAnimationFrame(animloop);
+	};
+	requestAnimationFrame(animloop);
+
 	// Let's go!
 	Game.start();
 
@@ -64,6 +74,18 @@ Game.start = function(){
 	Game.goto(Game.startSectionID);
 };
 
+Game.update = function(){
+
+	var wordsHeight = 80 + Game.wordsDOM.getBoundingClientRect().height;
+	var currentY = parseFloat(Game.wordsDOM.style.top) || 80;
+	var gotoY = (wordsHeight<260) ? 0 : wordsHeight-260;
+	gotoY = 80 - gotoY;
+
+	var nextY = currentY*0.9 + gotoY*0.1;
+	Game.wordsDOM.style.top = nextY+"px";
+
+};
+
 Game.goto = function(sectionID){
 
 	// Clear choices
@@ -71,47 +93,122 @@ Game.goto = function(sectionID){
 
 	// Show each line...
 	var section = Game.sections[sectionID];
+	if(!section){
+		throw "NO SECTION NAMED "+sectionID;
+	}
 	var lines = section.lines;
-	for(var i=0; i<lines.length; i++){
-	
-		// Parse handlebars
-		var originalLine = lines[i];
-		line = Game.parseLine(originalLine);
+	Game.queue = Game.queue.concat(lines);
+	Game.executeNextLine();
 
-		// Execute line
-		if(line!=""){ // none, don't execute...
+};
+Game.executeNextLine = function(){
 
-			// Execute based on what type it is!
-			var lineType = Game.getLineType(line);
-			switch(lineType){
-				case "text":
-					Game.executeText(line);
-					break;
-				case "choice":
-					Game.executeChoice(line);
-					break;
-				case "code":
-					Game.executeCode(line);
-					break;
-			}
+	var doNextLineImmediately = false;
 
-			// If it's a goto, end THIS section immediately.
-			if(lineType=="goto"){
-				Game.executeGoto(line);
+	// Parse handlebars
+	var originalLine = Game.queue.shift();
+	if(!originalLine) return; // END OF QUEUE.
+	line = Game.parseLine(originalLine);
+
+	// Execute line
+	var promiseNext;
+	if(line!=""){ // none, don't execute...
+
+		// Execute based on what type it is!
+		var lineType = Game.getLineType(line);
+		switch(lineType){
+			case "text":
+				promiseNext = Game.executeText(line);
 				break;
-			}
+			case "choice":
+				promiseNext = Game.executeChoice(line);
+				doNextLineImmediately = true;
+				break;
+			case "code":
+				promiseNext = Game.executeCode(line);
+				doNextLineImmediately = true;
+				break;
+		}
 
+		// If it's a goto, end THIS section immediately.
+		if(lineType=="goto"){
+			Game.clearQueue(); // CLEAR ALL ELSE IN QUEUE
+			Game.executeGoto(line);
+			return;
 		}
 
 	}
 
+	// Do next line?
+	if(Game.queue.length>0){
+		promiseNext.then(function(){
+			Game.executeNextLine();
+		});
+	}
+
 };
+Game.clearQueue = function(){
+	Game.queue = [];
+};
+Game.addToQueue = function(line){
+	Game.queue.push(line);
+}
 
 // Execute text! Just add it to text DOM.
 Game.executeText = function(line){
+
 	var div = document.createElement("div");
-	div.innerHTML = line;
-	Game.textDOM.appendChild(div);
+	var promiseDone = pinkySwear();
+
+	// Is it human or wolf?
+	var dialogue;
+	var isWolf = /^\>(.*)/.test(line);
+	if(isWolf){
+		div.className = "wolf-bubble";
+		dialogue = line.match(/^\>(.*)/)[1].trim();
+	}else{
+		div.className = "human-bubble";
+		dialogue = line;
+	}
+
+	// Add the bubble, with animation
+	Game.wordsDOM.appendChild(div);
+	requestAnimationFrame(function(){
+		requestAnimationFrame(function(){
+			div.style.opacity = 1;
+			div.style.left = 0;
+		});
+	});
+
+	// Add the text, letter by letter!
+	var interval = 0;
+	var SPEED = 40;
+	for(var i=0; i<dialogue.length; i++){
+
+		var ch = dialogue[i];
+
+		// for scopin'
+		(function(ch, interval){
+			setTimeout(function(){
+				div.innerHTML += ch;
+			}, interval);
+		})(ch, interval);
+
+		// Bigger interval
+		if(ch=="."){
+			interval += SPEED*10;
+		}else{
+			interval += SPEED;
+		}
+
+	}
+
+	// Return promise
+	setTimeout(function(){
+		promiseDone(true, []);
+	}, interval+200);
+	return promiseDone;
+
 }
 
 // Execute choice! Add it to choice DOM.
@@ -123,22 +220,34 @@ Game.executeChoice = function(line){
 	var div = document.createElement("div");
 	div.innerHTML = choiceText;
 	div.onclick = function(){
-		Game.executeText("> "+choiceText);
+		Game.addToQueue("> "+choiceText);
 		Game.goto(choiceID);
 	};
 
 	Game.choicesDOM.appendChild(div);
 
+	// Return promise
+	var promiseImmediate = new pinkySwear();
+	promiseImmediate(true, []);
+	return promiseImmediate;
+
 }
 
 // Execute code!
 Game.executeCode = function(line){
+
 	var code = line.match(/\`+([^\`]*)\`+/)[1].trim();
 	try{
 		eval(code);
 	}catch(e){
 		console.log(e);
 	}
+
+	// Return promise
+	var promiseImmediate = new pinkySwear();
+	promiseImmediate(true, []);
+	return promiseImmediate;
+
 }
 
 // Execute goto! Just goto.
@@ -215,4 +324,16 @@ Game.parseLine = function(line){
 	return line;
 
 };
+
+
+/*****************************/
+/*****************************/
+/*****************************/
+
+Game.canvas = document.querySelector("#game_canvas");
+Game.canvas.width = 360 * 2;
+Game.canvas.height = 450 * 2;
+Game.canvas.style.width = Game.canvas.width/2 + "px";
+Game.canvas.style.height = Game.canvas.height/2 + "px";
+
 
