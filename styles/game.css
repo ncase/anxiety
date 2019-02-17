@@ -7,6 +7,13 @@ body{
 	background: #ddd;
 }
 
+.no_select{
+	-webkit-user-select: none; /* Safari 3.1+ */
+	-moz-user-select: none; /* Firefox 2+ */
+	-ms-user-select: none; /* IE 10+ */
+	user-select: none; /* Standard syntax */
+}
+
 #game_container{
 
 	position: absolute;
@@ -107,38 +114,17 @@ body{
 /***********************************/
 /***********************************/
 
-#game_hp{
-	position: absolute;
-	width: 360px;
-	height: 80px;
-	top: 0px;
-	left: 0px;
-
-	background: rgb(204,204,204);
-	background: linear-gradient(180deg, rgba(204,204,204,1) 80%, rgba(204,204,204,0) 100%);
+canvas{
+	border: none;
 }
-#game_hp > div{
-	position: absolute;
-	top:25px;
-	width: 150px;
-	height: 20px;
-	background: #ff4040;
-}
-#game_hp > #hp_human{
-	left: 20px;
-	transform: skew(15deg);
-}
-#game_hp > #hp_wolf{
-	right: 20px;
-	transform: skew(-15deg);
-}
-
-/***********************************/
-/***********************************/
-/***********************************/
-
 #game_canvas{
 	position: absolute;
 	top:0; left:0;
-	border: none;
+}
+
+#game_hp{
+	position: absolute;
+	width: 360px;
+	height: 100px;
+	top:0; left:0;
 }

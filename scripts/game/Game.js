@@ -1,16 +1,3 @@
-var xhr = new XMLHttpRequest();
-xhr.open('GET', 'woods.md?v='+Math.random());
-xhr.onload = function() {
-    if(xhr.status===200){
-        Game.onload(xhr.responseText);
-    }
-};
-xhr.send();
-
-/*****************************/
-/*****************************/
-/*****************************/
-
 window._ = {};
 window.Game = {};
 
@@ -69,21 +56,19 @@ Game.onload = function(data){
 
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// SCENE MANAGEMENT ////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 Game.start = function(){
 	window._ = {}; // global var, reset
 	Game.goto(Game.startSectionID);
 };
 
 Game.update = function(){
-
-	var wordsHeight = 80 + Game.wordsDOM.getBoundingClientRect().height;
-	var currentY = parseFloat(Game.wordsDOM.style.top) || 80;
-	var gotoY = (wordsHeight<260) ? 0 : wordsHeight-260;
-	gotoY = 80 - gotoY;
-
-	var nextY = currentY*0.9 + gotoY*0.1;
-	Game.wordsDOM.style.top = nextY+"px";
-
+	Game.updateText();
+	Game.updateCanvas();
+	publish("update");
 };
 
 Game.goto = function(sectionID){
@@ -101,9 +86,8 @@ Game.goto = function(sectionID){
 	Game.executeNextLine();
 
 };
-Game.executeNextLine = function(){
 
-	var doNextLineImmediately = false;
+Game.executeNextLine = function(){
 
 	// Parse handlebars
 	var originalLine = Game.queue.shift();
@@ -112,7 +96,11 @@ Game.executeNextLine = function(){
 
 	// Execute line
 	var promiseNext;
-	if(line!=""){ // none, don't execute...
+	if(line==""){
+		// If no line, get immediate promise...
+		promiseNext = new pinkySwear();
+		promiseNext(true, []);
+	}else{
 
 		// Execute based on what type it is!
 		var lineType = Game.getLineType(line);
@@ -122,11 +110,9 @@ Game.executeNextLine = function(){
 				break;
 			case "choice":
 				promiseNext = Game.executeChoice(line);
-				doNextLineImmediately = true;
 				break;
 			case "code":
 				promiseNext = Game.executeCode(line);
-				doNextLineImmediately = true;
 				break;
 		}
 
@@ -153,6 +139,21 @@ Game.clearQueue = function(){
 Game.addToQueue = function(line){
 	Game.queue.push(line);
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+// TEXT AND STUFF //////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Move the text DOM to latest
+Game.updateText = function(){
+	var wordsHeight = 80 + Game.wordsDOM.getBoundingClientRect().height;
+	var currentY = parseFloat(Game.wordsDOM.style.top) || 80;
+	var gotoY = (wordsHeight<260) ? 0 : wordsHeight-260;
+	gotoY = 80 - gotoY;
+	var nextY = currentY*0.9 + gotoY*0.1;
+	Game.wordsDOM.style.top = nextY+"px";
+};
 
 // Execute text! Just add it to text DOM.
 Game.executeText = function(line){
@@ -325,15 +326,45 @@ Game.parseLine = function(line){
 
 };
 
-
-/*****************************/
-/*****************************/
-/*****************************/
+////////////////////////////////////////////////////////////////////////////////////////////////
+// WHERE STUFF WILL BE DRAWN ///////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 Game.canvas = document.querySelector("#game_canvas");
 Game.canvas.width = 360 * 2;
 Game.canvas.height = 450 * 2;
 Game.canvas.style.width = Game.canvas.width/2 + "px";
 Game.canvas.style.height = Game.canvas.height/2 + "px";
+Game.context = Game.canvas.getContext("2d");
+
+// A blank scene
+Game.resetScene = function(){
+	Game.scene = {};
+	Game.scene.children = [];
+};
+Game.resetScene();
+
+// Update & draw all the kids!
+Game.updateCanvas = function(){
+
+	// For retina
+	var ctx = Game.context;
+	ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+	ctx.save();
+	ctx.scale(2,2);
+	
+	// Update/Draw all kids
+	Game.scene.children.forEach(function(child){
+		child.draw(ctx);
+	});
+
+	// Restore
+	ctx.restore();
+
+	// Draw HP
+	HP.draw();
+
+};
+
 
 

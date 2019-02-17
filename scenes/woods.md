@@ -1,6 +1,9 @@
 # woods
 
-`document.body.style.background = "#ddd"`
+```
+document.body.style.background = "#ddd"
+publish("beebee", ["normal"])
+```
 
 Two roads diverged in the woods and I...
 {{if _.eaten}} (this time try not to get eaten by wolves) {{/if}}
@@ -13,10 +16,13 @@ Two roads diverged in the woods and I...
 
 # woods-less
 
-`document.body.style.background = "#ff4040"`
-
 And that's how I got lost in the woods and was eaten by wolves
 {{if _.eaten}} (...again.) {{/if}}
+
+```
+document.body.style.background = "#ff4040"
+publish("beebee", ["panic"])
+```
 
 `_.eaten = true`
 
@@ -37,6 +43,8 @@ And that's how I found my way back to civilization and was not eaten by wolves
 # home
 
 Good choice.
+
+`publish("beebee", ["yay"])`
 
 (#END)
 
