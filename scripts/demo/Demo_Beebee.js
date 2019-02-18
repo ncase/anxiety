@@ -1,10 +1,10 @@
-function Beebee(){
+function Demo_Beebee(){
 
 	var self = this;
 
 	// Sprite!
 	var beebeeImage = new Image();
-	beebeeImage.src = "sprites/beebee.png";
+	beebeeImage.src = "sprites/demo_beebee.png";
 	self.sprite = new Sprite({
 		image: beebeeImage,
 		grid:{
@@ -20,16 +20,19 @@ function Beebee(){
 			y: 325/2
 		},
 		frameNames:[
-			"normal_look_phone",
 			"normal",
+			"normal_down",
+			"normal_down_vexed",
 			"normal_speak",
-			"",
 			"scream",
 			"scream_2"
 		],
 		x: 270,
 		y: 405
 	});
+
+	// First frame
+	self.sprite.gotoFrameByName("normal");
 
 	// Draw
 	var ticker = 0;
@@ -67,7 +70,9 @@ function Beebee(){
 		self.sprite.gotoFrameByName(fname);
 
 		// Bounce transition
-		self.sprite.bounce = 1.1;
+		if(fname=="normal_speak"){
+			self.sprite.bounce = 1.1;
+		}
 		if(fname=="scream"){
 			self.sprite.bounce = 1.6;
 		}

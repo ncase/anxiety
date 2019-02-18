@@ -8,18 +8,31 @@ Game.dom = document.querySelector("#game_container");
 Game.wordsDOM = document.querySelector("#game_words");
 Game.choicesDOM = document.querySelector("#game_choices");
 
+Game.startSectionID = null;
 Game.queue = [];
 
-// Parse data!
-Game.onload = function(data){
+window.SceneSetup = {}; // A big ol' singleton class that just makes it easy to create scenes.
 
-	// THE FIRST ID
-	Game.startSectionID = null;
+// Init
+Game.init = function(){
+
+	// Animation!
+	Game.wordsDOM.style.top = "80px";
+	var animloop = function(){
+		Game.update();
+		requestAnimationFrame(animloop);
+	};
+	requestAnimationFrame(animloop);
+
+};
+
+// Parse scene markdown!
+Game.parseSceneMarkdown = function(md){
 
 	// Split into sections...
-	data = data.trim();
-	data = "\n" + data;
-	var sections = data.split(/\n\#\s*/);
+	md = md.trim();
+	md = "\n" + md;
+	var sections = md.split(/\n\#\s*/);
 	sections.shift();
 	sections.forEach(function(section){
 		
@@ -43,18 +56,7 @@ Game.onload = function(data){
 
 	});
 
-	// Animation!
-	Game.wordsDOM.style.top = "80px";
-	var animloop = function(){
-		Game.update();
-		requestAnimationFrame(animloop);
-	};
-	requestAnimationFrame(animloop);
-
-	// Let's go!
-	Game.start();
-
-}
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // SCENE MANAGEMENT ////////////////////////////////////////////////////////////////////////////
@@ -98,8 +100,7 @@ Game.executeNextLine = function(){
 	var promiseNext;
 	if(line==""){
 		// If no line, get immediate promise...
-		promiseNext = new pinkySwear();
-		promiseNext(true, []);
+		promiseNext = Game.immediatePromise();
 	}else{
 
 		// Execute based on what type it is!
@@ -148,6 +149,13 @@ Game.addToQueue = function(line){
 // TEXT AND STUFF //////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
+// Immediate Promise
+Game.immediatePromise = function(){
+	return new RSVP.Promise(function(resolve){
+		resolve();
+	});
+};
+
 // Move the text DOM to latest
 Game.updateText = function(){
 	var wordsHeight = 80 + Game.wordsDOM.getBoundingClientRect().height;
@@ -159,81 +167,92 @@ Game.updateText = function(){
 };
 
 // Execute text! Just add it to text DOM.
+Game.OVERRIDE_TEXT_SPEED = 1;
 Game.executeText = function(line){
 
-	var div = document.createElement("div");
-	var promiseDone = pinkySwear();
+	return new RSVP.Promise(function(resolve){
 
-	// Is it human or wolf?
-	var dialogue;
-	var isWolf = /^\>(.*)/.test(line);
-	if(isWolf){
-		div.className = "wolf-bubble";
-		dialogue = line.match(/^\>(.*)/)[1].trim();
-	}else{
-		div.className = "human-bubble";
-		dialogue = line;
-	}
+		// Is it human or wolf?
+		var isWolf = /^\>(.*)/.test(line);
+		var dialogue = isWolf ? line.match(/^\>(.*)/)[1].trim() : line; // Remove the > for wolf
 
-	// Add the bubble, with animation
-	Game.wordsDOM.appendChild(div);
-	requestAnimationFrame(function(){
+		// Add the bubble, with animation
+		var div = document.createElement("div");
+		Game.wordsDOM.appendChild(div);
+		div.className = isWolf ? "wolf-bubble" : "human-bubble";
 		requestAnimationFrame(function(){
-			div.style.opacity = 1;
-			div.style.left = 0;
+			requestAnimationFrame(function(){
+				div.style.opacity = 1;
+				div.style.left = 0;
+			});
 		});
-	});
 
-	// Add the text, letter by letter!
-	var interval = 0;
-	var SPEED = 40;
-	for(var i=0; i<dialogue.length; i++){
+		// Add the text, letter by letter!
+		var interval = 0;
+		var SPEED = Math.round(40 / Game.OVERRIDE_TEXT_SPEED);
+		for(var i=0; i<dialogue.length; i++){
 
-		var ch = dialogue[i];
+			var ch = dialogue[i];
 
-		// for scopin'
-		(function(ch, interval){
-			setTimeout(function(){
-				div.innerHTML += ch;
-			}, interval);
-		})(ch, interval);
+			// for scopin'
+			(function(ch, interval){
+				setTimeout(function(){
+					div.innerHTML += ch;
+				}, interval);
+			})(ch, interval);
 
-		// Bigger interval
-		if(ch=="."){
-			interval += SPEED*10;
-		}else{
-			interval += SPEED;
+			// Bigger interval
+			if(ch=="."){
+				interval += SPEED*10;
+			}else{
+				interval += SPEED;
+			}
+
 		}
 
-	}
+		// Return promise
+		var nextLineDelay = 300;
+		if(dialogue.slice(-1)=="-") nextLineDelay=0; // sudden interrupt!
+		setTimeout(resolve, interval+nextLineDelay);
 
-	// Return promise
-	setTimeout(function(){
-		promiseDone(true, []);
-	}, interval+200);
-	return promiseDone;
+	});
 
 }
 
 // Execute choice! Add it to choice DOM.
+Game.OVERRIDE_CHOICE_LINE = false;
 Game.executeChoice = function(line){
 	
-	var choiceText = line.match(/\[(.*)\]/)[1].trim();
-	var choiceID = line.match(/\(\#(.*)\)/)[1].trim().toLocaleLowerCase();
+	var choiceText = line.match(/\[([^\]]*)\]/)[1].trim();
+	var choiceID = line.match(/\(\#([^\)]*)\)/)[1].trim().toLocaleLowerCase();
+
+	var preChoiceCodeIfAny = null;
+	if(/\`(.*)\`/.test(line)){
+		preChoiceCodeIfAny = line.match(/\`(.*)\`/)[0]; // 0, with backticks
+	}
 
 	var div = document.createElement("div");
 	div.innerHTML = choiceText;
 	div.onclick = function(){
-		Game.addToQueue("> "+choiceText);
+
+		// Any pre-choice code?
+		if(preChoiceCodeIfAny) Game.executeCode(preChoiceCodeIfAny);
+
+		// Override line... ONCE
+		if(!Game.OVERRIDE_CHOICE_LINE){
+			Game.addToQueue("> "+choiceText);
+		}
+		Game.OVERRIDE_CHOICE_LINE = true;
+
+		// Goto that choice, now!
 		Game.goto(choiceID);
+
 	};
 
 	Game.choicesDOM.appendChild(div);
 
-	// Return promise
-	var promiseImmediate = new pinkySwear();
-	promiseImmediate(true, []);
-	return promiseImmediate;
+	// Return immediate promise
+	return Game.immediatePromise();
 
 }
 
@@ -247,10 +266,8 @@ Game.executeCode = function(line){
 		console.log(e);
 	}
 
-	// Return promise
-	var promiseImmediate = new pinkySwear();
-	promiseImmediate(true, []);
-	return promiseImmediate;
+	// Return immediate promise
+	return Game.immediatePromise();
 
 }
 
@@ -261,11 +278,9 @@ Game.executeWait = function(line){
 	var waitTime = parseInt(line.match(/^\(\.\.\.(\d+)\)/)[1].trim());
 	
 	// Delayed promise
-	var promiseDelayed = new pinkySwear();
-	setTimeout(function(){
-		promiseDelayed(true, []);
-	}, waitTime);
-	return promiseDelayed;
+	return RSVP.Promise(function(resolve){
+		setTimeout(resolve, waitTime);
+	});
 
 };
 

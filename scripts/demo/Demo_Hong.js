@@ -1,14 +1,14 @@
-function Hong(){
+function Demo_Hong(){
 
 	var self = this;
 
 	// Sprite!
 	var beebeeImage = new Image();
-	beebeeImage.src = "sprites/hong.png";
+	beebeeImage.src = "sprites/demo_hong.png";
 	self.sprite = new Sprite({
 		image: beebeeImage,
 		grid:{
-			width: 3,
+			width: 4,
 			height: 2
 		},
 		frame:{
@@ -23,11 +23,13 @@ function Hong(){
 			"_body_1",
 			"_body_2",
 			"",
+			"",
 			"normal",
+			"sarcasm",
 			"smile",
 			"shock"
 		],
-		x: 80,
+		x: 70,
 		y: 400
 	});
 
@@ -40,13 +42,22 @@ function Hong(){
 	self.sprite.bounceDamp = 0.9;
 
 	// First frame
-	self.sprite.gotoFrameByName("smile");
+	self.sprite.gotoFrameByName("normal");
 
 	// Draw
 	var ticker = 0;
 	self.draw = function(ctx){
 
 		var fname = self.sprite.currentFrameName;
+
+		// Breathe, unless shocked
+		if(fname=="shock"){
+			self.sprite.breatheSpeed = 0;
+			self.sprite.breatheAmp = 0;
+		}else{
+			self.sprite.breatheSpeed = 0.017;
+			self.sprite.breatheAmp = 0.014;
+		}
 
 		// Draw body FIRST
 		var bod_frame = (Math.floor(ticker/30)%2 == 0) ? "_body_1" : "_body_2";

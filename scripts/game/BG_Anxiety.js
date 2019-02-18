@@ -5,7 +5,7 @@ or maybe CA?
 
 ******************************/
 
-function BGAnxiety(){
+function BG_Anxiety(){
 
 	var self = this;
 

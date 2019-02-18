@@ -1,59 +1,42 @@
 # demo
 
-`SceneSetup.demo()`
+```
+SceneSetup.demo();
+publish("beebee",["normal_down"]);
+```
 
-> Prepare for trouble!
+> So... scrolling your life away on Twitter, huh?
 
-Oh no!
+```
+publish("beebee",["normal"]);
+publish("hong",["sarcasm"]);
+```
 
-(#demo-attacks)
+Yeah, I wonder why I don't just sit alone with my thoughts more often.
 
-# demo-attacks
+`publish("beebee",["normal_down"]);`
 
-`publish("beebee",["normal"])`
+> ...
 
-[Attack 10 points](#demo-attack-low)
+`publish("beebee",["normal_down_vexed"]);`
 
-[Attack 20 points](#demo-attack-med)
+[Oh god, look at that awful news!](#derp)
 
-[Attack 50%](#demo-attack-hi)
+[Ugh, look at that troll comment.](#derp)
 
-# attack
+[hey, a GIF of a cat drinking milk](#milk) `publish("beebee",["normal_speak"])`
 
-`publish("beebee",["scream"])`
+# milk
 
-`publish("hong",["shock"])`
+`publish("hong",["smile"])`
 
-(...1500)
+Heh, yeah that is pretty cu-
 
-{{if HP.hong==0}} (#dead) {{/if}}
+```
+publish("beebee",["scream"]);
+publish("hong",["shock"]);
+HP.attackHong("60p");
+Game.OVERRIDE_TEXT_SPEED = 1.5;
+```
 
-`publish("hong",["normal"])`
-
-(#demo-attacks)
-
-# demo-attack-low
-
-`HP.attackHong("10p")`
-
-(#attack)
-
-# demo-attack-med
-
-`HP.attackHong("20p")`
-
-(#attack)
-
-# demo-attack-hi
-
-`HP.attackHong("50%")`
-
-(#attack)
-
-# dead
-
-`publish("beebee",["normal_speak"])`
-
-i am ded
-
-> u r ded
+> CATS CAN'T DIGEST COW'S MILK AND YOU'RE A HORRIBLE PERSON FOR ENJOYING ANIMAL ABUSE
