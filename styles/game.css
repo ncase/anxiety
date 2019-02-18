@@ -4,7 +4,7 @@ html,body{
 }
 body{
 	margin:0;
-	background: #ddd;
+	background: #000;
 }
 
 .no_select{
@@ -22,7 +22,7 @@ body{
 
 	width: 360px;
 	height: 600px;
-	background: #ccc;
+	background: #2E2E2E;
 
 	font-size: 20px;
 	font-family: Helvetica, Arial, sans-serif;
@@ -75,7 +75,24 @@ body{
 	opacity: 0;
 	left: 15px;
 	transition: all 0.3s ease-in-out;
+
+	/*border: 1px solid #ffffff;*/
 }
+/*
+.wolf-bubble:before {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 16px solid transparent;
+	border-left-color: #ffffff;
+	border-right: 0;
+	margin-top: -16px;
+	margin-right: -16px;
+}
+*/
 .wolf-bubble:after {
 	content: '';
 	position: absolute;
@@ -99,15 +116,18 @@ body{
 	position: absolute;
 	bottom:0;
 
-	background: #666;
+	background: #2E2E2E;
 	text-align: center;
 	color: #fff;
 	font-weight: normal;
 
 }
 #game_choices > div{
-	margin-bottom:0.5em;
+	padding: 0.25em 0;
 	cursor: pointer;
+}
+#game_choices > div:hover{
+	background: rgba(255,255,255,0.25);
 }
 
 /***********************************/

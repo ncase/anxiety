@@ -65,6 +65,15 @@ function Sprite(config){
 	self.scale = config.scale || 1;
 	self.squash = config.squash || 1;
 	
+	// Helpers
+	self.breathe = 0;
+	self.breatheSpeed = 0;
+	self.breatheAmp = 0;
+	self.bounce = 1;
+	self.bounceVel = 0;
+	self.bounceDamp = 0.8;
+	self.bounceHookes = 0.4;
+
 	// Draw frame!
 	self.draw = function(ctx){
 
@@ -81,9 +90,19 @@ function Sprite(config){
 		var dy = self.y;
 		ctx.translate(dx, dy);
 
+		// Breathe
+		self.breathe += self.breatheSpeed;
+		var breatheSquash = 1 + Math.sin(self.breathe)*self.breatheAmp;
+
+		// Bounce
+		self.bounce += self.bounceVel;
+		self.bounceVel -= (self.bounce-1) * self.bounceHookes;
+		self.bounceVel *= self.bounceDamp;
+
 		// Scale
-		var scaleX = self.scale * self.squash;
-		var scaleY = self.scale / self.squash;
+		var totalSquash = self.squash * breatheSquash * self.bounce;
+		var scaleX = self.scale * totalSquash;
+		var scaleY = self.scale / totalSquash;
 		ctx.scale(scaleX, scaleY);
 
 		// Draw it!

@@ -10,7 +10,7 @@ function HitPoints(){
 	self.dom = document.querySelector("#game_hp");
 	self.canvas = document.createElement("canvas");
 	self.canvas.width = 360 * 2;
-	self.canvas.height = 70 * 2;
+	self.canvas.height = 100 * 2;
 	self.canvas.style.width = self.canvas.width/2 + "px";
 	self.canvas.style.height = self.canvas.height/2 + "px";
 	self.context = self.canvas.getContext("2d");
@@ -109,6 +109,10 @@ function HitPoints(){
 		ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
 		ctx.save();
 		ctx.scale(2,2);
+
+		// Draw BG
+		var sx=0, sy=600, sw=720, sh=200; 
+		ctx.drawImage(self.image, sx,sy,sw,sh, 0,0,sw/2,sh/2);
 
 		// Draw Left & Right Sides
 		self.drawHalf(ctx, false);

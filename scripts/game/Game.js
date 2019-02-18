@@ -114,6 +114,9 @@ Game.executeNextLine = function(){
 			case "code":
 				promiseNext = Game.executeCode(line);
 				break;
+			case "wait":
+				promiseNext = Game.executeWait(line);
+				break;
 		}
 
 		// If it's a goto, end THIS section immediately.
@@ -251,6 +254,21 @@ Game.executeCode = function(line){
 
 }
 
+// Execute wait! Just wait.
+Game.executeWait = function(line){
+	
+	// Get integer from (...NN)
+	var waitTime = parseInt(line.match(/^\(\.\.\.(\d+)\)/)[1].trim());
+	
+	// Delayed promise
+	var promiseDelayed = new pinkySwear();
+	setTimeout(function(){
+		promiseDelayed(true, []);
+	}, waitTime);
+	return promiseDelayed;
+
+};
+
 // Execute goto! Just goto.
 Game.executeGoto = function(line){
 	var gotoID = line.match(/^\(\#(.*)\)/)[1].trim().toLocaleLowerCase();
@@ -271,6 +289,10 @@ Game.getLineType = function(line){
 	// Is it code?
 	var isCode = /^\`/.test(line);
 	if(isCode) return "code";
+
+	// Is it a wait?
+	var isWait = /^\(\.\.\.\d+\)/.test(line);
+	if(isWait) return "wait";
 
 	// Otherwise, it's text.
 	return "text";
