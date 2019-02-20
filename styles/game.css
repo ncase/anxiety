@@ -37,8 +37,83 @@ body{
 	position: relative;
 	top: 80px;
 }
+#paused{
+	display: none;
 
-.human-bubble {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(40,40,40,0.9);
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+}
+#paused > div{
+	position: absolute;
+	margin: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 260px;
+	height: 70px;
+	font-size: 69px;
+}
+#paused > div > div{
+	font-size: 20px;
+	font-weight: lighter;
+	line-height: 1em;
+	width: 220px;
+	margin: 15px auto;
+}
+
+.narrator-bubble{
+	position: relative;
+	color: #FFFFFF;
+	text-align: center;
+	padding: 0 10px;
+	font-size: 1.3em;
+	margin: 25px 15px;
+	font-weight: bold;
+}
+.narrator-bubble:before{
+
+	content: '';
+	
+	position: absolute;
+	top: -9px;
+	left: 0;
+	
+	border: 6px solid #fff;
+	border-right: 0;
+
+	width: 10px;
+	height: calc(100% + 4px);
+	
+} 
+.narrator-bubble:after{
+
+	content: '';
+	
+	position: absolute;
+	top: -9px;
+	right: 0;
+	
+	border: 6px solid #fff;
+	border-left: 0;
+
+	width: 10px;
+	height: calc(100% + 4px);
+	
+} 
+.narrator-bubble i{
+	font-style: normal;
+	color: #ff4040;
+}
+
+.hong-bubble {
 	position: relative;
 	background: #ffffff;
 	color: #000000;
@@ -50,7 +125,7 @@ body{
 	left: -15px;
 	transition: all 0.3s ease-in-out;
 }
-.human-bubble:after {
+.hong-bubble:after {
 	content: '';
 	position: absolute;
 	left: 0;
@@ -64,7 +139,7 @@ body{
 	margin-left: -15px;
 }
 
-.wolf-bubble {
+.beebee-bubble {
 	position: relative;
 	background: #000000;
 	color: #ffffff;
@@ -75,25 +150,8 @@ body{
 	opacity: 0;
 	left: 15px;
 	transition: all 0.3s ease-in-out;
-
-	/*border: 1px solid #ffffff;*/
 }
-/*
-.wolf-bubble:before {
-	content: '';
-	position: absolute;
-	right: 0;
-	top: 50%;
-	width: 0;
-	height: 0;
-	border: 16px solid transparent;
-	border-left-color: #ffffff;
-	border-right: 0;
-	margin-top: -16px;
-	margin-right: -16px;
-}
-*/
-.wolf-bubble:after {
+.beebee-bubble:after {
 	content: '';
 	position: absolute;
 	right: 0;
@@ -119,7 +177,7 @@ body{
 	background: #2E2E2E;
 	text-align: center;
 	color: #fff;
-	font-weight: normal;
+	font-weight: lighter;
 
 }
 #game_choices > div{

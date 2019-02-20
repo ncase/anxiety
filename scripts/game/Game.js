@@ -68,9 +68,51 @@ Game.start = function(){
 };
 
 Game.update = function(){
-	Game.updateText();
-	Game.updateCanvas();
-	publish("update");
+
+	if(!Game.paused){
+
+		// Timeout callbacks...
+		for(var i=Game.timeoutCallbacks.length-1; i>=0; i--){ // backwards coz removing
+			var tc = Game.timeoutCallbacks[i];
+			tc.timeLeft -= 1000/60;
+			if(tc.timeLeft<=0){
+				tc.callback();
+				Game.timeoutCallbacks.splice(i,1); // delete that one
+			}
+		}
+
+		// The interface
+		Game.updateText();
+		Game.updateCanvas();
+
+		// Ayyy
+		publish("update");
+
+	}
+
+};
+
+Game.paused = false;
+Game.pause = function(){
+	Game.paused = true;
+	document.querySelector("#paused").style.display = "block";
+};
+window.addEventListener("blur", Game.pause);
+Game.onUnpause = function(){
+	if(Game.paused){
+		Game.paused = false;
+		document.querySelector("#paused").style.display = "none";
+	}
+};
+window.addEventListener("click", Game.onUnpause);
+window.addEventListener("touchstart", Game.onUnpause);
+
+Game.timeoutCallbacks = [];
+Game.setTimeout = function(callback, interval){
+	Game.timeoutCallbacks.push({
+		callback: callback,
+		timeLeft: interval
+	});
 };
 
 Game.goto = function(sectionID){
@@ -160,7 +202,7 @@ Game.immediatePromise = function(){
 Game.updateText = function(){
 	var wordsHeight = 80 + Game.wordsDOM.getBoundingClientRect().height;
 	var currentY = parseFloat(Game.wordsDOM.style.top) || 80;
-	var gotoY = (wordsHeight<260) ? 0 : wordsHeight-260;
+	var gotoY = (wordsHeight<250) ? 0 : wordsHeight-250;
 	gotoY = 80 - gotoY;
 	var nextY = currentY*0.9 + gotoY*0.1;
 	Game.wordsDOM.style.top = nextY+"px";
@@ -172,14 +214,26 @@ Game.executeText = function(line){
 
 	return new RSVP.Promise(function(resolve){
 
-		// Is it human or wolf?
-		var isWolf = /^\>(.*)/.test(line);
-		var dialogue = isWolf ? line.match(/^\>(.*)/)[1].trim() : line; // Remove the > for wolf
+		// Who's speaking?
+		// b: Beebee, h: Hong, n: Narrator, x: Xavier, y: Yvonne
+		var regex = /^(.)\:(.*)/
+		var speaker = line.match(regex)[1].trim();
+		var dialogue = line.match(regex)[2].trim();
 
 		// Add the bubble, with animation
 		var div = document.createElement("div");
 		Game.wordsDOM.appendChild(div);
-		div.className = isWolf ? "wolf-bubble" : "human-bubble";
+		switch(speaker){
+			case "b":
+				div.className = "beebee-bubble";
+				break;
+			case "h":
+				div.className = "hong-bubble";
+				break;
+			case "n":
+				div.className = "narrator-bubble";
+				break;
+		}
 		requestAnimationFrame(function(){
 			requestAnimationFrame(function(){
 				div.style.opacity = 1;
@@ -187,33 +241,107 @@ Game.executeText = function(line){
 			});
 		});
 
-		// Add the text, letter by letter!
+		// TODO: BOLD LETTER BY LETTER...
+
+		// Add the text
 		var interval = 0;
 		var SPEED = Math.round(40 / Game.OVERRIDE_TEXT_SPEED);
-		for(var i=0; i<dialogue.length; i++){
+		if(speaker!="n"){
 
-			var ch = dialogue[i];
+			// If not narrator, add letter by letter...
+			for(var i=0; i<dialogue.length; i++){
 
-			// for scopin'
-			(function(ch, interval){
-				setTimeout(function(){
-					div.innerHTML += ch;
-				}, interval);
-			})(ch, interval);
+				var chr = dialogue[i];
 
-			// Bigger interval
-			if(ch=="."){
-				interval += SPEED*10;
-			}else{
-				interval += SPEED;
+				// If it's the last char & it's "-", skip
+				if(i==dialogue.length-1 && chr=="-") break;
+
+				// for scopin'
+				(function(chr, interval){
+					Game.setTimeout(function(){
+						div.innerHTML += chr;
+					}, interval);
+				})(chr, interval);
+
+				// Bigger interval
+				if(i!=dialogue.length-1){ // NOT last
+					if(chr=="."){
+						interval += SPEED*9;
+					}else if(chr==","){
+						interval += SPEED*5;
+					}else{
+						interval += SPEED;
+					}
+				}
+
 			}
+
+		}else{
+
+			// IF NARRATOR
+
+			// *Emphasize multiple words* => *Emphasize* *multiple* *words*
+			var regex = /\*([^\*]*)\*/g;
+			var emphasized = dialogue.match(regex) || [];
+			for(var i=emphasized.length-1; i>=0; i--){ // backwards coz replacing
+
+				// Convert
+				var originalEm = emphasized[i]
+				var em = originalEm;
+				em = em.substr(1,em.length-2); // remove *
+				var ems = em.split(" ");
+				ems = ems.map(function(word){
+					return "*"+word+"*";
+				});
+				em = ems.join(" ");
+
+				// Replace in main string
+				var startIndex = dialogue.indexOf(originalEm);
+				dialogue = dialogue.slice(0, startIndex) + em + dialogue.slice(startIndex+originalEm.length);
+
+			}
+
+			// Add word by word
+			var dialogueWords = dialogue.split(" ");
+			for(var i=0; i<dialogueWords.length; i++){
+
+				var word = dialogueWords[i];
+				var bareWord = word;
+				if(/\*(.*)\*/.test(bareWord)){
+					bareWord = word.match(/\*(.*)\*/)[1].trim();
+				}
+
+				// for scopin'
+				(function(word, interval){
+					Game.setTimeout(function(){
+						
+						// if emphasize, emphasize!
+						if(/\*(.*)\*/.test(word)){
+							word = "<i>" + word.match(/\*(.*)\*/)[1].trim() + "</i>"
+						}
+
+						// add word
+						div.innerHTML += word+" ";
+
+					}, interval);
+				})(word, interval);
+
+				// Interval
+				interval += SPEED*5;
+
+				// Larger interval if punctuation...
+				if(bareWord.slice(-1)==",") interval += SPEED*5;
+				if(bareWord.slice(-3)=="...") interval += SPEED*15;
+
+			}
+
 
 		}
 
 		// Return promise
-		var nextLineDelay = 300;
+		var nextLineDelay = SPEED*7;
 		if(dialogue.slice(-1)=="-") nextLineDelay=0; // sudden interrupt!
-		setTimeout(resolve, interval+nextLineDelay);
+		Game.setTimeout(resolve, interval+nextLineDelay);
 
 	});
 
@@ -240,7 +368,7 @@ Game.executeChoice = function(line){
 
 		// Override line... ONCE
 		if(!Game.OVERRIDE_CHOICE_LINE){
-			Game.addToQueue("> "+choiceText);
+			Game.addToQueue("b: "+choiceText);
 		}
 		Game.OVERRIDE_CHOICE_LINE = true;
 
@@ -279,7 +407,7 @@ Game.executeWait = function(line){
 	
 	// Delayed promise
 	return RSVP.Promise(function(resolve){
-		setTimeout(resolve, waitTime);
+		Game.setTimeout(resolve, waitTime);
 	});
 
 };

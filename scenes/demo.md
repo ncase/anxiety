@@ -1,42 +1,88 @@
-# demo
+# act1
 
-```
-SceneSetup.demo();
-publish("beebee",["normal_down"]);
-```
+`SceneSetup.demo();`
 
-> So... scrolling your life away on Twitter, huh?
+n: THIS IS A HUMAN
 
-```
-publish("beebee",["normal"]);
-publish("hong",["sarcasm"]);
-```
+`publish("scene", ["add_beebee"])`
 
-Yeah, I wonder why I don't just sit alone with my thoughts more often.
+(#act1b)
 
-`publish("beebee",["normal_down"]);`
+n: THIS IS YOU, THAT HUMAN'S ANXIETY
 
-> ...
+h: oh, hello again. i'm sorry but i'd like to eat in peace today if that's not too m--
 
-`publish("beebee",["normal_down_vexed"]);`
+n: YOUR JOB IS TO PROTECT YOUR HUMAN FROM *DANGER*
 
-[Oh god, look at that awful news!](#derp)
+n: IN FACT, THAT SANDWICH IS PUTTING THEM IN *DANGER* RIGHT NOW
 
-[Ugh, look at that troll comment.](#derp)
+n: QUICK, WARN THEM
 
-[hey, a GIF of a cat drinking milk](#milk) `publish("beebee",["normal_speak"])`
+[You're eating alone for lunch! Again!](#act1a_alone)
 
-# milk
+[You're not studying while eating!](#act1a_study)
 
-`publish("hong",["smile"])`
+[That white bread's bad for you!](#act1a_bread)
 
-Heh, yeah that is pretty cu-
+# act1a_alone
 
-```
-publish("beebee",["scream"]);
-publish("hong",["shock"]);
-HP.attackHong("60p");
-Game.OVERRIDE_TEXT_SPEED = 1.5;
-```
+h: oh no
 
-> CATS CAN'T DIGEST COW'S MILK AND YOU'RE A HORRIBLE PERSON FOR ENJOYING ANIMAL ABUSE
+b: oh yes
+
+n: YOU USED *FEAR OF BEING UNLOVED*
+
+(#act1b)
+
+# act1a_study
+
+h: oh no
+
+b: oh yes
+
+n: YOU USED *FEAR OF BEING A BAD PERSON*
+
+(#act1b)
+
+# act1a_bread
+
+h: oh no
+
+b: oh yes
+
+n: YOU USED *FEAR OF BEING HURT*
+
+(#act1b)
+
+# act1b
+
+n: IT'S SUPER EFFECTIVE!
+
+n: BUT YOU'RE NOT DONE PROTECTING YOUR HUMAN YET
+
+h: on second thought, um, maybe I'll look at my phone.
+
+n: YOUR MOVES ARE: FEAR OF *BEING HURT,* *BEING UNLOVED,* AND *BEING A BAD PERSON*
+
+n: LOWER YOUR HUMAN'S HP (HARDHEADED-NESS POINTS) TO ZERO
+
+n: PROTECT YOUR HUMAN... AT ANY COST
+
+n: GOOD LUCK
+
+(#act1c)
+
+# act1c
+
+h: huh... there's a party invite on Facebook. that looks nice...
+
+[Say yes, or they'll think you're a loser](#derp)
+
+[Say no, it's probably full of drugs](#derp)
+
+[Ignore it, you just make parties sad](#derp)
+
+
+
+
+
