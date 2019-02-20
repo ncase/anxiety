@@ -7,6 +7,7 @@ Game.startSectionID = null;
 Game.dom = document.querySelector("#game_container");
 Game.wordsDOM = document.querySelector("#game_words");
 Game.choicesDOM = document.querySelector("#game_choices");
+Game.canvas = document.querySelector("#game_canvas");
 
 Game.startSectionID = null;
 Game.queue = [];
@@ -92,21 +93,24 @@ Game.update = function(){
 
 };
 
+// PAUSING THE GAME
 Game.paused = false;
+Game.pausedDOM = document.querySelector("#paused");
 Game.pause = function(){
 	Game.paused = true;
-	document.querySelector("#paused").style.display = "block";
+	Game.pausedDOM.style.display = "block";
 };
 window.addEventListener("blur", Game.pause);
 Game.onUnpause = function(){
 	if(Game.paused){
 		Game.paused = false;
-		document.querySelector("#paused").style.display = "none";
+		Game.pausedDOM.style.display = "none";
 	}
 };
 window.addEventListener("click", Game.onUnpause);
 window.addEventListener("touchstart", Game.onUnpause);
 
+// "SET TIMEOUT" for text and stuff
 Game.timeoutCallbacks = [];
 Game.setTimeout = function(callback, interval){
 	Game.timeoutCallbacks.push({
@@ -114,6 +118,15 @@ Game.setTimeout = function(callback, interval){
 		timeLeft: interval
 	});
 };
+// TODO: SKIP TEXT WHEN CLICK ANYWHERE (but NOT capture in choice)
+Game.clearAllTimeouts = function(){
+	Game.timeoutCallbacks.forEach(function(tc){
+		tc.callback();
+	});
+	Game.timeoutCallbacks = [];
+};
+Game.canvas.addEventListener("click", Game.clearAllTimeouts);
+Game.canvas.addEventListener("touchstart", Game.clearAllTimeouts);
 
 Game.goto = function(sectionID){
 
@@ -209,6 +222,7 @@ Game.updateText = function(){
 };
 
 // Execute text! Just add it to text DOM.
+Game.TEXT_SPEED = 40;
 Game.OVERRIDE_TEXT_SPEED = 1;
 Game.executeText = function(line){
 
@@ -245,7 +259,7 @@ Game.executeText = function(line){
 
 		// Add the text
 		var interval = 0;
-		var SPEED = Math.round(40 / Game.OVERRIDE_TEXT_SPEED);
+		var SPEED = Math.round(Game.TEXT_SPEED / Game.OVERRIDE_TEXT_SPEED);
 		if(speaker!="n"){
 
 			// If not narrator, add letter by letter...
@@ -327,16 +341,21 @@ Game.executeText = function(line){
 				})(word, interval);
 
 				// Interval
-				interval += SPEED*5;
+				interval += SPEED*6.5;
 
 				// Larger interval if punctuation...
 				if(bareWord.slice(-1)==",") interval += SPEED*5;
+				if(bareWord.slice(-1)==":") interval += SPEED*5;
+				if(bareWord.slice(-1)==".") interval += SPEED*10;
 				if(bareWord.slice(-3)=="...") interval += SPEED*15;
 
 			}
 
 
 		}
+
+		// Return overrides to default
+		Game.OVERRIDE_TEXT_SPEED = 1;
 
 		// Return promise
 		var nextLineDelay = SPEED*7;
@@ -495,7 +514,6 @@ Game.parseLine = function(line){
 // WHERE STUFF WILL BE DRAWN ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Game.canvas = document.querySelector("#game_canvas");
 Game.canvas.width = 360 * 2;
 Game.canvas.height = 450 * 2;
 Game.canvas.style.width = Game.canvas.width/2 + "px";

@@ -6,11 +6,11 @@ n: THIS IS A HUMAN
 
 `publish("scene", ["add_beebee"])`
 
-(#act1b)
-
 n: THIS IS YOU, THAT HUMAN'S ANXIETY
 
-h: oh, hello again. i'm sorry but i'd like to eat in peace today if that's not too m--
+h: oh, hello again.
+
+h: i don't mean to be rude, but i'd like to eat in peace today if that's not too m--
 
 n: YOUR JOB IS TO PROTECT YOUR HUMAN FROM *DANGER*
 
@@ -26,9 +26,19 @@ n: QUICK, WARN THEM
 
 # act1a_alone
 
-h: oh no
+b: Don't you know loneliness is as associated with premature death as smoking 15 cigarettes a day?-
 
-b: oh yes
+`Game.OVERRIDE_TEXT_SPEED = 2;`
+
+b: (Holt-Lunstad et al, 2010, PLoS Medicine)
+
+h: uh, thank you for citing your sources but--
+
+`Game.OVERRIDE_TEXT_SPEED = 2;`
+
+b: Which means if you don't hang out with someone *right now* you're gonna-
+
+b: DIEEEEEEEEEEEEEEEEEEEE
 
 n: YOU USED *FEAR OF BEING UNLOVED*
 
@@ -46,9 +56,13 @@ n: YOU USED *FEAR OF BEING A BAD PERSON*
 
 # act1a_bread
 
-h: oh no
+h: um, thank you for your concern but i--
 
-b: oh yes
+`Game.OVERRIDE_TEXT_SPEED = 2;`
+
+b: It'll spike your blood sugar and your health will be ruined and then they'll have to amputate all your limbs and then you'll-
+
+b: DIEEEEEEEEEEEEEEEEEEEE
 
 n: YOU USED *FEAR OF BEING HURT*
 
