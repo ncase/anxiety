@@ -1,4 +1,4 @@
-SceneSetup.demo = function(){
+SceneSetup.act1 = function(){
 
 	Game.resetScene();
 
@@ -7,11 +7,11 @@ SceneSetup.demo = function(){
 	Game.scene.children.push(bg);
 
 	// Hong
-	var hong = new Demo_Hong();
+	var hong = new Act1_Hong();
 	Game.scene.children.push(hong);
 
 	// Beebee
-	var beebee = new Demo_Beebee();
+	var beebee = new Act1_Beebee();
 	subscribe("scene", function(command){
 		switch(command){
 			case "add_beebee":

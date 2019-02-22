@@ -1,12 +1,10 @@
-function Demo_Hong(){
+function Act1_Hong(){
 
 	var self = this;
 
 	// Sprite!
-	var beebeeImage = new Image();
-	beebeeImage.src = "sprites/demo_hong.png";
 	self.sprite = new Sprite({
-		image: beebeeImage,
+		image: Library.images.act1_hong,
 		grid:{
 			width: 4,
 			height: 2

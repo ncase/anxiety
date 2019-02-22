@@ -1,12 +1,10 @@
-function Demo_Beebee(){
+function Act1_Beebee(){
 
 	var self = this;
 
 	// Sprite!
-	var beebeeImage = new Image();
-	beebeeImage.src = "sprites/demo_beebee.png";
 	self.sprite = new Sprite({
-		image: beebeeImage,
+		image: Library.images.act1_beebee,
 		grid:{
 			width: 2,
 			height: 3

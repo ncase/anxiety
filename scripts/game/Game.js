@@ -14,6 +14,10 @@ Game.queue = [];
 
 window.SceneSetup = {}; // A big ol' singleton class that just makes it easy to create scenes.
 
+// HACK TODO
+window.attack = function(){};
+window.miss = function(){};
+
 // Init
 Game.init = function(){
 
@@ -73,12 +77,13 @@ Game.update = function(){
 	if(!Game.paused){
 
 		// Timeout callbacks...
-		for(var i=Game.timeoutCallbacks.length-1; i>=0; i--){ // backwards coz removing
+		for(var i=0; i<Game.timeoutCallbacks.length; i++){
 			var tc = Game.timeoutCallbacks[i];
 			tc.timeLeft -= 1000/60;
 			if(tc.timeLeft<=0){
 				tc.callback();
 				Game.timeoutCallbacks.splice(i,1); // delete that one
+				i -= 1; // set index back one
 			}
 		}
 
@@ -221,6 +226,11 @@ Game.updateText = function(){
 	Game.wordsDOM.style.top = nextY+"px";
 };
 
+// CLEAR TEXT
+Game.clearText = function(){
+	Game.wordsDOM.innerHTML = ""; // TODO HACK make prettier
+};
+
 // Execute text! Just add it to text DOM.
 Game.TEXT_SPEED = 40;
 Game.OVERRIDE_TEXT_SPEED = 1;
@@ -279,8 +289,8 @@ Game.executeText = function(line){
 
 				// Bigger interval
 				if(i!=dialogue.length-1){ // NOT last
-					if(chr=="."){
-						interval += SPEED*9;
+					if(chr=="." || chr=="?" || chr=="!"){
+						interval += SPEED*10;
 					}else if(chr==","){
 						interval += SPEED*5;
 					}else{
@@ -341,12 +351,12 @@ Game.executeText = function(line){
 				})(word, interval);
 
 				// Interval
-				interval += SPEED*6.5;
+				interval += SPEED*6;
 
 				// Larger interval if punctuation...
-				if(bareWord.slice(-1)==",") interval += SPEED*5;
-				if(bareWord.slice(-1)==":") interval += SPEED*5;
-				if(bareWord.slice(-1)==".") interval += SPEED*10;
+				var chr = bareWord.slice(-1)
+				if(chr=="," || chr==":") interval += SPEED*5;
+				if(chr=="." || chr=="?" || chr=="!") interval += SPEED*10;
 				if(bareWord.slice(-3)=="...") interval += SPEED*15;
 
 			}
@@ -389,7 +399,7 @@ Game.executeChoice = function(line){
 		if(!Game.OVERRIDE_CHOICE_LINE){
 			Game.addToQueue("b: "+choiceText);
 		}
-		Game.OVERRIDE_CHOICE_LINE = true;
+		Game.OVERRIDE_CHOICE_LINE = false;
 
 		// Goto that choice, now!
 		Game.goto(choiceID);
@@ -425,7 +435,7 @@ Game.executeWait = function(line){
 	var waitTime = parseInt(line.match(/^\(\.\.\.(\d+)\)/)[1].trim());
 	
 	// Delayed promise
-	return RSVP.Promise(function(resolve){
+	return new RSVP.Promise(function(resolve){
 		Game.setTimeout(resolve, waitTime);
 	});
 
@@ -464,6 +474,9 @@ Game.getLineType = function(line){
 // Parse all the handlebars...
 Game.parseLine = function(line){
 
+	// Get rid of newlines
+	line = line.replace(/\n/gi,"");
+
 	// Get the IFs, if any
 	var lookForIfs = true;
 	while(lookForIfs){
@@ -471,7 +484,7 @@ Game.parseLine = function(line){
 		lookForIfs = false;
 
 		// Look for an IF!
-		var regex = /\{\{if.*\/if\}\}/ig;
+		var regex = /\{\{if[^\/]*\/if\}\}/ig;
 		var regexResult = regex.exec(line);
 		if(regexResult){
 
