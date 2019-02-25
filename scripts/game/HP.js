@@ -50,6 +50,7 @@ function HitPoints(){
 	self.attackHong = function(str){
 		self.doDamage(str, "hong");
 		self.leftShake = 30;
+		publish("hong",["attacked"]);
 	};
 	self.attackBeebee = function(str){
 		self.doDamage(str, "beebee");

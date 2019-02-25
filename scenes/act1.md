@@ -38,7 +38,9 @@ b: Which means if you don't hang out with someone *right now* you're gonna-
 
 b: DIEEEEEEEEEEEEEEEEEEE
 
-`attack`
+`HP.attackHong("20p")`
+
+(...1000)
 
 `_.fifteencigs = true`
 
@@ -62,7 +64,9 @@ b: and then you'll-
 
 b: DIEEEEEEEEEEEEEEEEEEE
 
-`attack`
+`HP.attackHong("20p")`
+
+(...1000)
 
 `_.seppuku = true`
 
@@ -80,7 +84,9 @@ b: Processed wheat will spike your blood sugar and ruin your organs so they'll h
 
 b: DIEEEEEEEEEEEEEEEEEEE
 
-`attack`
+`HP.attackHong("20p")`
+
+(...1000)
 
 `_.whitebread = true`
 
@@ -100,7 +106,7 @@ n: GET YOUR HUMAN'S "WILLPOWER BAR" TO ZERO
 
 n: YOUR MOVES ARE: FEAR OF *BEING HURT,* *BEING UNLOVED,* AND *BEING A BAD PERSON*
 
-n: (PRO TIP: TRY PLAYING THE OPTIONS THAT PERSONALLY TERRIFY YOU MOST!)
+n: (PRO TIP: TRY PLAYING THE CHOICES THAT MOST HIT YOUR DEEPEST, DARKEST FEARS!)
 
 h: ...you know what maybe it's time to check my phone.
 
@@ -148,7 +154,9 @@ b: And then no one will show up at your funeral then they'll just dump your ashe
 
 {{if !_.fifteencigs}} `_.whalepoop = true` {{/if}}
 
-`attack`
+`HP.attackHong("10p")`
+
+(...1000)
 
 {{if !_.fifteencigs}}
 b: So yeah you should go to that party.
@@ -164,11 +172,11 @@ b: Just as long as they don't serve WHITE BREAD
 
 h: GOD. If it'll make you shut up, fine.
 
+h: I'll say yes.
+
 {{if _.whalepoop}}
 b: Whale poop, human. Whale poop.
 {{/if}}
-
-h: I'll say yes.
 
 `_.partyinvite="yes"`
 
@@ -188,7 +196,9 @@ b: You'll overdose on so much meth and white bread they won't be able to fit you
 b: You'll overdose on so many drugs the undertaker will wonder how your body was *already* embalmed.
 {{/if}}
 
-`attack`
+`HP.attackHong("10p")`
+
+(...1000)
 
 {{if _.seppuku}}
 b: Besides, can't party, you need to study so your parents don't commit seppuku.
@@ -218,7 +228,9 @@ b: All you ever do is just panic about the unhealthy food options and think abou
 
 h: GEE I WONDER WHY
 
-`attack`
+`HP.attackHong("10p")`
+
+(...1000)
 
 h: Ugh. If it'll make you shut up, fine.
 
@@ -230,13 +242,7 @@ h: I'll ignore the invite.
 
 # act1d
 
-(...500)
-
-`Game.clearText()`
-
-(...500)
-
-h: Facebook's too much. I need something calmer, less anxiety-producing.
+h: Anyway. Facebook's too much. I need something calmer, less anxiety-producing.
 
 h: What's new on Twitter?
 
@@ -257,9 +263,11 @@ b: It feels like it's all ending, that everything and everyone we know will die 
 
 b: ...
 
-b: We should retweet it!
+b: Let's retweet it!
 
-`attack`
+`HP.attackHong("20p")`
+
+(...1000)
 
 `_.badnews=true`
 
@@ -289,7 +297,9 @@ h: ...
 
 (...1000)
 
-`attack`
+`HP.attackHong("20p")`
+
+(...1000)
 
 `_.subtweet=true`
 
@@ -301,7 +311,9 @@ h: Heh ya that's cute I'll retweet th--
 
 b: CATS CAN'T DIGEST MILK AND YOU'RE A TERRIBLE PERSON FOR GETTING OFF ON ANIMAL ABUSE
 
-`attack`
+`HP.attackHong("20p")`
+
+(...1000)
 
 `_.catmilk=true`
 
@@ -309,7 +321,7 @@ b: CATS CAN'T DIGEST MILK AND YOU'RE A TERRIBLE PERSON FOR GETTING OFF ON ANIMAL
 
 # act1e
 
-h: o-KAY, let's try Snapchat.
+h: o-KAY, gonna try Snapchat.
 
 h: Huh, photos from yesterday night. So *that's* what those weekly parties are like.
 
@@ -351,7 +363,9 @@ b: FIFTEEN. CIGARETTES.
 b: WHALE. POOP.
 {{/if}}
 
-`attack`
+`HP.attackHong("10p")`
+
+(...1000)
 
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
@@ -373,7 +387,9 @@ b: DO YOU WANT THAT TO HAPPEN TO YOU-
 
 b: SAY NO SAY NO SAY NO SAY NO SAY N-
 
-`attack`
+`HP.attackHong("10p")`
+
+(...1000)
 
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
@@ -403,7 +419,9 @@ h: Maybe I shouldn't have said no to the invite?
 
 b: Everybody was counting on you! ...To leave them alone and let them have a nice party without you, you horrible disgusting {{if _.whitebread}}white-bread-munching{{/if}} cree--
 
-`attack`
+`HP.attackHong("10p")`
+
+(...1000)
 
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
@@ -417,7 +435,9 @@ h: Shut up shut up I'll keep it as no!
 
 b: Chronic loneliness can increase your cortisol levels to unhealthy levels thus increasing your risk for stroke and cardiovascular disease as well as greatly impairing your immune system making you vulnerable to--
 
-`attack`
+`HP.attackHong("10p")`
+
+(...1000)
 
 {{if _.fifteencigs}}
 b: FIFTEEN. CIGARETTES.
@@ -432,6 +452,8 @@ h: Shut up shut up I'll change my answer to yes! God!
 # act1e_ignore_subtweet
 
 h: SHUT. UP.
+
+`_.missed_act1e=true`
 
 (#act1f)
 
@@ -448,6 +470,8 @@ h: My dorm doesn't have a stove.
 b: Oh. Right.
 
 `miss`
+
+`_.missed_act1e=true`
 
 (#act1f)
 
@@ -469,7 +493,9 @@ h: It's kinda rude to keep ignoring them though, no?
 
 b: Well other people always ignore *you* so
 
-`attack`
+`HP.attackHong("10p")`
+
+(...1000)
 
 b: Let's just call it even
 
@@ -526,7 +552,9 @@ b: in *here*. (points to heart)
 
 b: point is you're gonna die alone
 
-`attack`
+`HP.attackHong(_.missed_act1e ? "40p" : "30p")`
+
+(...1000)
 
 `_.hookuphole=true`
 
@@ -542,9 +570,9 @@ b: 🎵 [pokemon theme song]
 
 b: 🎵 I wanna be the slutti-est
 
-b: 🎵 That no-one ever was
+b: 🎵 Like no one ever was
 
-b: 🎵 Thighs, ass, voluptuous breast
+b: 🎵 Thighs n' ass, voluptuous breast
 
 b: 🎵 with sweaty dick and balls!
 
@@ -552,7 +580,9 @@ b: 🎵 PERVY-MON, GOTTA C-
 
 b: point is you're a manipulative creep
 
-`attack`
+`HP.attackHong(_.missed_act1e ? "40p" : "30p")`
+
+(...1000)
 
 `_.pokemon=true`
 
@@ -576,7 +606,9 @@ b: They'll tear your flesh to gory confetti, turn your entrails into streamers, 
 b: how's THAT for a party invite
 {{/if}}
 
-`attack`
+`HP.attackHong(_.missed_act1e ? "40p" : "30p")`
+
+(...1000)
 
 `_.serialkiller=true`
 
@@ -617,7 +649,7 @@ b: ...
 
 b: Good thing you've got *me* to protect you from pain!
 
-h: Instagram. One more. What you got?
+h: Last one. Instagram. What you got?
 
 h: It's... more party pictures.
 
@@ -625,7 +657,7 @@ h: Everyone looks so happy.
 
 h: Everyone looks *fine*.
 
-b: Speaking of which, about this weekend's party invite... here's my FINAL decision:
+b: Speaking of which, about this weekend's party invite. Here's my FINAL decision:
 
 [You should go.](#act1g_go) `Game.OVERRIDE_CHOICE_LINE=true`
 
@@ -681,6 +713,8 @@ b: ...
 
 b: ..................
 
+(...500)
+
 ["Death"](#act1h_death)
 
 ["Loneliness"](#act1h_loneliness)
@@ -689,19 +723,25 @@ b: ..................
 
 # act1h_death
 
-`attack`
+`HP.attackHong("100p")`
+
+(...1000)
 
 (#act1i)
 
 # act1h_loneliness
 
-`attack`
+`HP.attackHong("100p")`
+
+(...1000)
 
 (#act1i)
 
 # act1h_worthless
 
-`attack`
+`HP.attackHong("100p")`
+
+(...1000)
 
 (#act1i)
 

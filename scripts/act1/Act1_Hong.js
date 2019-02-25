@@ -46,6 +46,10 @@ function Act1_Hong(){
 	var ticker = 0;
 	self.draw = function(ctx){
 
+		if(backToNormalTicker-- <= 0 && HP.hong>0){
+			self.sprite.gotoFrameByName("normal");
+		}
+
 		var fname = self.sprite.currentFrameName;
 
 		// Breathe, unless shocked
@@ -70,12 +74,25 @@ function Act1_Hong(){
 	};
 
 	// When going to frames...
+	var backToNormalTicker = 0; // HACK
 	subscribe("hong", function(fname){
-		self.sprite.gotoFrameByName(fname);
-		self.sprite.bounce = 1.05;
-		if(fname=="shock"){
+
+		if(fname=="attacked"){
+
+			self.sprite.gotoFrameByName("shock");
 			self.sprite.bounce = 1/1.5;
+			backToNormalTicker = 60;
+
+		}else{
+
+			self.sprite.gotoFrameByName(fname);
+			self.sprite.bounce = 1.05;
+			if(fname=="shock"){
+				self.sprite.bounce = 1/1.5;
+			}
+
 		}
+
 	});
 
 	// Kill
