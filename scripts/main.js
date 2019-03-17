@@ -1,6 +1,7 @@
 // Load assets
 Loader.addScenes([
-	"scenes/act1.md"
+	//"scenes/intro.md"
+	"scenes/test.md"
 ]);
 Loader.addImages([
 	{ id:"act1_beebee", src:"sprites/act1/act1_beebee.png" },

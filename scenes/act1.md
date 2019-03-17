@@ -34,13 +34,19 @@ h: Thanks for citing your sources but--
 
 `Game.OVERRIDE_TEXT_SPEED = 2;`
 
+`bb("fear", "normal", "fear")`
+
 b: Which means if you don't hang out with someone *right now* you're gonna-
+
+`bb("panic")`
 
 b: DIEEEEEEEEEEEEEEEEEEE
 
 `HP.attackHong("20p")`
 
 (...1000)
+
+`bb("normal", "normal", "normal")`
 
 `_.fifteencigs = true`
 
@@ -56,7 +62,7 @@ h: I'd rather not get crumbs on my textbo--
 
 b: If you don't study you'll be expelled from college and you'll waste your parents' money and then they'll say
 
-b: “you have brought dishonor to our family now we'll all have to commit seppuku”
+b: “you have brought dishonor to our family, now we'll all have to commit seppuku”
 
 `Game.OVERRIDE_TEXT_SPEED = 2.0;`
 
@@ -90,7 +96,7 @@ b: DIEEEEEEEEEEEEEEEEEEE
 
 `_.whitebread = true`
 
-n: YOU USED *FEAR OF BEING HURT*
+n: YOU USED *FEAR OF BEING HARMED*
 
 (#act1b)
 
@@ -104,7 +110,7 @@ n: BUT YOU'RE NOT DONE SAVING YOUR HUMAN YET
 
 n: GET YOUR HUMAN'S "WILLPOWER BAR" TO ZERO
 
-n: YOUR MOVES ARE: FEAR OF *BEING HURT,* *BEING UNLOVED,* AND *BEING A BAD PERSON*
+n: YOUR MOVES ARE: FEAR OF *BEING HARMED,* *BEING UNLOVED,* AND *BEING A BAD PERSON*
 
 n: (PRO TIP: TRY PLAYING THE CHOICES THAT MOST HIT YOUR DEEPEST, DARKEST FEARS!)
 
@@ -130,7 +136,9 @@ n: ROUND ONE: *FIGHT!*
 
 h: Huh. Facebook feed says there's a party happening this weekend.
 
-b: Doesn't that weirdo throw a party *every* weekend? Must be some kind of underlying neurosis there.
+b: Doesn't that weirdo throw a party *every* weekend?
+
+b: Must be some kind of underlying neurosis there.
 
 h: Also, I got an invite?
 
@@ -377,7 +385,9 @@ h: Shut up shut up I'll keep it as yes!
 
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
-b: Don't you know about human stampedes? In 2003 a nightclub in Rhode Island had a fire and the ensuing panic caused people to jam the exits and so 100 people were crushed or burned to death-
+b: Don't you know about human stampedes?
+
+b: In 2003 a nightclub in Rhode Island had a fire and the ensuing panic caused people to jam the exits and so 100 people were crushed or burned to death-
 
 `Game.OVERRIDE_TEXT_SPEED = 2.0;`
 
@@ -520,19 +530,13 @@ b: It's too crowded. Crowds are dangerous.
 
 h: Whatever. New Tinder notification.
 
-h: Oh I got a match!
+h: Oh I got a match! They're cute!
 
-b: Is that so, human who I should clarify is an 18+ *college* student?
+b: Is that so, human whom I should clarify is 18+?
 
 h: Please, please don't ruin this for m--
 
-b: DANGER-
-
-b: DANGER-
-
-b: DANGER-
-
-b: DANGER-
+b: DANGER DANGER DANGER DANGER
 
 [You're being *used* by other people.](#act1f_used_by_others)
 
@@ -627,15 +631,15 @@ h: i'm so sick of this game.
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
 h:
-{{if _.fifteencigs}}"loneliness will kill you"...{{/if}}
-{{if _.seppuku}}"study or your parents will hate you"...{{/if}}
-{{if _.whitebread}}"don't eat that, it'll kill you"...{{/if}}
-{{if _.subtweet}}"they're talking behind your back"...{{/if}}
-{{if _.badnews}}"the world is burning"...{{/if}}
-{{if _.hookuphole}}"you'll die alone"...{{/if}}
-{{if _.serialkiller}}"they're a serial killer"...{{/if}}
-{{if _.catmilk}}"cats can't digest milk"...{{/if}}
-{{if _.pokemon}}a crappy parody song...{{/if}}
+{{if _.fifteencigs}}"loneliness will kill you"... {{/if}}
+{{if _.seppuku}}"study or your parents will hate you"... {{/if}}
+{{if _.whitebread}}"don't eat that, it'll kill you"... {{/if}}
+{{if _.subtweet}}"they're talking behind your back"... {{/if}}
+{{if _.badnews}}"the world is burning"... {{/if}}
+{{if _.hookuphole}}"you'll die alone"... {{/if}}
+{{if _.serialkiller}}"they're a serial killer"... {{/if}}
+{{if _.catmilk}}"cats can't digest milk"... {{/if}}
+{{if _.pokemon}}a crappy parody song... {{/if}}
 
 h: i just want to live my life.
 

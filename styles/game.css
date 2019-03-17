@@ -36,7 +36,9 @@ body{
 	width: auto;
 	position: relative;
 	top: 80px;
+	overflow: hidden;
 }
+
 #paused{
 	display: none;
 
@@ -67,6 +69,10 @@ body{
 	line-height: 1em;
 	width: 220px;
 	margin: 15px auto;
+}
+
+.clear-both{
+	clear:both;
 }
 
 .narrator-bubble{
@@ -119,11 +125,15 @@ body{
 	color: #000000;
 	border-radius: .4em;
 	padding: 15px;
-	margin: 10px 30px;
+	margin: 5px 30px;
 
 	opacity: 0;
 	left: -15px;
 	transition: all 0.3s ease-in-out;
+
+	display: inline-block;
+	float: left;
+
 }
 .hong-bubble:after {
 	content: '';
@@ -145,11 +155,15 @@ body{
 	color: #ffffff;
 	border-radius: .4em;
 	padding: 15px;
-	margin: 10px 30px;
+	margin: 5px 30px;
 
 	opacity: 0;
 	left: 15px;
 	transition: all 0.3s ease-in-out;
+
+	display: inline-block;
+	float: right;
+
 }
 .beebee-bubble:after {
 	content: '';

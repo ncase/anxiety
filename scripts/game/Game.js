@@ -18,6 +18,11 @@ window.SceneSetup = {}; // A big ol' singleton class that just makes it easy to 
 window.attack = function(){};
 window.miss = function(){};
 
+// HELPER FUNCS
+window.bb = function(){
+	publish("bb", arguments);
+};
+
 // Init
 Game.init = function(){
 
@@ -234,6 +239,8 @@ Game.clearText = function(){
 // Execute text! Just add it to text DOM.
 Game.TEXT_SPEED = 40;
 Game.OVERRIDE_TEXT_SPEED = 1;
+Game.WHO_IS_SPEAKING = null; // "h", "b", "n" etc...
+Game.CURRENT_SPEAKING_SPEED = 1;
 Game.executeText = function(line){
 
 	return new RSVP.Promise(function(resolve){
@@ -247,6 +254,8 @@ Game.executeText = function(line){
 		// Add the bubble, with animation
 		var div = document.createElement("div");
 		Game.wordsDOM.appendChild(div);
+		Game.WHO_IS_SPEAKING = speaker; // WHO'S SPEAKING?!
+		Game.CURRENT_SPEAKING_SPEED = Game.OVERRIDE_TEXT_SPEED;
 		switch(speaker){
 			case "b":
 				div.className = "beebee-bubble";
@@ -265,6 +274,11 @@ Game.executeText = function(line){
 			});
 		});
 
+		// Clear both
+		var clearBoth = document.createElement("div");
+		clearBoth.className = "clear-both";
+		Game.wordsDOM.appendChild(clearBoth);
+
 		// TODO: BOLD LETTER BY LETTER...
 
 		// Add the text
@@ -272,7 +286,28 @@ Game.executeText = function(line){
 		var SPEED = Math.round(Game.TEXT_SPEED / Game.OVERRIDE_TEXT_SPEED);
 		if(speaker!="n"){
 
-			// If not narrator, add letter by letter...
+			// Put in the text, each character a DIFFERENT SPAN...
+			var span, chr;
+			var isItalicized = false;
+			for(var i=0; i<dialogue.length; i++){
+
+				// Is it italicized?
+				chr = dialogue[i];
+				if(chr=="*") isItalicized = !isItalicized; // toggle!
+
+				// Add letter span
+				span = document.createElement("span");
+				if(chr=="*"){
+					// else, empty. can't NOT add span, coz screws up indexing.
+				}else{
+					span.innerHTML = isItalicized ? "<i>"+chr+"</i>" : chr;
+				}
+				span.style.opacity = 0;
+				div.appendChild(span);
+
+			}
+
+			// Then REVEAL letters one-by-one
 			for(var i=0; i<dialogue.length; i++){
 
 				var chr = dialogue[i];
@@ -281,11 +316,12 @@ Game.executeText = function(line){
 				if(i==dialogue.length-1 && chr=="-") break;
 
 				// for scopin'
-				(function(chr, interval){
+				(function(index, interval){
 					Game.setTimeout(function(){
-						div.innerHTML += chr;
+						div.children[index].style.opacity = 1;
+						//div.innerHTML += chr;
 					}, interval);
-				})(chr, interval);
+				})(i, interval);
 
 				// Bigger interval
 				if(i!=dialogue.length-1){ // NOT last
@@ -325,39 +361,46 @@ Game.executeText = function(line){
 
 			}
 
-			// Add word by word
+			// Put in the text, each word a DIFFERENT SPAN
+			var span;
 			var dialogueWords = dialogue.split(" ");
 			for(var i=0; i<dialogueWords.length; i++){
 
+				// Is it an emphasized word?
 				var word = dialogueWords[i];
-				var bareWord = word;
-				if(/\*(.*)\*/.test(bareWord)){
-					bareWord = word.match(/\*(.*)\*/)[1].trim();
+				if(/\*(.*)\*/.test(word)){ // is 
+					word = "<i>" + word.match(/\*(.*)\*/)[1].trim() + "</i>";
 				}
 
+				// Add the span
+				span = document.createElement("span");
+				span.innerHTML = word+" ";
+				span.style.opacity = 0;
+				div.appendChild(span);
+
+			}
+
+			// Then REVEAL words one-by-one
+			for(var i=0; i<dialogueWords.length; i++){
+
+				var word = dialogueWords[i];
+
 				// for scopin'
-				(function(word, interval){
+				(function(index, interval){
 					Game.setTimeout(function(){
-						
-						// if emphasize, emphasize!
-						if(/\*(.*)\*/.test(word)){
-							word = "<i>" + word.match(/\*(.*)\*/)[1].trim() + "</i>"
-						}
-
-						// add word
-						div.innerHTML += word+" ";
-
+						div.children[index].style.opacity = 1;
 					}, interval);
-				})(word, interval);
+				})(i, interval);
 
 				// Interval
 				interval += SPEED*6;
 
 				// Larger interval if punctuation...
-				var chr = bareWord.slice(-1)
+				var chr = word.slice(-1);
+				if(chr=="*") chr = word[word.length-2]; // coz emphasis
 				if(chr=="," || chr==":") interval += SPEED*5;
 				if(chr=="." || chr=="?" || chr=="!") interval += SPEED*10;
-				if(bareWord.slice(-3)=="...") interval += SPEED*15;
+				if(word.slice(-3)=="...") interval += SPEED*15;
 
 			}
 
@@ -370,7 +413,10 @@ Game.executeText = function(line){
 		// Return promise
 		var nextLineDelay = SPEED*7;
 		if(dialogue.slice(-1)=="-") nextLineDelay=0; // sudden interrupt!
-		Game.setTimeout(resolve, interval+nextLineDelay);
+		Game.setTimeout(function(){
+			Game.WHO_IS_SPEAKING = null; // DONE WITH IT.
+			resolve();
+		}, interval+nextLineDelay);
 
 	});
 
