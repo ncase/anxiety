@@ -26,6 +26,9 @@ window.bb = function(){
 // Init
 Game.init = function(){
 
+	// HP!
+	window.HP = new HitPoints();
+
 	// Animation!
 	Game.wordsDOM.style.top = "80px";
 	var animloop = function(){
@@ -604,7 +607,7 @@ Game.updateCanvas = function(){
 	ctx.restore();
 
 	// Draw HP
-	HP.draw();
+	//HP.draw();
 
 };
 

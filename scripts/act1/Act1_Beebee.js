@@ -1,3 +1,7 @@
+Loader.addImages([
+	{ id:"act1_beebee", src:"sprites/act1/act1_beebee.png" }
+]);
+
 function Act1_Beebee(){
 
 	var self = this;

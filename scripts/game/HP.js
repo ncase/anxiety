@@ -1,5 +1,6 @@
-// Singleton - it's always there!
-window.HP = new HitPoints();
+Loader.addImages([
+	{ id:"hp", src:"sprites/ui/hp.png" }
+]);
 
 // The Class!
 function HitPoints(){
@@ -17,8 +18,7 @@ function HitPoints(){
 	self.dom.appendChild(self.canvas);
 
 	// My sprite
-	self.image = new Image();
-	self.image.src = "sprites/hp.png";
+	self.image = Library.images.hp;
 
 	// My stats
 	self.reset = function(){

@@ -1,3 +1,7 @@
+Loader.addImages([
+	{ id:"act1_hong", src:"sprites/act1/act1_hong.png" }
+]);
+
 function Act1_Hong(){
 
 	var self = this;

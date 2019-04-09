@@ -3,11 +3,11 @@ SceneSetup.intro = function(){
 	Game.resetScene();
 
 	// Background
-	var bg = new BG_Anxiety();
+	var bg = new BG_Intro();
 	Game.scene.children.push(bg);
 
 	// Hong
-	var hong = new Act1_Hong();
+	/*var hong = new Act1_Hong();
 	Game.scene.children.push(hong);
 
 	// Beebee
@@ -18,6 +18,6 @@ SceneSetup.intro = function(){
 				Game.scene.children.push(beebee);
 				break;
 		}
-	});
+	});*/
 
 };
