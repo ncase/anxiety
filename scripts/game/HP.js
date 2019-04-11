@@ -47,10 +47,10 @@ function HitPoints(){
 
 	};
 	// TODO: SHAKING BASED ON AMOUNT OF ABSOLUTE DAMAGE.
-	self.attackHong = function(str){
+	self.attackHong = function(str,type){
 		self.doDamage(str, "hong");
 		self.leftShake = 30;
-		publish("hong",["attacked"]);
+		publish("hong",["attacked",type]);
 	};
 	self.attackBeebee = function(str){
 		self.doDamage(str, "beebee");

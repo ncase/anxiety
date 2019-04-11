@@ -10,31 +10,13 @@ n: QUICK, WARN THEM!
 
 # act1a_alone
 
-`bb("normal", "normal", "narrow")`
-
-b: Don't you know loneliness is associated with premature death as much as smoking 15 cigarettes a day?-
-
-`Game.OVERRIDE_TEXT_SPEED = 2;`
-
-`bb("normal", "normal", "normal_right")`
-
-b: (Holt-Lunstad et al, 2010, PLoS Medicine)
-
-h: Thanks for citing your sources but--
-
-`Game.OVERRIDE_TEXT_SPEED = 2;`
-
-`bb("fear", "normal", "fear")`
-
-b: Which means if you don't hang out with someone *right now* you're gonna-
-
-`bb("panic")`
-
 b: DIEEEEEEEEEEEEEEEEEEE
 
-`HP.attackHong("20p")`
+`HP.attackHong("20p", "alone")`
 
-(...1000)
+`Game.clearText()`
+
+(...2000)
 
 `bb("normal", "normal", "normal")`
 

@@ -102,6 +102,10 @@ function Act1_Beebee(){
 	var ticker = 0;
 	self.draw = function(ctx){
 
+		self.body.update();
+		self.head.update();
+		self.eyes.update();
+
 		self.body.draw(ctx);
 		self.head.draw(ctx);
 		self.eyes.draw(ctx);

@@ -64,6 +64,7 @@ function Sprite(config){
 	self.rotation = config.rotation || 0;
 	self.scale = config.scale || 1;
 	self.squash = config.squash || 1;
+	self.alpha = config.alpha || 1;
 	
 	// Helpers
 	self.breathe = 0;
@@ -73,6 +74,31 @@ function Sprite(config){
 	self.bounceVel = 0;
 	self.bounceDamp = 0.8;
 	self.bounceHookes = 0.4;
+	self.shake = 0;
+	self.shakeAmp = 0;
+	self.shakeSpeed = 0;
+	self.shakeTimer = 0;
+
+	// Update breath/bounce, all that jazz.
+	self.update = function(){
+		
+		// Breathe
+		self.breathe += self.breatheSpeed;
+
+		// Bounce
+		self.bounce += self.bounceVel;
+		self.bounceVel -= (self.bounce-1) * self.bounceHookes;
+		self.bounceVel *= self.bounceDamp;
+
+		// Shake
+		self.shakeTimer -= 1/60;
+		if(self.shakeTimer>0){
+			self.shake = Math.sin(self.shakeTimer*self.shakeSpeed*Math.PI*2) * self.shakeAmp;
+		}else{
+			self.shake = 0;
+		}
+
+	};
 
 	// Draw frame!
 	self.draw = function(ctx){
@@ -86,24 +112,19 @@ function Sprite(config){
 		var fh = self.frame.height;
 
 		// Translate...
-		var dx = self.x;
+		var dx = self.x + self.shake;
 		var dy = self.y;
 		ctx.translate(dx, dy);
 
-		// Breathe
-		self.breathe += self.breatheSpeed;
-		var breatheSquash = 1 + Math.sin(self.breathe)*self.breatheAmp;
-
-		// Bounce
-		self.bounce += self.bounceVel;
-		self.bounceVel -= (self.bounce-1) * self.bounceHookes;
-		self.bounceVel *= self.bounceDamp;
-
 		// Scale
+		var breatheSquash = 1 + Math.sin(self.breathe)*self.breatheAmp;
 		var totalSquash = self.squash * breatheSquash * self.bounce;
 		var scaleX = self.scale * totalSquash;
 		var scaleY = self.scale / totalSquash;
 		ctx.scale(scaleX, scaleY);
+
+		// Alpha
+		ctx.globalAlpha = self.alpha;
 
 		// Draw it!
 		ctx.drawImage(

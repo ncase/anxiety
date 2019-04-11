@@ -30,6 +30,7 @@ Game.init = function(){
 	window.HP = new HitPoints();
 
 	// Animation!
+	console.log("init");
 	Game.wordsDOM.style.top = "80px";
 	var animloop = function(){
 		Game.update();
@@ -240,7 +241,7 @@ Game.clearText = function(){
 };
 
 // Execute text! Just add it to text DOM.
-Game.TEXT_SPEED = 40;
+Game.TEXT_SPEED = 60;
 Game.OVERRIDE_TEXT_SPEED = 1;
 Game.WHO_IS_SPEAKING = null; // "h", "b", "n" etc...
 Game.CURRENT_SPEAKING_SPEED = 1;
@@ -607,7 +608,7 @@ Game.updateCanvas = function(){
 	ctx.restore();
 
 	// Draw HP
-	//HP.draw();
+	HP.draw();
 
 };
 

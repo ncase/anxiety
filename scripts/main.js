@@ -1,7 +1,7 @@
 // Load assets
 Loader.addScenes([
-	"scenes/intro.md"
-	//"scenes/test.md"
+	//"scenes/intro.md"
+	"scenes/test.md"
 ]);
 Loader.load().then(function(){
 	Game.init();
