@@ -197,6 +197,20 @@ body{
 #game_choices > div{
 	padding: 0.25em 0;
 	cursor: pointer;
+	position: relative;
+
+	/* Spring OUT only */
+	-webkit-transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1); /* older webkit */
+	-webkit-transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); 
+	   -moz-transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); 
+	     -o-transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); 
+	        transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); /* custom */
+
+	-webkit-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1); /* older webkit */
+	-webkit-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
+	   -moz-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
+	     -o-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
+	        transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); /* custom */
 }
 #game_choices > div:hover{
 	background: rgba(255,255,255,0.25);
@@ -218,5 +232,7 @@ canvas{
 	position: absolute;
 	width: 360px;
 	height: 100px;
-	top:0; left:0;
+	top:-100px;
+	left:0;
+	transition: top 0.5s ease-in-out;
 }

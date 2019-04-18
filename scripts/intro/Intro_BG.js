@@ -1,4 +1,5 @@
 Loader.addImages([
+	{ id:"intro_logo", src:"sprites/intro/intro_logo.png" },
 	{ id:"intro_bg", src:"sprites/intro/intro_bg.png" },
 	{ id:"intro_anim", src:"sprites/intro/intro_anim.png" }
 ]);
@@ -7,7 +8,12 @@ function BG_Intro(){
 
 	var self = this;
 
-	// Sprite!
+	// Sprites!
+	self.logoSprite = new Sprite({
+		image: Library.images.intro_logo,
+		grid:{ width:1, height:1 },
+		frame:{ width:720, height:900 },
+	});
 	var spriteConfig = {
 		image: Library.images.intro_bg,
 		grid:{
@@ -28,17 +34,18 @@ function BG_Intro(){
 			"buildings",
 			"grass",
 			"stump",
-			"bag"
+			"blackout"
 		],
 		x: 0,
 		y: 0
 	};
 	self.layers = [];
-	["sky","clouds","buildings","grass","stump"].forEach(function(layerName){
+	["sky","clouds","buildings","grass","stump","blackout"].forEach(function(layerName){
 		var sprite = new Sprite(spriteConfig);
 		sprite.gotoFrameByName(layerName);
 		self.layers.push(sprite);
 	});
+	self.layers[5].alpha = 0; // blackout alpha is ZERO at start.
 
 	// HONG
 	var hongSpriteConfig = {
@@ -68,8 +75,9 @@ function BG_Intro(){
 		0, // sky
 		0.1, // clouds
 		0.25, // buildings
-		0.5, // grass
+		0.48, // grass
 		1.0, // stump
+		0, // blackout
 		1.0, // HONG
 	];
 	var OFFSETS = [
@@ -78,31 +86,92 @@ function BG_Intro(){
 		0,
 		0,
 		20,
+		0,
 		20
 	]
-	// TODO: CLOUDS MOVE BY SELF
-	var ticker = 0;
+
+	var ticker = 0; //16;//0;
+	var frameTicker = ticker;
+	var parallaxTicker = 0;
+	var SHOWN_PLAY_BUTTON = false;
+	var SHOWN_LOGO = false;
 	self.draw = function(ctx){
 
-		var parallax = 0; //= -(1+Math.sin(ticker))*90;
+		// TICKER
 		ticker += 1/60;
 
 		// CLOUD OFFSET
-		OFFSETS[1] = -80 + ticker*3
+		OFFSETS[1] = -80 + ticker*3;
 
+		// Animate Hong: Which frame?
+		var parallax = 0;
+		frameTicker += 1/60;
+		if(GAME_TRANSITION==0 || GAME_TRANSITION==1){ 
+			if(frameTicker>590/30){
+				if(GAME_TRANSITION==0) frameTicker = 381/30; // LOOP to NOM.
+				if(GAME_TRANSITION==1) frameTicker = 590/30; // STOP.
+			}
+		}
+		if(GAME_TRANSITION==2){
+			
+			parallaxTicker += 1/60; // 0 to 1 in one second
+			if(parallaxTicker>1) parallaxTicker = 1;
+			self.layers[5].alpha = parallaxTicker; // blackout alpha
+
+			// 0 to -180 in one second, smoothed
+			var t = Math.cos(parallaxTicker*Math.TAU/2); // 1 to -1
+			t = (1-t)/2; // 0 to 1
+			parallax = -t*215;
+
+		}
+
+		// Hong frame
+		var frame = findFrameOnTicker(frameTicker);
+		hongSprite.gotoFrame(frame);
+		
+		// Draw all!
 		for(var i=0; i<self.layers.length; i++){
 			var layer = self.layers[i];
 			layer.x = PARALLAXES[i] * parallax - OFFSETS[i];
 			layer.draw(ctx);
 		}
+		if(!SHOWN_LOGO && ticker>=530/30){
+			SHOWN_LOGO = true;
+		}
+		if(GAME_TRANSITION==0 && SHOWN_LOGO){
+			self.logoSprite.draw(ctx);
+		}
 
-		// Animate Hong
-		var frame = findFrameOnTicker(ticker);
-		hongSprite.gotoFrame(frame);
+		// Show Play Button
+		if(!SHOWN_PLAY_BUTTON && ticker>=590/30){
+			SHOWN_PLAY_BUTTON = true;
+			Game.goto("intro-play-button");
+		}
+
+		// NEXT SCENE?
+		if(frame==26){
+			Game.goto("act1");
+		}
 
 	};
 
-	////////////////////////////////////////////////////////
+	var GAME_TRANSITION = 0;
+	var _subscriptions = [];
+	_subscriptions.push(
+		subscribe("intro-to-game-1", function(){
+			GAME_TRANSITION = 1; // STOP LOOPING
+		})
+	);
+	_subscriptions.push(
+		subscribe("intro-to-game-2", function(){
+			frameTicker = 600/30;
+			GAME_TRANSITION = 2; // START PARALLAXING
+		})
+	);
+
+	//////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////
 
 	// ANIMATE HONG, THE FRAMES!
 
@@ -129,7 +198,18 @@ function BG_Intro(){
 		"15-430",
 		"14-440",
 		"15-450",
-		"16-470"
+		"16-470",
+
+		"17-600",
+		"18-603",
+		"19-606",
+		"20-609",
+		"21-612",
+		"22-615",
+		"23-618",
+		"24-621",
+		"25-624",
+		"26-627"
 	];
 	HONG_FRAMES = HONG_FRAMES.map(function(frame){
 		var f = frame.split("-");
@@ -144,6 +224,15 @@ function BG_Intro(){
 			}
 		}
 		return lastFrame;
+	};
+
+	//////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////
+
+	// Kill!
+	self.kill = function(){
+		_subscriptions.forEach(unsubscribe);
 	};
 
 

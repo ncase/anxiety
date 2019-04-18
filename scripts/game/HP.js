@@ -8,7 +8,7 @@ function HitPoints(){
 	var self = this;
 
 	// My DOM & canvas
-	self.dom = document.querySelector("#game_hp");
+	self.dom = $("#game_hp");
 	self.canvas = document.createElement("canvas");
 	self.canvas.width = 360 * 2;
 	self.canvas.height = 100 * 2;
@@ -26,6 +26,16 @@ function HitPoints(){
 		self.beebee = 100;
 	};
 	self.reset();
+
+	// Show/hide
+	self.show = function(){
+		self.dom.style.top = "0px";
+	};
+	self.hide = function(){
+		self.dom.style.top = "-100px";
+	};
+	subscribe("hp_show", self.show);
+	subscribe("hp_hide", self.hide);
 
 	// Attack!
 	self.doDamage = function(str, target){
@@ -46,16 +56,18 @@ function HitPoints(){
 		}
 
 	};
-	// TODO: SHAKING BASED ON AMOUNT OF ABSOLUTE DAMAGE.
-	self.attackHong = function(str,type){
-		self.doDamage(str, "hong");
-		self.leftShake = 30;
-		publish("hong",["attacked",type]);
-	};
-	self.attackBeebee = function(str){
-		self.doDamage(str, "beebee");
-		self.rightShake = 30;
-	};
+
+	// Who's been attacked?
+	subscribe("attack", function(target, damage, type){
+		if(target=="hong"){
+			self.doDamage(damage, "hong");
+			self.leftShake = 30;
+			publish("attack_hong",[type]);
+		}else{
+			self.doDamage(damage, "beebee");
+			self.rightShake = 30;
+		}
+	});
 
 	// Draw
 	self.leftShake = 0;

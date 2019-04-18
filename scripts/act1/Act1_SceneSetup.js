@@ -12,12 +12,16 @@ SceneSetup.act1 = function(){
 
 	// Beebee
 	var beebee = new Act1_Beebee();
-	subscribe("scene", function(command){
-		switch(command){
-			case "add_beebee":
-				Game.scene.children.push(beebee);
-				break;
-		}
-	});
+	Game.scene.children.push(beebee);
+
+};
+SceneSetup.act1_outro = function(){
+
+	clearText();
+	Game.resetScene();
+
+	// Background
+	var bg = new BG_Act1_Outro();
+	Game.scene.children.push(bg);
 
 };

@@ -41,6 +41,7 @@ function Sprite(config){
 
 	// Sprite anchor
 	self.anchor = {};
+	config.anchor = config.anchor || {};
 	self.anchor.x = config.anchor.x || 0;
 	self.anchor.y = config.anchor.y || 0;
 
@@ -56,6 +57,9 @@ function Sprite(config){
 		var index = self.frameNames.indexOf(name);
 		self.gotoFrame(index);
 	};
+	self.doesFrameNameExist = function(name){
+		return self.frameNames.indexOf(name)>=0;
+	};
 	self.gotoFrame(0);
 
 	// Other transformations
@@ -65,43 +69,14 @@ function Sprite(config){
 	self.scale = config.scale || 1;
 	self.squash = config.squash || 1;
 	self.alpha = config.alpha || 1;
+
+	// Visible at all?
+	self.visible = true;
 	
-	// Helpers
-	self.breathe = 0;
-	self.breatheSpeed = 0;
-	self.breatheAmp = 0;
-	self.bounce = 1;
-	self.bounceVel = 0;
-	self.bounceDamp = 0.8;
-	self.bounceHookes = 0.4;
-	self.shake = 0;
-	self.shakeAmp = 0;
-	self.shakeSpeed = 0;
-	self.shakeTimer = 0;
-
-	// Update breath/bounce, all that jazz.
-	self.update = function(){
-		
-		// Breathe
-		self.breathe += self.breatheSpeed;
-
-		// Bounce
-		self.bounce += self.bounceVel;
-		self.bounceVel -= (self.bounce-1) * self.bounceHookes;
-		self.bounceVel *= self.bounceDamp;
-
-		// Shake
-		self.shakeTimer -= 1/60;
-		if(self.shakeTimer>0){
-			self.shake = Math.sin(self.shakeTimer*self.shakeSpeed*Math.PI*2) * self.shakeAmp;
-		}else{
-			self.shake = 0;
-		}
-
-	};
-
 	// Draw frame!
 	self.draw = function(ctx){
+
+		if(!self.visible) return; // nah
 
 		ctx.save();
 
@@ -112,15 +87,13 @@ function Sprite(config){
 		var fh = self.frame.height;
 
 		// Translate...
-		var dx = self.x + self.shake;
+		var dx = self.x;
 		var dy = self.y;
 		ctx.translate(dx, dy);
 
 		// Scale
-		var breatheSquash = 1 + Math.sin(self.breathe)*self.breatheAmp;
-		var totalSquash = self.squash * breatheSquash * self.bounce;
-		var scaleX = self.scale * totalSquash;
-		var scaleY = self.scale / totalSquash;
+		var scaleX = self.scale * self.squash;
+		var scaleY = self.scale / self.squash;
 		ctx.scale(scaleX, scaleY);
 
 		// Alpha

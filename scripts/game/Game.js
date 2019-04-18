@@ -2,25 +2,27 @@ window._ = {};
 window.Game = {};
 
 Game.sections = {};
-Game.startSectionID = null;
-
-Game.dom = document.querySelector("#game_container");
-Game.wordsDOM = document.querySelector("#game_words");
-Game.choicesDOM = document.querySelector("#game_choices");
-Game.canvas = document.querySelector("#game_canvas");
-
-Game.startSectionID = null;
 Game.queue = [];
 
-window.SceneSetup = {}; // A big ol' singleton class that just makes it easy to create scenes.
+Game.dom = $("#game_container");
+Game.wordsDOM = $("#game_words");
+Game.choicesDOM = $("#game_choices");
+Game.canvas = $("#game_canvas");
 
-// HACK TODO
-window.attack = function(){};
-window.miss = function(){};
+window.SceneSetup = {}; // A big ol' singleton class that just makes it easy to create scenes.
 
 // HELPER FUNCS
 window.bb = function(){
 	publish("bb", arguments);
+};
+window.hong = function(){
+	publish("hong", arguments);
+};
+window.attack = function(damage, type){
+	publish("attack", ["hong", damage, type]);
+};
+window.attackBB = function(damage, type){
+	publish("attack", ["bb", damage, type]);
 };
 
 // Init
@@ -64,9 +66,6 @@ Game.parseSceneMarkdown = function(md){
 			id: id,
 			lines: lines
 		};
-		if(!Game.startSectionID){
-			Game.startSectionID = id;
-		}
 
 	});
 
@@ -78,7 +77,6 @@ Game.parseSceneMarkdown = function(md){
 
 Game.start = function(){
 	window._ = {}; // global var, reset
-	Game.goto(Game.startSectionID);
 };
 
 Game.update = function(){
@@ -109,7 +107,7 @@ Game.update = function(){
 
 // PAUSING THE GAME
 Game.paused = false;
-Game.pausedDOM = document.querySelector("#paused");
+Game.pausedDOM = $("#paused");
 Game.pause = function(){
 	Game.paused = true;
 	Game.pausedDOM.style.display = "block";
@@ -239,9 +237,10 @@ Game.updateText = function(){
 Game.clearText = function(){
 	Game.wordsDOM.innerHTML = ""; // TODO HACK make prettier
 };
+window.clearText = Game.clearText;
 
 // Execute text! Just add it to text DOM.
-Game.TEXT_SPEED = 60;
+Game.TEXT_SPEED = 70;
 Game.OVERRIDE_TEXT_SPEED = 1;
 Game.WHO_IS_SPEAKING = null; // "h", "b", "n" etc...
 Game.CURRENT_SPEAKING_SPEED = 1;
@@ -456,10 +455,17 @@ Game.executeChoice = function(line){
 
 	};
 
+	// Add choice, animated!
+	div.style.top = "150px";
 	Game.choicesDOM.appendChild(div);
+	setTimeout(function(){
+		div.style.top = "0px";
+	},0);
 
-	// Return immediate promise
-	return Game.immediatePromise();
+	// Wait a bit before adding new line
+	return new RSVP.Promise(function(resolve){
+		Game.setTimeout(resolve, 100);
+	});
 
 }
 
@@ -584,9 +590,21 @@ Game.canvas.style.height = Game.canvas.height/2 + "px";
 Game.context = Game.canvas.getContext("2d");
 
 // A blank scene
+Game.scene = null;
 Game.resetScene = function(){
+	
+	// Kill all of previous scene
+	if(Game.scene){
+		Game.scene.children.forEach(function(child){
+			if(child.kill) child.kill();
+		});
+		if(Game.scene.kill) Game.scene.kill();
+	}
+
+	// New scene!
 	Game.scene = {};
 	Game.scene.children = [];
+
 };
 Game.resetScene();
 

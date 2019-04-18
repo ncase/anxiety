@@ -1,19 +1,13 @@
 Loader.addImages([
-	
-	{ id:"act1_hong", src:"sprites/act1/act1_hong.png" },
-
-	{ id:"fear_harm", src:"sprites/ui/fear_harm.png" },
-	{ id:"fear_alone", src:"sprites/ui/fear_alone.png" },
-	{ id:"fear_bad", src:"sprites/ui/fear_bad.png" }
-
+	{ id:"act1_hong", src:"sprites/act1/act1_hong.png" }
 ]);
 
 function Act1_Hong(){
 
 	var self = this;
 
-	// Sprite!
-	self.sprite = new Sprite({
+	// SPRITE CONFIG!
+	var spriteConfig = {
 		image: Library.images.act1_hong,
 		grid:{
 			width: 4,
@@ -29,18 +23,18 @@ function Act1_Hong(){
 		},
 		frameNames:[
 
-			"0_body_sammich_no_outline",
-			"0_body_sammich",
-			"0_eyes_neutral",
-			"0_eyes_concerned",
-			"0_eyes_shock",
-			"0_mouth_neutral",
-			"0_mouth_chew1",
-			"0_mouth_chew2",
-			"0_mouth_neutral_talk",
-			"0_mouth_shock",
+			"body_0_sammich_no_outline",
+			"body_0_sammich",
+			"eyes_0_neutral",
+			"eyes_0_concerned",
+			"eyes_0_shock",
+			"mouth_0_neutral",
+			"mouth_0_chew1",
+			"mouth_0_chew2",
+			"mouth_0_neutral_talk",
+			"mouth_0_shock",
 
-			"body_putaway",
+			"body_putaway*",
 			"body_phone1",
 			"body_phone2",
 			"eyes_neutral",
@@ -60,48 +54,46 @@ function Act1_Hong(){
 			"mouth_anger",
 			"mouth_anger_talk",
 
-			"2_body_tired",
-			"2_body_fuck",
-			"2_body_you",
-			"2_body_sammich_eat",
-			"2_body_sammich_eaten",
+			"body_2_tired*",
+			"body_2_fuck*",
+			"body_2_you*",
+			"body_2_sammich_eat*",
+			"body_2_sammich_eaten",
 
-			"3_body_defeated1",
-			"3_body_defeated2",
-			"3_body_defeated3",
-			"3_body_defeated3_no_outline"
+			"body_3_defeated1*",
+			"body_3_defeated2*",
+			"body_3_defeated3*",
+			"body_3_defeated3_no_outline*"
 
 		],
 		x: 65,
-		y: 385
+		y: 385+14
+	};
+
+	// ANIM LOOPS
+	var animLoops = [
+		{ target:"body", ifOnFrame:"phone1", wait:0.5, thenGoToFrame:"phone2" },
+		{ target:"body", ifOnFrame:"phone2", wait:0.5, thenGoToFrame:"phone1" }
+	];
+
+	// Inherit from Character!
+	Character.apply(self, [spriteConfig, animLoops]);
+
+	// Go To Frames!
+	self.gotoFrames({
+		body: "phone1",
+		mouth: "neutral",
+		eyes: "neutral",
 	});
+	var _subscriptions = [];
+	_subscriptions.push( subscribe("hong", self.gotoFrames) );
+	_subscriptions.push( subscribe("attack_hong", self.showAttackedIcon) );
 
-	// Breathe normally
-	//self.sprite.breatheSpeed = 0.017;
-	//self.sprite.breatheAmp = 0.014;
+	// Draw
+	self.bounceHookes = 0.2; // stiff
+	self.bounceDamp = 0.8; // stiff
 
-	// Bounce slow
-	//self.sprite.bounceHookes = 0.1;
-	//self.sprite.bounceDamp = 0.9;
-
-	// First frame
-	self.sprite.gotoFrameByName("normal");
-
-	// Attack sprites
-	self.fears = {};
-	["harm","alone","bad"].forEach( function(fearName){
-		self.fears[fearName] = new Sprite({
-			image: Library.images["fear_"+fearName],
-			grid:{ width:1, height:1 },
-			frame:{ width:200, height:200 },
-			anchor:{ x:100/2, y:100/2 },
-			scale:0.75
-		});
-	} );
-
-	// HACK: frames
-	var _mouth_frame = "mouth_smile";
-	var _eyes_frame = "eyes_surprise";
+	/*
 
 	// Draw
 	var ticker = 0;
@@ -111,16 +103,16 @@ function Act1_Hong(){
 
 		// Draw body FIRST
 		ticker++;
-		var bod_frame = (Math.floor(ticker/30)%2 == 0) ? "body_phone1" : "body_phone2"; // phone flickering
-		self.sprite.gotoFrameByName(bod_frame);
+		//var bod_frame = (Math.floor(ticker/30)%2 == 0) ? "body_phone1" : "body_phone2"; // phone flickering
+		self.sprite.gotoFrameByName("0_body_sammich");
 		self.sprite.draw(ctx);
 
 		// Draw mouth next
-		self.sprite.gotoFrameByName(_mouth_frame);
+		self.sprite.gotoFrameByName("0_mouth_neutral");
 		self.sprite.draw(ctx);
 
 		// Draw eyes finally
-		self.sprite.gotoFrameByName(_eyes_frame);
+		self.sprite.gotoFrameByName("0_eyes_neutral");
 		self.sprite.draw(ctx);
 
 		// Draw attacked icon
@@ -187,6 +179,17 @@ function Act1_Hong(){
 
 	// Kill
 	self.kill = function(){
+	};
+
+	*/
+
+	//////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////
+
+	// Kill!
+	self.kill = function(){
+		_subscriptions.forEach(unsubscribe);
 	};
 
 }

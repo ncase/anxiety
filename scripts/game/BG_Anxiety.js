@@ -89,19 +89,26 @@ function BG_Anxiety(){
 		self.boxes.push(box);
 	}
 
+	var allBoxAlpha = 0;
 	self.draw = function(ctx){
 
 		// A big ol' black box
 		ctx.fillStyle = "#111111";
 		ctx.fillRect(0,0, BG_WIDTH, BG_HEIGHT);
 
+		// All-box alpha
+		allBoxAlpha += 1/30;
+		if(allBoxAlpha>1) allBoxAlpha=1;
+
 		// Moving white boxes
+		ctx.globalAlpha = allBoxAlpha;
 		self.boxes.forEach(function(box){
 			self.updateBox(box);
 		});
 		self.boxes.forEach(function(box){
 			self.drawBox(box, ctx);
 		});
+		ctx.globalAlpha = 1;
 
 	};
 

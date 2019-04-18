@@ -6,7 +6,7 @@ function Act1_Beebee(){
 
 	var self = this;
 
-	// Sprite!
+	// SPRITE CONFIG!
 	var spriteConfig = {
 		image: Library.images.act1_beebee,
 		grid:{
@@ -29,10 +29,10 @@ function Act1_Beebee(){
 			"body_point_heart",
 			"body_point_sing",
 
-			"head_normal",
-			"head_normal_2",
-			"head_small",
-			"head_small_2",
+			"mouth_normal",
+			"mouth_normal_talk",
+			"mouth_small",
+			"mouth_small_talk",
 
 			"eyes_normal",
 			"eyes_normal_right",
@@ -44,25 +44,63 @@ function Act1_Beebee(){
 			"eyes_pretty",
 			"eyes_wat",
 
-			"blank",
+			"body_panic*",
+			"body_panic_2*",
+			"body_scream_anger*",
+			"body_scream_anger_2*",
+			"body_scream*",
+			"body_scream_2*",
 
-			"body_panic",
-			"body_panic_2",
-			"body_scream_anger",
-			"body_scream_anger_2",
-			"body_scream",
-			"body_scream_2",
+			"body_flail*",
+			"body_flail2*",
+			"body_flail3*",
+			"body_flail4*",
 
-			"body_flail",
-			"body_flail_2",
-			"body_flail_3",
-			"body_flail_4",
+			// TODO: SMILE! "That's me!"
 
 		],
-		x: 270,
-		y: 390
+		x: 270-7.5,
+		y: 390+4.5
 	};
 
+	// ANIM LOOPS
+	var animLoops = [
+		{ target:"body", ifOnFrame:"flail*", wait:0.05, thenGoToFrame:"flail2*" },
+		{ target:"body", ifOnFrame:"flail2*", wait:0.05, thenGoToFrame:"flail3*" },
+		{ target:"body", ifOnFrame:"flail3*", wait:0.05, thenGoToFrame:"flail4*" },
+		{ target:"body", ifOnFrame:"flail4*", wait:0.05, thenGoToFrame:"flail*" }
+	];
+
+	// Inherit from Character!
+	Character.apply(self, [spriteConfig, animLoops]);
+
+	// Go To Frames!
+	self.gotoFrames({
+		body: "normal",
+		mouth: "small",
+		eyes: "wat",
+	});
+	var _subscriptions = [];
+	_subscriptions.push( subscribe("bb", self.gotoFrames) );
+
+	// Draw! Same as earlier except a lot of vibration
+	var ticker = 0;
+	var _oldDraw = self.draw;
+	self.characterSpeakerID = "b";
+	self.bounceHookes = 0.25; // loose
+	self.bounceDamp = 0.9; // loose
+	self.draw = function(ctx){
+
+		// Vibration!
+		ticker += 1/60;
+		self.characterSquash = 1 + Math.sin(ticker*Math.TAU*7)*0.01; // seven vibes per second
+
+		// Old Draw
+		_oldDraw.apply(self, arguments);
+
+	};
+	
+	/*
 	self.body = new Sprite(spriteConfig);
 	self.head = new Sprite(spriteConfig);
 	self.eyes = new Sprite(spriteConfig);
@@ -88,12 +126,6 @@ function Act1_Beebee(){
 	subscribe("bb", function(bodyName, headName, eyesName){
 		self.gotoFrames(bodyName, headName, eyesName);
 	});
-
-	/**
-
-	bb("point_heart", "normal_talk", "pretty")
-
-	**/
 
 	// First frame
 	// self.sprite.gotoFrameByName("normal");
@@ -178,7 +210,6 @@ function Act1_Beebee(){
 
 		// Draw me!
 		self.sprite.draw(ctx);
-		*/
 
 	};
 
@@ -193,12 +224,21 @@ function Act1_Beebee(){
 		}
 		if(fname=="scream"){
 			self.sprite.bounce = 1.6;
-		}*/
+		}
 
 	});
 
 	// Kill
 	self.kill = function(){
+	};*/
+
+	//////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////
+
+	// Kill!
+	self.kill = function(){
+		_subscriptions.forEach(unsubscribe);
 	};
 
 }
