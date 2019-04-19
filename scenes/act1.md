@@ -14,9 +14,13 @@ h: Oh good, I was hoping to *not* eat in peace today.
 
 n: YOUR JOB IS TO PROTECT YOUR HUMAN FROM *DANGER*
 
+`bb({eyes:"look", mouth:"small_lock"})`
+
 n: IN FACT, THAT SANDWICH IS PUTTING THEM IN *DANGER* RIGHT NOW
 
 n: QUICK, WARN THEM!
+
+`bb({eyes:"normal", mouth:"normal"})`
 
 [You're eating alone for lunch! Again!](#act1a_alone)
 
@@ -96,7 +100,7 @@ b: DIEEEEEEEEEEEEEEEEEEE
 ```
 bb({body:"normal", mouth:"normal", eyes:"normal"});
 hong({mouth:"0_shock", eyes:"0_shock"});
-attack("20p", "alone");
+attack("20p", "bad");
 publish("hp_show");
 ```
 
@@ -128,7 +132,7 @@ b: DIEEEEEEEEEEEEEEEEEEE
 ```
 bb({body:"normal", mouth:"normal", eyes:"normal"});
 hong({mouth:"0_shock", eyes:"0_shock"});
-attack("20p", "alone");
+attack("20p", "harm");
 publish("hp_show");
 ```
 
@@ -152,13 +156,22 @@ n: BUT YOU'RE NOT DONE SAVING YOUR HUMAN YET
 
 n: GET YOUR HUMAN'S ENERGY BAR TO ZERO
 
-n: YOUR MOVES ARE: FEAR OF *BEING HARMED,* *BEING UNLOVED,* AND *BEING A BAD PERSON*
+n: YOUR MOVES ARE:
+
+n: FEAR OF *BEING HARMED* #harm#
+
+n: FEAR OF *BEING UNLOVED* #alone#
+
+n: AND FEAR OF *BEING A BAD PERSON* #bad#
 
 n: (PRO TIP: TRY PLAYING THE CHOICES THAT MOST HIT YOUR DEEPEST, DARKEST FEARS!)
 
 h: ...
 
-`hong({body:"putaway"})`
+```
+hong({body:"putaway"});
+Game.OVERRIDE_TEXT_SPEED = 2.0;
+```
 
 h: you know what maybe it's time to check my phone.
 
@@ -1060,7 +1073,7 @@ h: i just want to be free from all this... pain.
 
 `bb({eyes:"look_sad"});`
 
-b: Hey... Human...
+b: Hey... human...
 
 `Game.OVERRIDE_TEXT_SPEED = 0.5;`
 
@@ -1238,10 +1251,7 @@ attack("30p", "bad");
 
 # act1i
 
-```
-hong({body:"3_defeated1"});
-bb({mouth:"smile_lock", eyes:"smile"});
-```
+`bb({mouth:"smile_lock", eyes:"smile"});`
 
 n: CONGRATULATIONS
 

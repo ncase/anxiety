@@ -411,13 +411,30 @@ Game.executeText = function(line){
 
 				// Larger interval if punctuation...
 				var chr = word.slice(-1);
+				var isIcon = (word[0]=="#" && chr=="#");
 				if(chr=="*") chr = word[word.length-2]; // coz emphasis
 				if(chr=="," || chr==":") interval += SPEED*5;
 				if(chr=="." || chr=="?" || chr=="!") interval += SPEED*10;
 				if(word.slice(-3)=="...") interval += SPEED*15;
 
-			}
+				// Oh, was it an ICON?
+				if(word[0]=="#" && chr=="#"){
+					interval += SPEED*10;
 
+					var span = div.children[i];
+					span.innerHTML = "";
+					span.style.display = "block";
+					var iconName = word.slice(1,-1)
+					var icon = Library.images["fear_"+iconName];
+					div.children[i].appendChild(icon);
+					icon.style.display = "block";
+					icon.style.margin = "0 auto";
+					icon.style.width = "80px";
+					icon.style.height = "80px";
+
+				}
+
+			}
 
 		}
 

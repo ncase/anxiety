@@ -10,16 +10,16 @@ Loader.load().then(function(){
 	Game.start();
 
 	// Set up...
-	SceneSetup.act1();
+	/*SceneSetup.act1();
 	publish("hp_show");
 	hong({body:"phone1", mouth:"neutral", eyes:"neutral"});
 	//_.whitebread = true;
 	_.partyinvite="ignore";
 	_.fifteencigs = true;
 	//_.subtweet=true;
-	_.seppuku = true;
+	_.seppuku = true;*/
 
 	// GO!
-	Game.goto("act1g");
+	Game.goto("act1");
 
 });

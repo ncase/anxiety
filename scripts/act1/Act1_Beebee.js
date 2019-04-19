@@ -33,6 +33,7 @@ function Act1_Beebee(){
 			"mouth_normal_talk",
 			"mouth_small",
 			"mouth_small_talk",
+			"mouth_small_lock",
 
 			"eyes_normal",
 			"eyes_normal_right",
