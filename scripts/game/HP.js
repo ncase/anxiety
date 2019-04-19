@@ -59,6 +59,9 @@ function HitPoints(){
 
 	// Who's been attacked?
 	subscribe("attack", function(target, damage, type){
+
+		Game.clearText(); // BYE
+
 		if(target=="hong"){
 			self.doDamage(damage, "hong");
 			self.leftShake = 30;
@@ -67,6 +70,7 @@ function HitPoints(){
 			self.doDamage(damage, "beebee");
 			self.rightShake = 30;
 		}
+
 	});
 
 	// Draw

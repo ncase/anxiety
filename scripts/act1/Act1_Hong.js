@@ -26,7 +26,8 @@ function Act1_Hong(){
 			"body_0_sammich_no_outline",
 			"body_0_sammich",
 			"eyes_0_neutral",
-			"eyes_0_concerned",
+			"eyes_0_lookaway",
+			"eyes_0_annoyed",
 			"eyes_0_shock",
 			"mouth_0_neutral",
 			"mouth_0_chew1",
@@ -44,6 +45,7 @@ function Act1_Hong(){
 			"eyes_lookaway",
 			"eyes_anger",
 			"eyes_surprise",
+			"mouth_shut",
 			"mouth_neutral",
 			"mouth_neutral_talk",
 			"mouth_smile",
@@ -72,8 +74,10 @@ function Act1_Hong(){
 
 	// ANIM LOOPS
 	var animLoops = [
-		{ target:"body", ifOnFrame:"phone1", wait:0.5, thenGoToFrame:"phone2" },
-		{ target:"body", ifOnFrame:"phone2", wait:0.5, thenGoToFrame:"phone1" }
+		{ target:"body", ifOnFrame:"phone1", wait:1, thenGoToFrame:"phone2" },
+		{ target:"body", ifOnFrame:"phone2", wait:1, thenGoToFrame:"phone1" },
+		{ target:"mouth", ifOnFrame:"0_chew1", wait:0.7, thenGoToFrame:"0_chew2" },
+		{ target:"mouth", ifOnFrame:"0_chew2", wait:0.7, thenGoToFrame:"0_chew1" }
 	];
 
 	// Inherit from Character!
@@ -81,107 +85,16 @@ function Act1_Hong(){
 
 	// Go To Frames!
 	self.gotoFrames({
-		body: "phone1",
-		mouth: "neutral",
-		eyes: "neutral",
+		body: "0_sammich",
+		mouth: "0_chew1",
+		eyes: "0_neutral",
 	});
 	var _subscriptions = [];
 	_subscriptions.push( subscribe("hong", self.gotoFrames) );
 	_subscriptions.push( subscribe("attack_hong", self.showAttackedIcon) );
 
 	// Draw
-	self.bounceHookes = 0.2; // stiff
-	self.bounceDamp = 0.8; // stiff
-
-	/*
-
-	// Draw
-	var ticker = 0;
-	self.draw = function(ctx){
-
-		self.sprite.update();
-
-		// Draw body FIRST
-		ticker++;
-		//var bod_frame = (Math.floor(ticker/30)%2 == 0) ? "body_phone1" : "body_phone2"; // phone flickering
-		self.sprite.gotoFrameByName("0_body_sammich");
-		self.sprite.draw(ctx);
-
-		// Draw mouth next
-		self.sprite.gotoFrameByName("0_mouth_neutral");
-		self.sprite.draw(ctx);
-
-		// Draw eyes finally
-		self.sprite.gotoFrameByName("0_eyes_neutral");
-		self.sprite.draw(ctx);
-
-		// Draw attacked icon
-		if(attackedIconShown){
-			
-			var icon = self.fears[attackedIconShown];
-			icon.draw(ctx);
-			
-			attackedTimer += 1/60;
-			if(attackedTimer>1.5){ // 1s
-				icon.y -= 1;
-				icon.alpha -= 1/15;
-				if(icon.alpha<0){
-					attackedIconShown = null;
-				}
-			}
-
-		}
-
-	};
-
-	// Show attacked icon!
-	var attackedIconShown = null; 
-	var attackedTimer = 0;
-	self.showAttackedIcon = function(type){
-		attackedIconShown = type;
-		var icon = self.fears[attackedIconShown];
-		icon.x = 82;
-		icon.y = 230;
-		icon.alpha = 1;
-		attackedTimer = 0;
-	};
-
-	// When going to frames...
-	subscribe("hong", function(fname, options){
-
-		// If attacked, vibrate
-		if(fname=="attacked"){
-
-			//self.sprite.gotoFrameByName("shock");
-			//self.sprite.bounce = 1/1.5;
-			self.sprite.shakeAmp = 5;
-			self.sprite.shakeSpeed = 10;
-			self.sprite.shakeTimer = 0.5;
-
-			_mouth_frame = "mouth_shock";
-			_eyes_frame = "eyes_shock";
-
-			// Show an attack icon of type=options!
-			self.showAttackedIcon(options);
-
-		}else{
-
-			// Otherwise, go to that frame
-			self.sprite.gotoFrameByName(fname);
-			self.sprite.bounce = 1.05;
-			if(fname=="shock"){
-				self.sprite.bounce = 1/1.5;
-			}
-
-		}
-
-	});
-
-	// Kill
-	self.kill = function(){
-	};
-
-	*/
+	self.characterSpeakerID = "h";
 
 	//////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////

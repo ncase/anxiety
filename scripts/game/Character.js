@@ -51,6 +51,7 @@ function Character(spriteConfig, animLoops){
 	self.gotoFrames = function(args, bounce){
 
 		// Bounce?
+		if(bounce===undefined) bounce=0.03; // a LITTLE bit, by default
 		if(bounce!==undefined){
 			self.bounce += bounce;
 		}
@@ -152,7 +153,7 @@ function Character(spriteConfig, animLoops){
 			icon.draw(ctx);
 			
 			attackedTimer += 1/60;
-			if(attackedTimer>1.5){ // 1s
+			if(attackedTimer>1.75){
 				icon.y -= 1;
 				icon.alpha -= 1/15;
 				if(icon.alpha<0){
@@ -210,7 +211,7 @@ function Character(spriteConfig, animLoops){
 		attackedIconShown = type;
 		var icon = self.fears[attackedIconShown];
 		icon.x = 82;
-		icon.y = 230;
+		icon.y = 250;
 		icon.alpha = 1;
 		attackedTimer = 0;
 	};

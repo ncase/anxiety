@@ -224,23 +224,24 @@ Game.immediatePromise = function(){
 };
 
 // Move the text DOM to latest
-Game.updateText = function(){
+Game.updateText = function(instant){
 	var wordsHeight = 80 + Game.wordsDOM.getBoundingClientRect().height;
 	var currentY = parseFloat(Game.wordsDOM.style.top) || 80;
 	var gotoY = (wordsHeight<250) ? 0 : wordsHeight-250;
 	gotoY = 80 - gotoY;
-	var nextY = currentY*0.9 + gotoY*0.1;
+	var nextY = instant ? gotoY : currentY*0.9 + gotoY*0.1;
 	Game.wordsDOM.style.top = nextY+"px";
 };
 
 // CLEAR TEXT
 Game.clearText = function(){
-	Game.wordsDOM.innerHTML = ""; // TODO HACK make prettier
+	Game.wordsDOM.innerHTML = "";
+	Game.updateText(true);
 };
 window.clearText = Game.clearText;
 
 // Execute text! Just add it to text DOM.
-Game.TEXT_SPEED = 70;
+Game.TEXT_SPEED = 60; // 70;
 Game.OVERRIDE_TEXT_SPEED = 1;
 Game.WHO_IS_SPEAKING = null; // "h", "b", "n" etc...
 Game.CURRENT_SPEAKING_SPEED = 1;
@@ -328,8 +329,18 @@ Game.executeText = function(line){
 
 				// Bigger interval
 				if(i!=dialogue.length-1){ // NOT last
-					if(chr=="." || chr=="?" || chr=="!"){
-						interval += SPEED*10;
+					if(chr=="."){
+						if(dialogue[i+1]=="\""){ // UNLESS next one's a punctuation!
+							interval += 0;
+						}else{
+							interval += SPEED*10;
+						}
+					}else if(chr=="?" || chr=="!"){ // gap unless next one's ALSO punctuation.
+						if(dialogue[i+1]==" "){ // next one's a space? gap!
+							interval += SPEED*10;
+						}else{ // if not, no!
+							interval += SPEED;
+						}
 					}else if(chr==","){
 						interval += SPEED*5;
 					}else{
@@ -414,7 +425,7 @@ Game.executeText = function(line){
 		Game.OVERRIDE_TEXT_SPEED = 1;
 
 		// Return promise
-		var nextLineDelay = SPEED*7;
+		var nextLineDelay = Game.TEXT_SPEED*7; // don't override this
 		if(dialogue.slice(-1)=="-") nextLineDelay=0; // sudden interrupt!
 		Game.setTimeout(function(){
 			Game.WHO_IS_SPEAKING = null; // DONE WITH IT.
@@ -437,6 +448,17 @@ Game.executeChoice = function(line){
 		preChoiceCodeIfAny = line.match(/\`(.*)\`/)[0]; // 0, with backticks
 	}
 
+	// Choice text, add italics where *word word words*
+	var originalChoiceText = choiceText;
+	var italicsRegex = /\*([^\*]*)\*/g;
+	var results;
+	while(results=italicsRegex.exec(choiceText)){
+		// Modify choiceText in place, it's fine.
+		var startOfMatch = results.index;
+		var endOfMatch = results.index + results[0].length;
+		choiceText = choiceText.slice(0,startOfMatch) + "<i>" + results[1] + "</i>" + choiceText.slice(endOfMatch);
+	}
+
 	var div = document.createElement("div");
 	div.innerHTML = choiceText;
 	div.onclick = function(){
@@ -446,7 +468,7 @@ Game.executeChoice = function(line){
 
 		// Override line... ONCE
 		if(!Game.OVERRIDE_CHOICE_LINE){
-			Game.addToQueue("b: "+choiceText);
+			Game.addToQueue("b: "+originalChoiceText);
 		}
 		Game.OVERRIDE_CHOICE_LINE = false;
 
@@ -460,6 +482,22 @@ Game.executeChoice = function(line){
 	Game.choicesDOM.appendChild(div);
 	setTimeout(function(){
 		div.style.top = "0px";
+	},0);
+
+	// If it's too big, shrink font size
+	setTimeout(function(){
+		var choiceHeight = div.getBoundingClientRect().height;
+		if(choiceHeight>40) div.style.fontSize = "18px";	
+		// And if still too much???		
+		setTimeout(function(){
+			var choiceHeight = div.getBoundingClientRect().height;
+			if(choiceHeight>40) div.style.fontSize = "16px";
+			// And if still too much???		
+			setTimeout(function(){
+				var choiceHeight = div.getBoundingClientRect().height;
+				if(choiceHeight>40) div.style.fontSize = "14px";
+			},0);
+		},0);
 	},0);
 
 	// Wait a bit before adding new line
