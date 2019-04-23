@@ -2,6 +2,12 @@ Loader.addImages([
 	{ id:"hp", src:"sprites/ui/hp.png" }
 ]);
 
+Loader.addSounds([
+	{ id:"hit", src:"sounds/sfx/hit.mp3" },
+	{ id:"hit_big", src:"sounds/sfx/hit_big.mp3" }
+]);
+
+
 // The Class!
 function HitPoints(){
 
@@ -71,6 +77,13 @@ function HitPoints(){
 			self.rightShake = 30;
 		}
 
+		// Sound
+		if(damage=="100p"){ // FULL!
+			sfx("hit_big");
+		}else{
+			sfx("hit");
+		}
+
 	});
 
 	// Draw
@@ -98,7 +111,7 @@ function HitPoints(){
 
 		// BLACK
 		var sx=isRight ? 360 : 0, sy=0, sw=360, sh=150;
-		ctx.drawImage(self.image, sx,sy,sw,sh, sx/2,sy/2,sw/2,sh/2); // black 
+		ctx.drawImage(self.image, sx,sy,sw,sh, sx/2,sy/2,sw/2,sh/2); // black
 
 		// RED
 		var hpRatio = (hp+32)/(100+32); // 100,0 => 1,0.3

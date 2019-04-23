@@ -1,25 +1,24 @@
 // Load assets
 Loader.addScenes([
 	"scenes/intro.md",
-	"scenes/act1.md",
-	//"scenes/test.md",
-	//"scenes/test-outro.md"
+	"scenes/act1.md"
 ]);
 Loader.load().then(function(){
+
 	Game.init();
 	Game.start();
+
+	Game.pause(); // just for sounds
 
 	// Set up...
 	/*SceneSetup.act1();
 	publish("hp_show");
 	hong({body:"phone1", mouth:"neutral", eyes:"neutral"});
-	//_.whitebread = true;
-	_.partyinvite="ignore";
-	_.fifteencigs = true;
-	//_.subtweet=true;
-	_.seppuku = true;*/
-
+	_.whitebread = true;*/
+	
 	// GO!
-	Game.goto("act1");
+	//music('battle', 0.5);
+	//Game.goto("act1f");
+	Game.goto("intro");
 
 });

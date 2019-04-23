@@ -100,6 +100,10 @@ function BG_Intro(){
 		// TICKER
 		ticker += 1/60;
 
+		/*if(Math.random()<0.01){
+			Library.sounds.test.play();
+		}*/
+
 		// CLOUD OFFSET
 		OFFSETS[1] = -80 + ticker*3;
 

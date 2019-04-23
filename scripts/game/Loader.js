@@ -1,6 +1,7 @@
 window.Loader = {};
 window.Library = {
-	images: {}
+	images: {},
+	sounds: {}
 };
 Loader.load = function(){
 	return new RSVP.Promise(function(resolve){
@@ -17,6 +18,11 @@ Loader.load = function(){
 			loadPromises.push( Loader.loadImage(config) );
 		});
 		
+		// All sounds
+		Loader.soundConfigs.forEach(function(config){
+			loadPromises.push( Loader.loadSound(config) );
+		});
+
 		// Go go go!
 		RSVP.all(loadPromises).then(resolve);
 
@@ -60,5 +66,26 @@ Loader.loadScene = function(src){
 		    }
 		};
 		xhr.send();
+	});
+};
+
+/////////////////////////////
+// SOUNDS ///////////////////
+/////////////////////////////
+
+Loader.soundConfigs = [];
+Loader.addSounds = function(soundConfigs){
+	Loader.soundConfigs = Loader.soundConfigs.concat(soundConfigs);
+};
+Loader.loadSound = function(soundConfig){
+	return new RSVP.Promise(function(resolve){
+		var sound = new Howl({
+			src: [soundConfig.src]
+		});
+		var id = soundConfig.id;
+		Library.sounds[id] = sound; // ADD TO LIBRARY
+		sound.once("load",function(){
+			resolve();
+		});
 	});
 };

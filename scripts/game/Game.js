@@ -111,12 +111,14 @@ Game.pausedDOM = $("#paused");
 Game.pause = function(){
 	Game.paused = true;
 	Game.pausedDOM.style.display = "block";
+	Howler.mute(true);
 };
 window.addEventListener("blur", Game.pause);
 Game.onUnpause = function(){
 	if(Game.paused){
 		Game.paused = false;
 		Game.pausedDOM.style.display = "none";
+		Howler.mute(false);
 	}
 };
 window.addEventListener("click", Game.onUnpause);
@@ -320,12 +322,25 @@ Game.executeText = function(line){
 				if(i==dialogue.length-1 && chr=="-") break;
 
 				// for scopin'
-				(function(index, interval){
+				(function(index, interval, speaker){
 					Game.setTimeout(function(){
+
+						// Show it
 						div.children[index].style.opacity = 1;
-						//div.innerHTML += chr;
+
+						// And SOUND?
+						var chr = div.children[index].innerHTML;
+						if(chr!=" "){
+							if(speaker=="h"){
+								voice("hong", 0.3);
+							}
+							if(speaker=="b"){
+								voice("beebee", 0.3);
+							}
+						}
+
 					}, interval);
-				})(i, interval);
+				})(i, interval, speaker);
 
 				// Bigger interval
 				if(i!=dialogue.length-1){ // NOT last
@@ -400,11 +415,19 @@ Game.executeText = function(line){
 				var word = dialogueWords[i];
 
 				// for scopin'
-				(function(index, interval){
+				(function(index, interval, word){
 					Game.setTimeout(function(){
+
+						// Show
 						div.children[index].style.opacity = 1;
+
+						// SOUND
+						var chr = word.slice(-1);
+						var isEmphasis = (chr=="*");
+						voice(isEmphasis ? "narrator_emphasis" : "narrator");
+
 					}, interval);
-				})(i, interval);
+				})(i, interval, word);
 
 				// Interval
 				interval += SPEED*6;

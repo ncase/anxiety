@@ -164,7 +164,7 @@ n: FEAR OF *BEING UNLOVED* #alone#
 
 n: AND FEAR OF *BEING A BAD PERSON* #bad#
 
-n: (PRO TIP: TRY PLAYING THE CHOICES THAT MOST HIT YOUR DEEPEST, DARKEST FEARS!)
+n: (PRO TIP: TRY PLAYING THE CHOICES THAT MOST HIT YOUR DEEPEST DARKEST FEARS!)
 
 h: ...
 
@@ -192,6 +192,8 @@ n: GOOD LUCK
 (#act1c)
 
 # act1c
+
+`music('battle', 0.5)`
 
 n: ROUND ONE: *FIGHT!*
 
@@ -1043,7 +1045,8 @@ attack("30p", "harm");
 ```
 bb({body:"normal", mouth:"normal", eyes:"look"});
 hong({body:"2_tired"});
-Game.OVERRIDE_TEXT_SPEED = 0.25;
+Game.OVERRIDE_TEXT_SPEED = 0.5;
+music(false);
 ```
 
 h: ...
@@ -1220,7 +1223,7 @@ b: ..................
 
 ```
 hong({body:"3_defeated1"});
-attack("30p", "harm");
+attack("100p", "harm");
 ```
 
 (...2500)
@@ -1231,7 +1234,7 @@ attack("30p", "harm");
 
 ```
 hong({body:"3_defeated1"});
-attack("30p", "alone");
+attack("100p", "alone");
 ```
 
 (...2500)
@@ -1242,7 +1245,7 @@ attack("30p", "alone");
 
 ```
 hong({body:"3_defeated1"});
-attack("30p", "bad");
+attack("100p", "bad");
 ```
 
 (...2500)
@@ -1251,7 +1254,10 @@ attack("30p", "bad");
 
 # act1i
 
-`bb({mouth:"smile_lock", eyes:"smile"});`
+```
+bb({mouth:"smile_lock", eyes:"smile"});
+music('battle', 0.5);
+```
 
 n: CONGRATULATIONS
 
@@ -1259,7 +1265,7 @@ n: YOU HAVE SUCCESSFULLY PROTECTED YOUR HUMAN
 
 n: LOOK HOW GRATEFUL THEY ARE
 
-n: NOW THAT THEIR ENERGY IS ZERO, YOU CAN DIRECTLY CONTROL THEIR ACTIONS.
+n: NOW THAT THEIR ENERGY IS ZERO, YOU CAN DIRECTLY CONTROL THEIR ACTIONS!
 
 `bb({mouth:"smile", eyes:"normal"});`
 

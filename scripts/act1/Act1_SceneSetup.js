@@ -17,7 +17,10 @@ SceneSetup.act1 = function(){
 };
 SceneSetup.act1_outro = function(){
 
+	HP.hide();
 	clearText();
+	music(false);
+	
 	Game.resetScene();
 
 	// Background
