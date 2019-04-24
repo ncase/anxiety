@@ -2,6 +2,16 @@ Loader.addImages([
 	{ id:"act1_end", src:"sprites/act1/act1_end.png" }
 ]);
 
+Loader.addSounds([
+
+	{ id:"pop", src:"sounds/sfx/pop.mp3" },
+	{ id:"bounce1", src:"sounds/sfx/bounce1.mp3" },
+	{ id:"bounce2", src:"sounds/sfx/bounce2.mp3" },
+	{ id:"bounce3", src:"sounds/sfx/bounce3.mp3" },
+	{ id:"faucet", src:"sounds/sfx/faucet.mp3" }
+
+]);
+
 function BG_Act1_Outro(){
 
 	var self = this;
@@ -101,6 +111,7 @@ function BG_Act1_Outro(){
 	var ticker = 0;
 	var frameTicker = ticker;
 	var parallaxTicker = 1;
+	var thePreviousFrame = -1;
 
 	self.draw = function(ctx){
 
@@ -128,19 +139,30 @@ function BG_Act1_Outro(){
 
 		// Smoking crater & Hong frame
 		frameTicker += 1/60;
+		var results;
 		if(ANIM_TO_USE == "fight"){
 			
-			var frame = findFrameOnTicker(SMOKING_CRATER, frameTicker);
-			craterSprite.gotoFrame(frame);
-			var frame = findFrameOnTicker(HONG_FRAMES_FIGHT, frameTicker);
-			hongSprite.gotoFrame(frame);
+			results = findOnTicker(SMOKING_CRATER, frameTicker);
+			craterSprite.gotoFrame(results.frame);
+
+			// Hong's frame
+			results = findOnTicker(HONG_FRAMES_FIGHT, frameTicker);
 
 		}else{
-
 			craterSprite.visible = false;
-			var frame = findFrameOnTicker(HONG_FRAMES_FLIGHT, frameTicker);
-			hongSprite.gotoFrame(frame);
 
+			// Hong's frame
+			results = findOnTicker(HONG_FRAMES_FLIGHT, frameTicker);
+		}
+
+		// Is Hong on a new frame?
+		thePreviousFrame = hongSprite.currentFrame;
+		var isNewFrame = (thePreviousFrame!=results.frame);
+		hongSprite.gotoFrame(results.frame);
+
+		// SFX if new frame
+		if(isNewFrame && results.sfx){
+			sfx(results.sfx, {volume: results.sfxVolume} );
 		}
 
 		// If pre frameTicker=90/30, Hong is shaking like Beebee!
@@ -175,18 +197,38 @@ function BG_Act1_Outro(){
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Find it!
-	var findFrameOnTicker = function(frameArray, ticker){
+	/*var findFrameOnTicker = function(frameArray, ticker){
 		var lastFrame;
 		for(var i=0; i<frameArray.length; i++){
 			var f = frameArray[i];
 			if(f[1]<=ticker) lastFrame = f[0];
 		}
 		return lastFrame;
+	};*/
+	var findOnTicker = function(frameArray, ticker){
+		var lastConfig;
+		for(var i=0; i<frameArray.length; i++){
+			var f = frameArray[i];
+			if(f[1]<=ticker){
+				lastConfig = f;
+			}
+		}
+		return {
+			frame: lastConfig[0],
+			sfx: lastConfig[2],
+			sfxVolume: lastConfig[3]
+		};
 	};
 	var convertFrames = function(frameArray){
 		return frameArray.map(function(frame){
+
 			var f = frame.split("-");
-			return [parseInt(f[0])-1, parseInt(f[1])/30]; // subtract 1 from frame, convert to seconds
+			var frame = parseInt(f[0])-1; // subtract 1 from frame
+			var ticker = parseInt(f[1])/30; // convert to seconds
+			var sfx = f[2] ? f[2] : null;
+			var sfxVolume = f[3] ? f[3] : 1;
+			return [frame, ticker, sfx, sfxVolume];
+
 		});
 	};
 	var addLoop = function(frameArray, startF, startS, frameLength, interval){
@@ -230,18 +272,18 @@ function BG_Act1_Outro(){
 		"2-3",
 		"3-5",
 		"4-7",
-		"5-90",
+		"5-90-pop",
 		"6-120",
-		"7-122",
+		"7-122-bounce1",
 		"8-124",
 		"9-126",
 		"10-129",
 		"11-132",
 		"12-134",
-		"13-136",
+		"13-136-bounce2",
 		"14-138",
 		"15-140",
-		"16-143",
+		"16-143-bounce3",
 		"17-145",
 		"18-147",
 		"19-149",
@@ -263,7 +305,7 @@ function BG_Act1_Outro(){
 		"22-179",
 		"23-181",
 
-		"24-183",
+		"24-183-faucet-0.8",
 		"25-185",
 		"26-187",
 

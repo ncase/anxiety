@@ -6,7 +6,7 @@ Loader.addScenes([
 Loader.load().then(function(){
 
 	Game.init();
-	Game.start();
+	/*Game.start();
 
 	Game.pause(); // just for sounds
 
@@ -19,6 +19,17 @@ Loader.load().then(function(){
 	// GO!
 	//music('battle', 0.5);
 	//Game.goto("act1f");
-	Game.goto("intro");
+	//Game.goto("intro");
+
+});
+
+subscribe("START_GAME", function(){
+	
+	$("#loading").style.display = "none";
+	Game.start();
+
+	SceneSetup.act1();
+	Game.goto("act1i");
+	//Game.goto("intro");
 
 });

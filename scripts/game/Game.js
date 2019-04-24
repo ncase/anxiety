@@ -272,6 +272,9 @@ Game.executeText = function(line){
 			case "n":
 				div.className = "narrator-bubble";
 				break;
+			case "m": // narrator 2
+				div.className = "narrator-bubble-2";
+				break;
 		}
 		requestAnimationFrame(function(){
 			requestAnimationFrame(function(){
@@ -285,12 +288,10 @@ Game.executeText = function(line){
 		clearBoth.className = "clear-both";
 		Game.wordsDOM.appendChild(clearBoth);
 
-		// TODO: BOLD LETTER BY LETTER...
-
 		// Add the text
 		var interval = 0;
 		var SPEED = Math.round(Game.TEXT_SPEED / Game.OVERRIDE_TEXT_SPEED);
-		if(speaker!="n"){
+		if(speaker!="n" && speaker!="m"){
 
 			// Put in the text, each character a DIFFERENT SPAN...
 			var span, chr;
@@ -332,10 +333,10 @@ Game.executeText = function(line){
 						var chr = div.children[index].innerHTML;
 						if(chr!=" "){
 							if(speaker=="h"){
-								voice("hong", 0.3);
+								voice("hong", {volume:0.3});
 							}
 							if(speaker=="b"){
-								voice("beebee", 0.3);
+								voice("beebee", {volume:0.3});
 							}
 						}
 

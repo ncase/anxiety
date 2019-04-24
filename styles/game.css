@@ -39,7 +39,7 @@ body{
 	overflow: hidden;
 }
 
-#paused{
+#paused, #loading{
 	display: none;
 
 	width: 100%;
@@ -52,7 +52,7 @@ body{
 	font-weight: bold;
 	text-align: center;
 }
-#paused > div{
+#paused > div, #loading > div{
 	position: absolute;
 	margin: auto;
 	top: 0;
@@ -71,11 +71,24 @@ body{
 	margin: 15px auto;
 }
 
+#loading{
+	display:block;
+	background: #333;
+	cursor: pointer;
+}
+#loading:hover{
+	background: #444;
+}
+#loading > div{
+	height: 50px;
+    font-size: 30px;
+}
+
 .clear-both{
 	clear:both;
 }
 
-.narrator-bubble{
+.narrator-bubble, .narrator-bubble-2{
 	position: relative;
 	color: #FFFFFF;
 	text-align: center;
@@ -84,7 +97,7 @@ body{
 	margin: 25px 15px;
 	font-weight: bold;
 }
-.narrator-bubble:before{
+.narrator-bubble:before, .narrator-bubble-2:before{
 
 	content: '';
 	
@@ -99,7 +112,7 @@ body{
 	height: calc(100% + 4px);
 	
 } 
-.narrator-bubble:after{
+.narrator-bubble:after, .narrator-bubble-2:after{
 
 	content: '';
 	
@@ -114,9 +127,15 @@ body{
 	height: calc(100% + 4px);
 	
 } 
-.narrator-bubble i{
+.narrator-bubble i, .narrator-bubble-2 i{
 	font-style: normal;
 	color: #ff4040;
+}
+.narrator-bubble-2{
+	color: #000;
+}
+.narrator-bubble-2:before, .narrator-bubble-2:after{
+	border-color: #000;
 }
 
 .hong-bubble {

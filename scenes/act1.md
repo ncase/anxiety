@@ -193,7 +193,7 @@ n: GOOD LUCK
 
 # act1c
 
-`music('battle', 0.5)`
+`music('battle', {volume:0.5})`
 
 n: ROUND ONE: *FIGHT!*
 
@@ -1256,7 +1256,7 @@ attack("100p", "bad");
 
 ```
 bb({mouth:"smile_lock", eyes:"smile"});
-music('battle', 0.5);
+music('battle', {volume:0.5});
 ```
 
 n: CONGRATULATIONS
@@ -1264,6 +1264,8 @@ n: CONGRATULATIONS
 n: YOU HAVE SUCCESSFULLY PROTECTED YOUR HUMAN
 
 n: LOOK HOW GRATEFUL THEY ARE
+
+(...500)
 
 n: NOW THAT THEIR ENERGY IS ZERO, YOU CAN DIRECTLY CONTROL THEIR ACTIONS!
 
@@ -1275,7 +1277,7 @@ n: PICK YOUR ENDING MOVE
 
 n: *FINISH THEM*
 
-[&lt; FIGHT: Destroy your phone! &gt;](#act1i_phone) `Game.OVERRIDE_CHOICE_LINE=true`
+[&lt; FIGHT: Punish your phone! &gt;](#act1i_phone) `Game.OVERRIDE_CHOICE_LINE=true`
 
 [&lt; FLIGHT: Curl up in a ball and cry! &gt;](#act1i_cry) `Game.OVERRIDE_CHOICE_LINE=true`
 

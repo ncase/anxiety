@@ -4,6 +4,20 @@ Loader.addImages([
 	{ id:"intro_anim", src:"sprites/intro/intro_anim.png" }
 ]);
 
+Loader.addSounds([
+	
+	{ id:"whoosh", src:"sounds/sfx/whoosh.mp3" },
+	{ id:"intro_scream", src:"sounds/sfx/intro_scream.mp3" },
+
+	{ id:"grass_step1", src:"sounds/sfx/grass_step1.mp3" },
+	{ id:"grass_step2", src:"sounds/sfx/grass_step2.mp3" },
+	{ id:"bag_short", src:"sounds/sfx/bag_short.mp3" },
+	{ id:"bag_search", src:"sounds/sfx/bag_search.mp3" },
+	{ id:"bag_kick", src:"sounds/sfx/bag_kick.mp3" },
+	{ id:"sandwich", src:"sounds/sfx/sandwich.mp3" },
+
+]);
+
 function BG_Intro(){
 
 	var self = this;
@@ -95,14 +109,11 @@ function BG_Intro(){
 	var parallaxTicker = 0;
 	var SHOWN_PLAY_BUTTON = false;
 	var SHOWN_LOGO = false;
+	var thePreviousFrame;
 	self.draw = function(ctx){
 
 		// TICKER
 		ticker += 1/60;
-
-		/*if(Math.random()<0.01){
-			Library.sounds.test.play();
-		}*/
 
 		// CLOUD OFFSET
 		OFFSETS[1] = -80 + ticker*3;
@@ -129,9 +140,19 @@ function BG_Intro(){
 
 		}
 
-		// Hong frame
-		var frame = findFrameOnTicker(frameTicker);
+		// Find... on ticker!
+		var results = findOnTicker(frameTicker);
+
+		// Frame, new frame?
+		var frame = results.frame;
+		thePreviousFrame = hongSprite.currentFrame;
+		var isNewFrame = (thePreviousFrame!=frame);
 		hongSprite.gotoFrame(frame);
+
+		// SFX if new frame
+		if(isNewFrame && results.sfx){
+			sfx(results.sfx, {volume: results.sfxVolume} );
+		}
 		
 		// Draw all!
 		for(var i=0; i<self.layers.length; i++){
@@ -141,13 +162,14 @@ function BG_Intro(){
 		}
 		if(!SHOWN_LOGO && ticker>=530/30){
 			SHOWN_LOGO = true;
+			sfx("intro_scream");
 		}
 		if(GAME_TRANSITION==0 && SHOWN_LOGO){
 			self.logoSprite.draw(ctx);
 		}
 
 		// Show Play Button
-		if(!SHOWN_PLAY_BUTTON && ticker>=590/30){
+		if(!SHOWN_PLAY_BUTTON && ticker>=645/30){
 			SHOWN_PLAY_BUTTON = true;
 			Game.goto("intro-play-button");
 		}
@@ -170,6 +192,13 @@ function BG_Intro(){
 		subscribe("intro-to-game-2", function(){
 			frameTicker = 600/30;
 			GAME_TRANSITION = 2; // START PARALLAXING
+
+			// WHOOSH
+			sfx("whoosh");
+			
+			// Music
+			music("hum", {fade:2, volume:0.6});
+
 		})
 	);
 
@@ -181,21 +210,21 @@ function BG_Intro(){
 
 	var HONG_FRAMES = [
 		"0-0",
-		"1-59",
-		"2-79",
-		"3-99",
-		"4-119",
-		"5-139",
-		"6-199",
-		"7-234",
+		"1-59-grass_step1-0.1",
+		"2-79-grass_step2-0.2",
+		"3-99-grass_step1-0.25",
+		"4-119-grass_step2-0.3",
+		"5-139-grass_step1-0.35",
+		"6-199-bag_short",
+		"7-234-bag_search",
 		"8-244",
 		"9-254",
 		"8-264",
 		"9-274",
-		"10-299",
-		"11-336",
+		"10-299-bag_short",
+		"11-336-bag_kick",
 		"12-346",
-		"13-381",
+		"13-381-sandwich",
 		"14-400",
 		"15-410",
 		"14-420",
@@ -217,17 +246,25 @@ function BG_Intro(){
 	];
 	HONG_FRAMES = HONG_FRAMES.map(function(frame){
 		var f = frame.split("-");
-		return [parseInt(f[0]), parseInt(f[1])/30];
+		var frame = parseInt(f[0]);
+		var ticker = parseInt(f[1])/30;
+		var sfx = f[2] ? f[2] : null;
+		var sfxVolume = f[3] ? f[3] : 1;
+		return [frame, ticker, sfx, sfxVolume];
 	});
-	var findFrameOnTicker = function(ticker){
-		var lastFrame;
+	var findOnTicker = function(ticker){
+		var lastConfig;
 		for(var i=0; i<HONG_FRAMES.length; i++){
 			var f = HONG_FRAMES[i];
 			if(f[1]<=ticker){
-				lastFrame = f[0];
+				lastConfig = f;
 			}
 		}
-		return lastFrame;
+		return {
+			frame: lastConfig[0],
+			sfx: lastConfig[2],
+			sfxVolume: lastConfig[3]
+		};
 	};
 
 	//////////////////////////////////////////////////////////////////////////////

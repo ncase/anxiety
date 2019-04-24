@@ -4,17 +4,15 @@
 
 # intro-play-button
 
-[Play!](#intro-start)
-
-[GAHHHH!](#meow)
-
-[GAHHHHHHH!](#meow)
+[Play!](#intro-start) `publish("intro-to-game-1")`
 
 # intro-start
 
-`publish("intro-to-game-1")`
+(...300)
 
-n: THIS IS A HUMAN
+`clearText()`
+
+m: THIS IS A HUMAN
 
 (...600)
 

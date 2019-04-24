@@ -1,3 +1,7 @@
+Loader.addSounds([
+	{ id:"music_battle", src:"sounds/music/battle.mp3" }
+]);
+
 SceneSetup.act1 = function(){
 
 	Game.resetScene();
@@ -18,10 +22,12 @@ SceneSetup.act1 = function(){
 SceneSetup.act1_outro = function(){
 
 	HP.hide();
-	clearText();
-	music(false);
-	
+	clearText();	
 	Game.resetScene();
+
+	// WHOOSH
+	sfx("whoosh");
+	music('campus', {volume:0.5, fade:2});
 
 	// Background
 	var bg = new BG_Act1_Outro();
