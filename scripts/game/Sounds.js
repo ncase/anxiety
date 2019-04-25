@@ -35,7 +35,7 @@ window.music = function(song, options){
 		if(window.CURRENT_MUSIC) window.CURRENT_MUSIC.stop();
 	}else{
 		var currentVolume = window.CURRENT_MUSIC.volume();
-		window.CURRENT_MUSIC.fade(currentVolume, 0, options.fade);
+		window.CURRENT_MUSIC.fade(currentVolume, 0, options.fade*1000);
 	}
 
 	// Play new song (if any)

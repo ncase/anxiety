@@ -11,7 +11,8 @@ Ball Bounce: https://freesound.org/people/13GPanska_Lakota_Jan/sounds/378355/
 Faucet: https://freesound.org/people/calivintage/sounds/95709/
 Pop: https://freesound.org/people/onikage22/sounds/240566/
 Angry Scream: https://freesound.org/people/cdrk/sounds/21324/
-Explosion: https://freesound.org/people/Link-Boy/sounds/156615/
+Dirty Explosion: https://freesound.org/people/Link-Boy/sounds/156615/
+Clothes Rustle: https://freesound.org/people/leonelmail/sounds/427866/
 
 Various Assets from Kenney's packs:
 Beebee's & Hong's voice from: https://kenney.nl/assets/digital-audio

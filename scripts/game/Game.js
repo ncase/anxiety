@@ -245,8 +245,10 @@ window.clearText = Game.clearText;
 // Execute text! Just add it to text DOM.
 Game.TEXT_SPEED = 60; // 70;
 Game.OVERRIDE_TEXT_SPEED = 1;
+Game.FORCE_TEXT_DURATION = -1;
 Game.WHO_IS_SPEAKING = null; // "h", "b", "n" etc...
 Game.CURRENT_SPEAKING_SPEED = 1;
+Game.FORCE_NO_VOICE = false;
 Game.executeText = function(line){
 
 	return new RSVP.Promise(function(resolve){
@@ -291,6 +293,9 @@ Game.executeText = function(line){
 		// Add the text
 		var interval = 0;
 		var SPEED = Math.round(Game.TEXT_SPEED / Game.OVERRIDE_TEXT_SPEED);
+		if(Game.FORCE_TEXT_DURATION>0){
+			SPEED = Math.round(Game.FORCE_TEXT_DURATION/dialogue.length);
+		}
 		if(speaker!="n" && speaker!="m"){
 
 			// Put in the text, each character a DIFFERENT SPAN...
@@ -323,25 +328,27 @@ Game.executeText = function(line){
 				if(i==dialogue.length-1 && chr=="-") break;
 
 				// for scopin'
-				(function(index, interval, speaker){
+				(function(index, interval, speaker, forceNoSound){
 					Game.setTimeout(function(){
 
 						// Show it
 						div.children[index].style.opacity = 1;
 
 						// And SOUND?
-						var chr = div.children[index].innerHTML;
-						if(chr!=" "){
-							if(speaker=="h"){
-								voice("hong", {volume:0.3});
-							}
-							if(speaker=="b"){
-								voice("beebee", {volume:0.3});
+						if(!forceNoSound){
+							var chr = div.children[index].innerHTML;
+							if(chr!=" "){
+								if(speaker=="h"){
+									voice("hong", {volume:0.3});
+								}
+								if(speaker=="b"){
+									voice("beebee", {volume:0.5});
+								}
 							}
 						}
 
 					}, interval);
-				})(i, interval, speaker);
+				})(i, interval, speaker, Game.FORCE_NO_VOICE);
 
 				// Bigger interval
 				if(i!=dialogue.length-1){ // NOT last
@@ -464,6 +471,8 @@ Game.executeText = function(line){
 
 		// Return overrides to default
 		Game.OVERRIDE_TEXT_SPEED = 1;
+		Game.FORCE_TEXT_DURATION = -1;
+		Game.FORCE_NO_VOICE = false;
 
 		// Return promise
 		var nextLineDelay = Game.TEXT_SPEED*7; // don't override this
@@ -476,6 +485,13 @@ Game.executeText = function(line){
 	});
 
 }
+
+// CHOICE UI SOUNDS
+Loader.addSounds([
+	{ id:"ui_show_choice", src:"sounds/ui/show_choice.mp3" },
+	{ id:"ui_click", src:"sounds/ui/click.mp3" },
+	{ id:"ui_hover", src:"sounds/ui/hover.mp3" }
+]);
 
 // Execute choice! Add it to choice DOM.
 Game.OVERRIDE_CHOICE_LINE = false;
@@ -513,9 +529,15 @@ Game.executeChoice = function(line){
 		}
 		Game.OVERRIDE_CHOICE_LINE = false;
 
+		// Play sound
+		sfx("ui_click");
+
 		// Goto that choice, now!
 		Game.goto(choiceID);
 
+	};
+	div.onmouseover = function(){
+		sfx("ui_hover");
 	};
 
 	// Add choice, animated!
@@ -523,6 +545,7 @@ Game.executeChoice = function(line){
 	Game.choicesDOM.appendChild(div);
 	setTimeout(function(){
 		div.style.top = "0px";
+		sfx("ui_show_choice", {volume:0.4});
 	},0);
 
 	// If it's too big, shrink font size

@@ -1,5 +1,6 @@
 Loader.addSounds([
-	{ id:"music_battle", src:"sounds/music/battle.mp3" }
+	{ id:"music_battle", src:"sounds/music/battle.mp3" },
+	{ id:"music_pokemon", src:"sounds/music/pokemon.mp3" }
 ]);
 
 SceneSetup.act1 = function(){
@@ -27,7 +28,7 @@ SceneSetup.act1_outro = function(){
 
 	// WHOOSH
 	sfx("whoosh");
-	music('campus', {volume:0.5, fade:2});
+	music('campus', {volume:0.5, fade:1});
 
 	// Background
 	var bg = new BG_Act1_Outro();

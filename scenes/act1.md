@@ -24,7 +24,7 @@ n: QUICK, WARN THEM!
 
 [You're eating alone for lunch! Again!](#act1a_alone)
 
-[You're not studying while eating!](#act1a_study)
+[You're not productive while eating!](#act1a_study)
 
 [That white bread's bad for you!](#act1a_bread)
 
@@ -71,24 +71,26 @@ n: YOU USED *FEAR OF BEING UNLOVED*
 
 # act1a_study
 
+b: You should multi-task and study during meals!
+
 `hong({eyes:"0_annoyed"})`
 
-h: I'd rather not get crumbs on my textbo--
+h: Um, I'd rather not get crumbs on my textbook.
 
 ```
 bb({mouth:"normal", eyes:"fear"});
-Game.OVERRIDE_TEXT_SPEED = 2.0;
+Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: If you don't study you'll be expelled from college and you'll waste your parents' money and then they'll say
+b: If you don't study you'll be expelled from college and your parents will say
 
 `bb({mouth:"small", eyes:"narrow"})`
 
-b: “you have brought dishonor to our family, now we'll all have to commit seppuku”
+b: “you have brought dishonor to our family, now we have to all commit seppuku”
 
 ```
 bb({body:"fear", mouth:"normal", eyes:"fear"});
-Game.OVERRIDE_TEXT_SPEED = 2.0;
+Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
 b: and then you'll-
@@ -120,10 +122,10 @@ h: Have those studies been replicat--
 
 ```
 bb({body:"fear", mouth:"normal", eyes:"fear"});
-Game.OVERRIDE_TEXT_SPEED = 2.0;
+Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: Processed wheat will spike your blood sugar and ruin your organs so they'll have to amputate all your limbs and then you'll-
+b: Processed wheat will spike your blood sugar so they'll have to amputate all your limbs and then you'll-
 
 `bb({body:"panic"})`
 
@@ -164,22 +166,29 @@ n: FEAR OF *BEING UNLOVED* #alone#
 
 n: AND FEAR OF *BEING A BAD PERSON* #bad#
 
-n: (PRO TIP: TRY PLAYING THE CHOICES THAT MOST HIT YOUR DEEPEST DARKEST FEARS!)
+n: (PRO TIP: TRY PLAYING THE CHOICES THAT PERSONALLY HIT YOUR DEEPEST, DARKEST FEARS!)
 
 h: ...
 
 ```
 hong({body:"putaway"});
-Game.OVERRIDE_TEXT_SPEED = 2.0;
+sfx("rustle");
 ```
+
+(...1000)
+
+`Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
 h: you know what maybe it's time to check my phone.
 
-`hong({body:"phone1", mouth:"neutral", eyes:"neutral"})`
+```
+sfx("rustle2");
+hong({body:"phone1", mouth:"neutral", eyes:"neutral"})
+```
 
 n: PROTECT YOUR HUMAN
 
-n: FROM THE WORLD. FROM OTHER PEOPLE. FROM THEMSELF.
+n: FROM THE WORLD. FROM OTHER PEOPLE. FROM THEMSELVES.
 
 n: GOOD LUCK
 
@@ -207,7 +216,7 @@ b: Doesn't that weirdo throw a party *every* weekend?
 
 `bb({eyes:"uncertain_right"});`
 
-b: Must be some kind of underlying neurosis there.
+b: Must be some underlying neurosis there.
 
 `hong({eyes:"surprise"});`
 
@@ -234,10 +243,12 @@ b: Fifteen cigarettes a day, human. Fifteen.
 {{/if}}
 
 {{if !_.fifteencigs}}
-b: And then no one will show up at your funeral then they'll just dump your ashes into the ocean and you become whale poop.
+b: Then no one will show up at your funeral, they'll dump your ashes into the ocean, and you become WHALE POOP.
 {{/if}}
 
 {{if !_.fifteencigs}} `_.whalepoop = true` {{/if}}
+
+(...500)
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -348,7 +359,7 @@ b: So if you go you'll make them feel bad, but if you reject their invite you'll
 
 `bb({body:"fear", eyes:"fear"});`
 
-`Game.OVERRIDE_TEXT_SPEED = 2.0;`
+`Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
 b: ALL YOU DO IS MAKE PEOPLE FEEL BAD, SO YOU SHOULD FEEL BAD
 
@@ -393,7 +404,10 @@ h: What's new on Twitter?
 
 # act1d_news
 
-`bb({eyes:"pained1"});`
+```
+bb({eyes:"pained1"});
+music(null, {fade:2});
+```
 
 b: God, it feels like the world's burning, isn't it?
 
@@ -425,6 +439,7 @@ attack("10p", "harm");
 `_.badnews=true`
 
 ```
+music('battle', {volume:0.5});
 hong({mouth:"anger", eyes:"anger"});
 bb({body:"normal", mouth:"normal", eyes:"uncertain"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
@@ -500,12 +515,12 @@ h: o-KAY, gonna try Snapchat.
 
 `hong({mouth:"smile", eyes:"neutral"});`
 
-h: Heh ya that's cute I'll retweet th--
+h: Heh ya that's cute, just retweeted it, I thi--
 
 ```
 hong({mouth:"shock", eyes:"shock"});
 bb({body:"scream_anger"});
-Game.OVERRIDE_TEXT_SPEED = 2.0;
+Game.OVERRIDE_TEXT_SPEED = 1.8;
 ```
 
 b: CATS CAN'T DIGEST MILK AND YOU'RE A TERRIBLE PERSON FOR ENJOYING ANIMAL ABUSE
@@ -618,12 +633,12 @@ hong({eyes:"sad", mouth:"sad"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: In 2003 a Rhode Island nightclub had a fire and the panic made people jam the exits so 100 people were crushed or burned to death-
+b: In 2003 a Rhode Island nightclub had a fire and the panic made people jam the exits so 100 people burned to death-
 
 ```
 bb({body:"normal", mouth:"normal", eyes:"fear"});
 hong({mouth:"shock"});
-Game.OVERRIDE_TEXT_SPEED = 2.0;
+Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
 b: DO YOU WANT THAT TO HAPPEN TO YOU-
@@ -707,10 +722,10 @@ h: Shut up shut up I'll keep it as no!
 
 ```
 bb({body:"fear", eyes:"fear", mouth:"normal"});
-Game.OVERRIDE_TEXT_SPEED = 2.0;
+Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: Chronic loneliness can increase your cortisol and increase your risk of cardiovascular disease and stroke!
+b: Chronic loneliness increases your cortisol as well as risk for cardiovascular disease and stroke!
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -747,7 +762,7 @@ bb({body:"fear", eyes:"fear", mouth:"normal"});
 Game.OVERRIDE_TEXT_SPEED = 1.7;
 ```
 
-b: Just say *one* thing out of line and all your so-called friends will drag you through the street and laugh at your shredded corpse!
+b: Say *one* thing wrong and all your so-called friends will drag you through the street for internet points!
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -813,7 +828,13 @@ bb({body:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: Do you want your freak skeleton to end up in the Warren Anatomical Museum?!
+b: Do you want your freak skeleton to end up in a medical textbook?!
+
+`bb({eyes:"narrow"});`
+
+{{if _.seppuku}}
+b: Though apparently you don't *read* textbooks anyway, you terrible slacker.
+{{/if}}
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -901,20 +922,28 @@ bb({body:"normal", mouth:"normal", eyes:"normal"});
 
 h: Whatever. New Tinder notification.
 
+`bb({eyes:"uncertain"})`
+
+b: What, that hookup app?
+
+`hong({eyes:"annoyed"})`
+
+h: It's not a hookup app, it's just a way to meet new peopl--
+
+`bb({eyes:"narrow"})`
+
+b: It's a hookup app.
+
 `hong({eyes:"surprise", mouth:"smile"})`
 
-h: Oh I got a match! They look cute!
-
-`bb({eyes:"normal_right"})`
-
-b: Is that so, human whom I should clarify is 18+?
+h: Oh, I got a match! They look cute!
 
 ```
-bb({eyes:"normal"});
+bb({eyes:"narrow_eyebrow"});
 hong({eyes:"sad", mouth:"anger"})
 ```
 
-h: Please, please don't ruin this for m--
+h: Please don't ruin this for m--
 
 ```
 bb({body:"panic"});
@@ -969,29 +998,64 @@ attack("30p", "alone");
 
 b: You think other people's genitals are Pokémon for you to collect?
 
-`bb({body:"sing", eyes:"pretty", mouth:"normal"})`
+```
+bb({body:"sing", eyes:"pretty", mouth:"shut"});
+music("pokemon");
+Game.clearText();
+```
 
-b: ♫ [pokemon theme song]
+```
+Game.FORCE_TEXT_DURATION = 1000;
+Game.FORCE_NO_VOICE = true;
+```
 
-b: ♫ I wanna be the slutti-est
+b: ♫ (pokemon theme song)-
 
-`bb({eyes:"narrow", mouth:"small"})`
+(...5600)
 
-b: ♫ Like no one ever was
+```
+bb({mouth:"normal"});
+Game.FORCE_TEXT_DURATION = 2400;
+```
 
-`bb({eyes:"pretty"})`
+b: ♫ I wanna be, the slutti-est-
 
-b: ♫ Thighs n' ass, voluptuous breast
+(...500)
 
-`bb({eyes:"fear", mouth:"normal"})`
+```
+bb({eyes:"narrow", mouth:"small"});
+Game.FORCE_TEXT_DURATION = 2100;
+```
 
-b: ♫ with sweaty dick and balls!
+b: ♫ Like no one ever was-
+
+(...1500)
+
+```
+bb({eyes:"pretty"});
+Game.FORCE_TEXT_DURATION = 2300;
+```
+
+b: ♫ Thighs n' ass, voluptuous breast-
+
+(...500)
+
+```
+bb({eyes:"fear", mouth:"normal"});
+Game.FORCE_TEXT_DURATION = 2000;
+```
+
+b: ♫ with sweaty dick and balls!-
+
+(...1000)
 
 `bb({eyes:"smile", mouth:"smile"})`
 
-b: ♫ PERVY-MON, GOTTA CA--
+b: ♫ PERVY-MON, GOTTA CA-
 
 ```
+Game.clearText();
+music(false);
 bb({body:"normal", mouth:"normal", eyes:"normal"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
@@ -1014,11 +1078,11 @@ attack("30p", "bad");
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
 {{if _.whitebread}}
-b: They'll trap you in a well and force-feed you white bread to fatten you up so they can wear your skin like a swimsuit!
+b: They'll trap you in a well and force-feed you white bread to fatten you up so they can wear your skin like a suit!
 {{/if}}
 
 {{if _.seppuku}}
-b: They'll bludgeon you with a textbook then slice your abdomen open and say "this is what you get for not studying, SEPUKKU'D"
+b: They'll bludgeon you with a textbook and slice your belly open and say "this is what you get for not studying, SEPUKKU'D"
 {{/if}}
 
 {{if !_.whitebread && !_.seppuku}}
@@ -1082,11 +1146,11 @@ b: Hey... human...
 
 b: It'll be okay.
 
-(...300)
+(...600)
 
 `bb({body:"point_heart", eyes:"look_sad_smile", mouth:"smile"});`
 
-b: As long as you've got me to protect you, you'll never be in danger.
+b: As your loyal protector, I'll always keep an eye out for danger, and do my best to keep you safe.
 
 `bb({body:"normal", eyes:"look_sad", mouth:"smile"});`
 
@@ -1099,7 +1163,7 @@ bb({body:"normal", eyes:"normal", mouth:"normal"});
 hong({body:"phone1", eyes:"neutral", mouth:"neutral"});
 ```
 
-h: Last one. Instagram. What you got?
+h: Last app. Instagram. What you got?
 
 `hong({eyes:"sad"});`
 
@@ -1107,15 +1171,15 @@ h: It's... more party pictures.
 
 `hong({mouth:"sad"});`
 
-h: Everyone looks so happy.
+h: Everyone looks so happy. Free from worry. Free from anxiety.
 
 `hong({mouth:"anger"});`
 
-h: Everyone looks *fine*.
+h: God, why can't I be like them? Why can't I just be *normal?*
 
 `bb({eyes:"normal_right"});`
 
-b: Speaking of which, about this weekend's party invite. Here's my FINAL decision:
+b: Speaking of parties, about this weekend's invite. Here's my FINAL decision:
 
 `bb({eyes:"normal"});`
 
@@ -1172,19 +1236,28 @@ h: NOT because you want me to, but because *I* want to.
 h: Precisely BECAUSE you don't want me to.
 {{/if}}
 
-`hong({body:"putaway"});`
+```
+hong({body:"putaway"});
+sfx("rustle");
+```
 
 h: You're NOT in control of me.
 
-`hong({body:"0_sammich", eyes:"0_annoyed", mouth:"0_neutral"});`
+```
+sfx("rustle2");
+hong({body:"0_sammich", eyes:"0_annoyed", mouth:"0_neutral"});
+```
 
 h: Now excuse me while I eat this delicious sandwich in goddamn peace.
 
-`hong({body:"2_sammich_eat"})`
+`hong({body:"2_sammich_eat"});`
 
 (...600)
 
-`hong({body:"2_sammich_eaten", eyes:"0_lookaway", mouth:"0_chew1"})`
+```
+sfx("sandwich");
+hong({body:"2_sammich_eaten", eyes:"0_lookaway", mouth:"0_chew1"})
+```
 
 (...600)
 
@@ -1196,14 +1269,14 @@ Game.OVERRIDE_TEXT_SPEED = 0.5;
 b: ...
 
 ```
-bb({eyes:"uncertain_right"});
+bb({eyes:"normal_right"});
 Game.OVERRIDE_TEXT_SPEED = 1;
 ```
 
 b: ...
 
 ```
-bb({eyes:"narrow"});
+bb({eyes:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 4;
 ```
 
@@ -1213,13 +1286,20 @@ b: ..................
 
 `bb({mouth:"normal"});`
 
-["Alone."](#act1h_loneliness)
+[AHHHHH WE'RE GONNA DIE](#act1h_death) `Game.OVERRIDE_CHOICE_LINE = true;`
 
-["Death."](#act1h_death)
+[AHHHHH EVERYONE HATES US](#act1h_loneliness) `Game.OVERRIDE_CHOICE_LINE = true;`
 
-["Bad person."](#act1h_worthless)
+[AHHHHH WE'RE HORRIBLE PEOPLE](#act1h_worthless) `Game.OVERRIDE_CHOICE_LINE = true;`
 
 # act1h_death
+
+```
+bb({body:"fear"});
+Game.OVERRIDE_TEXT_SPEED = 3;
+```
+
+b: AHHHHH WE'RE GONNA DIE AAAAAAHHHHHHH
 
 ```
 hong({body:"3_defeated1"});
@@ -1233,6 +1313,13 @@ attack("100p", "harm");
 # act1h_loneliness
 
 ```
+bb({body:"fear"});
+Game.OVERRIDE_TEXT_SPEED = 3;
+```
+
+b: AHHHHH EVERYONE HATES US AAAAAAHHHHHHH
+
+```
 hong({body:"3_defeated1"});
 attack("100p", "alone");
 ```
@@ -1242,6 +1329,13 @@ attack("100p", "alone");
 (#act1i)
 
 # act1h_worthless
+
+```
+bb({body:"fear"});
+Game.OVERRIDE_TEXT_SPEED = 3;
+```
+
+b: AHHHHH WE'RE HORRIBLE PEOPLE AAAAAAHHHHHHH
 
 ```
 hong({body:"3_defeated1"});
@@ -1255,11 +1349,13 @@ attack("100p", "bad");
 # act1i
 
 ```
-bb({mouth:"smile_lock", eyes:"smile"});
+bb({mouth:"smile_lock", eyes:"smile", body:"normal"});
 music('battle', {volume:0.5});
 ```
 
 n: CONGRATULATIONS
+
+(...500)
 
 n: YOU HAVE SUCCESSFULLY PROTECTED YOUR HUMAN
 
@@ -1277,9 +1373,9 @@ n: PICK YOUR ENDING MOVE
 
 n: *FINISH THEM*
 
-[&lt; FIGHT: Punish your phone! &gt;](#act1i_phone) `Game.OVERRIDE_CHOICE_LINE=true`
+[{FIGHT: Punish your stressful phone!}](#act1i_phone) `Game.OVERRIDE_CHOICE_LINE=true`
 
-[&lt; FLIGHT: Curl up in a ball and cry! &gt;](#act1i_cry) `Game.OVERRIDE_CHOICE_LINE=true`
+[{FLIGHT: Curl up in a ball and cry!}](#act1i_cry) `Game.OVERRIDE_CHOICE_LINE=true`
 
 # act1i_phone
 

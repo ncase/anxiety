@@ -8,7 +8,12 @@ Loader.addSounds([
 	{ id:"bounce1", src:"sounds/sfx/bounce1.mp3" },
 	{ id:"bounce2", src:"sounds/sfx/bounce2.mp3" },
 	{ id:"bounce3", src:"sounds/sfx/bounce3.mp3" },
-	{ id:"faucet", src:"sounds/sfx/faucet.mp3" }
+	{ id:"faucet", src:"sounds/sfx/faucet.mp3" },
+
+	{ id:"dirty_explosion", src:"sounds/sfx/dirty_explosion.mp3" },
+	{ id:"rustle", src:"sounds/sfx/rustle.mp3" },
+	{ id:"rustle2", src:"sounds/sfx/rustle2.mp3" },
+	{ id:"act1_scream", src:"sounds/sfx/act1_scream.mp3" }
 
 ]);
 
@@ -253,19 +258,19 @@ function BG_Act1_Outro(){
 		"2-3",
 		"3-5",
 		"4-7",
-		"30-90",
-		"31-120",
-		"32-135",
-		"33-137",
-		"34-139",
-		"35-142",
-		"36-145",
-		"37-170",
-		"38-185",
+		"30-90-act1_scream",
+		"31-150-rustle",
+		"32-165-dirty_explosion", // TODO? parallax shake?
+		"33-167",
+		"34-169",
+		"35-172",
+		"36-175",
+		"37-200",
+		"38-215",
 		//"37-200", // LOOP every 15
 	];
 	HONG_FRAMES_FIGHT = convertFrames(HONG_FRAMES_FIGHT);
-	addLoop(HONG_FRAMES_FIGHT, 37, 185+15, 2, 15); // add in the loop
+	addLoop(HONG_FRAMES_FIGHT, 37, 215+15, 2, 15); // add in the loop
 
 	var HONG_FRAMES_FLIGHT = [
 		"1-0",
@@ -318,15 +323,15 @@ function BG_Act1_Outro(){
 
 	var SMOKING_CRATER = [
 		"46-0", // BLANK
-		"39-135", // BAM
-		"40-137",
-		"41-142", 
-		"42-147",
-		"43-152",
-		"44-157"
+		"39-165", // BAM
+		"40-167",
+		"41-172", 
+		"42-177",
+		"43-182",
+		"44-187"
 	];
 	SMOKING_CRATER = convertFrames(SMOKING_CRATER);
-	addLoop(SMOKING_CRATER, 40, 157+5, 5, 5); // add in loop
+	addLoop(SMOKING_CRATER, 40, 187+5, 5, 5); // add in loop
 
 	//////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////
