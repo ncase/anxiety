@@ -226,13 +226,18 @@ Game.immediatePromise = function(){
 };
 
 // Move the text DOM to latest
+Game.FORCE_TEXT_Y = -1;
 Game.updateText = function(instant){
-	var wordsHeight = 80 + Game.wordsDOM.getBoundingClientRect().height;
-	var currentY = parseFloat(Game.wordsDOM.style.top) || 80;
-	var gotoY = (wordsHeight<250) ? 0 : wordsHeight-250;
-	gotoY = 80 - gotoY;
-	var nextY = instant ? gotoY : currentY*0.9 + gotoY*0.1;
-	Game.wordsDOM.style.top = nextY+"px";
+	if(Game.FORCE_TEXT_Y<0){
+		var wordsHeight = 80 + Game.wordsDOM.getBoundingClientRect().height;
+		var currentY = parseFloat(Game.wordsDOM.style.top) || 80;
+		var gotoY = (wordsHeight<250) ? 0 : wordsHeight-250;
+		gotoY = 80 - gotoY;
+		var nextY = instant ? gotoY : currentY*0.9 + gotoY*0.1;
+		Game.wordsDOM.style.top = nextY+"px";
+	}else{
+		Game.wordsDOM.style.top = Game.FORCE_TEXT_Y+"px";
+	}
 };
 
 // CLEAR TEXT

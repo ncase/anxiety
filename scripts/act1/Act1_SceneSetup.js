@@ -39,5 +39,11 @@ SceneSetup.act1_end = function(){
 
 	Game.resetScene();
 	music(null);
+	stopAllSounds();
+
+	// HACK
+	Game.FORCE_TEXT_Y = 52;
+	$("#game_container").style.background = "#000";
+	$("#game_choices").style.display = "none";
 
 };

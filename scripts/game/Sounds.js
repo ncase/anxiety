@@ -18,6 +18,12 @@ window.sfx = function(sound, options){
 
 };
 
+window.stopAllSounds = function(){
+	Object.keys(Library.sounds).forEach(function(name){
+		Library.sounds[name].stop();
+	});
+};
+
 window.voice = function(name, options){
 	options = options || {};
 	sfx("voice_"+name, options);
