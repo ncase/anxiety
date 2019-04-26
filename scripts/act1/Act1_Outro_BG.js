@@ -189,9 +189,9 @@ function BG_Act1_Outro(){
 		}
 		
 		// NEXT SCENE?
-		/*if(frame==26){
-			Game.goto("act1");
-		}*/
+		if(frameTicker>=270/30){
+			Game.goto("act1_end");
+		}
 
 	};
 
@@ -338,6 +338,7 @@ function BG_Act1_Outro(){
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Kill!
+	_subscriptions = [];
 	self.kill = function(){
 		_subscriptions.forEach(unsubscribe);
 	};

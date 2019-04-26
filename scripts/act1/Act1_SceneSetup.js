@@ -35,3 +35,9 @@ SceneSetup.act1_outro = function(){
 	Game.scene.children.push(bg);
 
 };
+SceneSetup.act1_end = function(){
+
+	Game.resetScene();
+	music(null);
+
+};

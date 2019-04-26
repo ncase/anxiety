@@ -1,7 +1,8 @@
 // Load assets
 Loader.addScenes([
 	"scenes/intro.md",
-	"scenes/act1.md"
+	"scenes/act1.md",
+	"scenes/act1-end.md"
 ]);
 Loader.load().then(function(){
 
@@ -28,10 +29,10 @@ subscribe("START_GAME", function(){
 	$("#loading").style.display = "none";
 	Game.start();
 
-	/*SceneSetup.act1();
+	SceneSetup.act1();
 	music('battle', {volume:0.5});
 	hong({body:"phone1"});
-	Game.goto("act1g");*/
-	Game.goto("intro");
+	Game.goto("act1i");
+	//Game.goto("intro");
 
 });
