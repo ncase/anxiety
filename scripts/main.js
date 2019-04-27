@@ -6,6 +6,9 @@ Loader.addScenes([
 ]);
 Loader.load().then(function(){
 
+	$("#loading_progress").style.display = "none";
+	$("#loading_done").style.display = "block";
+
 	Game.init();
 	/*Game.start();
 
