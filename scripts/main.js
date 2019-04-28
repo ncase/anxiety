@@ -32,11 +32,11 @@ subscribe("START_GAME", function(){
 	$("#loading").style.display = "none";
 	Game.start();
 
-	/*SceneSetup.act1();
+	SceneSetup.act1();
 	music('battle', {volume:0.5});
 	hong({body:"phone1"});
-	Game.goto("act1i");*/
+	Game.goto("act1h");
 	
-	Game.goto("intro");
+	//Game.goto("intro");
 
 });

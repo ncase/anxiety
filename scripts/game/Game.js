@@ -103,6 +103,9 @@ Game.update = function(){
 
 	}
 
+	// Options update
+	Options.update();
+
 };
 
 // PAUSING THE GAME
@@ -482,6 +485,9 @@ Game.executeText = function(line){
 		// Return promise
 		var nextLineDelay = Game.TEXT_SPEED*7; // don't override this
 		if(dialogue.slice(-1)=="-") nextLineDelay=0; // sudden interrupt!
+		if(Game.TEXT_SPEED<10){ // IF IT'S CLICK-TO-ADVANCE, INFINITE TIMEOUT.
+			nextLineDelay = 1000*1000; // one thousand seconds
+		}
 		Game.setTimeout(function(){
 			Game.WHO_IS_SPEAKING = null; // DONE WITH IT.
 			resolve();
@@ -596,6 +602,11 @@ Game.executeWait = function(line){
 	
 	// Get integer from (...NN)
 	var waitTime = parseInt(line.match(/^\(\.\.\.(\d+)\)/)[1].trim());
+
+	// Unless it's click to advance, then IGNORE ALL WAITS
+	if(Game.TEXT_SPEED<10){
+		waitTime = 0; // TODO: Tag anim-waits, do not ignore.
+	}
 	
 	// Delayed promise
 	return new RSVP.Promise(function(resolve){
@@ -642,12 +653,12 @@ Game.parseLine = function(line){
 
 	// Get the IFs, if any
 	var lookForIfs = true;
+	var regex = /\{\{if[^\/]*\/if\}\}/ig;
 	while(lookForIfs){
 
 		lookForIfs = false;
 
 		// Look for an IF!
-		var regex = /\{\{if[^\/]*\/if\}\}/ig;
 		var regexResult = regex.exec(line);
 		if(regexResult){
 
@@ -676,6 +687,43 @@ Game.parseLine = function(line){
 
 			// Keep searching...
 			lookForIfs = true;
+
+		}
+		
+	}
+
+	// Evaluate {{expressions}}, if any
+	var lookForExpressions = true;
+	var regex = /\{\{[^\}]*\}\}/ig;
+	while(lookForExpressions){
+
+		lookForExpressions = false;
+
+		// Look for an IF!
+		var regexResult = regex.exec(line);
+		if(regexResult){
+
+			// The result...
+			var fullExpression = regexResult[0];
+			var startsAtIndex = regexResult.index;
+			var endsAtIndex = startsAtIndex + fullExpression.length;
+
+			// Extract the expression
+			var expression = fullExpression.match(/\{\{([^\}]*)\}\}/)[1];
+
+			// Eval condition!
+			var evaluated = "";
+			try{
+				evaluated = eval(expression);
+			}catch(e){
+				console.log(e);
+			}
+
+			// Edit the line
+			line = line.slice(0,startsAtIndex) + evaluated + line.slice(endsAtIndex);
+
+			// Keep searching...
+			lookForExpressions = true;
 
 		}
 		

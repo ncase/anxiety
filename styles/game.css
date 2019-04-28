@@ -119,6 +119,90 @@ body{
     margin: 5px auto 15px auto;
 }
 
+#options{
+	position: absolute;
+    bottom: 0px;
+}
+#text_speed_preview{
+	color:#fff;
+}
+
+/*
+Slider CSS by Noah Blon
+https://codepen.io/noahblon/pen/OyajvN
+*/
+input[type="range"]{ 
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    /*height: 40px;
+    width: 200px;*/
+    cursor: pointer;
+    border-radius: 0; /* iOS */
+
+	width: 300px;
+    height: 30px;
+}
+::-webkit-slider-runnable-track{
+    background: #ddd;
+}
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 30px; /* 1 */
+    height: 30px;
+    background: #fff;
+    box-shadow: -100vw 0 0 100vw #ff4040;
+    border: 2px solid #999; /* 1 */
+}
+::-moz-range-track {
+    height: 30px;
+    background: #ddd;
+}
+::-moz-range-thumb {
+    background: #fff;
+    height: 30px;
+    width: 30px;
+    border: 3px solid #999;
+    border-radius: 0 !important;
+    box-shadow: -100vw 0 0 100vw #ff4040;
+    box-sizing: border-box;
+}
+::-ms-fill-lower { 
+    background: #ff4040;
+}
+::-ms-thumb { 
+    background: #fff;
+    border: 2px solid #999;
+    height: 30px;
+    width: 30px;
+    box-sizing: border-box;
+}
+::-ms-ticks-after { 
+    display: none; 
+}
+::-ms-ticks-before { 
+    display: none; 
+}
+::-ms-track { 
+    background: #ddd;
+    color: transparent;
+    height: 30px;
+    border: none;
+}
+::-ms-tooltip { 
+    display: none;
+}
+
+
+
+/***************************************************
+
+DIALOGUEZ
+
+***************************************************/
+
+
 .clear-both{
 	clear:both;
 }

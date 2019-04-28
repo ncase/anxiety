@@ -75,7 +75,7 @@ b: You should multi-task and study during meals!
 
 `hong({eyes:"0_annoyed"})`
 
-h: Um, I'd rather not get crumbs on my textbook.
+h: Um, I'd rather not get crumbs on my textboo--
 
 ```
 bb({mouth:"normal", eyes:"fear"});
