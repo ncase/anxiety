@@ -123,10 +123,10 @@ function BG_Intro(){
 		frameTicker += 1/60;
 		if(GAME_TRANSITION==0 || GAME_TRANSITION==1 || GAME_TRANSITION==2){ 
 			if(frameTicker>590/30){
-				if(GAME_TRANSITION==0 || GAME_TRANSITION==1){
+				if(GAME_TRANSITION==0){
 					frameTicker = 381/30; // LOOP to NOM.
 				}
-				if(GAME_TRANSITION==2){
+				if(GAME_TRANSITION==1 || GAME_TRANSITION==2){ // actually ew nah stop it
 					frameTicker = 590/30; // STOP.
 				}
 			}

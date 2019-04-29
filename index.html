@@ -16,7 +16,7 @@
 	<div id="game_choices"></div>
 
 	<!-- Bottom Corner Tabs -->
-	<div id="gear" style="display:none">
+	<div id="gear" style="display:none" onclick="publish('show_options')">
 		<div class="icon">⚙</div>
 	</div>
 	<div id="about" style="display:none">
@@ -31,27 +31,70 @@
 		</div>
 	</div>
 
+	<!-- LOADING -->
+	<div id="loading">
+		<div id="loading_progress">loading...</div>
+		<div id="loading_done" style="display:none">play!</div>
+	</div>
+
 	<!-- ABOUT / END DEMO -->
-	<div id="end_demo" style="display:none">
+	<div id="end_demo">
 		<div id="end_demo_tbc"></div>
 		<div id="end_demo_words">
 			Augh games take so long to make!
 			This one will be done summer 2019, and released for <i>free</i>.
 			Get notified via my (once-a-month) newsletter!
 			<div>
-				
+				<form id="the_newsletter" method="POST" accept-charset="utf-8" target="_blank">
+					<input type="text" name="name" id="name" style="display:none"/>
+					<input type="email" name="email" id="email" placeholder="your@email.com" required/>
+					<div id="email_info">
+						<input type="checkbox" name="gdpr" id="gdpr"/>
+						<div id="consent">
+							I consent to 1 ✉️ a month, that's it
+						</div>
+						<input type="submit" name="submit" id="submit" disabled/>
+					</div>
+
+					<!-- Hidden -->
+					<input type="hidden" name="list" value="57rMxgfbvr08aemz763COHwg"/>
+					<input type="hidden" name="subform" value="yes"/>
+
+					<!-- Hey bots, fill this one up. -->
+					<div style="display:none;">
+						<label for="hp">HP</label><br/>
+						<input type="text" name="hp" id="hp"/>
+					</div>
+
+				</form>	
 			</div>
-			You can also help me make more 
-			free games by throwing cash at me:
-			<div id="patreon"></div>
-			Or even a share on one of those
-			anxiety-producing apps would help:
+
+			<div>
+				Help me keep making free games?
+			</div>
+			<a href="https://www.patreon.com/ncase" target="_blank" class="no_deco">
+				<div id="patreon"></div>
+			</a>
+			
+			<div>
+				A share on an anxiety-app helps too!
+			</div>
+			<!-- TODO: Better share text -->
 			<div id="share">
-				<div id="share_fb"></div>
-				<div id="share_tw"></div>
-				<div id="share_em"></div>
+				<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fncase.me%2Fanxiety-demo&quote=Adventures%20with%20Anxiety%20(DEMO)" target="_blank" class="no_deco">
+					<div id="share_fb"></div>
+				</a>
+				<a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fncase.me%2Fanxiety-demo&text=Adventures%20with%20Anxiety%20(DEMO):%20https%3A%2F%2Fncase.me%2Fanxiety-demo" target="_blank" class="no_deco">
+					<div id="share_tw"></div>
+				</a>
+				<a href="mailto:?subject=Adventures%20with%20Anxiety%20(DEMO)&body=:%20https%3A%2F%2Fncase.me%2Fanxiety-demo" target="_blank" class="no_deco">
+					<div id="share_em"></div>
+				</a>
 			</div>
-			Thank you so much for playing! &lt;3
+			
+			<div style="clear:both"></div>
+
+			Above all, thank you for playing! &lt;3
 			<br>
 			<a href="https://ncase.me/" target="_blank">
 				my other games
@@ -60,7 +103,9 @@
 			<a href="https://twitter.com/ncasenmare" target="_blank">
 				my twitter
 			</a>
-			<div></div>
+
+			<div id="replay"></div>
+
 		</div>
 	</div>
 
@@ -68,13 +113,11 @@
 	<div id="options">
 		<div id="text_speed_preview"></div>
 		<input id="text_speed_slider" type="range" min=0 value=2 max=4 step=1/>
+		<span id="volume_options" style="display:none">
+			<div>Volume:</div>
+			<input id="volume_slider" type="range" min=0 max=1 value=1 step="0.01"/>
+		</span>
 		<div id="options_ok">ok 👌</div>
-	</div>
-
-	<!-- LOADING -->
-	<div id="loading" onclick="publish('START_GAME')">
-		<div id="loading_progress">loading...</div>
-		<div id="loading_done" style="display:none">play!</div>
 	</div>
 
 </div>
@@ -96,6 +139,7 @@
 <script src="scripts/game/Character.js"></script>
 <script src="scripts/game/Sounds.js"></script>
 <script src="scripts/game/Options.js"></script>
+<script src="scripts/game/About.js"></script>
 
 <script src="scripts/intro/Intro_SceneSetup.js"></script>
 <script src="scripts/intro/Intro_BG.js"></script>

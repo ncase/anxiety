@@ -12,7 +12,7 @@
 
 `clearText()`
 
-n3: Note: this is less of a "game", more of an interactive story. Hope you like reading, sucka!
+n3: Welcome! This is less of a "game", more of an interactive story. Hope you like reading, sucka
 
 n3: So before we start, please choose your reading speed:
 
@@ -29,7 +29,7 @@ n3: About as relaxing as a game about anxiety's gonna get.
 {{/if}}
 
 {{if Game.TEXT_SPEED==60}}
-n3: Great! Defaults are everyone's favorite non-choice choice.
+n3: Great! Default, the best non-choice choice.
 {{/if}}
 
 {{if Game.TEXT_SPEED==40}}

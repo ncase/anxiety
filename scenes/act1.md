@@ -26,11 +26,11 @@ n: QUICK, WARN THEM!
 
 `Game.OVERRIDE_TEXT_SPEED = 1.25;`
 
-n4: (LET _YOUR_ WOLF COME OUT TO PLAY! PICK WHAT _YOUR_ ANXIETY WOULD BE MOST LIKELY TO SAY)
+n4: (LET _YOUR_ WOLF COME OUT TO PLAY. PICK WHAT _YOUR_ ANXIETY WOULD BE MOST LIKELY TO SAY TO YOU)
 
 [You're eating alone for lunch! Again!](#act1a_alone)
 
-[You're not productive while eating!](#act1a_study)
+[You're not productive while eating!](#act1a_productive)
 
 [That white bread's bad for you!](#act1a_bread)
 
@@ -75,20 +75,20 @@ n: YOU USED *FEAR OF BEING UNLOVED*
 
 (#act1b)
 
-# act1a_study
+# act1a_productive
 
-b: You should multi-task and study during meals!
+b: Whip out your laptop and do some work right now!
 
 `hong({eyes:"0_annoyed"})`
 
-h: Um, I'd rather not get crumbs on my textboo--
+h: Um, I'd rather not get crumbs in my keyboa--
 
 ```
 bb({mouth:"normal", eyes:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: If you don't study you'll be expelled from college and your parents will say
+b: If you're not productive you'll become a penniless parasite and your parents will say
 
 `bb({mouth:"small", eyes:"narrow"})`
 
@@ -196,7 +196,7 @@ hong({body:"phone1", mouth:"neutral", eyes:"neutral"})
 
 n: PROTECT YOUR HUMAN
 
-n: FROM THE WORLD. FROM OTHER PEOPLE. FROM THEMSELVES.
+n: FROM THE WORLD. FROM OTHER PEOPLE. FROM THEMSELF.
 
 n: GOOD LUCK
 
@@ -272,7 +272,7 @@ b: So yeah you should go to that party.
 {{/if}}
 
 {{if _.seppuku}}
-b: Just bring a textbook to study while you're there.
+b: Just bring your laptop so you can do some work.
 {{/if}}
 
 {{if _.whitebread}}
@@ -321,7 +321,7 @@ attack("10p", "harm");
 (...2500)
 
 {{if _.seppuku}}
-b: Besides, can't party, you need to study so your parents don't commit seppuku.
+b: Besides, can't party, you need to do work so your parents don't commit seppuku.
 {{/if}}
 
 `hong({mouth:"anger", eyes:"anger"});`
@@ -345,7 +345,7 @@ b: All you ever do is cry in a corner and worry about how loneliness is as deadl
 {{/if}}
 
 {{if _.seppuku}}
-b: All you ever do at parties is worry about how you should be studying instead.
+b: All you ever do at parties is worry about how you should be doing work instead.
 {{/if}}
 
 {{if _.whitebread}}
@@ -836,13 +836,7 @@ bb({body:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: Do you want your freak skeleton to end up in a medical textbook?!
-
-`bb({eyes:"narrow"});`
-
-{{if _.seppuku}}
-b: Though apparently you don't *read* textbooks anyway, you terrible slacker.
-{{/if}}
+b: Do you want your freak skeleton to end up in a cheap tourist trap museum?!
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -1090,7 +1084,7 @@ b: They'll trap you in a well and force-feed you white bread to fatten you up so
 {{/if}}
 
 {{if _.seppuku}}
-b: They'll bludgeon you with a textbook and slice your belly open and say "this is what you get for not studying, SEPUKKU'D"
+b: They'll bludgeon you with a pomodoro timer and slice your belly open and say "this is what slackers get, SEPUKKU'D"
 {{/if}}
 
 {{if !_.whitebread && !_.seppuku}}
@@ -1133,7 +1127,7 @@ h: i'm so sick of this game.
 
 h:
 {{if _.fifteencigs}}"loneliness will kill you"... {{/if}}
-{{if _.seppuku}}"study or your parents will hate you"... {{/if}}
+{{if _.seppuku}}"be productive or you'll be dishonored"... {{/if}}
 {{if _.whitebread}}"don't eat that, it'll kill you"... {{/if}}
 {{if _.subtweet}}"they're talking behind your back"... {{/if}}
 {{if _.badnews}}"the world is burning"... {{/if}}

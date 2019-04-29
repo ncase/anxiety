@@ -50,6 +50,7 @@ window.music = function(song, options){
 	}else{
 
 		var song = Library.sounds["music_"+song];
+		song.stop(); // just in case it was playing earlier
 		song.loop(true);
 
 		if(options.fade==0){

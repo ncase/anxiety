@@ -8,22 +8,11 @@ Loader.load().then(function(){
 
 	$("#loading_progress").style.display = "none";
 	$("#loading_done").style.display = "block";
+	$("#loading").onclick = function(){
+		publish('START_GAME');
+	};
 
 	Game.init();
-	/*Game.start();
-
-	Game.pause(); // just for sounds
-
-	// Set up...
-	/*SceneSetup.act1();
-	publish("hp_show");
-	hong({body:"phone1", mouth:"neutral", eyes:"neutral"});
-	_.whitebread = true;*/
-	
-	// GO!
-	//music('battle', 0.5);
-	//Game.goto("act1f");
-	//Game.goto("intro");
 
 });
 
@@ -32,11 +21,16 @@ subscribe("START_GAME", function(){
 	$("#loading").style.display = "none";
 	Game.start();
 
-	SceneSetup.act1();
+	/*SceneSetup.act1();
 	music('battle', {volume:0.5});
 	hong({body:"phone1"});
-	Game.goto("act1h");
+
+	_.seppuku = true;
+	_.hookuphole = true;
+	_.catmilk = true;
+
+	Game.goto("act1g");*/
 	
-	//Game.goto("act1");
+	Game.goto("intro");
 
 });

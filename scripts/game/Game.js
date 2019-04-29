@@ -113,13 +113,17 @@ Game.update = function(){
 Game.paused = false;
 Game.pausedDOM = $("#paused");
 Game.pause = function(){
+
 	Game.paused = true;
 	Game.pausedDOM.style.display = "block";
 	Howler.mute(true);
+
+	$("#paused").setAttribute("modal", Options.showing ? "yes" : "no" );
+	
 };
 window.addEventListener("blur", Game.pause);
 Game.onUnpause = function(){
-	if(Game.paused){
+	if(Game.paused && !Options.showing){
 		Game.paused = false;
 		Game.pausedDOM.style.display = "none";
 		Howler.mute(false);
@@ -145,6 +149,8 @@ Game.clearAllTimeouts = function(){
 };
 Game.canvas.addEventListener("click", Game.clearAllTimeouts);
 Game.canvas.addEventListener("touchstart", Game.clearAllTimeouts);
+Game.choicesDOM.addEventListener("click", Game.clearAllTimeouts);
+Game.choicesDOM.addEventListener("touchstart", Game.clearAllTimeouts);
 
 Game.goto = function(sectionID){
 
@@ -502,7 +508,7 @@ Game.executeText = function(line){
 		var nextLineDelay = Game.TEXT_SPEED*7; // don't override this
 		if(dialogue.slice(-1)=="-") nextLineDelay=0; // sudden interrupt!
 		if(Game.TEXT_SPEED<10){ // IF IT'S CLICK-TO-ADVANCE, INFINITE TIMEOUT.
-			nextLineDelay = 1000*1000; // one thousand seconds
+			nextLineDelay = 1000*10000; // ten thousand seconds
 		}
 		Game.setTimeout(function(){
 			Game.WHO_IS_SPEAKING = null; // DONE WITH IT.
@@ -545,7 +551,7 @@ Game.executeChoice = function(line){
 
 	var div = document.createElement("div");
 	div.innerHTML = choiceText;
-	div.onclick = function(){
+	div.onclick = function(event){
 
 		// Any pre-choice code?
 		if(preChoiceCodeIfAny) Game.executeCode(preChoiceCodeIfAny);
@@ -561,6 +567,9 @@ Game.executeChoice = function(line){
 
 		// Goto that choice, now!
 		Game.goto(choiceID);
+
+		// STOP THE PROP
+		event.stopPropagation();
 
 	};
 	div.onmouseover = function(){
@@ -620,7 +629,7 @@ Game.executeWait = function(line){
 	var waitTime = parseInt(line.match(/^\(\.\.\.(\d+)\)/)[1].trim());
 
 	// Unless it's click to advance, then IGNORE ALL WAITS
-	if(Game.TEXT_SPEED<10){
+	if(Game.TEXT_SPEED<10 && waitTime<=1000){ // hack: unless the wait is long.
 		waitTime = 0; // TODO: Tag anim-waits, do not ignore.
 	}
 	
@@ -669,12 +678,12 @@ Game.parseLine = function(line){
 
 	// Get the IFs, if any
 	var lookForIfs = true;
-	var regex = /\{\{if[^\/]*\/if\}\}/ig;
 	while(lookForIfs){
 
 		lookForIfs = false;
 
 		// Look for an IF!
+		var regex = /\{\{if[^\/]*\/if\}\}/ig; // the reason it's inside here is to reset .exec
 		var regexResult = regex.exec(line);
 		if(regexResult){
 
@@ -710,12 +719,12 @@ Game.parseLine = function(line){
 
 	// Evaluate {{expressions}}, if any
 	var lookForExpressions = true;
-	var regex = /\{\{[^\}]*\}\}/ig;
 	while(lookForExpressions){
 
 		lookForExpressions = false;
 
 		// Look for an IF!
+		var regex = /\{\{[^\}]*\}\}/ig; // the reason it's inside here is to reset .exec
 		var regexResult = regex.exec(line);
 		if(regexResult){
 

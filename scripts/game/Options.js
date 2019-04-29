@@ -5,13 +5,14 @@ window.Options = {};
 	var optionsDOM = $("#options");
 	var text_speed_slider = $("#text_speed_slider");
 	var text_speed_preview = $("#text_speed_preview");
+	var volume_slider = $("#volume_slider");
 
 	var SPEED_TEXTS = [
 		"Show text slowlyyyyy",
 		"Show text at a relaxed speed",
 		"Show text at the default speed",
 		"Show text at a brisk speed",
-		"INSTANT! With click-to-advance"
+		"All-at-once, click to advance"
 	];
 	var SPEEDS = [
 		100,
@@ -22,6 +23,10 @@ window.Options = {};
 	];
 	text_speed_slider.oninput = function(){
 		updateText();
+	};
+
+	volume_slider.oninput = function(){
+		Howler.volume(parseFloat(volume_slider.value));
 	};
 
 	///////////////////////////////////
@@ -97,7 +102,9 @@ window.Options = {};
 	};
 	updateText();
 
-	/////////////////////////////
+	///////////////////////////////////
+	// Showing/hiding options /////////
+	///////////////////////////////////
 
 	subscribe("show_options_bottom", function(){
 		
@@ -111,8 +118,14 @@ window.Options = {};
 
 	});
 
+	var ALREADY_DID_INTRO = false;
 	$("#options_ok").onclick = function(){
-		publish("cut_options_bottom");
+		if(!ALREADY_DID_INTRO){
+			publish("cut_options_bottom");
+			ALREADY_DID_INTRO = true;
+		}else{
+			publish("hide_options");
+		}
 	};
 
 	subscribe("cut_options_bottom", function(){
@@ -129,6 +142,20 @@ window.Options = {};
 		$("#gear").style.display = "block";
 		$("#about").style.display = "block";
 
+	});
+
+	subscribe("show_options", function(){
+		$("#volume_options").style.display = "block";
+		optionsDOM.style.top = "200px";
+		Options.showing = true;
+		Game.pause();
+		Howler.mute(false); // hack
+	});
+
+	subscribe("hide_options", function(){		
+		optionsDOM.style.top = "";
+		Options.showing = false;
+		Game.onUnpause();
 	});
 
 })();
