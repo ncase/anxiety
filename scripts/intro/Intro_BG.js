@@ -104,7 +104,7 @@ function BG_Intro(){
 		20
 	]
 
-	var ticker = 0; //16;//0;
+	var ticker = 16;//0;
 	var frameTicker = ticker;
 	var parallaxTicker = 0;
 	var SHOWN_PLAY_BUTTON = false;
@@ -121,13 +121,17 @@ function BG_Intro(){
 		// Animate Hong: Which frame?
 		var parallax = 0;
 		frameTicker += 1/60;
-		if(GAME_TRANSITION==0 || GAME_TRANSITION==1){ 
+		if(GAME_TRANSITION==0 || GAME_TRANSITION==1 || GAME_TRANSITION==2){ 
 			if(frameTicker>590/30){
-				if(GAME_TRANSITION==0) frameTicker = 381/30; // LOOP to NOM.
-				if(GAME_TRANSITION==1) frameTicker = 590/30; // STOP.
+				if(GAME_TRANSITION==0 || GAME_TRANSITION==1){
+					frameTicker = 381/30; // LOOP to NOM.
+				}
+				if(GAME_TRANSITION==2){
+					frameTicker = 590/30; // STOP.
+				}
 			}
 		}
-		if(GAME_TRANSITION==2){
+		if(GAME_TRANSITION==3){ // START PARALLAXING
 			
 			parallaxTicker += 1/60; // 0 to 1 in one second
 			if(parallaxTicker>1) parallaxTicker = 1;
@@ -185,13 +189,18 @@ function BG_Intro(){
 	var _subscriptions = [];
 	_subscriptions.push(
 		subscribe("intro-to-game-1", function(){
-			GAME_TRANSITION = 1; // STOP LOOPING
+			GAME_TRANSITION = 1; // BYE LOGO
 		})
 	);
 	_subscriptions.push(
 		subscribe("intro-to-game-2", function(){
+			GAME_TRANSITION = 2; // STOP LOOPING
+		})
+	);
+	_subscriptions.push(
+		subscribe("intro-to-game-3", function(){
 			frameTicker = 600/30;
-			GAME_TRANSITION = 2; // START PARALLAXING
+			GAME_TRANSITION = 3; // START PARALLAXING
 
 			// WHOOSH
 			sfx("whoosh");

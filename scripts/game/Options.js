@@ -2,6 +2,7 @@ window.Options = {};
 
 (function(){
 
+	var optionsDOM = $("#options");
 	var text_speed_slider = $("#text_speed_slider");
 	var text_speed_preview = $("#text_speed_preview");
 
@@ -10,10 +11,10 @@ window.Options = {};
 		"Show text at a relaxed speed",
 		"Show text at the default speed",
 		"Show text at a brisk speed",
-		"Show text NOW! (& click-to-advance)"
+		"INSTANT! With click-to-advance"
 	];
 	var SPEEDS = [
-		120,
+		100,
 		80,
 		60,
 		40,
@@ -95,5 +96,39 @@ window.Options = {};
 
 	};
 	updateText();
+
+	/////////////////////////////
+
+	subscribe("show_options_bottom", function(){
+		
+		optionsDOM.style.top = "447px";
+		_clearAllTimeouts();
+		text_speed_preview.innerHTML = "";
+
+		setTimeout(function(){
+			updateText();
+		},400);
+
+	});
+
+	$("#options_ok").onclick = function(){
+		publish("cut_options_bottom");
+	};
+
+	subscribe("cut_options_bottom", function(){
+		optionsDOM.style.display = "none";
+		optionsDOM.style.top = "";
+		setTimeout(function(){
+			optionsDOM.style.display = "block";
+		},100);
+
+		// Total hack, but whatever
+		Game.goto("intro-start-2");
+
+		// Double total hack
+		$("#gear").style.display = "block";
+		$("#about").style.display = "block";
+
+	});
 
 })();

@@ -8,20 +8,30 @@
 <body>
 
 <div id="game_container">
+	
+	<!-- The main game -->
 	<canvas id="game_canvas"></canvas>
 	<div id="game_words"></div>
 	<div id="game_hp"></div>
 	<div id="game_choices"></div>
+
+	<!-- Bottom Corner Tabs -->
+	<div id="gear" style="display:none">
+		<div class="icon">⚙</div>
+	</div>
+	<div id="about" style="display:none">
+		<div class="icon">?</div>
+	</div>
+
+	<!-- Paused Screen -->
 	<div id="paused">
 		<div>
 			paused
 			<div>click anywhere to keep freaking out</div>
 		</div>
 	</div>
-	<div id="loading" onclick="publish('START_GAME')">
-		<div id="loading_progress">loading...</div>
-		<div id="loading_done" style="display:none">play!</div>
-	</div>
+
+	<!-- ABOUT / END DEMO -->
 	<div id="end_demo" style="display:none">
 		<div id="end_demo_tbc"></div>
 		<div id="end_demo_words">
@@ -53,10 +63,20 @@
 			<div></div>
 		</div>
 	</div>
+
+	<!-- OPTIONS -->
 	<div id="options">
 		<div id="text_speed_preview"></div>
 		<input id="text_speed_slider" type="range" min=0 value=2 max=4 step=1/>
+		<div id="options_ok">ok 👌</div>
 	</div>
+
+	<!-- LOADING -->
+	<div id="loading" onclick="publish('START_GAME')">
+		<div id="loading_progress">loading...</div>
+		<div id="loading_done" style="display:none">play!</div>
+	</div>
+
 </div>
 	
 </body>

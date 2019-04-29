@@ -4,13 +4,13 @@
 
 (...2000)
 
-n: TOTAL FEARS USED
+n: TOTAL FEARS USED:
 
-n: #harm# *BEING HARMED:* {{Game.TEXT_SPEED}}
+n: #harm# *BEING HARMED:* {{_.attack_harm}}
 
-n: #alone# *BEING UNLOVED:* {{2+2}}
+n: #alone# *BEING UNLOVED:* {{_.attack_alone}}
 
-n: #bad# *BEING A BAD PERSON:* {{window.dick}}
+n: #bad# *BEING A BAD PERSON:* {{_.attack_bad}}
 
 (...4000)
 

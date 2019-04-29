@@ -20,6 +20,7 @@ window.hong = function(){
 };
 window.attack = function(damage, type){
 	publish("attack", ["hong", damage, type]);
+	_["attack_"+type]++; // HACK
 };
 window.attackBB = function(damage, type){
 	publish("attack", ["bb", damage, type]);
@@ -262,8 +263,8 @@ Game.executeText = function(line){
 	return new RSVP.Promise(function(resolve){
 
 		// Who's speaking?
-		// b: Beebee, h: Hong, n: Narrator, x: Xavier, y: Yvonne
-		var regex = /^(.)\:(.*)/
+		// b: Beebee, h: Hong, n: Narrator, n2: Narrator 2, n3: Narrator 3
+		var regex = /^([^\:]+)\:(.*)/
 		var speaker = line.match(regex)[1].trim();
 		var dialogue = line.match(regex)[2].trim();
 
@@ -282,8 +283,14 @@ Game.executeText = function(line){
 			case "n":
 				div.className = "narrator-bubble";
 				break;
-			case "m": // narrator 2
+			case "n2": // narrator 2
 				div.className = "narrator-bubble-2";
+				break;
+			case "n3": // narrator 3
+				div.className = "narrator-bubble-3";
+				break;
+			case "n4": // narrator 3
+				div.className = "narrator-bubble-4";
 				break;
 		}
 		requestAnimationFrame(function(){
@@ -304,7 +311,9 @@ Game.executeText = function(line){
 		if(Game.FORCE_TEXT_DURATION>0){
 			SPEED = Math.round(Game.FORCE_TEXT_DURATION/dialogue.length);
 		}
-		if(speaker!="n" && speaker!="m"){
+
+		// IF IT'S BEEBEE, HONG, or NARRATOR 3
+		if(speaker=="b" || speaker=="h" || speaker=="n3"){
 
 			// Put in the text, each character a DIFFERENT SPAN...
 			var span, chr;
@@ -372,7 +381,7 @@ Game.executeText = function(line){
 						}else{ // if not, no!
 							interval += SPEED;
 						}
-					}else if(chr==","){
+					}else if(chr=="," || chr==":"){
 						interval += SPEED*5;
 					}else{
 						interval += SPEED;
@@ -383,7 +392,7 @@ Game.executeText = function(line){
 
 		}else{
 
-			// IF NARRATOR
+			// IF NARRATOR 1 or 2 or 4
 
 			// *Emphasize multiple words* => *Emphasize* *multiple* *words*
 			var regex = /\*([^\*]*)\*/g;
@@ -412,9 +421,16 @@ Game.executeText = function(line){
 			for(var i=0; i<dialogueWords.length; i++){
 
 				// Is it an emphasized word?
+				var reggie = /\*(.*)\*/;
 				var word = dialogueWords[i];
-				if(/\*(.*)\*/.test(word)){ // is 
-					word = "<i>" + word.match(/\*(.*)\*/)[1].trim() + "</i>";
+				if(reggie.test(word)){ 
+					word = "<i>" + word.match(reggie)[1].trim() + "</i>";
+				}
+
+				// Actual emphasis
+				reggie = /\_(.*)\_/;
+				if(reggie.test(word)){
+					word = "<i class='italics'>" + word.match(reggie)[1].trim() + "</i>";
 				}
 
 				// Add the span

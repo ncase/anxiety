@@ -37,6 +37,6 @@ subscribe("START_GAME", function(){
 	hong({body:"phone1"});
 	Game.goto("act1h");
 	
-	//Game.goto("intro");
+	//Game.goto("act1");
 
 });

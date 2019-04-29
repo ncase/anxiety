@@ -7,6 +7,12 @@ body{
 	background: #000;
 }
 
+/******************************************************************************************************
+
+MAIN GAME
+
+******************************************************************************************************/
+
 #game_words, #game_choices, #paused{
 	-webkit-user-select: none; /* Safari 3.1+ */
 	-moz-user-select: none; /* Firefox 2+ */
@@ -38,6 +44,57 @@ body{
 	top: 80px;
 	overflow: hidden;
 }
+
+
+/******************************************************************************************************
+
+BOTTOM TABS
+
+******************************************************************************************************/
+
+#gear, #about{
+	position: absolute;
+    bottom: 0;
+    background: #191919;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+#gear:hover, #about:hover{
+	background: #575757;
+}
+#gear > .icon, #about > .icon{
+	position: absolute;
+    width: 0;
+    height: 0;
+    top: 10px;
+}
+
+#gear{
+    left: 0;
+    border-top-right-radius: 50px;
+}
+#gear > .icon{
+    left: 4px;
+}
+#about{
+    right: 0;
+    border-top-left-radius: 50px;
+}
+#about > .icon{
+	color: rgba(255,255,255,0.4);
+	font-weight: bold;
+    right: 19px;
+}
+
+
+
+
+/******************************************************************************************************
+
+PAUSED & LOADING
+
+******************************************************************************************************/
 
 #paused, #loading{
 	display: none;
@@ -84,6 +141,14 @@ body{
     font-size: 30px;
 }
 
+
+
+/******************************************************************************************************
+
+ABOUT / END DEMO
+
+******************************************************************************************************/
+
 #end_demo{
 	position: absolute;
 	top:0; left:0;
@@ -119,12 +184,58 @@ body{
     margin: 5px auto 15px auto;
 }
 
+
+/******************************************************************************************************
+
+OPTIONS
+
+******************************************************************************************************/
+
 #options{
 	position: absolute;
-    bottom: 0px;
+	top: 600px;
+
+    width: 300px;
+    background: #2e2e2e;
+    padding: 15px;
+    margin: 15px;
+
+    /* Spring OUT only */
+	-webkit-transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1); /* older webkit */
+	-webkit-transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); 
+	   -moz-transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); 
+	     -o-transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); 
+	        transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); /* custom */
+
+	-webkit-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1); /* older webkit */
+	-webkit-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
+	   -moz-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
+	     -o-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
+	        transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); /* custom */
+
 }
 #text_speed_preview{
 	color:#fff;
+	height: 1.3em;
+}
+#options_ok{
+	display: inline-block;
+    background: #000;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    margin: 0 auto;
+    float: right;
+
+    position: relative;
+    top:0;
+
+    cursor: pointer;
+}
+#options_ok:hover{
+	background: #666;
+	top:-2px;
 }
 
 /*
@@ -196,18 +307,18 @@ input[type="range"]{
 
 
 
-/***************************************************
+/******************************************************************************************************
 
 DIALOGUEZ
 
-***************************************************/
+******************************************************************************************************/
 
 
 .clear-both{
 	clear:both;
 }
 
-.narrator-bubble, .narrator-bubble-2{
+.narrator-bubble, .narrator-bubble-2, .narrator-bubble-4{
 	position: relative;
 	color: #FFFFFF;
 	text-align: center;
@@ -216,7 +327,7 @@ DIALOGUEZ
 	margin: 25px 15px;
 	font-weight: bold;
 }
-.narrator-bubble:before, .narrator-bubble-2:before{
+.narrator-bubble:before, .narrator-bubble-4:before{
 
 	content: '';
 	
@@ -231,7 +342,7 @@ DIALOGUEZ
 	height: calc(100% + 4px);
 	
 } 
-.narrator-bubble:after, .narrator-bubble-2:after{
+.narrator-bubble:after, .narrator-bubble-4:after{
 
 	content: '';
 	
@@ -246,15 +357,36 @@ DIALOGUEZ
 	height: calc(100% + 4px);
 	
 } 
-.narrator-bubble i, .narrator-bubble-2 i{
+.narrator-bubble i, .narrator-bubble-2 i, .narrator-bubble-4 i{
 	font-style: normal;
 	color: #ff4040;
 }
-.narrator-bubble-2{
-	color: #000;
+.narrator-bubble i.italics, .narrator-bubble-4 i.italics{
+	font-style: italic;
+	color: #fff;
 }
-.narrator-bubble-2:before, .narrator-bubble-2:after{
-	border-color: #000;
+.narrator-bubble-2{
+	color: #fff;
+    background: #000;
+    margin: 10px 15px;
+    padding: 15px 0;
+}
+.narrator-bubble-4{
+	font-size: 20px;
+}
+.narrator-bubble-3 {
+
+	position: relative;
+	background: #000000;
+	color: #ffffff;
+	padding: 15px;
+	margin: 5px 30px;
+
+	text-align: center;
+
+	/*opacity: 0;
+	transition: all 0.3s ease-in-out;*/
+
 }
 
 .hong-bubble {
@@ -306,7 +438,7 @@ DIALOGUEZ
 .beebee-bubble:after {
 	content: '';
 	position: absolute;
-	right: 0;
+	right: 1px;
 	top: 50%;
 	width: 0;
 	height: 0;

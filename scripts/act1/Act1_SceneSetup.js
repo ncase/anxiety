@@ -7,6 +7,11 @@ SceneSetup.act1 = function(){
 
 	Game.resetScene();
 
+	// ATTACKS
+	_.attack_harm = 0;
+	_.attack_alone = 0;
+	_.attack_bad = 0;
+
 	// Background
 	var bg = new BG_Anxiety();
 	Game.scene.children.push(bg);
