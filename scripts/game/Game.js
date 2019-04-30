@@ -118,15 +118,23 @@ Game.pause = function(){
 	Game.pausedDOM.style.display = "block";
 	Howler.mute(true);
 
-	$("#paused").setAttribute("modal", Options.showing ? "yes" : "no" );
+	$("#paused").setAttribute("modal", (Options.showing||About.showing) ? "yes" : "no" );
 	
 };
 window.addEventListener("blur", Game.pause);
 Game.onUnpause = function(){
-	if(Game.paused && !Options.showing){
+	if(Game.paused && !(Options.showing||About.showing)){
 		Game.paused = false;
 		Game.pausedDOM.style.display = "none";
 		Howler.mute(false);
+	}
+};
+Game.pausedDOM.onclick = function(){
+	if(Options.showing){
+		publish("hide_options");
+	}
+	if(About.showing){
+		$("#close_about").onclick();
 	}
 };
 window.addEventListener("click", Game.onUnpause);

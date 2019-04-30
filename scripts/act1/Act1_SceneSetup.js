@@ -51,4 +51,11 @@ SceneSetup.act1_end = function(){
 	$("#game_container").style.background = "#000";
 	$("#game_choices").style.display = "none";
 
+	// KILL
+	Game.scene.kill = function(){
+		Game.FORCE_TEXT_Y = -1;
+		$("#game_container").style.background = "";
+		$("#game_choices").style.display = "";
+	};
+
 };

@@ -19,7 +19,7 @@
 	<div id="gear" style="display:none" onclick="publish('show_options')">
 		<div class="icon">⚙</div>
 	</div>
-	<div id="about" style="display:none">
+	<div id="about"><!-- style="display:none">-->
 		<div class="icon">?</div>
 	</div>
 
@@ -41,8 +41,14 @@
 	<div id="end_demo">
 		<div id="end_demo_tbc"></div>
 		<div id="end_demo_words">
-			Augh games take so long to make!
-			This one will be done summer 2019, and released for <i>free</i>.
+			<span id="end_words1">
+				Augh games take so long to make!
+				This one will be done August 2019, and released for <i>free</i>.
+			</span>
+			<span id="end_words2">
+				This is a demo for my upcoming story-game,
+				which will be released for <i>free</i> in August 2019.
+			</span>
 			Get notified via my (once-a-month) newsletter!
 			<div>
 				<form id="the_newsletter" method="POST" accept-charset="utf-8" target="_blank">
@@ -105,6 +111,9 @@
 			</a>
 
 			<div id="replay"></div>
+
+			<div style="clear:both;"></div>
+			<div id="close_about">close</div>
 
 		</div>
 	</div>
