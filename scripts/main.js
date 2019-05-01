@@ -21,16 +21,17 @@ subscribe("START_GAME", function(){
 	$("#loading").style.display = "none";
 	Game.start();
 
-	/*SceneSetup.act1();
-	music('battle', {volume:0.5});
+	SceneSetup.act1();
+	//music('battle', {volume:0.5});
 	hong({body:"phone1"});
+	publish("hp_show");
 
 	_.seppuku = true;
 	_.hookuphole = true;
 	_.catmilk = true;
 
-	Game.goto("act1g");*/
+	Game.goto("act1c");
 	
-	Game.goto("intro");
+	//Game.goto("intro");
 
 });
