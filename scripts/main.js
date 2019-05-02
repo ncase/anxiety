@@ -21,7 +21,7 @@ subscribe("START_GAME", function(){
 	$("#loading").style.display = "none";
 	Game.start();
 
-	SceneSetup.act1();
+	/*SceneSetup.act1();
 	//music('battle', {volume:0.5});
 	hong({body:"phone1"});
 	publish("hp_show");
@@ -30,8 +30,8 @@ subscribe("START_GAME", function(){
 	_.hookuphole = true;
 	_.catmilk = true;
 
-	Game.goto("act1c");
+	Game.goto("act1c");*/
 	
-	//Game.goto("intro");
+	Game.goto("intro");
 
 });

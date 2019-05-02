@@ -15,6 +15,11 @@
 	<div id="game_hp"></div>
 	<div id="game_choices"></div>
 
+	<!-- Click to Advance-->
+	<div id="click_to_advance">
+	👆click anywhere
+	</div>
+
 	<!-- Bottom Corner Tabs -->
 	<div id="gear" style="display:none" onclick="publish('show_options')">
 		<div class="icon">⚙</div>
@@ -120,8 +125,15 @@
 
 	<!-- OPTIONS -->
 	<div id="options">
-		<div id="text_speed_preview"></div>
-		<input id="text_speed_slider" type="range" min=0 value=2 max=4 step=1/>
+		<div style="width: 150px; height: 63px; float: left;">
+			<div id="text_speed_preview"></div>
+			<input id="text_speed_slider" type="range" min=0 value=0.5 max=1 step="0.01"/>
+		</div>
+		<div style="float: right; width: 135px; height: 63px;">
+			And advance
+			<div id="text_automatic_toggle">on click</div>
+		</div>
+		<div style="clear:both"></div>
 		<span id="volume_options" style="display:none">
 			<div>Volume:</div>
 			<input id="volume_slider" type="range" min=0 max=1 value=1 step="0.01"/>

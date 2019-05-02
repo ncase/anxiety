@@ -150,10 +150,23 @@ Game.setTimeout = function(callback, interval){
 };
 // TODO: SKIP TEXT WHEN CLICK ANYWHERE (but NOT capture in choice)
 Game.clearAllTimeouts = function(){
-	Game.timeoutCallbacks.forEach(function(tc){
-		tc.callback();
-	});
-	Game.timeoutCallbacks = [];
+
+	// Is this DURING while someone is talking?
+	var isInterrupting = (Game.WHO_IS_SPEAKING!=null);
+
+	// If not, clear all
+	// Otherwise, clear all BUT last one... UNLESS there's only one left
+	if(Game.timeoutCallbacks.length==1) isInterrupting=false;
+	for(var i=0; i<Game.timeoutCallbacks.length; i++){
+		if(isInterrupting && i==Game.timeoutCallbacks.length-1) break;
+		Game.timeoutCallbacks[i].callback();
+	}
+	if(isInterrupting){
+		Game.timeoutCallbacks = [ Game.timeoutCallbacks[Game.timeoutCallbacks.length-1] ]; // last one
+	}else{
+		Game.timeoutCallbacks = [];
+	}
+
 };
 Game.canvas.addEventListener("click", Game.clearAllTimeouts);
 Game.canvas.addEventListener("touchstart", Game.clearAllTimeouts);
@@ -266,7 +279,8 @@ Game.clearText = function(){
 window.clearText = Game.clearText;
 
 // Execute text! Just add it to text DOM.
-Game.TEXT_SPEED = 60; // 70;
+Game.TEXT_SPEED = 50;
+Game.CLICK_TO_ADVANCE = true;
 Game.OVERRIDE_TEXT_SPEED = 1;
 Game.FORCE_TEXT_DURATION = -1;
 Game.WHO_IS_SPEAKING = null; // "h", "b", "n" etc...
@@ -515,12 +529,26 @@ Game.executeText = function(line){
 		// Return promise
 		var nextLineDelay = Game.TEXT_SPEED*7; // don't override this
 		if(dialogue.slice(-1)=="-") nextLineDelay=0; // sudden interrupt!
-		if(Game.TEXT_SPEED<10){ // IF IT'S CLICK-TO-ADVANCE, INFINITE TIMEOUT.
+		if(Game.CLICK_TO_ADVANCE){ // IF IT'S CLICK-TO-ADVANCE, "INFINITE" TIMEOUT.
 			nextLineDelay = 1000*10000; // ten thousand seconds
 		}
+
+		// No one's speaking anymore.
 		Game.setTimeout(function(){
-			Game.WHO_IS_SPEAKING = null; // DONE WITH IT.
-			resolve();
+			Game.WHO_IS_SPEAKING = null;
+		}, interval);
+
+		// Show the clicky UI
+		if(Game.CLICK_TO_ADVANCE){
+			Game.setTimeout(function(){
+				publish("show_click_to_advance");
+			}, interval+Game.TEXT_SPEED*2);
+		}
+
+		// DONE WITH IT
+		Game.setTimeout(function(){
+			publish("hide_click_to_advance");
+			resolve(); // DONE WITH IT.
 		}, interval+nextLineDelay);
 
 	});
@@ -637,7 +665,7 @@ Game.executeWait = function(line){
 	var waitTime = parseInt(line.match(/^\(\.\.\.(\d+)\)/)[1].trim());
 
 	// Unless it's click to advance, then IGNORE ALL WAITS
-	if(Game.TEXT_SPEED<10 && waitTime<=1000){ // hack: unless the wait is long.
+	if(Game.CLICK_TO_ADVANCE && waitTime<=1000){ // hack: unless the wait is long.
 		waitTime = 0; // TODO: Tag anim-waits, do not ignore.
 	}
 	

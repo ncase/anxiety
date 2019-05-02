@@ -104,7 +104,7 @@ function BG_Intro(){
 		20
 	]
 
-	var ticker = 0; //16;//0;
+	var ticker = 18;//0;
 	var frameTicker = ticker;
 	var parallaxTicker = 0;
 	var SHOWN_PLAY_BUTTON = false;

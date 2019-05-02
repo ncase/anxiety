@@ -88,9 +88,13 @@ function HitPoints(){
 
 	// Draw
 	self.leftShake = 0;
-	self.leftWidth = 360;
+	self.leftRed = self.leftWhite = 1;
+	//self.leftWidth = 360;
+	//self.leftWhiteWidth = 360;
 	self.rightShake = 0;
-	self.rightWidth = 360;
+	self.rightRed = self.rightWhite = 1;
+	//self.rightWidth = 360;
+	//self.rightWhiteWidth = 360;
 	self.drawHalf = function(ctx, isRight){
 
 		ctx.save();
@@ -100,36 +104,59 @@ function HitPoints(){
 		var hp = isRight ? self.beebee : self.hong;
 
 		// Shaking
-		if(self[side+"Shake"]>0){
+		var stoppedShaking = (self[side+"Shake"]==0);
+		if(stoppedShaking){
+			self[side+"Shake"]=0;
+		}else{
 			var amp = self[side+"Shake"]/7;
 			var shakeY = Math.sin(self[side+"Shake"]*1.3)*amp;
 			ctx.translate(0,shakeY);
 			self[side+"Shake"]--;
-		}else{
-			self[side+"Shake"]=0;
 		}
 
-		// BLACK
-		var sx=isRight ? 360 : 0, sy=0, sw=360, sh=150;
-		ctx.drawImage(self.image, sx,sy,sw,sh, sx/2,sy/2,sw/2,sh/2); // black
-
-		// RED
-		var hpRatio = (hp+32)/(100+32); // 100,0 => 1,0.3
-		sw = 360 * hpRatio;
-		sy = 150;
-		self[side+"Width"] = self[side+"Width"]*0.8 + sw*0.2;
-		sw = self[side+"Width"];
-		if(sw>88){
-			if(isRight){
-				ctx.drawImage(self.image, sx+(360-sw),sy,sw,sh, 360/2,0,sw/2,sh/2);
-			}else{
-				ctx.drawImage(self.image, sx,sy,sw,sh, (360-sw)/2,0,sw/2,sh/2);
+		// Damage
+		if(!isRight){ // Hong
+			var d = self.hong/100;
+			self.leftRed = self.leftRed*0.8 + d*0.2;
+			if(stoppedShaking){
+				if(self.leftWhite > self.leftRed){
+					self.leftWhite -= 0.001;
+				}
+			}
+		}else{
+			var d = self.beebee/100;
+			self.rightRed = self.rightRed*0.8 + d*0.2;
+			if(stoppedShaking){
+				if(self.rightWhite > self.rightRed){
+					self.rightWhite -= 0.001;
+				}
 			}
 		}
-		if(self[side+"WhiteWidth"]>sw && self[side+"Shake"]<=0){
-			self[side+"WhiteWidth"] -= 0.6;
-		}
 
+		// BG: Black
+		var sx=isRight ? 360 : 0, sy=200*0, sw=360, sh=200;
+		ctx.drawImage(self.image, sx,sy,sw,sh, sx/2,0,sw/2,sh/2);
+
+		// Draw White INSIDE (source-atop)
+		if(self[side+"Shake"]==0){ // if not shaking, slowly reduce
+			if( self[side+"WhiteWidth"] > self[side+"Width"] ){
+				self[side+"WhiteWidth"] -= 0.1;
+			}
+		}
+		var sx=isRight ? 360 : 0, sy=200*1, sw=360, sh=200;
+		var offset = (1-self[side+"White"])*360;//self[side+"WhiteWidth"];
+		offset *= isRight ? -1 : 1;
+		ctx.globalCompositeOperation = "source-atop";
+		ctx.drawImage(self.image, sx,sy,sw,sh, (sx+offset)/2,0,sw/2,sh/2);
+
+		// Red
+		var sx=isRight ? 360 : 0, sy=200*2, sw=360, sh=200;
+		var offset = (1-self[side+"Red"])*360;//self[side+"WhiteWidth"];
+		offset *= isRight ? -1 : 1;
+		ctx.globalCompositeOperation = "source-atop";
+		ctx.drawImage(self.image, sx,sy,sw,sh, (sx+offset)/2,0,sw/2,sh/2);
+
+		// Restore
 		ctx.restore();
 
 	};
@@ -140,19 +167,22 @@ function HitPoints(){
 		ctx.save();
 		ctx.scale(2,2);
 
-		// Draw BG
-		var sx=0, sy=600, sw=720, sh=200; 
-		ctx.drawImage(self.image, sx,sy,sw,sh, 0,0,sw/2,sh/2);
-
 		// Draw Left & Right Sides
 		self.drawHalf(ctx, false);
 		self.drawHalf(ctx, true);
 
-		// Draw "Timer"
-		var sx=0, sy=450, sw=720, sh=150; 
+		// Draw BG BELOW
+		ctx.globalCompositeOperation = "destination-over";
+		var sx=0, sy=200*4, sw=720, sh=200; 
+		ctx.drawImage(self.image, sx,sy,sw,sh, 0,0,sw/2,sh/2);
+
+		// Draw "VS"
+		ctx.globalCompositeOperation = "source-over";
+		var sx=0, sy=200*3, sw=720, sh=200; 
 		ctx.drawImage(self.image, sx,sy,sw,sh, 0,0,sw/2,sh/2);
 
 		ctx.restore();
+
 	};
 
 }

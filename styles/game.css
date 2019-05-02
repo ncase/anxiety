@@ -394,6 +394,23 @@ OPTIONS
 	background: #666;
 	top:-2px;
 }
+#text_automatic_toggle{
+	border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 1px 5px;
+    cursor: pointer;
+}
+#text_automatic_toggle:hover{
+	background:rgba(255,255,255,0.3);
+}
+#click_to_advance{
+	display: block;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 254px;
+    color:#fff;
+}
 
 /*
 Slider CSS by Noah Blon
@@ -411,6 +428,9 @@ input[type="range"]{
 
 	width: 300px;
     height: 30px;
+}
+#text_speed_slider{
+	width: 150px;
 }
 ::-webkit-slider-runnable-track{
     background: #ddd;

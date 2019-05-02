@@ -14,7 +14,8 @@ Loader.addImages([
 
 	{ id:"fear_harm", src:"sprites/ui/fear_harm.png" },
 	{ id:"fear_alone", src:"sprites/ui/fear_alone.png" },
-	{ id:"fear_bad", src:"sprites/ui/fear_bad.png" }
+	{ id:"fear_bad", src:"sprites/ui/fear_bad.png" },
+	{ id:"fear_captions", src:"sprites/ui/fear_captions.png" }
 
 ]);
 
@@ -41,6 +42,16 @@ function Character(spriteConfig, animLoops){
 			scale:0.75
 		});
 	} );
+
+	// Fear caption sprites
+	self.fearCaptionSprite = new Sprite({
+		image: Library.images.fear_captions,
+		grid: { width:1, height:3 },
+		frame: { width:200, height:200 },
+		anchor: { x:100/2, y:100/2 },
+		scale: 0.75,
+		frameNames:["harm","alone","bad"]
+	});
 
 	// Go To Frames
 	self.bounce = 1;
@@ -151,6 +162,13 @@ function Character(spriteConfig, animLoops){
 			
 			var icon = self.fears[attackedIconShown];
 			icon.draw(ctx);
+
+			var caption = self.fearCaptionSprite;
+			caption.gotoFrameByName(attackedIconShown);
+			caption.x = icon.x;
+			caption.y = icon.y-37;
+			caption.alpha = icon.alpha;
+			caption.draw(ctx);
 			
 			attackedTimer += 1/60;
 			if(attackedTimer>1.75){

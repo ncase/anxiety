@@ -7,26 +7,50 @@ window.Options = {};
 	var text_speed_preview = $("#text_speed_preview");
 	var volume_slider = $("#volume_slider");
 
-	var SPEED_TEXTS = [
-		"Show text slowlyyyyy",
-		"Show text at a relaxed speed",
-		"Show text at the default speed",
-		"Show text at a brisk speed",
-		"All-at-once, click to advance"
-	];
-	var SPEEDS = [
-		100,
-		80,
-		60,
-		40,
-		0
-	];
 	text_speed_slider.oninput = function(){
 		updateText();
 	};
 
 	volume_slider.oninput = function(){
 		Howler.volume(parseFloat(volume_slider.value));
+	};
+
+	var text_automatic_toggle = $("#text_automatic_toggle");
+	text_automatic_toggle.onclick = function(){
+		if(!Game.CLICK_TO_ADVANCE){
+			HOW_MANY_PROMPTS = 1;
+		}
+		Game.CLICK_TO_ADVANCE = !Game.CLICK_TO_ADVANCE;
+		text_automatic_toggle.innerHTML = Game.CLICK_TO_ADVANCE ? "on click" : "automatically";
+	};
+
+
+
+	///////////////////////////////////
+	// CLICK TO ADVANCE //
+	///////////////////////////////////
+
+	var HOW_MANY_PROMPTS = 2;
+
+	var ctaAlpha = 1;
+	var click_to_advance = $("#click_to_advance");
+	click_to_advance.style.display = "none";
+	subscribe("show_click_to_advance", function(){
+		if(HOW_MANY_PROMPTS>0){
+			click_to_advance.style.display = "block";
+			blinkCTA();
+			HOW_MANY_PROMPTS--;
+		}
+	});
+	subscribe("hide_click_to_advance", function(){
+		click_to_advance.style.display = "none";
+	});
+	var blinkCTA = function(){
+		if(click_to_advance.style.display=="block"){
+			ctaAlpha = (ctaAlpha==1) ? 0 : 1;
+			click_to_advance.style.opacity = ctaAlpha;
+			setTimeout(blinkCTA, 700);
+		}
 	};
 
 	///////////////////////////////////
@@ -61,17 +85,22 @@ window.Options = {};
 
 	var updateText = function(){
 
-		var i = parseInt(text_speed_slider.value);
 		var div = text_speed_preview;
 
-		Game.TEXT_SPEED = SPEEDS[i];
+		// Calculate text speed...
+		var t = parseFloat(text_speed_slider.value);
+		t = (1-t); // whoops, flip around
+		// Log slider, from 30 to 120, with 50 "in the middle"
+		// f(0)=20, f(0.5)=50(+30), f(1)=120(+100)
+		var speed = Math.round( 20 + Math.exp(t*2.5)*9 ); // close enough
+		Game.TEXT_SPEED = speed;
 
 		// Clear previous crap
 		_clearAllTimeouts();
 		div.innerHTML = "";
 
 		// What's the dialogue?
-		var dialogue = SPEED_TEXTS[i];
+		var dialogue = Game.TEXT_SPEED<80 ? "Speak this fast" : "Speak this slow";
 
 		// Put in the text
 		var span, chr;
