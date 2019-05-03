@@ -30,7 +30,7 @@ subscribe("START_GAME", function(){
 	_.hookuphole = true;
 	_.catmilk = true;
 
-	Game.goto("act1c");*/
+	Game.goto("act1i");*/
 	
 	Game.goto("intro");
 
