@@ -4,7 +4,7 @@
 
 # intro-play-button
 
-[Play!](#intro-start) `publish("intro-to-game-1"); Game.OVERRIDE_CHOICE_LINE=true;`
+[👉 Play! 👈](#intro-start) `publish("intro-to-game-1"); Game.OVERRIDE_CHOICE_LINE=true;`
 
 # intro-start
 

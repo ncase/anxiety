@@ -306,11 +306,11 @@ b: or even worse... WHITE BREAD
 {{/if}}
 
 {{if _.whitebread}}
-b: You'll overdose on so much meth and white bread they won't be able to fit your fat corpse into the cremation furnace.
+b: You'll overdose on so much meth and white bread they won't be able to fit your fat corpse into the cremation furnace!
 {{/if}}
 
 {{if !_.whitebread}}
-b: You'll overdose on so many drugs the undertaker will wonder how your body was *already* embalmed.
+b: You'll overdose on so many drugs the undertaker will wonder how your body was *already* pre-embalmed!
 {{/if}}
 
 ```
@@ -424,7 +424,7 @@ bb({eyes:"pained2"});
 hong({mouth:"sad", eyes:"sad"});
 ```
 
-b: It feels like it's all ending, like everything's dying and we're doomed and there's nothing anyone can do about it.
+b: It feels like it's all ending, like everything's dying and we're doomed and there's nothing we can do about it.
 
 ```
 Game.OVERRIDE_TEXT_SPEED = 0.5;

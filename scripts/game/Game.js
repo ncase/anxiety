@@ -148,7 +148,7 @@ Game.setTimeout = function(callback, interval){
 		timeLeft: interval
 	});
 };
-// TODO: SKIP TEXT WHEN CLICK ANYWHERE (but NOT capture in choice)
+// SKIP TEXT WHEN CLICK ANYWHERE (but NOT capture in choice)
 Game.clearAllTimeouts = function(){
 
 	// Is this DURING while someone is talking?
@@ -388,6 +388,9 @@ Game.executeText = function(line){
 								}
 								if(speaker=="b"){
 									voice("beebee", {volume:0.5});
+								}
+								if(speaker=="n3"){
+									voice("typewriter", {volume:0.5});
 								}
 							}
 						}

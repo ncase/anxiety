@@ -1,5 +1,10 @@
 window.Options = {};
 
+Loader.addSounds([
+	{ id:"ui_button1", src:"sounds/ui/button1.mp3" },
+	{ id:"ui_button2", src:"sounds/ui/button2.mp3" }
+]);
+
 (function(){
 
 	var optionsDOM = $("#options");
@@ -22,7 +27,23 @@ window.Options = {};
 		}
 		Game.CLICK_TO_ADVANCE = !Game.CLICK_TO_ADVANCE;
 		text_automatic_toggle.innerHTML = Game.CLICK_TO_ADVANCE ? "on click" : "automatically";
+
+		// Sound
+		sfx( Game.CLICK_TO_ADVANCE ? "ui_button2" : "ui_button1");
+
 	};
+
+	// Add sounds to slider
+	var addSoundsToSlider = function(slider){
+		var _play1 = function(){ sfx("ui_button1"); };
+		var _play2 = function(){ sfx("ui_button2"); };
+		slider.addEventListener("mousedown", _play1);
+		slider.addEventListener("touchstart", _play1);
+		slider.addEventListener("change", _play2);
+		//slider.addEventListener("touchend", _play2);
+	};
+	addSoundsToSlider(text_speed_slider);
+	addSoundsToSlider(volume_slider);
 
 
 
@@ -34,13 +55,18 @@ window.Options = {};
 
 	var ctaAlpha = 1;
 	var click_to_advance = $("#click_to_advance");
+	var cta_text1 = $("#cta_text1");
+	var cta_text2 = $("#cta_text2");
 	click_to_advance.style.display = "none";
 	subscribe("show_click_to_advance", function(){
-		if(HOW_MANY_PROMPTS>0){
-			click_to_advance.style.display = "block";
-			blinkCTA();
-			HOW_MANY_PROMPTS--;
-		}
+
+		cta_text1.style.display = (HOW_MANY_PROMPTS>0) ? "inline" : "none";
+		cta_text2.style.display = (HOW_MANY_PROMPTS>0) ? "none" : "inline";
+		HOW_MANY_PROMPTS--;
+
+		click_to_advance.style.display = "block";
+		blinkCTA();
+		
 	});
 	subscribe("hide_click_to_advance", function(){
 		click_to_advance.style.display = "none";
@@ -70,6 +96,11 @@ window.Options = {};
 			}
 		}
 
+		// Also, move click_to_advance DOM
+		var wordsTop = parseInt($("#game_words").style.top);
+		var wordsHeight = $("#game_words").getBoundingClientRect().height;
+		click_to_advance.style.top = Math.round(wordsTop+wordsHeight+5) + "px";
+
 	};
 
 	var _timeoutCallbacks = [];
@@ -90,9 +121,13 @@ window.Options = {};
 		// Calculate text speed...
 		var t = parseFloat(text_speed_slider.value);
 		t = (1-t); // whoops, flip around
-		// Log slider, from 30 to 120, with 50 "in the middle"
-		// f(0)=20, f(0.5)=50(+30), f(1)=120(+100)
-		var speed = Math.round( 20 + Math.exp(t*2.5)*9 ); // close enough
+		// Log slider, from 5 to 120, with 50 "in the middle"
+		// f(0)=5, f(0.5)=50, f(1)=120
+		// a*e^(0.0*b) + c = 5
+		// a*e^(0.5*b) + c = 50
+		// a*e^(1.0*b) + c = 120
+		// constants gotten by Wolfram Alpha, thanks Wolfy.
+		var speed = Math.round( 81*Math.exp(t*0.885) - 76 );
 		Game.TEXT_SPEED = speed;
 
 		// Clear previous crap
@@ -141,6 +176,8 @@ window.Options = {};
 		_clearAllTimeouts();
 		text_speed_preview.innerHTML = "";
 
+		sfx("ui_show_choice", {volume:0.4});
+
 		setTimeout(function(){
 			updateText();
 		},400);
@@ -149,12 +186,15 @@ window.Options = {};
 
 	var ALREADY_DID_INTRO = false;
 	$("#options_ok").onclick = function(){
+
 		if(!ALREADY_DID_INTRO){
+			sfx("ui_click");
 			publish("cut_options_bottom");
 			ALREADY_DID_INTRO = true;
 		}else{
 			publish("hide_options");
 		}
+
 	};
 
 	subscribe("cut_options_bottom", function(){
@@ -181,7 +221,8 @@ window.Options = {};
 		Howler.mute(false); // hack
 	});
 
-	subscribe("hide_options", function(){		
+	subscribe("hide_options", function(){	
+		sfx("ui_click");	
 		optionsDOM.style.top = "";
 		Options.showing = false;
 		Game.onUnpause();

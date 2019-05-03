@@ -1,5 +1,9 @@
 window.About = {};
 
+Loader.addSounds([
+	{ id:"yelp", src:"sounds/sfx/yelp.mp3" }
+]);
+
 (function(){
 
 	// Newsletter stuff
@@ -26,6 +30,8 @@ window.About = {};
 
 	};
 	$("#close_about").onclick = function(){
+
+		sfx("ui_click");
 
 		aboutDOM.style.top = "";
 		//aboutDOM.setAttribute("about","yes");
@@ -54,7 +60,8 @@ window.About = {};
 	// Replay
 	$("#replay").onclick = function(){
 
-		// TODO: UI/SCREAM SOUNDS
+		// UI/SCREAM SOUNDS
+		sfx("yelp");
 
 		// Cut out
 		aboutDOM.style.top = "";
