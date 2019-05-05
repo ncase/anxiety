@@ -144,14 +144,14 @@ function HitPoints(){
 			}
 		}
 		var sx=isRight ? 360 : 0, sy=200*1, sw=360, sh=200;
-		var offset = (1-self[side+"White"])*360;//self[side+"WhiteWidth"];
+		var offset = (1-self[side+"White"])*295;//self[side+"WhiteWidth"];
 		offset *= isRight ? -1 : 1;
 		ctx.globalCompositeOperation = "source-atop";
 		ctx.drawImage(self.image, sx,sy,sw,sh, (sx+offset)/2,0,sw/2,sh/2);
 
 		// Red
 		var sx=isRight ? 360 : 0, sy=200*2, sw=360, sh=200;
-		var offset = (1-self[side+"Red"])*360;//self[side+"WhiteWidth"];
+		var offset = (1-self[side+"Red"])*295;//self[side+"WhiteWidth"];
 		offset *= isRight ? -1 : 1;
 		ctx.globalCompositeOperation = "source-atop";
 		ctx.drawImage(self.image, sx,sy,sw,sh, (sx+offset)/2,0,sw/2,sh/2);

@@ -3,7 +3,16 @@ window.Library = {
 	images: {},
 	sounds: {}
 };
-Loader.load = function(){
+Loader.load = function(progressCallback){
+
+	var totalAssets = Loader.sceneSources.length + Loader.imageConfigs.length + Loader.soundConfigs.length;
+	var assetsLoaded = 0;
+	subscribe("assetLoaded", function(){
+		assetsLoaded++;
+		progressCallback(assetsLoaded/totalAssets);
+	});
+
+	// Gotta LOAD 'EM ALL
 	return new RSVP.Promise(function(resolve){
 		
 		var loadPromises = [];
@@ -42,7 +51,10 @@ Loader.loadImage = function(imageConfig){
 		var img = new Image();
 		var id = imageConfig.id;
 		Library.images[id] = img; // ADD TO LIBRARY
-		img.onload = resolve;
+		img.onload = function(){
+			publish("assetLoaded");
+			resolve();
+		}
 		img.src = imageConfig.src;
 	});
 };
@@ -62,6 +74,7 @@ Loader.loadScene = function(src){
 		xhr.onload = function() {
 		    if(xhr.status===200){
 		    	Game.parseSceneMarkdown(xhr.responseText); // PARSE INTO GAME
+		    	publish("assetLoaded");
 		    	resolve();
 		    }
 		};
@@ -85,6 +98,7 @@ Loader.loadSound = function(soundConfig){
 		var id = soundConfig.id;
 		Library.sounds[id] = sound; // ADD TO LIBRARY
 		sound.once("load",function(){
+			publish("assetLoaded");
 			resolve();
 		});
 	});

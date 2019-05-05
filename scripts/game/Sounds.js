@@ -54,7 +54,7 @@ window.music = function(song, options){
 	// Fade out or cut previous?
 	if(options.fade==0){
 		if(window.CURRENT_MUSIC) window.CURRENT_MUSIC.stop();
-	}else{
+	}else if(window.CURRENT_MUSIC){
 		var currentVolume = window.CURRENT_MUSIC.volume();
 		window.CURRENT_MUSIC.fade(currentVolume, 0, options.fade*1000);
 	}

@@ -41,6 +41,12 @@ Loader.addSounds([
 
 	};
 
+	// SHOW TBC
+	var tbc = $("#end_demo_tbc");
+	subscribe("TO_BE_CONTINUED", function(){
+		tbc.style.display = "block";
+	});
+
 	// SHOW END
 	subscribe("END_OF_DEMO", function(){
 
@@ -51,16 +57,23 @@ Loader.addSounds([
 		// Cut in
 		aboutDOM.removeAttribute("about");
 		aboutDOM.style.display = "none";
-		aboutDOM.style.top = "0px";
+		aboutDOM.style.display = "block";
 		setTimeout(function(){
-			aboutDOM.style.display = "block";
+			aboutDOM.style.top = "0px"; // slide in
 		},10);
+
+		// Sound
+		Howler.mute(false);
+		sfx("rustle");
+		music('campus', {volume:0.5, fade:1});
+
 	});
 
 	// Replay
 	$("#replay").onclick = function(){
 
 		// UI/SCREAM SOUNDS
+		stopAllSounds();
 		sfx("yelp");
 
 		// Cut out
@@ -69,6 +82,7 @@ Loader.addSounds([
 		setTimeout(function(){
 			aboutDOM.style.display = "block";
 		},100);
+		tbc.style.display = "none";
 
 		// Bye
 		About.showing = false;

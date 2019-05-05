@@ -13,7 +13,7 @@ MAIN GAME
 
 ******************************************************************************************************/
 
-#game_words, #game_choices, #paused, #options, #loading, #gear, #about, #click_to_advance{
+div{ /*, #game_words, #game_choices, #paused, #options, #loading, #gear, #about, #click_to_advance{*/
 	-webkit-user-select: none; /* Safari 3.1+ */
 	-moz-user-select: none; /* Firefox 2+ */
 	-ms-user-select: none; /* IE 10+ */
@@ -113,7 +113,7 @@ PAUSED & LOADING
 	font-weight: bold;
 	text-align: center;
 }
-#paused > div, #loading > div{
+#paused > div{
 	position: absolute;
 	margin: auto;
 	top: 0;
@@ -138,17 +138,57 @@ PAUSED & LOADING
 	display: none;
 }
 
+#loading_bar{
+	width: 150px;
+    height: 100px;
+    overflow: hidden;
+
+    position: absolute;
+	margin: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+#loading_bar_bg{
+	width: 140px;
+	height: 0px;
+	background: #ff4040;
+	position: absolute;
+	left:5px;
+	bottom: 42px;
+}
+#loading_pic{
+	width: 100%;
+	height: 100%;
+	background: url(../sprites/ui/preloader.png);
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-size: 100%;
+}
 #loading{
 	display:block;
-	background: #333;
+	background:#282828;
+}
+#loading[loaded=yes]{
 	cursor: pointer;
+	background:#282828;
 }
-#loading:hover{
-	background: #444;
+#loading[loaded=yes]:hover{
+	background:#444;
 }
-#loading > div{
-	height: 50px;
-    font-size: 30px;
+#loading[loaded=yes] #loading_bar_bg{
+	display: none;
+}
+#loading[loaded=yes] #loading_pic{
+	background-position: 0px -100%;
+}
+#loading[loaded=yes]:hover #loading_pic{
+	background-position: 0px -200%;	
+}
+#loading[loaded=yes]:active #loading_pic{
+	background-position: 0px -300%;
 }
 
 
@@ -187,6 +227,11 @@ ABOUT / END DEMO
 
 }
 #end_demo_tbc{
+
+	position: absolute;
+    top: 220px;
+    display: none;
+
 	background: url(../sprites/end_demo/tbc.png);
     background-size: 100%;
     width: 100%;
@@ -263,7 +308,7 @@ ABOUT / END DEMO
 
 #patreon{
 	width: 160px;
-    height: 48px;
+    height: 56px;
 	background: url(../sprites/end_demo/patreon.png);
     background-size: 100%;
     margin: 5px auto 10px auto;
@@ -319,17 +364,21 @@ ABOUT / END DEMO
 	background-position: -200px;
 }
 
-#end_demo #end_demo_tbc{			display: block; }
 #end_demo #end_words1{				display: inline; }
 #end_demo #end_words2{				display: none; }
 #end_demo #replay{					display: block; }
 #end_demo #close_about{				display: none; }
+#end_demo .about_padding{
+	padding-top: 10px;
+}
+#end_demo #end_demo_words{
+	padding-top: 50px;
+}
 
 #end_demo[about=yes]{
 	padding-top: 25px;
     height: 490px;
 }
-#end_demo[about=yes] #end_demo_tbc{	display: none; }
 #end_demo[about=yes] #end_words1{	display: none; }
 #end_demo[about=yes] #end_words2{	display: inline; }
 #end_demo[about=yes] #replay{		display: none; }
@@ -338,6 +387,12 @@ ABOUT / END DEMO
 	float: none;
     width: 50px;
     margin: 10px auto;
+}
+#end_demo[about=yes] .about_padding{
+	padding-top: 0px;
+}
+#end_demo[about=yes] #end_demo_words{
+	padding-top: 0px;
 }
 
 
@@ -371,6 +426,12 @@ OPTIONS
 	     -o-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
 	        transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); /* custom */
 
+}
+#options #volume_options{
+	display: none;
+}
+#options[past_intro=yes] #volume_options{
+	display: block;
 }
 #text_speed_preview{
 	height: 1.3em;
@@ -493,6 +554,35 @@ DIALOGUEZ
 
 .clear-both{
 	clear:both;
+}
+
+.mini-icon{
+	display: inline-block;
+	background: url(../sprites/ui/icons.png);
+	background-size: 700%;
+	width: 20px; height:20px;
+	position: relative;
+}
+.mini-icon[pic="gear"]{
+	background-position: -0px 0px;
+}
+.mini-icon[pic="about"]{
+	background-position: -100% 0px;
+}
+.mini-icon[pic="next"]{
+	background-position: -200% 0px;
+}
+.mini-icon[pic="play1"]{
+	background-position: -300% 0px;
+}
+.mini-icon[pic="play2"]{
+	background-position: -400% 0px;
+}
+.mini-icon[pic="click"]{
+	background-position: -500% 0px;
+}
+.mini-icon[pic="ok"]{
+	background-position: -600% 0px;
 }
 
 .narrator-bubble, .narrator-bubble-2, .narrator-bubble-4{

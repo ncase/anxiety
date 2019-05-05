@@ -68,7 +68,9 @@ function Act1_Beebee(){
 			"eyes_pained1",
 			"eyes_pained2",
 			"mouth_shut",
-			"eyes_anger"
+			"eyes_anger",
+
+			"body_meta*"
 
 		],
 		x: 270-7.5,

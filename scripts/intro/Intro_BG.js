@@ -19,6 +19,9 @@ Loader.addSounds([
 ]);
 
 function BG_Intro(){
+	
+	var ticker = 18;//0;
+
 
 	var self = this;
 
@@ -104,7 +107,6 @@ function BG_Intro(){
 		20
 	]
 
-	var ticker = 18;//0;
 	var frameTicker = ticker;
 	var parallaxTicker = 0;
 	var SHOWN_PLAY_BUTTON = false;

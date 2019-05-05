@@ -69,14 +69,19 @@ Loader.addSounds([
 		
 	});
 	subscribe("hide_click_to_advance", function(){
+		
 		click_to_advance.style.display = "none";
+
+		if(currentBlinkingInterval) clearInterval(currentBlinkingInterval);
+		currentBlinkingInterval = null;
+
 	});
+	var currentBlinkingInterval;
 	var blinkCTA = function(){
-		if(click_to_advance.style.display=="block"){
+		currentBlinkingInterval = setInterval(function(){
 			ctaAlpha = (ctaAlpha==1) ? 0 : 1;
 			click_to_advance.style.opacity = ctaAlpha;
-			setTimeout(blinkCTA, 700);
-		}
+		}, 700);
 	};
 
 	///////////////////////////////////
@@ -170,7 +175,13 @@ Loader.addSounds([
 	// Showing/hiding options /////////
 	///////////////////////////////////
 
+
+	var ALREADY_DID_INTRO = false;
+
 	subscribe("show_options_bottom", function(){
+
+		ALREADY_DID_INTRO = false;
+		optionsDOM.setAttribute("past_intro", ALREADY_DID_INTRO ? "yes" : "no");
 		
 		optionsDOM.style.top = "447px";
 		_clearAllTimeouts();
@@ -184,7 +195,6 @@ Loader.addSounds([
 
 	});
 
-	var ALREADY_DID_INTRO = false;
 	$("#options_ok").onclick = function(){
 
 		if(!ALREADY_DID_INTRO){
@@ -214,7 +224,10 @@ Loader.addSounds([
 	});
 
 	subscribe("show_options", function(){
-		$("#volume_options").style.display = "block";
+
+		ALREADY_DID_INTRO = true;
+		optionsDOM.setAttribute("past_intro", ALREADY_DID_INTRO ? "yes" : "no");
+
 		optionsDOM.style.top = "200px";
 		Options.showing = true;
 		Game.pause();

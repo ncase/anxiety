@@ -26,7 +26,7 @@ n: QUICK, WARN THEM!
 
 `Game.OVERRIDE_TEXT_SPEED = 1.25;`
 
-n4: (LET _YOUR_ ANXIETY COME OUT TO PLAY! PICK WHAT _YOUR_ ANXIETY WOULD MOST LIKELY SAY TO YOU)
+n4: (LET _YOUR_ ANXIETY COME OUT TO PLAY! PICK WHAT _YOUR_ FEAR WOULD MOST LIKELY SAY TO YOU)
 
 [You're eating alone for lunch! Again!](#act1a_alone)
 
@@ -162,7 +162,7 @@ b: I am best protector!
 
 n: BUT YOU'RE NOT DONE SAVING YOUR HUMAN YET
 
-n: GET YOUR HUMAN'S ENERGY BAR TO ZERO
+n: GET YOUR HUMAN'S ENERGY BAR EMPTY
 
 n: TO PROTECT YOUR HUMAN'S PHYSICAL + SOCIAL + MORAL NEEDS, YOU CAN USE:
 
@@ -341,7 +341,7 @@ h: I'll say no.
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
 {{if _.fifteencigs}}
-b: All you ever do is cry in a corner and worry about how loneliness is as deadly as 15 cigarettes a day.
+b: All you ever do is cry in a corner about how loneliness is as deadly as 15 cigarettes a day.
 {{/if}}
 
 {{if _.seppuku}}
@@ -349,7 +349,7 @@ b: All you ever do at parties is worry about how you should be doing work instea
 {{/if}}
 
 {{if _.whitebread}}
-b: All you ever do is just panic about the unhealthy food options and think about how every tiny bit is going to kill you.
+b: All you ever do is worry about how the unhealthy food options are going to kill you.
 {{/if}}
 
 ```
@@ -405,7 +405,7 @@ h: What's new on Twitter?
 
 [Oh no, look at that horrible news story!](#act1d_news)
 
-[Oh no, is that a subtweet of *you?*](#act1d_subtweet)
+[Oh no, is that tweet secretly about *you?*](#act1d_subtweet)
 
 [hey, a GIF of a cat drinking milk](#act1d_milk)
 
@@ -464,9 +464,13 @@ h: Screw it, let's look at Snapchat.
 
 # act1d_subtweet
 
+`bb({eyes:"fear"});`
+
+b: It's a subtweet! A sneaky, sneaky subtweet!
+
 `hong({eyes:"annoyed"});`
 
-h: ...probably not?
+h: It's probably not?
 
 `bb({eyes:"narrow", mouth:"small"});`
 
@@ -825,20 +829,20 @@ h: Why are you like this?!
 # act1e_ignore_posture
 
 ```
-bb({eyes:"fear"});
+bb({eyes:"anger"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: Do you want to have a pretzel for a spine?!
+b: Do you want to have a pretzel for a spine?! Stop hunching over your screen!
 
 ```
-bb({body:"fear"});
-Game.OVERRIDE_TEXT_SPEED = 1.5;
+bb({body:"meta"});
 ```
 
-b: Do you want your freak skeleton to end up in a cheap tourist trap museum?!
+b: That means you too.
 
 ```
+bb({body:"normal", mouth:"normal"});
 hong({mouth:"shock", eyes:"shock"});
 attack("10p", "harm");
 ```
@@ -1004,6 +1008,7 @@ b: You think other people's genitals are Pokémon for you to collect?
 bb({body:"sing", eyes:"pretty", mouth:"shut"});
 music("pokemon");
 Game.clearText();
+Game.FORCE_CANT_SKIP = true;
 ```
 
 ```
@@ -1051,11 +1056,15 @@ b: ♫ with sweaty dick and balls!-
 
 (...1000)
 
-`bb({eyes:"smile", mouth:"smile"})`
+```
+bb({eyes:"smile", mouth:"smile"});
+Game.FORCE_TEXT_DURATION = 1000;
+```
 
-b: ♫ PERVY-MON, GOTTA CA-
+b: ♫ PERVY-MON! GOTTA CA-
 
 ```
+Game.FORCE_CANT_SKIP = false;
 Game.clearText();
 music(false);
 bb({body:"normal", mouth:"normal", eyes:"normal"});
@@ -1254,14 +1263,14 @@ h: Now excuse me while I eat this delicious sandwich in goddamn peace.
 
 `hong({body:"2_sammich_eat"});`
 
-(...600)
+(...601)
 
 ```
 sfx("sandwich");
 hong({body:"2_sammich_eaten", eyes:"0_lookaway", mouth:"0_chew1"})
 ```
 
-(...600)
+(...601)
 
 ```
 bb({body:"normal", eyes:"uncertain", mouth:"shut"});
@@ -1359,13 +1368,13 @@ n: CONGRATULATIONS
 
 (...500)
 
-n: YOU HAVE SUCCESSFULLY PROTECTED YOUR HUMAN
+n: YOU'VE SUCCESSFULLY PROTECTED YOUR HUMAN'S NEEDS FOR SAFETY, LOVE, AND GOODNESS
 
-n: LOOK HOW GRATEFUL THEY ARE
+n: WHY, LOOK HOW GRATEFUL THEY ARE!
 
 (...500)
 
-n: NOW THAT THEIR ENERGY IS ZERO, YOU CAN DIRECTLY CONTROL THEIR ACTIONS!
+n: NOW THAT THEIR ENERGY IS ZERO, YOU CAN DIRECTLY CONTROL THEIR ACTIONS
 
 `bb({mouth:"smile", eyes:"normal"});`
 

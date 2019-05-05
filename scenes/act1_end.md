@@ -2,9 +2,13 @@
 
 `SceneSetup.act1_end()`
 
-(...2000)
+(...1000)
 
-n: TOTAL FEARS USED:
+`sfx("dramatic");`
+
+(...1000)
+
+n: YOUR FEARS:
 
 n: #harm# *BEING HARMED:* {{_.attack_harm}}
 
@@ -12,10 +16,17 @@ n: #alone# *BEING UNLOVED:* {{_.attack_alone}}
 
 n: #bad# *BEING A BAD PERSON:* {{_.attack_bad}}
 
-(...4000)
+(...3150)
 
 `Game.clearText()`
 
 (...2000)
+
+```
+publish("TO_BE_CONTINUED");
+sfx("fart");
+```
+
+(...2500)
 
 `publish("END_OF_DEMO")`

@@ -4,7 +4,9 @@
 
 # intro-play-button
 
-[👉 Play! 👈](#intro-start) `publish("intro-to-game-1"); Game.OVERRIDE_CHOICE_LINE=true;`
+`Game.HACK_MAKE_THE_LINE_BIG=true;`
+
+[<div class="mini-icon" pic="play1"></div> PLAY! <div class="mini-icon" pic="play2"></div>](#intro-start) `publish("intro-to-game-1"); Game.OVERRIDE_CHOICE_LINE=true;`
 
 # intro-start
 
@@ -20,7 +22,7 @@ n3: So before we start, how would *you* like to read?
 
 # intro-start-2
 
-n3: Great! Note: you can always change text/audio options with the ⚙️ icon below.
+n3: Great! Note: you can always change text/audio options with the ⚙ icon below.
 
 n3: Now, let's begin our story...
 
@@ -38,4 +40,6 @@ n2: THIS IS A HUMAN
 
 (...300)
 
-`publish("intro-to-game-3")`
+(#act1_end)
+
+`/*publish("intro-to-game-3")*/`

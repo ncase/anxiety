@@ -151,6 +151,9 @@ Game.setTimeout = function(callback, interval){
 // SKIP TEXT WHEN CLICK ANYWHERE (but NOT capture in choice)
 Game.clearAllTimeouts = function(){
 
+	// NOPE
+	if(Game.FORCE_CANT_SKIP) return;
+
 	// Is this DURING while someone is talking?
 	var isInterrupting = (Game.WHO_IS_SPEAKING!=null);
 
@@ -281,6 +284,7 @@ window.clearText = Game.clearText;
 // Execute text! Just add it to text DOM.
 Game.TEXT_SPEED = 50;
 Game.CLICK_TO_ADVANCE = true;
+Game.FORCE_CANT_SKIP = false;
 Game.OVERRIDE_TEXT_SPEED = 1;
 Game.FORCE_TEXT_DURATION = -1;
 Game.WHO_IS_SPEAKING = null; // "h", "b", "n" etc...
@@ -532,8 +536,10 @@ Game.executeText = function(line){
 		// Return promise
 		var nextLineDelay = Game.TEXT_SPEED*7; // don't override this
 		if(dialogue.slice(-1)=="-") nextLineDelay=0; // sudden interrupt!
-		if(Game.CLICK_TO_ADVANCE){ // IF IT'S CLICK-TO-ADVANCE, "INFINITE" TIMEOUT.
-			nextLineDelay = 1000*10000; // ten thousand seconds
+		if(!Game.FORCE_CANT_SKIP){
+			if(Game.CLICK_TO_ADVANCE){ // IF IT'S CLICK-TO-ADVANCE, "INFINITE" TIMEOUT.
+				nextLineDelay = 1000*10000; // ten thousand seconds
+			}
 		}
 
 		// No one's speaking anymore.
@@ -542,10 +548,12 @@ Game.executeText = function(line){
 		}, interval);
 
 		// Show the clicky UI
-		if(Game.CLICK_TO_ADVANCE){
-			Game.setTimeout(function(){
-				publish("show_click_to_advance");
-			}, interval+Game.TEXT_SPEED*2);
+		if(!Game.FORCE_CANT_SKIP){
+			if(Game.CLICK_TO_ADVANCE){
+				Game.setTimeout(function(){
+					publish("show_click_to_advance");
+				}, interval+Game.TEXT_SPEED*2);
+			}
 		}
 
 		// DONE WITH IT
@@ -567,6 +575,7 @@ Loader.addSounds([
 
 // Execute choice! Add it to choice DOM.
 Game.OVERRIDE_CHOICE_LINE = false;
+Game.HACK_MAKE_THE_LINE_BIG = false;
 Game.executeChoice = function(line){
 	
 	var choiceText = line.match(/\[([^\]]*)\]/)[1].trim();
@@ -621,23 +630,31 @@ Game.executeChoice = function(line){
 	setTimeout(function(){
 		div.style.top = "0px";
 		sfx("ui_show_choice", {volume:0.4});
-	},0);
+	},10);
 
-	// If it's too big, shrink font size
-	setTimeout(function(){
-		var choiceHeight = div.getBoundingClientRect().height;
-		if(choiceHeight>40) div.style.fontSize = "18px";	
-		// And if still too much???		
+	// Or... FORCE
+	if(Game.HACK_MAKE_THE_LINE_BIG){
+		div.style.fontSize = "30px";
+	}else{
+
+		// If it's too big, shrink font size
 		setTimeout(function(){
 			var choiceHeight = div.getBoundingClientRect().height;
-			if(choiceHeight>40) div.style.fontSize = "16px";
+			if(choiceHeight>40) div.style.fontSize = "18px";	
 			// And if still too much???		
 			setTimeout(function(){
 				var choiceHeight = div.getBoundingClientRect().height;
-				if(choiceHeight>40) div.style.fontSize = "14px";
-			},0);
-		},0);
-	},0);
+				if(choiceHeight>40) div.style.fontSize = "16px";
+				// And if still too much???		
+				setTimeout(function(){
+					var choiceHeight = div.getBoundingClientRect().height;
+					if(choiceHeight>40) div.style.fontSize = "14px";
+				},1);
+			},1);
+		},1);
+		
+	}
+	Game.HACK_MAKE_THE_LINE_BIG = false;
 
 	// Wait a bit before adding new line
 	return new RSVP.Promise(function(resolve){
@@ -668,8 +685,17 @@ Game.executeWait = function(line){
 	var waitTime = parseInt(line.match(/^\(\.\.\.(\d+)\)/)[1].trim());
 
 	// Unless it's click to advance, then IGNORE ALL WAITS
-	if(Game.CLICK_TO_ADVANCE && waitTime<=1000){ // hack: unless the wait is long.
-		waitTime = 0; // TODO: Tag anim-waits, do not ignore.
+	if(!Game.FORCE_CANT_SKIP){
+
+		// Specific wait-time, don't skip?
+		var waitTimeString = waitTime+"";
+		var lastDigit = waitTimeString[waitTimeString.length-1];
+		var cantSkip = (lastDigit=="1"); // CAN'T SKIP.
+
+		if(!cantSkip && Game.CLICK_TO_ADVANCE && waitTime<999){ // hack: unless the wait is long.
+			waitTime = 0;
+		}
+
 	}
 	
 	// Delayed promise
@@ -735,7 +761,7 @@ Game.parseLine = function(line){
 			var condition = fullConditional.match(/\{\{if\s+([^\{\}]*)\}\}/)[1];
 
 			// Extract the inside text
-			var insideText = fullConditional.match(/\}\}([^\{\}]*)\{\{/)[1].trim();
+			var insideText = fullConditional.match(/\}\}([^\{\}]*)\{\{/)[1].trim()+" ";
 
 			// Eval condition!
 			var conditionIsTrue = false;

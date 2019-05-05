@@ -2,13 +2,17 @@
 Loader.addScenes([
 	"scenes/intro.md",
 	"scenes/act1.md",
-	"scenes/act1-end.md"
+	"scenes/act1_end.md"
 ]);
-Loader.load().then(function(){
+Loader.load(function(progress){
 
-	$("#loading_progress").style.display = "none";
-	$("#loading_done").style.display = "block";
+	$("#loading_bar_bg").style.height = (progress*50)+"px";
+
+}).then(function(){
+
+	$("#loading").setAttribute("loaded","yes");
 	$("#loading").onclick = function(){
+		sfx("pop");
 		publish('START_GAME');
 	};
 
@@ -17,21 +21,27 @@ Loader.load().then(function(){
 });
 
 subscribe("START_GAME", function(){
-	
+		
 	$("#loading").style.display = "none";
 	Game.start();
 
-	SceneSetup.act1();
+
+	/*SceneSetup.act1();
 	//music('battle', {volume:0.5});
 	hong({body:"phone1"});
 	publish("hp_show");
 
 	_.seppuku = true;
 	_.hookuphole = true;
-	_.catmilk = true;
+	_.catmilk = true;*/
 
-	Game.goto("act1i");
 	
-	//Game.goto("intro");
+	/*_.attack_harm = 0;
+	_.attack_alone = 0;
+	_.attack_bad = 0;
+	Game.goto("act1_end");
+	*/
+	
+	Game.goto("intro");
 
 });

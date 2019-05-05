@@ -17,16 +17,25 @@
 
 	<!-- Click to Advance-->
 	<div id="click_to_advance">
-		<span id="cta_text1">👆click anywhere</span>
-		<span id="cta_text2">⚪️</span>
+		<span id="cta_text1">
+			<div class="mini-icon" pic="click" style="top:3px;"></div>
+			click anywhere
+		</span>
+		<span id="cta_text2">
+			<div class="mini-icon" pic="next"></div>
+		</span>
 	</div>
 
 	<!-- Bottom Corner Tabs -->
 	<div id="gear" style="display:none" onclick="publish('show_options')">
-		<div class="icon">⚙</div>
+		<div class="icon">
+			<div class="mini-icon" pic="gear"></div>
+		</div>
 	</div>
 	<div id="about" style="display:none">
-		<div class="icon">?</div>
+		<div class="icon">
+			<div class="mini-icon" pic="about"></div>
+		</div>
 	</div>
 
 	<!-- Paused Screen -->
@@ -39,13 +48,15 @@
 
 	<!-- LOADING -->
 	<div id="loading">
-		<div id="loading_progress">loading...</div>
-		<div id="loading_done" style="display:none">play!</div>
+		<div id="loading_bar">
+			<div id="loading_bar_bg"></div>
+			<div id="loading_pic"></div>
+		</div>
 	</div>
 
 	<!-- ABOUT / END DEMO -->
+	<div id="end_demo_tbc"></div>
 	<div id="end_demo">
-		<div id="end_demo_tbc"></div>
 		<div id="end_demo_words">
 			<span id="end_words1">
 				Augh games take so long to make!
@@ -81,14 +92,14 @@
 				</form>	
 			</div>
 
-			<div>
+			<div class="about_padding">
 				Help me keep making free games?
 			</div>
 			<a href="https://www.patreon.com/ncase" target="_blank" class="no_deco">
 				<div id="patreon"></div>
 			</a>
 			
-			<div>
+			<div class="about_padding">
 				A share on an anxiety-app helps too!
 			</div>
 			<!-- TODO: Better share text -->
@@ -104,7 +115,7 @@
 				</a>
 			</div>
 			
-			<div style="clear:both"></div>
+			<div style="clear:both" class="about_padding"></div>
 
 			Above all, thank you for playing! &lt;3
 			<br>
@@ -135,11 +146,13 @@
 			<div id="text_automatic_toggle">on click</div>
 		</div>
 		<div style="clear:both"></div>
-		<span id="volume_options" style="display:none">
+		<span id="volume_options">
 			<div>Volume:</div>
 			<input id="volume_slider" type="range" min=0 max=1 value=1 step="0.01"/>
 		</span>
-		<div id="options_ok">ok 👌</div>
+		<div id="options_ok">
+			ok <div class="mini-icon" pic="ok" style="top: 3px;"></div>
+		</div>
 	</div>
 
 </div>
