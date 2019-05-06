@@ -1,9 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Adventures with Anxiety!</title>
+	
+	<!-- THE BIG META -->
+	<title>Adventures With Anxiety! (Demo)</title>
+	<meta name="description" content="A story-game about a human and their anxiety! You play *as* the anxiety." />
+	<link rel="icon" type="image/png" href="favicon.png">
+
+	<!-- Schema.org markup for Google+ -->
+	<meta itemprop="name" content="Adventures With Anxiety! (Demo)">
+	<meta itemprop="description" content="A story-game about a human and their anxiety! You play *as* the anxiety.">
+	<meta itemprop="image" content="https://ncase.me/anxiety-demo/sharing/thumb.png">
+
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@ncasenmare">
+	<meta name="twitter:title" content="Adventures With Anxiety! (Demo)">
+	<meta name="twitter:description" content="A story-game about a human and their anxiety! You play *as* the anxiety.">
+	<meta name="twitter:image" content="https://ncase.me/anxiety-demo/sharing/thumb.png">
+
+	<!-- Open Graph data -->
+	<meta property="og:title" content="Adventures With Anxiety! (Demo)">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://ncase.me/anxiety-demo">
+	<meta property="og:image" content="https://ncase.me/anxiety-demo/sharing/thumb.png">
+	<meta property="og:description" content="A story-game about a human and their anxiety! You play *as* the anxiety.">
+	<meta property="og:site_name" content="Adventures With Anxiety! (Demo)">
+	
+	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="styles/game.css">
-	<meta name="viewport" content="width=device-width">
+
+	<!-- Mobile -->
+	<meta name="viewport" content="width=360, user-scalable=no" id="my_viewport">
+	<script>
+	var ratio = screen.width/screen.height;
+	if(ratio > 360/600){
+	    var mvp = document.getElementById('my_viewport');
+	    mvp.setAttribute('content','width='+Math.round(ratio*600)+', height=600, user-scalable=no');
+	}
+	</script>
+
 </head>
 <body>
 
@@ -102,15 +138,16 @@
 			<div class="about_padding">
 				A share on an anxiety-app helps too!
 			</div>
-			<!-- TODO: Better share text -->
 			<div id="share">
-				<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fncase.me%2Fanxiety-demo&quote=Adventures%20with%20Anxiety%20(DEMO)" target="_blank" class="no_deco">
+				<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fncase.me%2Fanxiety-demo%2F" target="_blank" class="no_deco">
 					<div id="share_fb"></div>
 				</a>
-				<a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fncase.me%2Fanxiety-demo&text=Adventures%20with%20Anxiety%20(DEMO):%20https%3A%2F%2Fncase.me%2Fanxiety-demo" target="_blank" class="no_deco">
+				<a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fncase.me%2Fanxiety-demo%2F&text=I%20just%20played%20this%20story-game%20about%20a%20human%20and%20their%20anxiety!%20You%20play%20*as*%20the%20anxiety.%20%F0%9F%98%B1%20https%3A%2F%2Fncase.me%2Fanxiety-demo%2F"
+					target="_blank" class="no_deco">
 					<div id="share_tw"></div>
 				</a>
-				<a href="mailto:?subject=Adventures%20with%20Anxiety%20(DEMO)&body=:%20https%3A%2F%2Fncase.me%2Fanxiety-demo" target="_blank" class="no_deco">
+				<a href="mailto:?subject=Adventures%20with%20Anxiety!%20(Demo)&body=I%20just%20played%20this%20story-game%20about%20a%20human%20and%20their%20anxiety!%20You%20play%20*as*%20the%20anxiety.%20%F0%9F%98%B1%20https%3A%2F%2Fncase.me%2Fanxiety-demo%2F"
+					target="_blank" class="no_deco">
 					<div id="share_em"></div>
 				</a>
 			</div>
@@ -154,6 +191,49 @@
 			ok <div class="mini-icon" pic="ok" style="top: 3px;"></div>
 		</div>
 	</div>
+
+</div>
+
+<!-- Corner Text -->
+<div id="topleft">
+	
+	Created by
+	<a target="_blank" href="https://ncase.me/">
+	Nicky Case</a>
+	
+	<br>
+	
+	Music
+	<a target="_blank" href="http://freemusicarchive.org/music/Komiku/Captain_Glouglous_Incredible_Week_Soundtrack/pog">
+	by Komiku</a>
+	
+	<br>
+	
+	See
+	<a target="_blank" href="https://github.com/ncase/anxiety-demo">
+	source code &amp; full credits</a>
+
+</div>
+<div id="bottomright">
+
+	Thank you playtesters!
+
+	<br><br>
+
+	B Cavello
+	<br>
+	EmilyKate McDonough
+	<br>
+	Glen Chiacchieri
+	<br>
+	Mikayla Hutchinson
+	<br>
+	Monica Srivastava
+	<br>
+	Rowan
+	<br>
+	Srini Kadamati
+
 
 </div>
 	

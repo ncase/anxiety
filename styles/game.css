@@ -1,6 +1,7 @@
 html,body{
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
 }
 body{
 	margin:0;
@@ -675,7 +676,7 @@ DIALOGUEZ
 .hong-bubble:after {
 	content: '';
 	position: absolute;
-	left: 0;
+	left: 1px;
 	top: 50%;
 	width: 0;
 	height: 0;
@@ -772,4 +773,41 @@ canvas{
 	top:-100px;
 	left:0;
 	transition: top 0.5s ease-in-out;
+}
+
+/******************************************************************************************************
+
+CORNER TEXT
+
+******************************************************************************************************/
+
+#topleft, #bottomright{
+	width: 200px;
+    color: #444;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.3em;
+    position: absolute;
+}
+#topleft a, #bottomright a{
+	color: #666;
+}
+#topleft a:hover, #bottomright a:hover{
+	color: #888;
+}
+#topleft{
+	top:10px;
+	left:10px;
+	text-align: left;
+}
+#bottomright{
+	bottom:10px;
+	right:10px;
+	text-align: right;
+}
+@media screen and (max-width: 800px) {
+	#topleft, #bottomright {
+		display: none;
+	}
 }
