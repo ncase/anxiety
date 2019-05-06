@@ -40,6 +40,4 @@ n2: THIS IS A HUMAN
 
 (...300)
 
-(#act1_end)
-
-`/*publish("intro-to-game-3")*/`
+`publish("intro-to-game-3")`
