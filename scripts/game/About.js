@@ -9,12 +9,12 @@ Loader.addSounds([
 	// Newsletter stuff
 	var gdpr = $("#gdpr");
 	var submit = $("#submit");
-	gdpr.oninput = function(){
+	gdpr.onchange = function(){
 		var isChecked = gdpr.checked;
 		submit.disabled = !isChecked;
 		submit.value = isChecked ? "Subscribe! →" : "← plz consent";
 	};
-	gdpr.oninput();
+	gdpr.onchange();
 	$("#the_newsletter").setAttribute("action", "https://sendy.ncase.me/subscribe");
 
 	// The About Button
