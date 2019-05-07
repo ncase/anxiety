@@ -34,11 +34,17 @@
 	<meta name="viewport" content="width=360, user-scalable=no" id="my_viewport">
 	<script>
 	window.addEventListener("load", function(){
-		var ratio = screen.width/screen.height;
-		if(ratio > 360/600){
-		    var mvp = document.getElementById('my_viewport');
-		    mvp.setAttribute('content','width='+Math.round(ratio*600)+', height=600, user-scalable=no');
-		}
+		var resizeViewport = function(){
+			var ratio = window.innerWidth/window.innerHeight;
+			var mvp = document.getElementById('my_viewport');
+			if(ratio > 360/600){
+			    mvp.setAttribute('content', 'width='+Math.round(ratio*600)+', height=600, user-scalable=no');
+			}else{
+				mvp.setAttribute('content', "width=360, user-scalable=no");
+			}
+		};
+		setInterval(resizeViewport,2000);
+		resizeViewport();
 	});
 	</script>
 

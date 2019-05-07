@@ -8,7 +8,7 @@
 
 (...1000)
 
-n: YOUR FEARS:
+n: FEARS YOU USED:
 
 n: #harm# *BEING HARMED:* {{_.attack_harm}}
 
@@ -16,7 +16,7 @@ n: #alone# *BEING UNLOVED:* {{_.attack_alone}}
 
 n: #bad# *BEING A BAD PERSON:* {{_.attack_bad}}
 
-(...3150)
+(...3000)
 
 `Game.clearText()`
 
