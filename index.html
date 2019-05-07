@@ -33,11 +33,13 @@
 	<!-- Mobile -->
 	<meta name="viewport" content="width=360, user-scalable=no" id="my_viewport">
 	<script>
-	var ratio = screen.width/screen.height;
-	if(ratio > 360/600){
-	    var mvp = document.getElementById('my_viewport');
-	    mvp.setAttribute('content','width='+Math.round(ratio*600)+', height=600, user-scalable=no');
-	}
+	window.addEventListener("load", function(){
+		var ratio = screen.width/screen.height;
+		if(ratio > 360/600){
+		    var mvp = document.getElementById('my_viewport');
+		    mvp.setAttribute('content','width='+Math.round(ratio*600)+', height=600, user-scalable=no');
+		}
+	});
 	</script>
 
 </head>

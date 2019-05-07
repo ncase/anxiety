@@ -168,7 +168,7 @@ function BG_Intro(){
 		}
 		if(!SHOWN_LOGO && ticker>=530/30){
 			SHOWN_LOGO = true;
-			sfx("intro_scream");
+			sfx("intro_scream", {volume:0.9});
 		}
 		if(GAME_TRANSITION==0 && SHOWN_LOGO){
 			self.logoSprite.draw(ctx);
