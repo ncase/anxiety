@@ -10,6 +10,9 @@ SceneSetup.act1 = function(){
 
 	Game.resetScene();
 
+	// RESET HP
+	HP.reset();
+
 	// ATTACKS
 	_.attack_harm = 0;
 	_.attack_alone = 0;

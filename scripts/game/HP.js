@@ -30,6 +30,8 @@ function HitPoints(){
 	self.reset = function(){
 		self.hong = 100;
 		self.beebee = 100;
+		self.leftWhite = 1;
+		self.rightWhite = 1;
 	};
 	self.reset();
 
@@ -89,12 +91,8 @@ function HitPoints(){
 	// Draw
 	self.leftShake = 0;
 	self.leftRed = self.leftWhite = 1;
-	//self.leftWidth = 360;
-	//self.leftWhiteWidth = 360;
 	self.rightShake = 0;
 	self.rightRed = self.rightWhite = 1;
-	//self.rightWidth = 360;
-	//self.rightWhiteWidth = 360;
 	self.drawHalf = function(ctx, isRight){
 
 		ctx.save();
