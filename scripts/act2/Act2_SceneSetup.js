@@ -11,7 +11,7 @@ SceneSetup.act2 = function(){
 	_.attack_bad = 0;
 
 	// Background
-	var bg = new BG_Anxiety();
+	var bg = new BG_Party();
 	Game.scene.children.push(bg);
 
 	// Hong

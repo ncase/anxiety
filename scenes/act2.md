@@ -12,7 +12,7 @@ n: // callback: retweet news story, or subtweet, or Tinder serial killer (or: fa
 
 [Ogling the host, you pervert?](#act2a_perv)
 
-[So let's think about *the meaning of life*.](#act2a_meaning)
+[So let's talk about *the meaning of life*.](#act2a_meaning)
 
 # act2a_social
 

@@ -14,7 +14,7 @@ Loader.load(function(progress){
 
 	$("#loading").setAttribute("loaded","yes");
 	$("#loading").onclick = function(){
-		sfx("pop");
+		//sfx("pop");
 		publish('START_GAME');
 	};
 
