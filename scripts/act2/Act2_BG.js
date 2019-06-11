@@ -1,6 +1,27 @@
+/*****
+
+TODO:
+- whoosh out @done
+- put hong & beebee sprites in for battle @done
+- characters in @done
+
+TODO:
+- battle talk
+- whoosh in
+- party talk
+- whoosh out
+- battle talk 2
+- jarring image
+- whoosh in
+- slap dat/run out
+- whoosh out
+
+****/
+
 Loader.addImages([
 	{ id:"party_bg", src:"sprites/act2/party_bg.png" },
 	{ id:"party_action", src:"sprites/act2/party_action.png" },
+	{ id:"hong_bb_outro", src:"sprites/act2/hong_bb_outro.png" },
 ]);
 
 function BG_Party(){
@@ -13,31 +34,50 @@ function BG_Party(){
 		grid:{ width:1, height:1 },
 		frame:{ width:720, height:1200 },
 	});
-	self.actionSprite = new Sprite({
+	self.partyActionSprite = new Sprite({
 		image: Library.images.party_action,
 		grid:{ width:4, height:3 },
 		frame:{ width:720, height:600 },
 		y: 189
 	});
+	self.outroSprite = new Sprite({
+		image: Library.images.hong_bb_outro,
+		grid:{ width:4, height:2 },
+		frame:{ width:720, height:400 },
+		y: 260
+	});
 
 	// Anxiety BG
 	self.anxiety = new BG_Anxiety();
+
+	// Characters
+	self.hong = new Act2_Hong();
+	self.beebee = new Act2_Beebee();
 
 	// LAYERS
 	self.layers = [
 		self.bgSprite,
 		self.anxiety,
-		self.actionSprite
+		self.partyActionSprite,
+		self.outroSprite,
+		self.hong,
+		self.beebee,
 	];
 	var PARALLAXES = [
 		0.5, // party bg
 		0.0, // anxiety bg
-		1.0, // hong & hunter
+		1.0, // PARTY ACTION SPRITE
+		0.0, // OUTRO hong & bb
+		0.0, // battle hong
+		0.0, // battle beebee
 	];
 	var ALPHAS = [
 		1.0, // party bg
 		0.0, // anxiety bg
-		1.0, // hong & hunter
+		1.0, // PARTY ACTION SPRITE
+		0.0, // OUTRO hong & bb
+		0.0, // battle hong
+		0.0, // battle beebee
 	];
 
 	var parallax = 0;
@@ -68,6 +108,20 @@ function BG_Party(){
 			// DONE
 			if(t==1 || t==0){
 				PARALLAXING = null;
+
+				// Stage 1 transition end
+				if(STAGE==1){
+					ALPHAS[2] = 0; // Party Action
+					ALPHAS[4] = 1; // Hong
+					ALPHAS[5] = 1; // Beebee
+				}
+
+				// Stage 5 transition end
+				if(STAGE==5){
+					ALPHAS[2] = 0; // Party Action
+					ALPHAS[3] = 1; // OUTRO Action
+				}
+
 			}
 
 		}
@@ -101,27 +155,31 @@ function BG_Party(){
 
 	};
 
+	var STAGE = 0;
 	var _subscriptions = [];
 	_subscriptions.push(
 		subscribe("act2-out-1", function(){
+			STAGE = 1;
 			PARALLAXING = "out";
 			sfx("whoosh"); // WHOOSH
 		}),
 		subscribe("act2-in-2", function(){
+			STAGE = 2;
 			PARALLAXING = "in";
 			sfx("whoosh"); // WHOOSH
 		}),
 		subscribe("act2-out-3", function(){
-			// WHOOSH
-			sfx("whoosh");
+			STAGE = 3;
+			sfx("whoosh"); // WHOOSH
 		}),
 		subscribe("act2-in-4", function(){
-			// WHOOSH
-			sfx("whoosh");
+			STAGE = 4;
+			sfx("whoosh"); // WHOOSH
 		}),
 		subscribe("act2-out-5", function(){
-			// WHOOSH
-			sfx("whoosh");
+			STAGE = 5;
+			PARALLAXING = "out";
+			sfx("whoosh"); // WHOOSH
 		})
 	);
 
