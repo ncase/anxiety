@@ -15,11 +15,11 @@ SceneSetup.act2 = function(){
 	Game.scene.children.push(bg);
 
 	// Hong
-	var hong = new Act1_Hong();
+	/*var hong = new Act1_Hong();
 	Game.scene.children.push(hong);
 
 	// Beebee
 	var beebee = new Act1_Beebee();
-	Game.scene.children.push(beebee);
+	Game.scene.children.push(beebee);*/
 
 };

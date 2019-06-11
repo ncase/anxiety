@@ -864,6 +864,9 @@ Game.updateCanvas = function(){
 	
 	// Update/Draw all kids
 	Game.scene.children.forEach(function(child){
+		if(child.update) child.update();
+	});
+	Game.scene.children.forEach(function(child){
 		child.draw(ctx);
 	});
 

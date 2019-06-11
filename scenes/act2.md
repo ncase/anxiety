@@ -8,6 +8,8 @@ n: party words party words party words
 
 n: // callback: retweet news story, or subtweet, or Tinder serial killer (or: fallback - anxiety in general)
 
+`publish("act2-out-1");`
+
 [Oh god they all hate you!](#act2a_social)
 
 [Ogling the host, you pervert?](#act2a_perv)
@@ -17,6 +19,8 @@ n: // callback: retweet news story, or subtweet, or Tinder serial killer (or: fa
 # act2a_social
 
 b: They're secretly gossiping about you!
+
+`publish("act2-in-2");`
 
 b: They're talking behind your back IN FRONT OF YOUR BACK
 
