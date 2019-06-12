@@ -160,21 +160,26 @@ function Character(spriteConfig, animLoops){
 		// Draw attacked icon
 		if(IVE_BEEN_ATTACKED){
 			
-			var icon = self.fears[attackedIconShown];
-			icon.draw(ctx);
+			if(attackedIconShown){
+				var icon = self.fears[attackedIconShown];
+				icon.draw(ctx);
 
-			var caption = self.fearCaptionSprite;
-			caption.gotoFrameByName(attackedIconShown);
-			caption.x = icon.x;
-			caption.y = icon.y-37;
-			caption.alpha = icon.alpha;
-			caption.draw(ctx);
+				var caption = self.fearCaptionSprite;
+				caption.gotoFrameByName(attackedIconShown);
+				caption.x = icon.x;
+				caption.y = icon.y-37;
+				caption.alpha = icon.alpha;
+				caption.draw(ctx);
+			}
 			
 			attackedTimer += 1/60;
 			if(attackedTimer>1.75){
-				icon.y -= 1;
-				icon.alpha -= 1/15;
-				if(icon.alpha<0){
+				if(attackedIconShown){
+					icon.y -= 1;
+					icon.alpha -= 1/15;
+				}
+				iconAlpha_HACK -= 1/15;
+				if(iconAlpha_HACK<0){
 					attackedIconShown = null;
 					IVE_BEEN_ATTACKED = false;
 				}
@@ -184,6 +189,7 @@ function Character(spriteConfig, animLoops){
 		ctx.restore();
 
 	};
+	var iconAlpha_HACK = 0;
 
 	// Anim Loop logic!
 	self.animLoops.forEach(function(rule){
@@ -226,11 +232,14 @@ function Character(spriteConfig, animLoops){
 	var attackedTimer = 0;
 	self.showAttackedIcon = function(type){
 		IVE_BEEN_ATTACKED = true;
-		attackedIconShown = type;
-		var icon = self.fears[attackedIconShown];
-		icon.x = 82;
-		icon.y = 250;
-		icon.alpha = 1;
+		if(type){
+			attackedIconShown = type;
+			var icon = self.fears[attackedIconShown];
+			icon.x = 82;
+			icon.y = 250;
+			icon.alpha = 1;
+		}
+		iconAlpha_HACK = 1;
 		attackedTimer = 0;
 	};
 

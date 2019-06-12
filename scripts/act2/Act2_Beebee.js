@@ -53,6 +53,7 @@ function Act2_Beebee(){
 	});
 	var _subscriptions = [];
 	_subscriptions.push( subscribe("bb", self.gotoFrames) );
+	_subscriptions.push( subscribe("attack_bb", self.showAttackedIcon) );
 
 	// Draw! Same as earlier except a lot of vibration
 	var ticker = 0;

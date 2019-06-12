@@ -77,6 +77,7 @@ function HitPoints(){
 		}else{
 			self.doDamage(damage, "beebee");
 			self.rightShake = 30;
+			publish("attack_bb");
 		}
 
 		// Sound

@@ -38,13 +38,33 @@ function BG_Party(){
 		image: Library.images.party_action,
 		grid:{ width:4, height:3 },
 		frame:{ width:720, height:600 },
-		y: 189
+		y: 189,
+		frameNames:[
+			"pre",
+			"twist1",
+			"twist2",
+			"twist3",
+			"twist4",
+			"end",
+			"end_run",
+			"end_slap1",
+			"end_slap2",
+			"end_slap3"
+		]
 	});
 	self.outroSprite = new Sprite({
 		image: Library.images.hong_bb_outro,
 		grid:{ width:4, height:2 },
 		frame:{ width:720, height:400 },
-		y: 260
+		y: 260,
+		frameNames:[
+			"end1",
+			"end2",
+			"end3",
+			"end4",
+			"end5",
+			"end6"
+		]
 	});
 
 	// Anxiety BG
@@ -100,7 +120,7 @@ function BG_Party(){
 			// 0 to -180 in one second, smoothed
 			var t = Math.cos(parallaxTicker*Math.TAU/2); // 1 to -1
 			t = (1-t)/2; // 0 to 1
-			parallax = -t*200;
+			parallax = -t*210;
 
 			// Anxiety Alpha
 			ALPHAS[1] = t;
@@ -109,8 +129,8 @@ function BG_Party(){
 			if(t==1 || t==0){
 				PARALLAXING = null;
 
-				// Stage 1 transition end
-				if(STAGE==1){
+				// Stage 1 or 3 transition end
+				if(STAGE==1 || STAGE==3){
 					ALPHAS[2] = 0; // Party Action
 					ALPHAS[4] = 1; // Hong
 					ALPHAS[5] = 1; // Beebee
@@ -164,22 +184,45 @@ function BG_Party(){
 			sfx("whoosh"); // WHOOSH
 		}),
 		subscribe("act2-in-2", function(){
+
+			// SHOW ACTION, HIDE CHARS
+			ALPHAS[2] = 1; // Party Action
+			ALPHAS[4] = 0; // Hong
+			ALPHAS[5] = 0; // Beebee
+
+			// WHOOSH
 			STAGE = 2;
 			PARALLAXING = "in";
-			sfx("whoosh"); // WHOOSH
+			sfx("whoosh");
+
 		}),
 		subscribe("act2-out-3", function(){
 			STAGE = 3;
+			PARALLAXING = "out";
 			sfx("whoosh"); // WHOOSH
 		}),
 		subscribe("act2-in-4", function(){
+
+			// SHOW ACTION, HIDE CHARS
+			ALPHAS[2] = 1; // Party Action
+			ALPHAS[4] = 0; // Hong
+			ALPHAS[5] = 0; // Beebee
+
+			// WHOOSH
 			STAGE = 4;
-			sfx("whoosh"); // WHOOSH
+			PARALLAXING = "in";
+			sfx("whoosh");
+
 		}),
 		subscribe("act2-out-5", function(){
 			STAGE = 5;
 			PARALLAXING = "out";
-			sfx("whoosh"); // WHOOSH
+		}),
+		subscribe("act2-party-action", function(frameName){
+			self.partyActionSprite.gotoFrameByName(frameName);
+		}),
+		subscribe("act2-outro", function(frameName){
+			self.outroSprite.gotoFrameByName(frameName);
 		})
 	);
 

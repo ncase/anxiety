@@ -717,6 +717,67 @@ DIALOGUEZ
 	margin-right: -15px;
 }
 
+.hong2-bubble {
+	position: relative;
+	background: #ffffff;
+	color: #000000;
+	border-radius: .4em;
+	padding: 15px;
+	margin: 5px 30px;
+
+	opacity: 0;
+	left: 15px;
+	transition: all 0.3s ease-in-out;
+
+	display: inline-block;
+	float: right;
+
+}
+.hong2-bubble:after {
+	content: '';
+	position: absolute;
+	right: 1px;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-left-color: #ffffff;
+	border-right: 0;
+	margin-top: -15px;
+	margin-right: -15px;
+}
+
+.hunter-bubble {
+	position: relative;
+	background: #ff4040;
+	color: #fff;
+	font-weight: normal;
+	border-radius: .4em;
+	padding: 15px;
+	margin: 5px 30px;
+
+	opacity: 0;
+	left: -15px;
+	transition: all 0.3s ease-in-out;
+
+	display: inline-block;
+	float: left;
+
+}
+.hunter-bubble:after {
+	content: '';
+	position: absolute;
+	left: 1px;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-right-color: #ff4040;
+	border-left: 0;
+	margin-top: -15px;
+	margin-left: -15px;
+}
+
 #game_choices{
 	
 	width: 100%;

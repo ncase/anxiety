@@ -23,7 +23,7 @@ window.attack = function(damage, type){
 	_["attack_"+type]++; // HACK
 };
 window.attackBB = function(damage, type){
-	publish("attack", ["bb", damage, type]);
+	publish("attack", ["bb", damage]);
 };
 
 // Init
@@ -312,6 +312,12 @@ Game.executeText = function(line){
 			case "h":
 				div.className = "hong-bubble";
 				break;
+			case "h2":
+				div.className = "hong2-bubble";
+				break;
+			case "r":
+				div.className = "hunter-bubble";
+				break;
 			case "n":
 				div.className = "narrator-bubble";
 				break;
@@ -344,8 +350,8 @@ Game.executeText = function(line){
 			SPEED = Math.round(Game.FORCE_TEXT_DURATION/dialogue.length);
 		}
 
-		// IF IT'S BEEBEE, HONG, or NARRATOR 3
-		if(speaker=="b" || speaker=="h" || speaker=="n3"){
+		// IF IT'S BEEBEE, HONG, or NARRATOR 3, or HUNTER
+		if(speaker=="b" || speaker=="h" || speaker=="h2" || speaker=="n3" || speaker=="r"){
 
 			// Put in the text, each character a DIFFERENT SPAN...
 			var span, chr;
@@ -387,7 +393,7 @@ Game.executeText = function(line){
 						if(!forceNoSound){
 							var chr = div.children[index].innerHTML;
 							if(chr!=" "){
-								if(speaker=="h"){
+								if(speaker=="h" || speaker=="h2"){
 									voice("hong", {volume:0.3});
 								}
 								if(speaker=="b"){
