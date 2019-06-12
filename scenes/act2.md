@@ -9,10 +9,18 @@ n: // callback: retweet news story, or subtweet, or Tinder serial killer (or: fa
 ```
 Game.clearText();
 publish("act2-out-1");
+```
+
+(...1000)
+
+```
+music('battle', {volume:0.5});
 publish("hp_show");
 ```
 
-(#act2f)
+n: ROUND TWO: *FIGHT!*
+
+(#act2e)
 
 [Oh god they all hate us!](#act2a_social)
 
@@ -356,7 +364,7 @@ b: HUMAN, WE'RE DYING. WE'RE DYING WE'RE DYING WE'RE DYI--
 
 ```
 hong({body:"attacked"});
-attack("30p", _.a2_first_attack);
+attack("20p", _.a2_first_attack);
 ```
 
 (...2500)
@@ -409,7 +417,7 @@ b: THEN STOP SPREADING UNSCIENTIFIC FAKE NEWS
 
 ```
 hong({body:"attacked"});
-attack("10p", "bad");
+attack("20p", "bad");
 ```
 
 (...2500)
@@ -428,7 +436,7 @@ b: EVERYTHING. EVERYTHING IS WRONG
 
 ```
 hong({body:"attacked"});
-attack("10p", "bad");
+attack("20p", "bad");
 ```
 
 (...2500)
@@ -445,7 +453,7 @@ b: STOP BEING RACIST YOU SQUINTY-EYED JERK
 
 ```
 hong({body:"attacked"});
-attack("10p", "bad");
+attack("20p", "bad");
 ```
 
 (...2500)
@@ -481,8 +489,9 @@ b: I'm *part* of you, you know. When you say that, you're hurting *yourself*.
 b: Why are you hitting yourself, human? STOP HITTING YOURSELF.
 
 ```
+music(null);
 hong({body:"attacked"});
-attack("10p", "harm");
+attack("20p", "harm");
 ```
 
 (...2500)
@@ -498,8 +507,9 @@ b: And if we're both so dumb and stupid, we'll *never* figure out how to be happ
 b: Oh god we're so lost! So lost so lost so los--
 
 ```
+music(null);
 hong({body:"attacked"});
-attack("10p", "harm");
+attack("20p", "harm");
 ```
 
 (...2500)
@@ -517,8 +527,9 @@ b: Maybe "they" are just full of crud!
 b: "They" are feeding us contradictions to maintain our dependency on the Self-Help Industrial Complex!
 
 ```
+music(null);
 hong({body:"attacked"});
-attack("10p", "harm");
+attack("20p", "harm");
 ```
 
 (...2500)
@@ -527,7 +538,7 @@ attack("10p", "harm");
 
 # act2f
 
-`hong({body:"cry"})`
+`hong({body:"cry"});`
 
 h: ...
 
@@ -537,7 +548,9 @@ h: I can't appease you. I can't ignore you. I can't fight you.
 
 h: No matter what I do, I can't seem to get rid of yo--
 
-`bb({body:"yell"})`
+```
+bb({body:"yell"});
+```
 
 b: Well maybe you're NOT *SUPPOSED* TO GET RID ME.
 
@@ -714,11 +727,13 @@ b: I'm so sorry, human.
 
 b: I'm going to have to use my SPECIAL ATTACK
 
-[harm](#act2h_attack) `_.SPECIAL_ATTACK="harm"; Game.OVERRIDE_CHOICE_LINE=true`
+`music('battle', {volume:0.5});`
 
-[alone](#act2h_attack) `_.SPECIAL_ATTACK="alone"; Game.OVERRIDE_CHOICE_LINE=true`
+[🗡](#act2h_attack) `_.SPECIAL_ATTACK="harm"; Game.OVERRIDE_CHOICE_LINE=true`
 
-[bad](#act2h_attack) `_.SPECIAL_ATTACK="bad"; Game.OVERRIDE_CHOICE_LINE=true`
+[💔](#act2h_attack) `_.SPECIAL_ATTACK="alone"; Game.OVERRIDE_CHOICE_LINE=true`
+
+[👿](#act2h_attack) `_.SPECIAL_ATTACK="bad"; Game.OVERRIDE_CHOICE_LINE=true`
 
 # act2h_attack
 
@@ -737,9 +752,19 @@ h: You're gonna yap more stupid words at me again to try t--
 # act2i
 
 ```
+publish("show_special_attack");
+Game.FORCE_CANT_SKIP = true;
+music(null);
+```
+
+(...5000)
+
+```
+publish("remove_special_attack");
 hong({body:"defeated"});
 bb({body:"sad"});
 attack("100p", _.SPECIAL_ATTACK);
+Game.FORCE_CANT_SKIP = false;
 ```
 
 (...2500)
@@ -793,6 +818,7 @@ Game.clearText();
 publish("act2-in-4");
 publish("hp_hide");
 publish("act2-party-action", ["end"]);
+music(null, {fade:2});
 ```
 
 (...2000)
@@ -838,9 +864,9 @@ r: I wanna see you let out that *vicious* side of you more, kid!
 
 h2: ok sorry i have to go
 
-r: Ah, the voice was too strong, huh?
+r: Ah, the voice won, huh?
 
-r: Come to my party next weekend. I promise I'll mix something even stronger for you.
+r: Come to my party next weekend, bud. I'll mix something even stronger for ya.
 
 `publish("act2-party-action", ["end_run"]);`
 
@@ -856,9 +882,10 @@ r: I wanna see you finally let loose, kid!
 Game.clearText();
 publish("act2-out-5");
 publish("act2-outro", ["end1"]);
+music("hum", {fade:2, volume:0.6});
 ```
 
-(...3000)
+(...2500)
 
 ```
 publish("act2-outro", ["end2"]);
@@ -874,6 +901,7 @@ b: God, that was *close.* We really could've--
 ```
 Game.clearText();
 publish("act2-outro", ["end3"]);
+music(null);
 ```
 
 (...1000)

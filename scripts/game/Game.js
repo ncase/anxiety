@@ -268,7 +268,7 @@ Game.updateText = function(instant){
 		var gotoY = (wordsHeight<250) ? 0 : wordsHeight-250;
 		gotoY = 80 - gotoY;
 		var nextY = instant ? gotoY : currentY*0.9 + gotoY*0.1;
-		Game.wordsDOM.style.top = nextY+"px";
+		Game.wordsDOM.style.top = (Math.round(nextY*10)/10)+"px";
 	}else{
 		Game.wordsDOM.style.top = Game.FORCE_TEXT_Y+"px";
 	}
