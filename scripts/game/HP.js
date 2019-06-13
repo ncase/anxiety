@@ -4,7 +4,8 @@ Loader.addImages([
 
 Loader.addSounds([
 	{ id:"hit", src:"sounds/sfx/hit.mp3" },
-	{ id:"hit_big", src:"sounds/sfx/hit_big.mp3" }
+	{ id:"hit_big", src:"sounds/sfx/hit_big.mp3" },
+	{ id:"hit_bb", src:"sounds/sfx/hit_bb.mp3" }
 ]);
 
 
@@ -86,6 +87,9 @@ function HitPoints(){
 		}else{
 			sfx("hit");
 		}
+		if(target=="bb"){
+			sfx("hit_bb");
+		}
 
 	});
 
@@ -146,14 +150,14 @@ function HitPoints(){
 		var offset = (1-self[side+"White"])*295;//self[side+"WhiteWidth"];
 		offset *= isRight ? -1 : 1;
 		ctx.globalCompositeOperation = "source-atop";
-		ctx.drawImage(self.image, sx,sy,sw,sh, (sx+offset)/2,0,sw/2,sh/2);
+		ctx.drawImage(self.image, (sx-offset),sy,sw,sh, sx/2,0,sw/2,sh/2);
 
 		// Red
 		var sx=isRight ? 360 : 0, sy=200*2, sw=360, sh=200;
 		var offset = (1-self[side+"Red"])*295;//self[side+"WhiteWidth"];
 		offset *= isRight ? -1 : 1;
 		ctx.globalCompositeOperation = "source-atop";
-		ctx.drawImage(self.image, sx,sy,sw,sh, (sx+offset)/2,0,sw/2,sh/2);
+		ctx.drawImage(self.image, (sx-offset),sy,sw,sh, sx/2,0,sw/2,sh/2);
 
 		// Restore
 		ctx.restore();

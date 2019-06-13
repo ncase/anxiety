@@ -9,9 +9,10 @@ n: // callback: retweet news story, or subtweet, or Tinder serial killer (or: fa
 ```
 Game.clearText();
 publish("act2-out-1");
+music(null, {fade:1});
 ```
 
-(...1000)
+(...2500)
 
 ```
 music('battle', {volume:0.5});
@@ -20,9 +21,7 @@ publish("hp_show");
 
 n: ROUND TWO: *FIGHT!*
 
-(#act2e)
-
-[Oh god they all hate us!](#act2a_social)
+[Oh no they all hate us!](#act2a_social)
 
 [Ogling the host? Like a pervert?](#act2a_perv)
 
@@ -328,7 +327,7 @@ b: What if we're just *fundamentally incapable* of ever being loved, or loving a
 
 b: What if something irreversibly broke inside of us a long time ago? Or never existed in us in the first place?
 
-b: Oh god we're broken! We're so broken so broken so brok--
+b: Ahhh we're broken! We're so broken so broken so brok--
 
 `_.a2_first_attack = "alone"`
 
@@ -342,7 +341,7 @@ b: Others have an inner drive to do goodness, but we only do "good" out of guilt
 
 b: What if it's in our nature to hurt others? What if we can't be anything *other* than a burden to those close to us?
 
-b: Oh god we're broken! We're so broken so broken so brok--
+b: Ahhh we're broken! We're so broken so broken so brok--
 
 `_.a2_first_attack = "bad"`
 
@@ -364,7 +363,7 @@ b: HUMAN, WE'RE DYING. WE'RE DYING WE'RE DYING WE'RE DYI--
 
 ```
 hong({body:"attacked"});
-attack("20p", _.a2_first_attack);
+attack("30p", _.a2_first_attack);
 ```
 
 (...2500)
@@ -417,7 +416,7 @@ b: THEN STOP SPREADING UNSCIENTIFIC FAKE NEWS
 
 ```
 hong({body:"attacked"});
-attack("20p", "bad");
+attack("10p", "bad");
 ```
 
 (...2500)
@@ -436,7 +435,7 @@ b: EVERYTHING. EVERYTHING IS WRONG
 
 ```
 hong({body:"attacked"});
-attack("20p", "bad");
+attack("10p", "bad");
 ```
 
 (...2500)
@@ -453,7 +452,7 @@ b: STOP BEING RACIST YOU SQUINTY-EYED JERK
 
 ```
 hong({body:"attacked"});
-attack("20p", "bad");
+attack("10p", "bad");
 ```
 
 (...2500)
@@ -491,7 +490,7 @@ b: Why are you hitting yourself, human? STOP HITTING YOURSELF.
 ```
 music(null);
 hong({body:"attacked"});
-attack("20p", "harm");
+attack("10p", "harm");
 ```
 
 (...2500)
@@ -504,12 +503,12 @@ b: Which means if *I'm* irrational, then *you're* irrational!
 
 b: And if we're both so dumb and stupid, we'll *never* figure out how to be happy!
 
-b: Oh god we're so lost! So lost so lost so los--
+b: Ahhh we're so lost! So lost so lost so los--
 
 ```
 music(null);
 hong({body:"attacked"});
-attack("20p", "harm");
+attack("10p", "harm");
 ```
 
 (...2500)
@@ -529,7 +528,7 @@ b: "They" are feeding us contradictions to maintain our dependency on the Self-H
 ```
 music(null);
 hong({body:"attacked"});
-attack("20p", "harm");
+attack("10p", "harm");
 ```
 
 (...2500)
@@ -562,7 +561,7 @@ b: I'm trying my best to be your guard-dog, but you keep seeing me as some Big B
 
 b: So I try even *harder* to alert you to danger. More danger! Louder danger!
 
-b: But no matter how hard I try, you *still* think of me as your enemy!
+b: But no matter how hard I try to protect you, you *still* think of me as your enemy!
 
 b: I *know* I suck at my job! But I'm *trying*, human!
 
@@ -582,6 +581,7 @@ r: Hey.
 Game.clearText();
 publish("act2-in-2");
 publish("hp_hide");
+music('party1', {volume:0.4, fade:2});
 ```
 
 (...2000)
@@ -600,19 +600,25 @@ r: Hell, just yesterday, I heard someone curled up into an armadillo ball and cr
 
 h2: huh imagine that.
 
-r: That's why I throw all these parties. I want to help peeps have a good time.
+r: That's why I throw all these parties. I want to help peeps forget their worries.
 
 h2: but my anxiety...
 
 r: Don't worry, kid. There's a simple trick to get that negative voice in your head to be quiet forever.
 
-`Game.clearText();`
-
-(...1400)
-
-`publish("act2-party-action", ["twist3"]);`
+```
+Game.clearText();
+music(null, {fade:1});
+```
 
 (...2000)
+
+```
+publish("act2-party-action", ["twist3"]);
+sfx("rustle");
+```
+
+(...2500)
 
 `publish("act2-party-action", ["twist4"]);`
 
@@ -630,7 +636,9 @@ publish("act2-out-3");
 publish("hp_show");
 ```
 
-[Oh god.](#act2g_oh) `Game.OVERRIDE_CHOICE_LINE=true`
+(...3500)
+
+[Oh God.](#act2g_oh) `Game.OVERRIDE_CHOICE_LINE=true`
 
 [Please don't do this.](#act2g_please) `Game.OVERRIDE_CHOICE_LINE=true`
 
@@ -671,7 +679,7 @@ bb({body:"pained"});
 
 h: Mmm, what an exquisite palette!
 
-h: A full-bodied flavor of "shut your mind up", with a subtle aftertaste of "never feel anything ever again".
+h: A full-bodied flavor of "shut your mind up", with a subtle aftertaste of "never feel anything ever again"!
 
 b: This is bad, human. This is really, really bad.
 
@@ -717,7 +725,7 @@ bb({body:"pained"});
 
 h: Delicious, *and* cheaper than therapy!
 
-b: GOD HUMAN STOP
+b: HUMAN PLEASE STOP
 
 h: Hehehe!
 
@@ -743,9 +751,12 @@ h: What's this crap?
 
 h: You're gonna yap more stupid words at me again to try t--
 
-`bb({body:"special_2"})`
+```
+bb({body:"special_2"});
+sfx("shoryuken");
+```
 
-(...501)
+(...1251)
 
 (#act2i)
 
@@ -755,6 +766,7 @@ h: You're gonna yap more stupid words at me again to try t--
 publish("show_special_attack");
 Game.FORCE_CANT_SKIP = true;
 music(null);
+stopAllSounds();
 ```
 
 (...5000)
@@ -785,9 +797,9 @@ n: *FINISH THEM*
 
 # act2j_fight
 
-b: They were taking advantage of you, a scared vulnerable human.
+b: They were taking advantage of you.
 
-b: Punch that jerk. Knock their friggin' lights out.
+b: Punch that jerk! Knock their friggin' lights out!
 
 `bb({body:"yell"})`
 
@@ -818,7 +830,7 @@ Game.clearText();
 publish("act2-in-4");
 publish("hp_hide");
 publish("act2-party-action", ["end"]);
-music(null, {fade:2});
+music('party1', {volume:0.6, fade:1.5});
 ```
 
 (...2000)
@@ -838,19 +850,27 @@ r: Y'okay there, kid?
 ```
 Game.clearText();
 publish("act2-party-action", ["end_slap1"]);
+music(null);
+sfx("hit");
 ```
 
-(...1500)
+(...1000)
 
-`publish("act2-party-action", ["end_slap2"]);`
+```
+sfx("record_scratch");
+publish("act2-party-action", ["end_slap2"]);
+```
 
 r: Y-you...
 
-`publish("act2-party-action", ["end_slap3"]);`
+```
+publish("act2-party-action", ["end_slap3"]);
+music('party1', {volume:0.6, fade:6});
+```
 
 r: are *kinky*.
 
-r: I like that. You're invited to my party next weekend.
+r: I like that. Come to my party next weekend.
 
 `publish("act2-party-action", ["end_run"]);`
 
@@ -896,17 +916,21 @@ sfx("whoosh");
 
 b: Human! Are you okay?!
 
-b: God, that was *close.* We really could've--
+b: Gosh, that was *close.* We really could've--
 
 ```
 Game.clearText();
 publish("act2-outro", ["end3"]);
 music(null);
+sfx("squeak");
 ```
 
-(...1000)
+(...1500)
 
-`publish("act2-outro", ["end4"]);`
+```
+publish("act2-outro", ["end4"]);
+sfx("hit");
+```
 
 (...1000)
 
@@ -919,10 +943,22 @@ h: I'm going to fucking *kill* you.
 ```
 Game.clearText();
 publish("act2-outro", ["end5"]);
+sfx("grass_step1");
 ````
 
-(...1000)
+(...901)
 
-`publish("act2-outro", ["end6"]);`
+```
+sfx("grass_step2", {volume:0.8});
+publish("act2-outro", ["end6"]);
+```
+
+(...901)
+
+`sfx("grass_step1", {volume:0.5});`
+
+(...901)
+
+`sfx("grass_step2", {volume:0.25});`
 
 (...3000)

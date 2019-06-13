@@ -402,6 +402,9 @@ Game.executeText = function(line){
 								if(speaker=="n3"){
 									voice("typewriter", {volume:0.5});
 								}
+								if(speaker=="r"){
+									voice("hunter", {volume:0.17});
+								}
 							}
 						}
 

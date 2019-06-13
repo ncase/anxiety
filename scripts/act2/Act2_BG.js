@@ -1,34 +1,14 @@
-/*****
-
-TODO:
-- whoosh out @done
-- put hong & beebee sprites in for battle @done
-- characters in @done
-- battle talk @done
-- whoosh in @done
-- party talk @done
-- whoosh out @done
-- battle talk 2 @done
-- jarring image @done
-- whoosh in @done
-- slap dat/run out @done
-- whoosh out @done
-
-TODO:
-- fight icons in bubble @done
-- music & sounds
-- put them in
-- re-use old sound effects for now
-// white noise shock sfx for bb
-- sounds: Hunter's voice, slap, white noise electic attack, party ambience, bottle slosh
-
-****/
-
 Loader.addImages([
 	{ id:"party_bg", src:"sprites/act2/party_bg.png" },
 	{ id:"party_action", src:"sprites/act2/party_action.png" },
 	{ id:"hong_bb_outro", src:"sprites/act2/hong_bb_outro.png" },
 	{ id:"SPECIAL_ATTACK", src:"sprites/act2/special.png" },
+]);
+
+Loader.addSounds([
+	{ id:"squeak", src:"sounds/sfx/squeak.mp3" },
+	{ id:"record_scratch", src:"sounds/sfx/record_scratch.mp3" },
+	{ id:"shoryuken", src:"sounds/sfx/shoryuken.mp3" }
 ]);
 
 function BG_Party(){
