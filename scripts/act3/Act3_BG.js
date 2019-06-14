@@ -32,7 +32,6 @@ function BG_Rooftop(){
 		frame:{ width:720, height:800 },
 		y: 225
 	});
-	self.hongSprite.gotoFrame(3);
 
 	// Anxiety BG
 	self.anxiety = new BG_Anxiety();
@@ -98,7 +97,6 @@ function BG_Rooftop(){
 
 				// Stage 1 transition end
 				if(STAGE==1){
-					console.log("done");
 					ALPHAS[1] = 0; // HIDE Hunter
 					ALPHAS[3] = 0; // HIDE Old Hong
 					ALPHAS[4] = 1; // SHOW new hong
@@ -161,6 +159,11 @@ function BG_Rooftop(){
 
 		}),
 
+		// HUNTER FRAME
+		subscribe("hunter-roof", function(frameName){
+			self.hunterSprite.gotoFrameByName(frameName);
+		}),
+
 		// JUMP OFF
 		subscribe("start-jump-anim", function(){
 			self.hongSprite.gotoFrame(4);
@@ -169,17 +172,11 @@ function BG_Rooftop(){
 		subscribe("hong-next", function(){
 			self.hongSprite.nextFrame();
 		}),
-		subscribe("hunter-shock", function(){
-			self.hunterSprite.gotoFrameByName("front_shock");
-		}),
 
 		// WALK AWAY
 		subscribe("start-walkaway-anim", function(){
 			self.hongSprite.gotoFrame(23);
 			self.hunterSprite.gotoFrameByName("side_smile");
-		}),
-		subscribe("hunter-bored", function(){
-			self.hunterSprite.gotoFrameByName("side_neutral");
 		})
 	);
 

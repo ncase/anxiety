@@ -667,7 +667,7 @@ b: W--
 ```
 hong({body:"drinking"});
 bb({body:"attacked"});
-attackBB("45p", "harm");
+attackBB("40p", "harm");
 ```
 
 (...2000)
@@ -713,7 +713,7 @@ b: I *knew* th--
 ```
 hong({body:"drinking"});
 bb({body:"attacked"});
-attackBB("45p", "harm");
+attackBB("40p", "harm");
 ```
 
 (...2000)

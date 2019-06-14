@@ -1,120 +1,180 @@
 # act3
 
-c: Go on, kid, as hard as you can.
+`SceneSetup.act3();`
 
-c: FUCK that's hot.
-
+```
+/*
+r: Go on, kid, as hard as you can.
+r: FUCK that's hot.
 ---
-
-c: And... that's 10 laps in one minute.
-
-c: Damn, kid. I'm impressed.
-
+r: And... that's 10 laps in one minute.
+r: Damn, kid. I'm impressed.
 h: Told you I could run a marathon!
-
 ---
+*/
+```
 
-c: Y'know, it's good to see you finally let loose. Let go of all those bad vibes.
+r: Y'know, it's good to see you finally let loose. Let go of all those bad vibes.
 
-h: Yeah! I can't feel my own fear anymore!
+(#act3a)
 
-c: Hmmm, you sure about that?
+h2: Yeah! I can't feel my own fear anymore!
 
-h: What, you got *another* dare for me?
+r: Hmmm, you sure about that?
 
-c: I sure do. You see that swimming pool down there?
+h2: What, you got *another* dare for me?
 
-h: Uh, yeah? Ten floors down?
+r: I sure do. You see that swimming pool all the way down there?
 
-c: Jump in.
+```
+publish('hong-next');
+publish("hunter-roof", ["front_evil"]);
+```
+
+h2: Yeah? Ten floors down?
+
+r: Jump in.
 
 (...1000)
 
-h: ...
+`publish('hong-next')`
 
-h: What?
+h2: ...
 
-c: Prove your fear is gone. Jump.
+h2: What?
 
-h: ...um, wait, I...
+r: Prove your fear is gone. Jump.
 
-c: Come on, aren't we friends? Don't you trust your friends? Prove to us – and yourself – that you've conquered fear once and for all. Jump.
+h2: um, wait, I...
 
-c: Unless the nagging voice in your head is back?
+r: Come on, aren't we *friends?* Don't you trust your *friends?*
 
-h: Yeah... it is...
+r: Prove to us - and yourself - that you've conquered your fear once and for all. Jump.
 
-h: But not for long.
+r: Unless that nagging voice in your head is back?
+
+h2: Yeah... it is...
+
+`publish('hong-next')`
+
+h2: But not for long.
+
+(#act3a)
+
+
+
 
 # act3a
 
+```
+Game.clearText();
+publish("act3-out");
+music('battle_dark', {volume:0.7, fade:1});
+```
+
+(...1500)
+
+```
+publish("hp_show");
+```
+
 b: no no no no no no
 
-n: THIS CHAPTER HAS TWO POSSIBLE ENDINGS. ONE IS VERY, VERY BAD.
+n: THIS CHAPTER HAS TWO POSSIBLE ENDINGS. ONE IS *VERY, VERY BAD.*
 
-b: NO NO NO NO NO NO NO NO
+b: NO NO NO NO NO NO NO NO NO NO NO NO NO NO
 
 n: CHOOSE WISELY. PROTECT YOUR HUMAN
 
-b: AAAAAAAAAAAAAAAAAAAAAAA
+b: AAAAAAAAAAAAAAAAAA
 
 n: GOOD LUCK
 
-[Human, you could actually DIE here!](#act3a_harm)
+[Human, you could actually DIE here!](#act3a_harm) `Game.OVERRIDE_CHOICE_LINE=true`
 
-[These sickos aren't really your friends!](#act3a_alone)
+[These sickos aren't really your friends!](#act3a_alone) `Game.OVERRIDE_CHOICE_LINE=true`
 
-[You're being stupid and terrible right now!](#act3a_bad)
+[You're being stupid and terrible right now!](#act3a_bad) `Game.OVERRIDE_CHOICE_LINE=true`
 
 # act3a_harm
 
-// interrupt
+b: H--
+
+(#act3a_after)
 
 # act3a_alone
 
-// interrupt
+b: T--
+
+(#act3a_after)
 
 # act3a_bad
 
-// interrupt
+b: Y--
+
+(#act3a_after)
 
 # act3a_after
 
-h: (drink)
+```
+hong({body:"drink"});
+bb({body:"attacked"});
+attackBB("32p");
+```
 
-h: You know, I might've believed you...
+(...2000)
 
-h: If you hadn't already tried that a zillion times.
+```
+hong({body:"angry"});
+bb({body:"scared"});
+```
+
+h: You know, I might've believed you... if you hadn't tried that a zillion times before.
 
 h: You're the wolf who cried wolf.
 
-[]() 
+[🗡](#act3_fork) `Game.OVERRIDE_CHOICE_LINE=true`
 
-[]() 
+[💔](#act3_fork) `Game.OVERRIDE_CHOICE_LINE=true`
 
-[]() 
+[👿](#act3_fork) `Game.OVERRIDE_CHOICE_LINE=true`
 
 # act3_fork
 
-h: (drink) 
+```
+hong({body:"drink"});
+bb({body:"attacked"});
+attackBB("32p");
+```
+
+(...2000)
+
+```
+hong({body:"angry"});
+bb({body:"scared"});
+```
 
 h: You already tried that too.
 
-b: ...human, please...
+b: human, please...
 
-h: "The only thing to fear is fear itself."
+h: Oh I'm *sorry* Big Pharma doesn't approve of my self-medication.
 
-h: "Don't worry, be happy!"
+h: Look asshole, we *all* have a way of shutting you the fuck up.
 
-h: All the wise folk of our time agree: negative emotions are _bad!_ That's why they're called _negative!_ So the only good negative emotion...
+h: Some people throw themselves into work.
 
-h: ...is a _dead_ negative emotion.
+h: Some people throw themselves into sex and drugs and refreshing their Facebook feed.
 
-[Human, you're drunk and it's TEN FLOORS DOWN]()
+h: Some people throw themselves into other people. 
 
-[Dang it human, this is the thanks I get?!]()
+h: I'm going to throw myself into that pool.
 
-[Okay, I admit it. I messed up.]()
+[You're drunk and it's TEN FLOORS DOWN](#act3_bad_1_harm)
+
+[Dang it, this is the thanks I get?!](#act3_bad_1_insult)
+
+[Okay, I admit it. I messed up.](#act3_good_1) `bb({body:"sad"})`
 
 # act3_bad_1_harm
 
@@ -122,19 +182,45 @@ b: Even if you somehow land *in* the water, you'll still smash into the bottom o
 
 h: Eh.
 
-h: (drink)
+```
+hong({body:"drink"});
+bb({body:"attacked"});
+attackBB("32p");
+```
+
+(...2000)
+
+```
+hong({body:"angry"});
+bb({body:"scared"});
+```
 
 h: I think I saw a Russian guy do this on YouTube once.
+
+(#act3_bad_2)
 
 # act3_bad_1_insult
 
 h: I- I'm sorry, the *thanks?*
 
-b: This crap is exactly why I *exist!* Coz humans can't be trusted to protect themselves!
+b: This is exactly why I *exist!* Because humans can't be trusted to protect themselves!
 
 b: I've been trying to protect your stupid butt all my life and now you're just going t--
 
-h: (drink)
+```
+hong({body:"drink"});
+bb({body:"attacked"});
+attackBB("32p");
+```
+
+(...2000)
+
+```
+hong({body:"angry"});
+bb({body:"scared"});
+```
+
+(#act3_bad_2)
 
 # act3_good_1
 
@@ -146,71 +232,130 @@ h: HAHAHAHAHAHA
 
 h: Oh WOW is that the biggest *fucking* understatement of the century!
 
-h: Yeah, you rotting pile of blood-stained shit! You messed the fuck up!
+h: Yeah, you rotting pile of blood-coated shit! You messed the fuck up!
 
 h: Any other remarks, Captain Obvious?
 
-[I messed up, but revenge on me isn't the answer!]()
+[But revenge on me isn't the answer!](#act3_good_1_fail_revenge) `bb({body:"scared"})`
 
-[But this time I'm *actually* right, this *is* deadly!]()
+[But this time I'm *actually* right!](#act3_good_1_fail_harm) `bb({body:"scared"})`
 
-[I've hurt you.]()
+[I've hurt you.](#act3_good_2a)
+
 
 # act3_good_1_fail_revenge
 
-b: You need to have a healthier relationships with your emotions, rather than drown them wi--
+b: You need to have a healthier relationship with your emotions, rather than drown them wi--
+
+```
+hong({body:"drink"});
+bb({body:"attacked"});
+attackBB("32p");
+```
+
+(...2000)
+
+```
+hong({body:"angry"});
+bb({body:"scared"});
+```
+
+(#act3_bad_2)
+
+
 
 # act3_good_1_fail_harm
 
 b: So please, put the bottle down and let's--
 
+```
+hong({body:"drink"});
+bb({body:"attacked"});
+attackBB("32p");
+```
+
+(...2000)
+
+```
+hong({body:"angry"});
+bb({body:"scared"});
+```
+
+(#act3_bad_2)
+
+
+
+
 # act3_bad_2
 
-b: ...please...
-
-b: ...don't...
+b: please... don't...
 
 h: Your energy bar's looking awfully low there, wolf.
 
 h: If I were you, I'd choose your next words very carefully.
 
-[You know what? Go ahead and jump.]()
+[Fine. I'm done protecting you.](#act3_bad_2_jump)
 
-[I was right all along.]()
+[I was right all along.](#act3_bad_2_right)
 
-[I'm sorry.]()
+[I'm sorry.](#act3_good_2b) `bb({body:"sad"})`
+
 
 # act3_bad_2_jump
 
-b: I'm done alerting you to danger. So, go ahead. See what I care.
+b: So, go ahead and jump. See what I care.
 
 h: ...
 
 h: Okay then. Bottoms up.
 
-b: WAIT NO THAT WAS REVERSE PSYCHOLOGY YOU'RE SUPPOSED TO DO THE OPPOSITE OF WHAT I SA--
+b: WAIT NO THAT WAS REVERSE PSYCHOLOGY YOU WERE SUPPOSED TO DO THE *OPPOSITE* OF WHAT I SA--
 
-h: (drink)
+(#act3_bad_3)
+
+
 
 # act3_bad_2_right
 
-b: You _were_ putting yourself in physical danger. Your so-called friends _were_ using you. And _you_ were using your so-called friends.
+b: You *are* putting yourself in danger. Your so-called friends *are* using you. And *you* are using your so-called friends.
 
-b: Please, human... why don't you believe me?!
+b: So please, human... why don't you believe me?!
 
 h: Because you don't believe in *me*.
 
-h: (drink)
+(#act3_bad_3)
+
+
 
 # act3_bad_3
 
-h: Everyone has a way of shutting you the fuck up.
+```
+music(null);
+hong({body:"drink"});
+bb({body:"attacked"});
+attackBB("100p");
+```
 
-h: Some people throw themselves into work & productivity. Some people throw themselves into sex & drugs & parties. Some people throw themselves into other people. 
+(...2000)
 
-h: I'm going to throw myself into that pool.
+```
+hong({body:"angry"});
+bb({body:"dead"});
+```
 
-b: no please no
+h: *"The only thing to fear is fear itself."*
+
+h: *"Don't worry, be happy!"*
+
+h: All the wise folk of our time agree: negative emotions are *bad!*
+
+h: Duh! That's why they're called *negative!*
+
+h: So the only good negative emotion...
+
+h: Is a *dead* negative emotion.
+
+b: human... please...
 
 h: A while back, I said: “I just want to be free from all this pain.”
 
@@ -218,17 +363,15 @@ h: I got my wish! I no longer feel pain, or fear, or anxiety...
 
 h: I don't feel anything at all.
 
-(...1000)
+`_.a3_ending = "jump";`
 
-b: no no no please god no
+(#act3_end)
 
-b: no NO NO!
 
-b: NO!!!
 
 # act3_good_2a
 
-b: I was so obsessed with making sure nothing else hurt you, that I didn't realize _I_ was the one creating the hurt.
+b: I was so obsessed with making sure nothing else hurt you, that I didn't realize *I* was the one creating the hurt.
 
 h: NO. SHIT.
 
@@ -236,56 +379,83 @@ h: GODDAMN. It really took you this long to finally figure it out?!
 
 h: You could've saved us so much trouble, you big fluffy dumbass. Why didn't you realize this sooner?...
 
+(#act3_good_2q)
+
+
+
 # act3_good_2b
 
 h: ...you're *sorry.*
 
 h: ...
 
-h: (raise drink halfway)
+h: Sorry for *what*, you big fuzzy moron?
 
-h: ...
+(#act3_good_2q)
 
-h: Sorry for _what,_ you big fuzzy moron?
 
 # act3_good_2q
 
-[I'm sorry I wasn't a good protector.]()
+[I'm sorry I wasn't a good protector.](#act3_good_3_protector)
 
-[I'm sorry I didn't respect you.]()
+[I'm sorry I didn't respect you.](#act3_good_3_respect)
 
-// [I'm sorry.]()
-// [I'm sorry I hurt you.]()
+`// [I'm sorry.]()`
+
+[I'm sorry I hurt you.](#act3_good_3_hurt)
+
+
 
 # act3_good_3_protector
 
-b: It's my duty to warn you against real danger, but I kept barking at the mailman instead. Barking at shadows. Barking so much.
+b: It's my duty to warn you against *real* danger, but I kept barking at cars and the mailman.
+
+b: Barking at shadows. Barking so much.
 
 b: It only makes sense that you'd want to muzzle me.
 
 b: I'm sorry.
 
+(#act3_good_4)
+
+
+
 # act3_good_3_respect
 
-b: I was so caught up in trying to protect you, I forgot that I'm supposed to be _your_ loyal guard-wolf, and you're supposed to be _my_ master.
+b: I was so caught up in trying to protect you, I forgot I was supposed to be *your* loyal guard-dog, and you're supposed to be *my* master.
 
-b: Instead I acted as if I was _your_ master.
+b: Instead I acted as if I was *your* master.
 
-b: There's a difference between protective and totalitarian, and I crossed the line.
+b: There's a difference between protective and suffocating, and I crossed the line.
 
 b: I'm sorry.
+
+(#act3_good_4)
+
+
 
 # act3_good_3_hurt
 
-b: I was so obsessed with trying to protect you from being hurt – hurt by the world, by others, by yourself – I never stopped to realize _I_ was the one hurting you.
+b: I was so obsessed with trying to protect you from being hurt, I never stopped to realize *I* was the one hurting you.
 
-b: I don't blame you for wanting to put a rabid dog down.
+b: I was a bad dog.
 
 b: I'm sorry.
 
+(#act3_good_4)
+
+
 # act3_good_4
 
+```
+music(null,{fade:5});
+```
+
 h: ...
+
+```
+hong({body:"stop"});
+```
 
 h: Yeah, well, this was a dumb idea anyway.
 
@@ -299,18 +469,221 @@ b: Okay.
 
 h: Okay.
 
-# act3_good_5
+`_.a3_ending = "walkaway";`
 
-c: Aw shucks kid, what's the matter?
+(#act3_end)
 
-c: Are you _scared?_
 
-h: Yes.
 
-h: I'm scared.
 
-h: And I'm okay with that.
 
-h: I'm okay being scared.
 
-(...1000)
+
+
+
+# act3_end
+
+```
+Game.clearText();
+publish("act3-in");
+publish("hp_hide");
+Game.FORCE_CANT_SKIP = true;
+```
+
+{{if _.a3_ending=="walkaway"}}
+(#act3_walkaway)
+{{/if}}
+
+{{if _.a3_ending=="jump"}}
+(#act3_jump)
+{{/if}}
+
+
+
+
+
+
+# act3_walkaway
+
+`publish("start-walkaway-anim");`
+
+(...2001)
+
+`publish('hong-next')`
+
+(...667)
+
+`publish('hong-next')`
+
+(...667)
+
+`publish('hong-next')`
+
+(...667)
+
+`publish('hong-next')`
+
+`Game.FORCE_CANT_SKIP = false;`
+
+r: What's the matter, kid?
+
+r: Ya *scared?*
+
+```
+publish('hong-next');
+publish('hunter-roof', ["side_neutral"]);
+```
+
+h2: Yes.
+
+h2: I'm scared.
+
+`publish('hong-next')`
+
+h2: And that's okay!
+
+`publish('hong-next')`
+
+h2: It's okay to be scared.
+
+`publish('hong-next')`
+
+(...500)
+
+```
+Game.clearText();
+Game.FORCE_CANT_SKIP = true;
+```
+
+(...1167)
+
+`publish('hong-next')`
+
+(...833)
+
+`publish('hong-next')`
+
+(...1333)
+
+`publish('hong-next')`
+
+(...667)
+
+`publish('hong-next')`
+
+(...667)
+
+`publish('hong-next')`
+
+(...1333)
+
+`publish('hong-next')`
+
+(...501)
+
+`publish('hong-next')`
+
+`Game.FORCE_CANT_SKIP = false;`
+
+(...1001)
+
+r: Did they just lock the door?
+
+r: ...
+
+r: shit.
+
+
+
+
+
+# act3_jump
+
+`publish("start-jump-anim");`
+
+(...2001)
+
+`publish('hong-next')`
+
+(...833)
+
+`publish('hong-next')`
+
+(...501)
+
+`publish('hong-next')`
+
+(...501)
+
+`publish('hong-next')`
+
+(...1167)
+
+`publish('hong-next')`
+
+(...1001)
+
+`publish('hong-next')`
+
+b: no...
+
+`publish('hong-next')`
+
+(...501)
+
+`Game.clearText();`
+
+(...1333)
+
+`publish('hong-next')`
+
+(...1333)
+
+`publish('hong-next')`
+
+b: no no no
+
+(...501)
+
+`Game.clearText();`
+
+`publish('hong-next')`
+
+(...2001)
+
+`publish('hong-next')`
+
+(...501)
+
+`publish('hong-next')`
+
+(...167)
+
+`publish('hong-next')`
+
+(...167)
+
+`publish('hong-next')`
+
+(...167)
+
+```
+publish('hong-next');
+publish("hunter-roof", ["front_shock"]);
+```
+
+(...833)
+
+`publish('hong-next')`
+
+(...167)
+
+`publish('hong-next')`
+
+(...167)
+
+`publish('hong-next')`
+
+b: NO!
+
+
