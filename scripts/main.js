@@ -4,7 +4,8 @@ Loader.addScenes([
 	//"scenes/act1.md",
 	//"scenes/act1_end.md",
 	//"scenes/PROMO.md"
-	"scenes/act2.md",
+	//"scenes/act2.md",
+	"scenes/act3_test.md",
 ]);
 Loader.load(function(progress){
 
@@ -27,6 +28,6 @@ subscribe("START_GAME", function(){
 	$("#loading").style.display = "none";
 	Game.start();
 	
-	Game.goto("act2");
+	Game.goto("act3");
 
 });

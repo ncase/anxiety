@@ -699,7 +699,7 @@ Game.executeWait = function(line){
 		// Specific wait-time, don't skip?
 		var waitTimeString = waitTime+"";
 		var lastDigit = waitTimeString[waitTimeString.length-1];
-		var cantSkip = (lastDigit=="1"); // CAN'T SKIP.
+		var cantSkip = (lastDigit!="0"); // CAN'T SKIP.
 
 		if(!cantSkip && Game.CLICK_TO_ADVANCE && waitTime<999){ // hack: unless the wait is long.
 			waitTime = 0;

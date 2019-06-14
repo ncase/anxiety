@@ -53,6 +53,9 @@ function Sprite(config){
 		self.currentFrame = index;
 		self.currentFrameName = self.frameNames[self.currentFrame] || "";
 	};
+	self.nextFrame = function(){
+		self.gotoFrame(self.currentFrame+1);
+	};
 	self.gotoFrameByName = function(name){
 		var index = self.frameNames.indexOf(name);
 		self.gotoFrame(index);

@@ -9,7 +9,7 @@ SceneSetup.act2 = function(){
 	// RESET HP
 	HP.reset();
 
-	// ATTACKS
+	// ATTACKS (TODO: ACT I, ACT II...???)
 	_.attack_harm = 0;
 	_.attack_alone = 0;
 	_.attack_bad = 0;
