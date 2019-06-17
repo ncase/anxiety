@@ -870,7 +870,7 @@ music('party1', {volume:0.6, fade:6});
 
 r: are *kinky*.
 
-r: I like that. Come to my party next weekend.
+r: I like that. Come to my party next weekend, babe.
 
 `publish("act2-party-action", ["end_run"]);`
 
@@ -886,7 +886,7 @@ h2: ok sorry i have to go
 
 r: Ah, the voice won, huh?
 
-r: Come to my party next weekend, bud. I'll mix something even stronger for ya.
+r: Come to my party next weekend, babe. I'll mix something even stronger for ya.
 
 `publish("act2-party-action", ["end_run"]);`
 

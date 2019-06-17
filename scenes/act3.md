@@ -14,17 +14,15 @@ h: Told you I could run a marathon!
 */
 ```
 
-r: Y'know, it's good to see you finally let loose. Let go of all those bad vibes.
-
-(#act3a)
+r: Y'know, it's good to see you finally let loose, kid. To hell with all those bad vibes.
 
 h2: Yeah! I can't feel my own fear anymore!
 
-r: Hmmm, you sure about that?
+r: Hmmm, ya sure 'bout that?
 
-h2: What, you got *another* dare for me?
+h2: What, you've got *another* dare for me?
 
-r: I sure do. You see that swimming pool all the way down there?
+r: Sure do, babe. See that swimming pool *all* the way down there?
 
 ```
 publish('hong-next');
@@ -35,7 +33,7 @@ h2: Yeah? Ten floors down?
 
 r: Jump in.
 
-(...1000)
+(...999)
 
 `publish('hong-next')`
 
@@ -47,7 +45,7 @@ r: Prove your fear is gone. Jump.
 
 h2: um, wait, I...
 
-r: Come on, aren't we *friends?* Don't you trust your *friends?*
+r: C'mon, aren't we *friends?* Don't ya trust your *friends?*
 
 r: Prove to us - and yourself - that you've conquered your fear once and for all. Jump.
 
@@ -89,6 +87,10 @@ n: CHOOSE WISELY. PROTECT YOUR HUMAN
 b: AAAAAAAAAAAAAAAAAA
 
 n: GOOD LUCK
+
+(...999)
+
+`Game.clearText();`
 
 [Human, you could actually DIE here!](#act3a_harm) `Game.OVERRIDE_CHOICE_LINE=true`
 
@@ -201,7 +203,7 @@ h: I think I saw a Russian guy do this on YouTube once.
 
 # act3_bad_1_insult
 
-h: I- I'm sorry, the *thanks?*
+h: I- Excuse me, the *thanks?*
 
 b: This is exactly why I *exist!* Because humans can't be trusted to protect themselves!
 
@@ -371,13 +373,15 @@ h: I don't feel anything at all.
 
 # act3_good_2a
 
-b: I was so obsessed with making sure nothing else hurt you, that I didn't realize *I* was the one creating the hurt.
+b: I was so obsessed with making sure nothing else hurt you, that I didn't realize *I* was creating the hurt.
 
 h: NO. SHIT.
 
 h: GODDAMN. It really took you this long to finally figure it out?!
 
 h: You could've saved us so much trouble, you big fluffy dumbass. Why didn't you realize this sooner?...
+
+`_.apologized_for_hurt = true;`
 
 (#act3_good_2q)
 
@@ -400,9 +404,13 @@ h: Sorry for *what*, you big fuzzy moron?
 
 [I'm sorry I didn't respect you.](#act3_good_3_respect)
 
-`// [I'm sorry.]()`
+{{if _.apologized_for_hurt}}
+[I'm sorry.](#act3_good_4)
+{{/if}}
 
+{{if !_.apologized_for_hurt}}
 [I'm sorry I hurt you.](#act3_good_3_hurt)
+{{/if}}
 
 
 
@@ -436,7 +444,7 @@ b: I'm sorry.
 
 # act3_good_3_hurt
 
-b: I was so obsessed with trying to protect you from being hurt, I never stopped to realize *I* was the one hurting you.
+b: I was so obsessed with trying to protect you from being hurt, I never stopped to realize *I* was hurting you.
 
 b: I was a bad dog.
 
@@ -468,6 +476,8 @@ b: ...
 b: Okay.
 
 h: Okay.
+
+n: *TIE*
 
 `_.a3_ending = "walkaway";`
 

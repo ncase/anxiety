@@ -1,5 +1,7 @@
 # act4
 
+h: What the hell was the moral of this story?
+
 h: Welp.
 
 h: You were right.

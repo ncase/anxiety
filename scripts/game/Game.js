@@ -701,7 +701,7 @@ Game.executeWait = function(line){
 		var lastDigit = waitTimeString[waitTimeString.length-1];
 		var cantSkip = (lastDigit!="0"); // CAN'T SKIP.
 
-		if(!cantSkip && Game.CLICK_TO_ADVANCE && waitTime<999){ // hack: unless the wait is long.
+		if(!cantSkip && Game.CLICK_TO_ADVANCE && waitTime<=999){ // hack: unless the wait is long.
 			waitTime = 0;
 		}
 

@@ -5,9 +5,11 @@ or maybe CA?
 
 ******************************/
 
-function BG_Anxiety(){
+function BG_Anxiety(whiteMode){
 
 	var self = this;
+
+	self.whiteMode = whiteMode;
 
 	// Moving white boxes
 	var BG_WIDTH = 360;
@@ -80,7 +82,7 @@ function BG_Anxiety(){
 
 	};
 	self.drawBox = function(box, ctx){
-		ctx.fillStyle = "rgba(255,255,255,0.03)";
+		ctx.fillStyle = self.whiteMode ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.03)";
 		ctx.fillRect(box.x, box.y, box.w, box.h);
 	};
 	for(var i=0; i<40; i++){
@@ -99,7 +101,7 @@ function BG_Anxiety(){
 	self.draw = function(ctx){
 
 		// A big ol' black box
-		ctx.fillStyle = "#111111";
+		ctx.fillStyle = self.whiteMode ? "#dddddd" : "#111111";
 		ctx.fillRect(0,0, BG_WIDTH, BG_HEIGHT);
 
 		// All-box alpha
