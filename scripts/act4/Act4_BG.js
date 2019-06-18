@@ -39,13 +39,25 @@ function BG_Act4(){
 		frame:{ width:360, height:360 },
 		y: 192
 	});
+	self.alShireSprite.gotoFrame(3); // blank
 	self.outsideHongSprite = new Sprite({
 		image: Library.images.outside_hong,
 		grid:{ width:4, height:3 },
 		frame:{ width:720, height:720 },
-		y: 90
+		y: 90,
+		frameNames:[
+			"blank",
+
+			"walk",
+			"walk-injured",
+			"eat",
+			"eat-injured",
+			"talk",
+			"talk-injured",
+			"look-back",
+			"look-back-injured",
+		]
 	});
-	self.outsideHongSprite.gotoFrame(4);
 
 	// Anxiety BG... WHITE MODE
 	self.anxiety = new BG_Anxiety(true);
@@ -64,6 +76,7 @@ function BG_Act4(){
 		frame:{ width:720, height:400 },
 		y: 256
 	});
+	self.talk1Sprite.gotoFrame( _.INJURED ? 0 : 1 );
 	self.talk2Sprite = new Sprite({
 		image: Library.images.a4_talk_2,
 		grid:{ width:4, height:2 },
@@ -228,6 +241,31 @@ function BG_Act4(){
 			sfx("whoosh");
 
 		}),
+		subscribe("outside-hong", function(frame){
+			if(_.INJURED) frame += "-injured";
+			if(self.outsideHongSprite.doesFrameNameExist(frame)){
+				self.outsideHongSprite.gotoFrameByName(frame);
+			}
+		}),
+		subscribe("smash", function(stage){
+			if(stage==0){
+				Game.clearText();
+				HP.show();
+			}
+			if(stage==1){
+				HP.hide(true);
+				self.talk1Sprite.alpha = 0;
+				self.smashSprite.gotoFrame(0);
+			}
+			if(stage==2){
+				self.talk1Sprite.alpha = 1;
+				self.smashSprite.gotoFrame(1);
+			}
+		})
 	);
+
+	self.kill = function(){
+		_subscriptions.forEach(unsubscribe);
+	};
 
 }

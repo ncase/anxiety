@@ -5,7 +5,7 @@ Loader.addScenes([
 	//"scenes/act1_end.md",
 	//"scenes/PROMO.md"
 	//"scenes/act2.md",
-	"scenes/act4_test.md",
+	"scenes/act4.md",
 ]);
 Loader.load(function(progress){
 

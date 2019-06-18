@@ -430,9 +430,7 @@ b: I'm sorry.
 
 # act3_good_3_respect
 
-b: I was so caught up in trying to protect you, I forgot I was supposed to be *your* loyal guard-dog, and you're supposed to be *my* master.
-
-b: Instead I acted as if I was *your* master.
+b: I was supposed to be *your* loyal guard-dog, but I acted as if you were supposed to obey *me*.
 
 b: There's a difference between protective and suffocating, and I crossed the line.
 

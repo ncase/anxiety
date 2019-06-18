@@ -40,7 +40,13 @@ function HitPoints(){
 	self.show = function(){
 		self.dom.style.top = "0px";
 	};
-	self.hide = function(){
+	self.hide = function(instant){
+		if(instant){
+			self.dom.style.display = "none";
+			setTimeout(function(){
+				self.dom.style.display = "block";
+			},2000);
+		}
 		self.dom.style.top = "-100px";
 	};
 	subscribe("hp_show", self.show);

@@ -222,4 +222,8 @@ function BG_Party(){
 		})
 	);
 
+	self.kill = function(){
+		_subscriptions.forEach(unsubscribe);
+	};
+
 }

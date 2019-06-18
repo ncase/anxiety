@@ -180,4 +180,8 @@ function BG_Rooftop(){
 		})
 	);
 
+	self.kill = function(){
+		_subscriptions.forEach(unsubscribe);
+	};
+
 }
