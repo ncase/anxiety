@@ -2,7 +2,10 @@
 
 ```
 SceneSetup.act4();
-_.INJURED = false;
+_.INJURED = true;
+_.TOP_FEAR = "alone";
+_.a2_end = "fight";
+_.FIRST_FEAR = "bad";
 //Game.FORCE_CANT_SKIP = true;
 ```
 
@@ -21,8 +24,6 @@ _.INJURED = false;
 (...2001)
 
 `Game.FORCE_CANT_SKIP = false;`
-
-(#act4b_2)
 
 h: *sigh*
 
@@ -194,7 +195,7 @@ b: More thoughts, human?
 
 b: Well, I have claws, but I'm just a metaphor.
 
-h: We could pick up self-defense? Improve our general health? Learn to assert our boundaries?
+h: We could pick up self-defense? Improve our general health? Learn to better assert our boundaries?
 
 b: Maybe, but...
 
@@ -212,9 +213,11 @@ h: We're beginning right now.
 
 b: Eh?
 
-h: I mean, we're practicing good communication right now. And if that works, we can detect danger better with fewer false positives... and *does* help protect us from harm!
+h: I mean, we're practicing good communication right now. Which will help us detect danger better, with fewer false positives,
 
-h: This *is* self-defense training.
+h: And that *will* help protect us from harm!
+
+h: Therefore: tis *is* self-defense training.
 
 b: Huh. I was expecting more of this:
 
@@ -265,15 +268,13 @@ h: Over several days, the trainer raises the volume bit by bit, until the dog ha
 
 h: It's called exposure therapy!
 
-h: If it works for *literal* dogs, it should work for you, right?
-
-h: All mammals have the same fight-or-flight response.
-
-[I'm a wolf, not a dog.](#act4_harm_exposure_dog)
+h: Since you're a dog, it should work for you too, right? All mammals have the same fight-or-flight response.
 
 [What if we desensitize ourselves *too* much?](#act4_harm_exposure_overboard)
 
 [What if we expose ourselves to *real* danger?](#act4_harm_exposure_hurt)
+
+[I'm a wolf, not a dog.](#act4_harm_exposure_dog)
 
 # act4_harm_exposure_dog
 
@@ -295,11 +296,11 @@ b: Soon we'll give ourselves treats while watching snuff murder porn!
 
 h: I... think there's a line between that and the thunder.
 
-b: But *where*, human?! *Where?*
+b: But exactly *where*, human? *Where?!*
 
 h: I don't know. But *you* can help me!
 
-h: Working and negotiating with you, we'll find and draw that line.
+h: Working and negotiating with you, we'll draw that line.
 
 b: Okay. But I've got no opposable thumbs, so you have to do the drawing.
 
@@ -693,7 +694,7 @@ h: But not necessarily giving up a commitment to change.
 
 b: Then therapists should say *acknowledge*, not *accept*.
 
-h: Yeah come to think of it, "accept" is really unhelpful.
+h: Yeah come to think of it, "accept" is kinda confusing.
 
 b: Well, I *acknowledge* that.
 
@@ -768,11 +769,11 @@ h: Anyway, anything else on your heavy heart?
 
 {{if _.a4_talked_about_alone!=true}}
 [I'm scared we'll be alone.](#act4_alone)
-{{/if}
+{{/if}}
 
 {{if _.a4_talked_about_bad!=true}}
 [I'm scared we're bad people.](#act4_bad)
-{{/if}
+{{/if}}
 
 [Nah, I'm good for now.](#act4c_prelude)
 
@@ -808,112 +809,268 @@ b: Building a better relationship with your emotions isn't as simple as clicking
 
 b: Can we *really* get along, human?
 
-b: Can we *really* act as a team?
+b: Can we *really* work as a team?
 
 h: Well,
 
 a: E-excuse me...
 
-(...1000)
+```
+Game.clearText();
+publish("smash",[3]);
+publish("act4-in-2");
+publish("outside-hong", ["look-back"]);
+publish("al-shire", ["ask"]);
+```
+
+(...1600)
+
+(#act4d)
 
 # act4d
 
-a: Would you mind if I sat with you for lunch?
+a: W-wo-would you mind if I sat with you for lunch?
 
-// s: Only psychos sit alone for lunch! Get away from them or they'll hurt you!
+{{if _.TOP_FEAR=="harm"}}
+s: They were sitting alone for lunch? They must be a psycho loner serial killer!
+{{/if}}
 
-// s: Ack, do you know how pathetic we sound? How desperate, how *needy*?
+{{if _.TOP_FEAR=="alone"}}
+s: Ack, do you know how pathetic we sound? How desperate, how *needy*?
+{{/if}}
 
-// s: They were enjoying peace and quiet, then we interrupted them! We're such a burden!
+{{if _.TOP_FEAR=="bad"}}
+s: They were enjoying peace and quiet, then we interrupted them! We're such a burden!
+{{/if}}
 
-a: I- I mean- it's it's okay if not, I just...
+a: I- I mean- it's, it's okay if you not, I just...
 
-[Wait, didn't I see you at the party?]()
+[Wait, didn't I see you at the party?](#act4d_recognition)
 
-[Yeah, of course! Come here.]()
+[Yeah, of course! Come here.](#act4d_yes)
 
-[Ah, sorry, I need some alone time right now.]()
+[Sorry, I need alone time right now.](#act4d_no)
 
 # act4d_recognition
 
-h2: Yeah you saw me have a panic attack and // become an armadillo // commit phone-murder!
+h2: Yeah it was the first party, where I had that panic attack and {{if _.a2_end=="fight"}}punched the host.{{/if}}{{if _.a2_end=="flight"}}ran out crying.{{/if}}
 
-h3: Ah! Sorry, didn't mean to put you on the spot!
+h3: Ah, sorry, didn't mean to put you on the spot!
 
 h2: Just remembering a friendly face, is all.
 
-// s: WAIT THAT *IS* THE PHONE-MURDERER / THE CRYING ARMADILLO! I KNEW IT! THEY'RE A DANGEROUS PSYCHO!
+`publish("al-shire", ["panic"]);`
 
-// s: SEE HOW MUCH YOU SUCK AT MAKING FRIENDS?! THE FIRST IMPRESSION YOU MADE IS "WITNESSED MY TRAUMA". YOU SUCK!
+{{if _.TOP_FEAR=="harm"}}
+s: AHHHHH I KNEW IT! THEY'RE A DANGEROUS CRAZY PSYCHO!
+{{/if}}
 
-// s: AAAHHH YOU MADE SOMEONE REMEMBER A TRAUMATIC EVENT. YOUR MERE PRESENCE HURTS OTHERS.
+{{if _.TOP_FEAR=="alone"}}
+s: SEE HOW MUCH WE SUCK AT MAKING FRIENDS?! THE FIRST IMPRESSION WE MADE IS "WITNESSED MY TRAUMA". WE SUCK!
+{{/if}}
+
+{{if _.TOP_FEAR=="bad"}}
+s: AAAHHH WE MADE SOMEONE REMEMBER A TRAUMATIC EVENT. OUR MERE PRESENCE HURTS OTHERS.
+{{/if}}
+
+(#act4e)
 
 # act4d_yes
 
-h3: Ah! I don't mean to cause you discomfort!
+h3: Ah, I don't mean to make you feel awkward!
 
 h2: Just saying, you can sit here if you want to.
 
-// s: THEY'RE BEING TOO FRIENDLY. LIKE TED BUNDY, THE SERIAL KILLER!
+`publish("al-shire", ["panic"]);`
 
-// s: THEY'RE JUST ACTING NICE. NO ONE *REALLY* WANTS TO BE YOUR FRIEND.
+{{if _.TOP_FEAR=="harm"}}
+s: THEY'RE BEING *TOO* FRIENDLY! LIKE TED BUNDY, THE SERIAL KILLER!
+{{/if}}
 
-// s: GAH, YOU ALWAYS MAKE OTHERS FEEL UNCOMFORTABLE! GET OUT!
+{{if _.TOP_FEAR=="alone"}}
+s: THEY'RE JUST ACTING NICE. NO ONE *REALLY* WANTS TO BE OUR FRIEND.
+{{/if}}
+
+{{if _.TOP_FEAR=="bad"}}
+s: GAH, WE ALWAYS MAKE OTHERS FEEL UNCOMFORTABLE! WE'RE TERRIBLE!
+{{/if}}
+
+(#act4e)
 
 # act4d_no
 
-h3: Ah! I didn't mean to come off as rude!
+h3: Ah, I didn't mean to come off as rude!
 
-h2: It's just that, well, I (almost) jumped off a roof and (almost) killed myself.
+{{if _.INJURED}}
+h2: It's just that, well, I jumped off a roof and almost killed myself.
+{{/if}}
+
+{{if !_.INJURED}}
+h2: It's just that, well, I almost jumped off a roof and killed myself.
+{{/if}}
 
 h2: Please don't take it as a personal rejection, I just need quiet time to process some emotions.
 
-// s: HOLY CRAP I KNEW IT, THEY *ARE* A DANGEROUS PSYCHO!
+`publish("al-shire", ["panic"]);`
 
-// s: YOU'VE BEEN PERSONALLY REJECTED! YOU'LL NEVER BE LOVED!
+{{if _.TOP_FEAR=="harm"}}
+s: HOLY COW I KNEW IT, THEY *ARE* A DANGEROUS PSYCHO!
+{{/if}}
 
-// s: YOU INTERRUPTED SOMEONE'S EMOTIONAL PROCESSING! NOW THEY'LL BE TRAUMATIZED FOREVER AND IT'S ALL YOUR FAULT!
+{{if _.TOP_FEAR=="alone"}}
+s: WE'VE BEEN PERSONALLY REJECTED! WE'LL NEVER BE LOVED!
+{{/if}}
+
+{{if _.TOP_FEAR=="bad"}}
+s: WE INTERRUPTED SOMEONE'S EMOTIONAL PROCESSING! NOW THEY'LL BE TRAUMATIZED FOREVER AND IT'S ALL OUR FAULT!
+{{/if}}
+
+(#act4e)
 
 # act4e
 
 s: RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN
 
-a: (dashes)
+```
+Game.clearText();
+publish("al-shire", ["run"]);
+```
+
+(...2001)
+
+```
+publish("act4-out-3");
+```
+
+(...1001)
 
 h: Huh. Wonder what *that* was about.
 
 h: Anyway, you were saying?
 
-b: Uh, I forget? Something about a team?
+b: Uh, I forget? Something about work and teams?
 
 h: (shrug)
 
-// problem with "make peace with"
+b: They say you should "make peace" with your emotions, as if your emotions are some kind of *war criminals*.
 
-b: Point is, you're trying to teach this old dog new tricks.
+b: But I want us to make *more* than mere peace! I want us to be *allies!*
 
-b: It *will* take a while. Maybe *years.* And occasionally, I'll slip into my old habits.
+b: I want to be a good guard-dog. I want to protect you.
+
+b: But I suck at it, so I need you to train me.
+
+b: Teaching an old dog new tricks *will* take a while. Maybe *years.*
+
+b: And sometimes, I'll relapse a bit, I'll slip into my old habits.
 
 b: I'll bark at shadows. I'll scare you with words. I might even show you some intrusive images of... things.
 
-b: I'm sorry! I'm a battered shelter dog! Battered dogs crap on your bed once in a while!
+b: I'm sorry! I'm a battered shelter dog! Battered dogs poop on your bed once in a while!
 
 b: But if you're patient with me... and just stay and sit with me...
 
-b: Maybe... maybe you can domesticate this wolf.
+b: Maybe you can domesticate this wolf.
 
-(...3000)
+`Game.clearText();`
 
-[Good dog.]()
+(...1000)
 
-[Good human.]()
+[Good dog.](#act4f-pat-bb)
 
+[Good human.](#act4f-pat-hong)
+
+# act4f-pat-hong
+
+```
+Game.clearText();
+Game.FORCE_CANT_SKIP = true;
+```
+
+`publish("end-pat", ["pat-hong-1"])`
+
+(...501)
+
+`publish("end-pat", ["pat-hong-2"])`
+
+(...501)
+
+`publish("end-pat", ["pat-hong-1"])`
+
+(...501)
+
+`publish("end-pat", ["pat-hong-2"])`
+
+(...501)
+
+`publish("end-pat", ["pat-hong-1"])`
+
+(...501)
+
+`publish("end-pat", ["pat-hong-2"])`
+
+(...2001)
+
+`publish("end-pat", ["pat-hong-3"])`
+
+(...1001)
+
+(#act4f)
+
+# act4f-pat-bb
+
+```
+Game.clearText();
+Game.FORCE_CANT_SKIP = true;
+```
+
+`publish("end-pat", ["pat-bb-1"])`
+
+(...501)
+
+`publish("end-pat", ["pat-bb-2"])`
+
+(...501)
+
+`publish("end-pat", ["pat-bb-1"])`
+
+(...501)
+
+`publish("end-pat", ["pat-bb-2"])`
+
+(...501)
+
+`publish("end-pat", ["pat-bb-1"])`
+
+(...501)
+
+`publish("end-pat", ["pat-bb-2"])`
+
+(...2001)
+
+`publish("end-pat", ["pat-bb-3"])`
+
+(...1001)
+
+(#act4f)
 
 # act4f
 
-// b: AAAAA YOU'RE STILL BEING ALONE FIFTEEN CIGARETTES AAAAA
+```
+Game.FORCE_CANT_SKIP = false;
+publish("end-pat", ["freak-out"])
+```
 
-```
+{{if _.FIRST_FEAR=="harm"}}
+b: AAAAA YOU'RE STILL BEING ALONE FIFTEEN CIGARETTES AAAAA
+{{/if}}
+
+{{if _.FIRST_FEAR=="alone"}}
 b: AAAAA YOU'RE STILL NOT BEING PRODUCTIVE AAAAA
+{{/if}}
+
+{{if _.FIRST_FEAR=="bad"}}
 b: AAAAA YOU'RE EATING MORE WHITE BREAD AAAAA
-```
+{{/if}}
+
+

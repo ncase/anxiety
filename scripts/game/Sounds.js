@@ -4,7 +4,9 @@ Loader.addSounds([
 	{ id:"voice_narrator", src:"sounds/voices/narrator.mp3" },
 	{ id:"voice_narrator_emphasis", src:"sounds/voices/narrator_emphasis.mp3" },
 	{ id:"voice_typewriter", src:"sounds/voices/typewriter.mp3" },
-	{ id:"voice_hunter", src:"sounds/voices/hunter.mp3" }
+	{ id:"voice_hunter", src:"sounds/voices/hunter.mp3" },
+	{ id:"voice_al", src:"sounds/voices/al.mp3" },
+	{ id:"voice_shire", src:"sounds/voices/shire.mp3" }
 ]);
 
 window.sfx = function(sound, options){

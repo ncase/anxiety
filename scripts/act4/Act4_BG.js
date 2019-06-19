@@ -37,9 +37,15 @@ function BG_Act4(){
 		image: Library.images.al_shire,
 		grid:{ width:4, height:1 },
 		frame:{ width:360, height:360 },
-		y: 192
+		y: 192,
+		frameNames:[
+			"ask",
+			"panic",
+			"run",
+			"blank"
+		]
 	});
-	self.alShireSprite.gotoFrame(3); // blank
+	self.alShireSprite.gotoFrameByName("blank"); // blank
 	self.outsideHongSprite = new Sprite({
 		image: Library.images.outside_hong,
 		grid:{ width:4, height:3 },
@@ -76,12 +82,26 @@ function BG_Act4(){
 		frame:{ width:720, height:400 },
 		y: 256
 	});
-	self.talk1Sprite.gotoFrame( _.INJURED ? 0 : 1 );
 	self.talk2Sprite = new Sprite({
 		image: Library.images.a4_talk_2,
 		grid:{ width:4, height:2 },
 		frame:{ width:720, height:400 },
-		y: 256
+		y: 256,
+		frameNames:[
+
+			"talk",
+
+			"pat-bb-1",
+			"pat-bb-2",
+			"pat-bb-3",
+
+			"pat-hong-1",
+			"pat-hong-2",
+			"pat-hong-3",
+
+			"freak-out"
+
+		]
 	});
 
 	// LAYERS
@@ -215,6 +235,8 @@ function BG_Act4(){
 	var _subscriptions = [];
 	_subscriptions.push(
 		subscribe("act4-out-1", function(){
+			
+			self.talk1Sprite.gotoFrame( _.INJURED ? 0 : 1 );
 
 			// WHOOSH
 			STAGE = 1;
@@ -261,6 +283,15 @@ function BG_Act4(){
 				self.talk1Sprite.alpha = 1;
 				self.smashSprite.gotoFrame(1);
 			}
+			if(stage==3){
+				self.smashSprite.gotoFrame(2);
+			}
+		}),
+		subscribe("al-shire", function(frame){
+			self.alShireSprite.gotoFrameByName(frame);
+		}),
+		subscribe("end-pat", function(frame){
+			self.talk2Sprite.gotoFrameByName(frame);
 		})
 	);
 

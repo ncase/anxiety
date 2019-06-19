@@ -312,8 +312,14 @@ Game.executeText = function(line){
 			case "h":
 				div.className = "hong-bubble";
 				break;
-			case "h2":
+			case "h2": case "h3":
 				div.className = "hong2-bubble";
+				break;
+			case "a":
+				div.className = "al-bubble";
+				break;
+			case "s":
+				div.className = "shire-bubble";
 				break;
 			case "r":
 				div.className = "hunter-bubble";
@@ -350,8 +356,8 @@ Game.executeText = function(line){
 			SPEED = Math.round(Game.FORCE_TEXT_DURATION/dialogue.length);
 		}
 
-		// IF IT'S BEEBEE, HONG, or NARRATOR 3, or HUNTER
-		if(speaker=="b" || speaker=="h" || speaker=="h2" || speaker=="n3" || speaker=="r"){
+		// IF IT'S BEEBEE, HONG, or NARRATOR 3, or HUNTER, or AL or SHIRE
+		if(speaker=="b" || speaker=="h" || speaker=="h2" || speaker=="h3" || speaker=="n3" || speaker=="r" || speaker=="a" || speaker=="s"){
 
 			// Put in the text, each character a DIFFERENT SPAN...
 			var span, chr;
@@ -396,7 +402,7 @@ Game.executeText = function(line){
 								if(speaker=="h" || speaker=="h2"){
 									voice("hong", {volume:0.3});
 								}
-								if(speaker=="b"){
+								if(speaker=="b" || speaker=="h3"){
 									voice("beebee", {volume:0.5});
 								}
 								if(speaker=="n3"){
@@ -404,6 +410,12 @@ Game.executeText = function(line){
 								}
 								if(speaker=="r"){
 									voice("hunter", {volume:0.17});
+								}
+								if(speaker=="a"){
+									voice("al", {volume:0.3});
+								}
+								if(speaker=="s"){
+									voice("shire", {volume:0.4});
 								}
 							}
 						}
