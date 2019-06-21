@@ -99,6 +99,9 @@ function Sprite(config){
 		var scaleY = self.scale / self.squash;
 		ctx.scale(scaleX, scaleY);
 
+		// Rotation
+		ctx.rotate(self.rotation);
+
 		// Alpha
 		ctx.globalAlpha = self.alpha;
 

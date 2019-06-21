@@ -12,8 +12,8 @@ Loader.addImages([
 ]);
 
 Loader.addSounds([
-	/*{ id:"squeak", src:"sounds/sfx/squeak.mp3" },
-	{ id:"record_scratch", src:"sounds/sfx/record_scratch.mp3" },
+	{ id:"yaps", src:"sounds/sfx/yaps.mp3" },
+	/*{ id:"record_scratch", src:"sounds/sfx/record_scratch.mp3" },
 	{ id:"shoryuken", src:"sounds/sfx/shoryuken.mp3" }*/
 ]);
 
@@ -273,6 +273,7 @@ function BG_Act4(){
 			if(stage==0){
 				Game.clearText();
 				HP.show();
+				sfx("ui_show_choice", {volume:0.4});
 			}
 			if(stage==1){
 				HP.hide(true);

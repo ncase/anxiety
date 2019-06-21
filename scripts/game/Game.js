@@ -279,6 +279,10 @@ Game.clearText = function(){
 	Game.wordsDOM.innerHTML = "";
 	Game.updateText(true);
 };
+Game.clearAll = function(){
+	Game.clearText();
+	Game.resetScene();
+};
 window.clearText = Game.clearText;
 
 // Execute text! Just add it to text DOM.
@@ -290,6 +294,7 @@ Game.FORCE_TEXT_DURATION = -1;
 Game.WHO_IS_SPEAKING = null; // "h", "b", "n" etc...
 Game.CURRENT_SPEAKING_SPEED = 1;
 Game.FORCE_NO_VOICE = false;
+Game.NO_NARRATOR_SOUNDS = false;
 Game.executeText = function(line){
 
 	return new RSVP.Promise(function(resolve){
@@ -333,8 +338,14 @@ Game.executeText = function(line){
 			case "n3": // narrator 3
 				div.className = "narrator-bubble-3";
 				break;
-			case "n4": // narrator 3
+			case "n4": // narrator 4
 				div.className = "narrator-bubble-4";
+				break;
+			case "n5": // narrator 5
+				div.className = "narrator-bubble-5";
+				break;
+			case "i": // Intermission
+				div.className = "narrator-bubble-i";
 				break;
 		}
 		requestAnimationFrame(function(){
@@ -448,7 +459,7 @@ Game.executeText = function(line){
 
 		}else{
 
-			// IF NARRATOR 1 or 2 or 4
+			// IF NARRATOR
 
 			// *Emphasize multiple words* => *Emphasize* *multiple* *words*
 			var regex = /\*([^\*]*)\*/g;
@@ -512,7 +523,9 @@ Game.executeText = function(line){
 						// SOUND
 						var chr = word.slice(-1);
 						var isEmphasis = (chr=="*");
-						voice(isEmphasis ? "narrator_emphasis" : "narrator");
+						if(!Game.NO_NARRATOR_SOUNDS){
+							voice(isEmphasis ? "narrator_emphasis" : "narrator");
+						}
 
 					}, interval);
 				})(i, interval, word);
@@ -539,7 +552,9 @@ Game.executeText = function(line){
 					var icon = Library.images["fear_"+iconName];
 					div.children[i].appendChild(icon);
 					icon.style.display = "block";
-					icon.style.margin = "0 auto";
+					if(speaker!="i"){
+						icon.style.margin = "0 auto";
+					}
 					icon.style.width = "80px";
 					icon.style.height = "80px";
 
@@ -850,7 +865,7 @@ Game.parseLine = function(line){
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 Game.canvas.width = 360 * 2;
-Game.canvas.height = 450 * 2;
+Game.canvas.height = 600 * 2; //450 * 2;
 Game.canvas.style.width = Game.canvas.width/2 + "px";
 Game.canvas.style.height = Game.canvas.height/2 + "px";
 Game.context = Game.canvas.getContext("2d");

@@ -58,6 +58,9 @@ Loader.addSounds([
 	var cta_text1 = $("#cta_text1");
 	var cta_text2 = $("#cta_text2");
 	click_to_advance.style.display = "none";
+	subscribe("set_how_many_prompts", function(n){
+		HOW_MANY_PROMPTS = n;
+	});
 	subscribe("show_click_to_advance", function(){
 
 		cta_text1.style.display = (HOW_MANY_PROMPTS>0) ? "inline" : "none";
@@ -75,6 +78,9 @@ Loader.addSounds([
 		if(currentBlinkingInterval) clearInterval(currentBlinkingInterval);
 		currentBlinkingInterval = null;
 
+	});
+	subscribe("update_text_speed", function(){
+		updateText();
 	});
 	var currentBlinkingInterval;
 	var blinkCTA = function(){

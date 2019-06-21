@@ -29,7 +29,7 @@ div{ /*, #game_words, #game_choices, #paused, #options, #loading, #gear, #about,
 
 	width: 360px;
 	height: 600px;
-	background: #2E2E2E;
+	background: #111;
 
 	font-size: 20px;
 	font-family: Helvetica, Arial, sans-serif;
@@ -611,7 +611,7 @@ DIALOGUEZ
 	background-position: -600% 0px;
 }
 
-.narrator-bubble, .narrator-bubble-2, .narrator-bubble-4{
+.narrator-bubble, .narrator-bubble-2, .narrator-bubble-4, .narrator-bubble-i, .narrator-bubble-5{
 	position: relative;
 	color: #FFFFFF;
 	text-align: center;
@@ -650,7 +650,7 @@ DIALOGUEZ
 	height: calc(100% + 4px);
 	
 } 
-.narrator-bubble i, .narrator-bubble-2 i, .narrator-bubble-4 i{
+.narrator-bubble i, .narrator-bubble-2 i, .narrator-bubble-4 i, .narrator-bubble-i i{
 	font-style: normal;
 	color: #ff4040;
 }
@@ -680,6 +680,30 @@ DIALOGUEZ
 	/*opacity: 0;
 	transition: all 0.3s ease-in-out;*/
 
+}
+.narrator-bubble-i {
+	overflow: hidden;
+	text-align: left;
+	color: #000;
+	margin-bottom: 0;
+    margin-top: 0;
+    padding-top: 15px;
+    height: 65px;
+}
+.narrator-bubble-i img{
+	float:left;
+	margin: 0 20px;
+	position: relative;
+    top: -13px;
+}
+.narrator-bubble-5{
+	color: #000;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 20px;
+    width: 270px;
+    margin: 0 auto;
+    padding: 10px 0 7px 0;
 }
 
 .hong-bubble {
@@ -874,7 +898,7 @@ DIALOGUEZ
 	position: absolute;
 	bottom:0;
 
-	background: #2E2E2E;
+	/*background: #2E2E2E;*/
 	text-align: center;
 	color: #fff;
 	font-weight: lighter;

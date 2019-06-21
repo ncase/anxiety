@@ -111,7 +111,10 @@ h: Maybe we don't have to fight.
 
 (...2001)
 
-`publish("smash",[1]);`
+```
+publish("smash",[1]);
+sfx("grass_step1");
+```
 
 (...2001)
 
@@ -130,6 +133,8 @@ b: I'm not a Big Bad Wolf. But I'm not a guard-wolf either.
 b: I'm a battered shelter dog.
 
 b: We've been through rough stuff, possibly trauma, so that's why sometimes I over-react and go--
+
+`sfx("yaps");`
 
 b: YAP YAP YAP YAP YAP
 
@@ -538,13 +543,11 @@ b: Maybe the barista just wants to make some dang coffee, not be an *experiment*
 
 h: Well, if it turns out we *are* being a burden...
 
-h: ...that's good to know, too!
+h: That's good to know, too!
 
-h: We can then learn how to pro-actively ask people what they're comfortable with, knowing and respecting others' boundaries...
+h: We can then learn how to pro-actively ask people what they're comfortable with, to know and respect others' boundaries.
 
-b: ...all that "inter-personal skills" crap we keep seeing in counselor brochures.
-
-h: Yup.
+h: Y'know, all that "inter-personal skills" crap we see in counselor brochures.
 
 (#act4_something_else)
 
@@ -756,7 +759,7 @@ h: Anyway, anything else you wanna chat about?
 {{/if}}
 
 {{if _.a4_fears_discussed==2}}
-h: Anyway, anything else on your heavy heart?
+h: So, anything else on your heavy heart?
 {{/if}}
 
 {{if _.a4_fears_discussed==3}}
@@ -843,7 +846,7 @@ s: Ack, do you know how pathetic we sound? How desperate, how *needy*?
 s: They were enjoying peace and quiet, then we interrupted them! We're such a burden!
 {{/if}}
 
-a: I- I mean- it's, it's okay if you not, I just...
+a: I- I mean- it's, it's okay if not, I just...
 
 [Wait, didn't I see you at the party?](#act4d_recognition)
 
@@ -970,7 +973,7 @@ b: I'm sorry! I'm a battered shelter dog! Battered dogs poop on your bed once in
 
 b: But if you're patient with me... and just stay and sit with me...
 
-b: Maybe you can domesticate this wolf.
+b: Maybe you can tame this wolf.
 
 `Game.clearText();`
 
@@ -1073,4 +1076,6 @@ b: AAAAA YOU'RE STILL NOT BEING PRODUCTIVE AAAAA
 b: AAAAA YOU'RE EATING MORE WHITE BREAD AAAAA
 {{/if}}
 
+`sfx("yaps");`
 
+b: YAP YAP YAP YAP YAP

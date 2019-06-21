@@ -1,0 +1,38 @@
+Loader.addSounds([
+	{ id:"intermission", src:"sounds/sfx/intermission.mp3" }
+]);
+
+SceneSetup.intermission = function(STAGE){
+
+	Game.resetScene();
+
+	// RESET HP
+	HP.reset();
+
+	// Music
+	sfx('intermission', {volume:0.9});
+
+	// Background
+	var bg = new BG_Intermission(STAGE);
+	Game.scene.children.push(bg);
+
+	// HACK
+	Game.TEXT_SPEED = 0;
+	Game.FORCE_TEXT_Y = 10;
+	Game.FORCE_CANT_SKIP = true;
+	Game.NO_NARRATOR_SOUNDS = true;
+	$("#click_to_advance").style.color = "#000";
+	
+	// KILL
+	Game.scene.kill = function(){
+
+		Game.clearText();
+
+		publish("update_text_speed");
+		Game.FORCE_TEXT_Y = -1;
+		Game.FORCE_CANT_SKIP = false;
+		Game.NO_NARRATOR_SOUNDS = false;
+		$("#click_to_advance").style.color = "";
+	};
+
+};

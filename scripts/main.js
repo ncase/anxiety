@@ -4,8 +4,10 @@ Loader.addScenes([
 	//"scenes/act1.md",
 	//"scenes/act1_end.md",
 	//"scenes/PROMO.md"
-	//"scenes/act2.md",
-	"scenes/act4.md",
+	"scenes/act2.md",
+	//"scenes/act3.md",
+	//"scenes/act4.md",
+	"scenes/intermission.md",
 ]);
 Loader.load(function(progress){
 
@@ -28,6 +30,6 @@ subscribe("START_GAME", function(){
 	$("#loading").style.display = "none";
 	Game.start();
 	
-	Game.goto("act4");
+	Game.goto("intermission-1");
 
 });
