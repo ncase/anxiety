@@ -38,7 +38,7 @@ window.voice = function(name, options){
 	var delta = now - window._lastPlayedVoice[name];
 
 	// If too soon, DON'T PLAY.
-	if(delta < 4/60*1000) return; // 4 frames
+	if(delta < 5/60*1000) return; // 5 frames
 
 	// Otherwise, play
 	options = options || {};
@@ -69,7 +69,11 @@ window.music = function(song, options){
 
 		var song = Library.sounds["music_"+song];
 		song.stop(); // just in case it was playing earlier
-		song.loop(true);
+		if(options.NO_LOOP){
+			song.play();
+		}else{
+			song.loop(true);
+		}
 
 		if(options.fade==0){
 			song.volume(options.volume);

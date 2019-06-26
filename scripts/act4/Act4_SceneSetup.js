@@ -1,5 +1,5 @@
 Loader.addSounds([
-	{ id:"music_party1", src:"sounds/music/party1.mp3" }
+	{ id:"music_dontfight", src:"sounds/music/dontfight.mp3" }
 ]);
 
 SceneSetup.act4 = function(){
@@ -9,11 +9,32 @@ SceneSetup.act4 = function(){
 	// RESET HP
 	HP.reset();
 
-	// ATTACKS (TODO: ACT I, ACT II...???)
-	_.attack_harm = 0;
-	_.attack_alone = 0;
-	_.attack_bad = 0;
+	// ATTACKS
+	_.CHAPTER = 4;
+	
+	_.attack_harm_ch1 = (_.attack_harm_ch1==undefined) ? 0 : _.attack_harm_ch1;
+	_.attack_alone_ch1 = (_.attack_alone_ch1==undefined) ? 0 : _.attack_alone_ch1;
+	_.attack_bad_ch1 = (_.attack_bad_ch1==undefined) ? 0 : _.attack_bad_ch1;
+	
+	_.attack_harm_ch2 = (_.attack_harm_ch2==undefined) ? 0 : _.attack_harm_ch2;
+	_.attack_alone_ch2 = (_.attack_alone_ch2==undefined) ? 0 : _.attack_alone_ch2;
+	_.attack_bad_ch2 = (_.attack_bad_ch2==undefined) ? 0 : _.attack_bad_ch2;
 
+	_.attack_harm_total = _.attack_harm_ch1 + _.attack_harm_ch2;
+	_.attack_alone_total = _.attack_alone_ch1 + _.attack_alone_ch2;
+	_.attack_bad_total = _.attack_bad_ch1 + _.attack_bad_ch2;
+
+	// DECIDE TOP FEAR (if it's a tie, use first fear. if it's still neither, random)
+	var fears = [
+		{name:"harm", count:_.attack_harm_total},
+		{name:"alone", count:_.attack_alone_total},
+		{name:"bad", count:_.attack_bad_total}
+	];
+	fears = fears.sort(function(a,b){
+		return b.count - a.count;
+	});
+	_.TOP_FEAR = fears[0].name;
+	
 	// Music
 	music('campus', {volume:0.5});
 

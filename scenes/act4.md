@@ -2,11 +2,6 @@
 
 ```
 SceneSetup.act4();
-_.INJURED = true;
-_.TOP_FEAR = "alone";
-_.a2_end = "fight";
-_.FIRST_FEAR = "bad";
-//Game.FORCE_CANT_SKIP = true;
 ```
 
 (...2001)
@@ -29,7 +24,7 @@ h: *sigh*
 
 h: So what the hell was the moral of this story?
 
-h: What did I even *learn?* I *was* being stupid, my "friends" *were* using me, and we almost fucking *died*.
+h: What did we even *learn*? I *was* being stupid, my "friends" *were* using me, and we almost fucking *died*.
 
 {{if _.INJURED}}
 [Yeah, not to mention the hospital bill.](#act4a_bill)
@@ -128,6 +123,8 @@ sfx("grass_step1");
 
 # act4b_2
 
+`music('dontfight',{fade:5, volume:0.6})`
+
 b: I'm not a Big Bad Wolf. But I'm not a guard-wolf either.
 
 b: I'm a battered shelter dog.
@@ -152,7 +149,7 @@ h: Dear inner wolf... how are *you* feeling?
 
 n2: TOTAL FEARS USED:
 
-n2: *HARMED* 3, *UNLOVED* 4, *BAD PERSON* 2
+n2: *HARMED* {{_.attack_harm_total}}, *UNLOVED* {{_.attack_alone_total}}, *BAD PERSON* {{_.attack_bad_total}}
 
 n2: WHAT FEAR DO YOU WANT TO TALK ABOUT FIRST? (YOU CAN DO THE OTHERS LATER)
 
@@ -174,9 +171,11 @@ _.a4_talked_about_harm = true;
 _.a4_fears_discussed += 1;
 ```
 
-b: (insert callbacks to harm-fears you used)
+`//b: (insert callbacks to harm-fears you used)`
 
-b: Gosh, there's so many dangerous things in the world!
+b: I want to protect your need for physical safety,
+
+b: But, gosh, there's so many dangerous things in the world!
 
 {{if _.a4_fears_discussed==1}}
 b: I dunno, what do *you* think, human?
@@ -190,15 +189,17 @@ b: Again, back to you, human. What do you think?
 b: More thoughts, human?
 {{/if}}
 
-[You're right. So how can we protect ourselves?](#act4_harm_skills)
+`Game.OVERRIDE_CHOICE_SPEAKER = "h"`
 
-[I think let's expose ourselves to *more* danger.](#act4_harm_exposure)
+[You're right. So let's protect ourselves.](#act4_harm_skills)
 
-[Thank you.](#act4_thanks) `_.thanks_for = "physical safety"`
+[Let's expose ourselves to *more* danger.](#act4_harm_exposure)
+
+[Thank you.](#act4_thanks) `_.thanks_for = "physical safety";`
 
 # act4_harm_skills
 
-b: Well, I have claws, but I'm just a metaphor.
+b: But... how? I have fangs and claws, but I'm just a metaphor.
 
 h: We could pick up self-defense? Improve our general health? Learn to better assert our boundaries?
 
@@ -405,9 +406,11 @@ _.a4_talked_about_alone = true;
 _.a4_fears_discussed += 1;
 ```
 
-b: (insert callbacks to alone-fears you used)
+`//b: (insert callbacks to alone-fears you used)`
 
-b: Will we be loved? *Can* we be loved?
+b: I want to make sure you get your social needs met, the human need to belong...
+
+b: But, I worry: will we ever be loved? *Can* we ever be loved?
 
 {{if _.a4_fears_discussed==1}}
 b: I dunno, what do *you* think, human?
@@ -421,11 +424,13 @@ b: Again, back to you, human. What do you think?
 b: More thoughts, human?
 {{/if}}
 
+`Game.OVERRIDE_CHOICE_SPEAKER = "h"`
+
 [I agree I'd like to work on our social life.](#act4_alone_skills)
 
 [I think people like us. Let's find out?](#act4_alone_experiment)
 
-[Thank you.](#act4_thanks) `_.thanks_for = "social belonging"`
+[Thank you.](#act4_thanks) `_.thanks_for = "social belonging";`
 
 # act4_alone_skills
 
@@ -560,9 +565,11 @@ _.a4_talked_about_bad = true;
 _.a4_fears_discussed += 1;
 ```
 
-b: (insert callbacks to bad-fears you used)
+`//b: (insert callbacks to bad-fears you used)`
 
-b: It just feels like we're so... broken.
+b: I want to defend your moral needs, that drive to become a better person,
+
+b: But it just feels like we're so... broken.
 
 {{if _.INJURED}}
 b: And don't tell me we're *not* messed up. We jumped off a *roof*.
@@ -584,11 +591,13 @@ b: Again, back to you, human. What do you think?
 b: More thoughts, human?
 {{/if}}
 
+`Game.OVERRIDE_CHOICE_SPEAKER = "h"`
+
 [So we're broken. Let's fix us.](#act4_bad_fix)
 
 [So we're broken. Let's accept it.](#act4_bad_accept)
 
-[Thank you.](#act4_thanks) `_.thanks_for = "moral well-being"`
+[Thank you.](#act4_thanks) `_.thanks_for = "moral well-being";`
 
 # act4_bad_fix
 
@@ -638,7 +647,7 @@ b: If we're content with life, will we stop driving ourselves to do great things
 
 h: ...
 
-h: If we even fear "running out of fears",
+h: If we even have a fear of "running out of fears",
 
 h: I don't think we're gonna run out of fears.
 
@@ -713,7 +722,7 @@ b: Having a mental disorder *sucks!* It robs people of *lives!* Why should we "a
 
 h: I think therapists mean "accept" our emotions as in: be patient with them.
 
-h: Like how struggling in quicksand makes you sink faster, and the solution is to patiently lie flat...
+h: Like how struggling in quicksand makes you sink faster, and the solution is to patiently lie flat,
 
 {{if _.INJURED}}
 h: Fighting against you, my fear, lead me to jump off a roof.
@@ -800,7 +809,10 @@ h: Good chat, team.
 
 # act4c
 
-`Game.clearText()`
+```
+Game.clearText();
+music(null,{fade:3});
+```
 
 b: ...
 
@@ -810,9 +822,9 @@ b: This isn't some *game*, you know.
 
 b: Building a better relationship with your emotions isn't as simple as clicking buttons on a screen.
 
-b: Can we *really* get along, human?
+b: *Can* we work as a team?
 
-b: Can we *really* work as a team?
+b: *Can* we be on the same side?
 
 h: Well,
 
@@ -824,6 +836,7 @@ publish("smash",[3]);
 publish("act4-in-2");
 publish("outside-hong", ["look-back"]);
 publish("al-shire", ["ask"]);
+music('campus', {volume:0.5, fade:1});
 ```
 
 (...1600)
@@ -848,6 +861,8 @@ s: They were enjoying peace and quiet, then we interrupted them! We're such a bu
 
 a: I- I mean- it's, it's okay if not, I just...
 
+`Game.OVERRIDE_CHOICE_SPEAKER = "h2"`
+
 [Wait, didn't I see you at the party?](#act4d_recognition)
 
 [Yeah, of course! Come here.](#act4d_yes)
@@ -856,9 +871,17 @@ a: I- I mean- it's, it's okay if not, I just...
 
 # act4d_recognition
 
-h2: Yeah it was the first party, where I had that panic attack and {{if _.a2_end=="fight"}}punched the host.{{/if}}{{if _.a2_end=="flight"}}ran out crying.{{/if}}
+{{if _.a2_ending=="fight"}}
+h2: Yeah it was the first party, where I had that panic attack and punched the host.
+{{/if}}
 
-h3: Ah, sorry, didn't mean to put you on the spot!
+{{if _.a2_ending=="flight"}}
+h2: Yeah it was the first party, where I had that panic attack and ran out crying.
+{{/if}}
+
+b: Hang on human, we might be making them uncomfortable.
+
+h2: Ah, I don't mean to put you on the spot!
 
 h2: Just remembering a friendly face, is all.
 
@@ -880,7 +903,9 @@ s: AAAHHH WE MADE SOMEONE REMEMBER A TRAUMATIC EVENT. OUR MERE PRESENCE HURTS OT
 
 # act4d_yes
 
-h3: Ah, I don't mean to make you feel awkward!
+b: Hang on human, we might be making them uncomfortable.
+
+h2: Ah, I don't mean to make you feel awkward!
 
 h2: Just saying, you can sit here if you want to.
 
@@ -902,7 +927,9 @@ s: GAH, WE ALWAYS MAKE OTHERS FEEL UNCOMFORTABLE! WE'RE TERRIBLE!
 
 # act4d_no
 
-h3: Ah, I didn't mean to come off as rude!
+b: Hang on human, we might be making them uncomfortable.
+
+h2: Ah, I didn't mean to come off as rude!
 
 {{if _.INJURED}}
 h2: It's just that, well, I jumped off a roof and almost killed myself.
@@ -951,7 +978,7 @@ h: Huh. Wonder what *that* was about.
 
 h: Anyway, you were saying?
 
-b: Uh, I forget? Something about work and teams?
+b: Uh, I forget? Something about teams and sides?
 
 h: (shrug)
 
@@ -959,7 +986,7 @@ b: They say you should "make peace" with your emotions, as if your emotions are 
 
 b: But I want us to make *more* than mere peace! I want us to be *allies!*
 
-b: I want to be a good guard-dog. I want to protect you.
+b: I want to be a good guard-dog. I want to protect you and your needs for safety, belonging, and goodness.
 
 b: But I suck at it, so I need you to train me.
 
@@ -979,15 +1006,21 @@ b: Maybe you can tame this wolf.
 
 (...1000)
 
-[Good dog.](#act4f-pat-bb)
+`Game.OVERRIDE_CHOICE_SPEAKER = "h"`
 
-[Good human.](#act4f-pat-hong)
+[Good dog.](#act4f-pat-bb) `Game.OVERRIDE_CHOICE_SPEAKER = "h"`
+
+`Game.OVERRIDE_CHOICE_SPEAKER = "b"`
+
+[Good human.](#act4f-pat-hong) `Game.OVERRIDE_CHOICE_SPEAKER = "b"`
 
 # act4f-pat-hong
 
 ```
 Game.clearText();
 Game.FORCE_CANT_SKIP = true;
+music(null,{fade:0.5});
+sfx("youbothwin");
 ```
 
 `publish("end-pat", ["pat-hong-1"])`
@@ -1012,7 +1045,7 @@ Game.FORCE_CANT_SKIP = true;
 
 `publish("end-pat", ["pat-hong-2"])`
 
-(...2001)
+(...6501)
 
 `publish("end-pat", ["pat-hong-3"])`
 
@@ -1025,6 +1058,8 @@ Game.FORCE_CANT_SKIP = true;
 ```
 Game.clearText();
 Game.FORCE_CANT_SKIP = true;
+music(null,{fade:0.5});
+sfx("youbothwin");
 ```
 
 `publish("end-pat", ["pat-bb-1"])`
@@ -1049,7 +1084,7 @@ Game.FORCE_CANT_SKIP = true;
 
 `publish("end-pat", ["pat-bb-2"])`
 
-(...2001)
+(...6501)
 
 `publish("end-pat", ["pat-bb-3"])`
 
@@ -1064,18 +1099,23 @@ Game.FORCE_CANT_SKIP = false;
 publish("end-pat", ["freak-out"])
 ```
 
-{{if _.FIRST_FEAR=="harm"}}
+{{if _.fifteencigs}}
 b: AAAAA YOU'RE STILL BEING ALONE FIFTEEN CIGARETTES AAAAA
 {{/if}}
 
-{{if _.FIRST_FEAR=="alone"}}
+{{if _.parasite}}
 b: AAAAA YOU'RE STILL NOT BEING PRODUCTIVE AAAAA
 {{/if}}
 
-{{if _.FIRST_FEAR=="bad"}}
+{{if _.whitebread}}
 b: AAAAA YOU'RE EATING MORE WHITE BREAD AAAAA
 {{/if}}
 
-`sfx("yaps");`
+```
+sfx("yaps");
+Game.FORCE_CANT_SKIP = true;
+```
 
 b: YAP YAP YAP YAP YAP
+
+(#credits)

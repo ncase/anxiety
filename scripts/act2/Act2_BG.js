@@ -8,7 +8,7 @@ Loader.addImages([
 Loader.addSounds([
 	{ id:"squeak", src:"sounds/sfx/squeak.mp3" },
 	{ id:"record_scratch", src:"sounds/sfx/record_scratch.mp3" },
-	{ id:"shoryuken", src:"sounds/sfx/shoryuken.mp3" }
+	{ id:"hadouken", src:"sounds/sfx/hadouken.mp3" }
 ]);
 
 function BG_Party(){

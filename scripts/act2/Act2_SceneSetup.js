@@ -10,9 +10,10 @@ SceneSetup.act2 = function(){
 	HP.reset();
 
 	// ATTACKS (TODO: ACT I, ACT II...???)
-	_.attack_harm = 0;
-	_.attack_alone = 0;
-	_.attack_bad = 0;
+	_.CHAPTER = 2;
+	_.attack_harm_ch2 = 0;
+	_.attack_alone_ch2 = 0;
+	_.attack_bad_ch2 = 0;
 
 	// Music
 	music('party1', {volume:0.6});

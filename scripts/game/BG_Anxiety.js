@@ -13,7 +13,7 @@ function BG_Anxiety(whiteMode){
 
 	// Moving white boxes
 	var BG_WIDTH = 360;
-	var BG_HEIGHT = 450;
+	var BG_HEIGHT = 600;
 	self.boxes = [];
 	self.resetBox = function(box, startInView){
 		

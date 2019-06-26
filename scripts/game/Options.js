@@ -83,7 +83,11 @@ Loader.addSounds([
 		updateText();
 	});
 	var currentBlinkingInterval;
+	window.BLACK_CTA = false;
 	var blinkCTA = function(){
+
+		$("#cta_text2 > div").setAttribute("pic", window.BLACK_CTA ? "next-black" : "next");
+
 		currentBlinkingInterval = setInterval(function(){
 			ctaAlpha = (ctaAlpha==1) ? 0 : 1;
 			click_to_advance.style.opacity = ctaAlpha;

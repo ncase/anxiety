@@ -8,11 +8,6 @@ function BG_Intermission(STAGE){
 
 	var self = this;
 
-	// ATTACKS
-	_.attack_harm = 1;
-	_.attack_alone = 2;
-	_.attack_bad = 4;
-
 	// Sprites!
 	self.bgSprite = new Sprite({
 		image: Library.images.intermission_bg,

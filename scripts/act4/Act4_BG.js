@@ -13,8 +13,7 @@ Loader.addImages([
 
 Loader.addSounds([
 	{ id:"yaps", src:"sounds/sfx/yaps.mp3" },
-	/*{ id:"record_scratch", src:"sounds/sfx/record_scratch.mp3" },
-	{ id:"shoryuken", src:"sounds/sfx/shoryuken.mp3" }*/
+	{ id:"youbothwin", src:"sounds/sfx/youbothwin.mp3" }
 ]);
 
 function BG_Act4(){
@@ -243,6 +242,9 @@ function BG_Act4(){
 			PARALLAXING = "out";
 			sfx("whoosh");
 
+			// IT'S WHITE IN HERE
+			window.BLACK_CTA = true;
+
 		}),
 		subscribe("act4-in-2", function(){
 
@@ -254,6 +256,9 @@ function BG_Act4(){
 			PARALLAXING = "in";
 			sfx("whoosh");
 
+			// IT'S DARK OUT HERE
+			window.BLACK_CTA = false;
+
 		}),
 		subscribe("act4-out-3", function(){
 
@@ -261,6 +266,9 @@ function BG_Act4(){
 			STAGE = 3;
 			PARALLAXING = "out";
 			sfx("whoosh");
+
+			// IT'S WHITE IN HERE
+			window.BLACK_CTA = true;
 
 		}),
 		subscribe("outside-hong", function(frame){
@@ -298,6 +306,7 @@ function BG_Act4(){
 
 	self.kill = function(){
 		_subscriptions.forEach(unsubscribe);
+		window.BLACK_CTA = false; // back to normal
 	};
 
 }

@@ -20,7 +20,7 @@ Loader.addSounds([
 
 function BG_Intro(){
 	
-	var ticker = 0;//18;//0;
+	var ticker = 0; //18;//0;
 
 
 	var self = this;

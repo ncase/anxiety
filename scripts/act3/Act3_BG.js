@@ -1,7 +1,12 @@
 Loader.addImages([
 	{ id:"rooftop_bg", src:"sprites/act3/rooftop_bg.png" },
 	{ id:"rooftop_hunter", src:"sprites/act3/hunter.png" },
-	{ id:"rooftop_hong", src:"sprites/act3/hong.png" }
+	{ id:"rooftop_hong", src:"sprites/act3/hong.png" },
+	{ id:"hospital", src:"sprites/act3/hospital.png" },
+]);
+
+Loader.addSounds([
+	{ id:"lock_door", src:"sounds/sfx/lock_door.mp3" }
 ]);
 
 function BG_Rooftop(){
@@ -39,6 +44,14 @@ function BG_Rooftop(){
 	// Characters
 	self.hong = new Act3_Hong();
 	self.beebee = new Act3_Beebee();
+
+	// Hospital scene
+	self.hospitalSprite = new Sprite({
+		image: Library.images.hospital,
+		grid:{ width:4, height:1 },
+		frame:{ width:720, height:1200 },
+	});
+	self.hospitalSprite.visible = false;
 
 	// LAYERS
 	self.layers = [
@@ -123,13 +136,21 @@ function BG_Rooftop(){
 
 		ctx.save();
 
-		for(var i=0; i<self.layers.length; i++){
-			var layer = self.layers[i];
-			layer.x = PARALLAXES[i] * parallax;// - OFFSETS[i];
-			if(ALPHAS[i]>0){
-				ctx.globalAlpha = ALPHAS[i];
-				layer.draw(ctx);
+		if(!self.hospitalSprite.visible){
+
+			for(var i=0; i<self.layers.length; i++){
+				var layer = self.layers[i];
+				layer.x = PARALLAXES[i] * parallax;// - OFFSETS[i];
+				if(ALPHAS[i]>0){
+					ctx.globalAlpha = ALPHAS[i];
+					layer.draw(ctx);
+				}
 			}
+
+		}else{
+
+			self.hospitalSprite.draw(ctx);
+
 		}
 
 		ctx.restore();
@@ -177,6 +198,14 @@ function BG_Rooftop(){
 		subscribe("start-walkaway-anim", function(){
 			self.hongSprite.gotoFrame(23);
 			self.hunterSprite.gotoFrameByName("side_smile");
+		}),
+
+		// INJURY
+		subscribe("act4-injury-show", function(frame){
+			self.hospitalSprite.visible = true;
+		}),
+		subscribe("act4-injury", function(frame){
+			self.hospitalSprite.gotoFrame(frame);
 		})
 	);
 

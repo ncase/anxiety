@@ -190,7 +190,8 @@ function BG_Act1_Outro(){
 		
 		// NEXT SCENE?
 		if(frameTicker>=320/30){
-			Game.goto("act1_end");
+			_.INTERMISSION_STAGE = 1;
+			Game.goto("intermission");
 		}
 
 	};

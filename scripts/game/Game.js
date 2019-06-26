@@ -20,7 +20,7 @@ window.hong = function(){
 };
 window.attack = function(damage, type){
 	publish("attack", ["hong", damage, type]);
-	_["attack_"+type]++; // HACK
+	_["attack_"+type+"_ch"+_.CHAPTER]++; // HACK
 };
 window.attackBB = function(damage, type){
 	publish("attack", ["bb", damage]);
@@ -129,16 +129,28 @@ Game.onUnpause = function(){
 		Howler.mute(false);
 	}
 };
-Game.pausedDOM.onclick = function(){
+Game.pausedDOM.onclick = function(e){
 	if(Options.showing){
 		publish("hide_options");
-	}
-	if(About.showing){
+	}else if(About.showing){
 		$("#close_about").onclick();
+	}else{
+		Game.onUnpause();
+	}
+	e.stopPropagation();
+};
+
+// UNPAUSE OR SKIP DIALOGUE?
+var _unpauseOrSkip = function(){
+	if(Game.paused){
+		Game.onUnpause();
+	}else{
+		Game.clearAllTimeouts();
 	}
 };
-window.addEventListener("click", Game.onUnpause);
-window.addEventListener("touchstart", Game.onUnpause);
+window.addEventListener("click", _unpauseOrSkip);
+window.addEventListener("touchstart", _unpauseOrSkip);
+
 
 // "SET TIMEOUT" for text and stuff
 Game.timeoutCallbacks = [];
@@ -171,10 +183,14 @@ Game.clearAllTimeouts = function(){
 	}
 
 };
-Game.canvas.addEventListener("click", Game.clearAllTimeouts);
+
+// CLICK TO SKIP DIALOGUE
+//window.addEventListener("click", Game.clearAllTimeouts);
+//window.addEventListener("touchstart", Game.clearAllTimeouts);
+/*Game.canvas.addEventListener("click", Game.clearAllTimeouts);
 Game.canvas.addEventListener("touchstart", Game.clearAllTimeouts);
 Game.choicesDOM.addEventListener("click", Game.clearAllTimeouts);
-Game.choicesDOM.addEventListener("touchstart", Game.clearAllTimeouts);
+Game.choicesDOM.addEventListener("touchstart", Game.clearAllTimeouts);*/
 
 Game.goto = function(sectionID){
 
@@ -282,6 +298,8 @@ Game.clearText = function(){
 Game.clearAll = function(){
 	Game.clearText();
 	Game.resetScene();
+	music(null);
+	stopAllSounds();
 };
 window.clearText = Game.clearText;
 
@@ -611,6 +629,7 @@ Loader.addSounds([
 
 // Execute choice! Add it to choice DOM.
 Game.OVERRIDE_CHOICE_LINE = false;
+Game.OVERRIDE_CHOICE_SPEAKER = null;
 Game.HACK_MAKE_THE_LINE_BIG = false;
 Game.executeChoice = function(line){
 	
@@ -635,6 +654,7 @@ Game.executeChoice = function(line){
 
 	var div = document.createElement("div");
 	div.innerHTML = choiceText;
+	div.setAttribute("speaker", Game.OVERRIDE_CHOICE_SPEAKER ? Game.OVERRIDE_CHOICE_SPEAKER : "b");
 	div.onclick = function(event){
 
 		// Any pre-choice code?
@@ -642,8 +662,13 @@ Game.executeChoice = function(line){
 
 		// Override line... ONCE
 		if(!Game.OVERRIDE_CHOICE_LINE){
-			Game.addToQueue("b: "+originalChoiceText);
+			if(Game.OVERRIDE_CHOICE_SPEAKER){
+				Game.addToQueue(Game.OVERRIDE_CHOICE_SPEAKER+": "+originalChoiceText);
+			}else{
+				Game.addToQueue("b: "+originalChoiceText);
+			}
 		}
+		Game.OVERRIDE_CHOICE_SPEAKER = null;
 		Game.OVERRIDE_CHOICE_LINE = false;
 
 		// Play sound
@@ -685,6 +710,11 @@ Game.executeChoice = function(line){
 				setTimeout(function(){
 					var choiceHeight = div.getBoundingClientRect().height;
 					if(choiceHeight>40) div.style.fontSize = "14px";
+					// And if still too much???		
+					setTimeout(function(){
+						var choiceHeight = div.getBoundingClientRect().height;
+						if(choiceHeight>40) div.style.fontSize = "12px";
+					},1);
 				},1);
 			},1);
 		},1);
@@ -825,6 +855,7 @@ Game.parseLine = function(line){
 		lookForExpressions = false;
 
 		// Look for an IF!
+		//debugger;
 		var regex = /\{\{[^\}]*\}\}/ig; // the reason it's inside here is to reset .exec
 		var regexResult = regex.exec(line);
 		if(regexResult){
@@ -914,5 +945,10 @@ Game.updateCanvas = function(){
 
 };
 
-
-
+// HACK: PREVENT ACCIDENTALLY TABBING & BREAKING UI
+window.addEventListener("keydown", function(e){
+	if(e.keyCode==9){
+		e.preventDefault();
+		e.stopPropagation();
+	}
+});

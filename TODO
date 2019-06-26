@@ -6,3 +6,5 @@ TODO
 - favicon one-line eye
 - hadouken not shoryken
 - Open Sans, for consistency???
+- intermission D.R.Y.
+- get rid of bubbles off screen, for optimization

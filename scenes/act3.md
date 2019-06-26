@@ -22,7 +22,7 @@ r: Hmmm, ya sure 'bout that?
 
 h2: What, you've got *another* dare for me?
 
-r: Sure do, babe. See that swimming pool *all* the way down there?
+r: Sure do, cutie. See that swimming pool *all* the way down there?
 
 ```
 publish('hong-next');
@@ -67,7 +67,7 @@ h2: But not for long.
 ```
 Game.clearText();
 publish("act3-out");
-music('battle_dark', {volume:0.7, fade:1});
+music('battle_dark', {volume:1.0, fade:1});
 ```
 
 (...1500)
@@ -166,7 +166,7 @@ h: Look asshole, we *all* have a way of shutting you the fuck up.
 
 h: Some people throw themselves into work.
 
-h: Some people throw themselves into sex and drugs and refreshing their Facebook feed.
+h: Some people throw themselves into sex, drugs, and refreshing their Facebook feed.
 
 h: Some people throw themselves into other people. 
 
@@ -353,10 +353,6 @@ h: All the wise folk of our time agree: negative emotions are *bad!*
 
 h: Duh! That's why they're called *negative!*
 
-h: So the only good negative emotion...
-
-h: Is a *dead* negative emotion.
-
 b: human... please...
 
 h: A while back, I said: “I just want to be free from all this pain.”
@@ -393,7 +389,7 @@ h: ...you're *sorry.*
 
 h: ...
 
-h: Sorry for *what*, you big fuzzy moron?
+h: Sorry for *what*?
 
 (#act3_good_2q)
 
@@ -589,11 +585,13 @@ Game.FORCE_CANT_SKIP = true;
 
 (...501)
 
-`publish('hong-next')`
+```
+publish('hong-next');
+Game.FORCE_CANT_SKIP = false;
+sfx("lock_door");
+```
 
-`Game.FORCE_CANT_SKIP = false;`
-
-(...1001)
+(...2001)
 
 r: Did they just lock the door?
 
@@ -601,6 +599,14 @@ r: ...
 
 r: shit.
 
+```
+Game.clearAll();
+_.INJURED = false;
+```
+
+(...2000)
+
+(#act4)
 
 
 
@@ -694,4 +700,39 @@ publish("hunter-roof", ["front_shock"]);
 
 b: NO!
 
+(...400)
 
+```
+Game.clearText();
+publish("act4-injury-show");
+```
+
+(...2000)
+
+`publish("act4-injury", [1]);`
+
+(...2000)
+
+`publish("act4-injury", [0]);`
+
+(...2000)
+
+`publish("act4-injury", [2]);`
+
+(...2000)
+
+`publish("act4-injury", [0]);`
+
+(...2000)
+
+`publish("act4-injury", [3]);`
+
+(...2000)
+
+`publish("act4-injury", [0]);`
+
+(...5000)
+
+`_.INJURED = true;`
+
+(#act4)

@@ -11,9 +11,7 @@ SceneSetup.act3 = function(){
 	HP.reset();
 
 	// ATTACKS
-	_.attack_harm = 0;
-	_.attack_alone = 0;
-	_.attack_bad = 0;
+	_.CHAPTER = 3;
 
 	// Music
 	music('party2', {volume:0.6});
