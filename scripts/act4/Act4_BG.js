@@ -30,8 +30,14 @@ function BG_Act4(){
 		image: Library.images.act4_callback,
 		grid:{ width:2, height:1 },
 		frame:{ width:400, height:200 },
-		y: 347
+		y: 347,
+		frameNames:[
+			"phone",
+			"puddle"
+		]
 	});
+	self.callbackSprite.gotoFrameByName( _.act1_ending=="fight" ? "phone" : "puddle" );
+
 	self.alShireSprite = new Sprite({
 		image: Library.images.al_shire,
 		grid:{ width:4, height:1 },

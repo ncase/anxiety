@@ -1,10 +1,68 @@
 TODO
 
+INTRO
+- continue / new game
+- chapter select
+- (content note)
+- replay, skip intro
+- About: Main Credits + resources
+
+ACT I
+- more beebee art: animated point, less aggro, more sweet & defensive
+- re-animate cry so that lake tears falls in right place
+- continuous shot, no glitch-stop (low prior)
+
+ACT II
+- actual party bg & fg
+- minor char voice (hansel & gretel)
+- parallax aligns
+- hong char + anims
+- bb char + anims
+- hunter better art
+- runaway better anim
+- SPECIAL ATTACK ICONS
+- sfx for running away
+! more sympathetic Hunter
+- callbacks for "what you mumbling about"
+
+ACT III
+- callback for act ii ending
+- better roof bg
+- better minor chars
+- more hunter intro anim
+- more hong intro anims
+- hong char + anims
+- bb char + anims
+- hospital scenes
+- sfx for endings
+! more sympathetic Hunter
+
+ACT IV
+- hong char + anims
+- bb char + anims
+- more al/shire
+- sfx's
+? act i & ii callbacks
+! social cognition/restructuring
+! pain is helpful, an alarm system for your body/mind
+
+CREDITS
+- animate it
+- nicky
+- monplaisir
+- art for characters
+- patreon
+- a sweet end message
+- post-creds bb-walking
+- end buttons: mental health resources, social share, support nicky / monplaisir
+
+CODE
+! auto save
+! translatable, localizable
+! nonstandard bubbles (for attacks, and chap select)
 - bug: mouseover dialogue option, multiple sounds over div's and i's
 - extra sound when line ends with *italics*
-- can't click outside to advance
 - favicon one-line eye
-- hadouken not shoryken
 - Open Sans, for consistency???
-- intermission D.R.Y.
 - get rid of bubbles off screen, for optimization
+

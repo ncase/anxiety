@@ -19,7 +19,7 @@
 
 # act2-preamble-news1
 
-a: But did you *see* that "news story" going viral?
+a: But did you *see* that "news story" about that horrible thing happening somewhere?
 
 h2: h-hi...
 
@@ -547,21 +547,21 @@ hong({body:"attacked"});
 attack("20p", _.a2_attack_1);
 ```
 
-(...301)
+(...401)
 
 ```
 hong({body:"attacked"});
 attack("20p", _.a2_attack_2);
 ```
 
-(...301)
+(...401)
 
 ```
 hong({body:"attacked"});
 attack("20p", _.a2_attack_3);
 ```
 
-(...301)
+(...1001)
 
 h: FUCK!
 
@@ -703,7 +703,7 @@ b: Ahhh we're so lost! So lost so lost so los--
 ```
 music(null);
 hong({body:"attacked"});
-attack("10p", "harm");
+attack("10p", "bad");
 ```
 
 (...2500)

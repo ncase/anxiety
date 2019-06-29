@@ -328,6 +328,17 @@ h: Because you don't believe in *me*.
 (#act3_bad_3)
 
 
+# act3_bad_2_terrible
+
+b: Other guard-wolves have humans who actually take time to patiently train them, to learn to work together,
+
+b: Rather than hate the guard-wolves for trying to protect them! So why couldn't you jus--
+
+h: Wrong fucking answer.
+
+(#act3_bad_3)
+
+
 
 # act3_bad_3
 
@@ -396,17 +407,31 @@ h: Sorry for *what*?
 
 # act3_good_2q
 
+{{if _.apologized_for_hurt}}
+(#act3_good_2q_already_apologized)
+{{/if}}
+
+{{if !_.apologized_for_hurt}}
+(#act3_good_2q_not_already_apologized)
+{{/if}}
+
+
+# act3_good_2q_already_apologized
+
 [I'm sorry I wasn't a good protector.](#act3_good_3_protector)
 
 [I'm sorry I didn't respect you.](#act3_good_3_respect)
 
-{{if _.apologized_for_hurt}}
 [I'm sorry.](#act3_good_4)
-{{/if}}
 
-{{if !_.apologized_for_hurt}}
+
+# act3_good_2q_not_already_apologized
+
+[I'm sorry I have a terrible human!](#act3_bad_2_terrible) `bb({body:"scared"})`
+
+[I'm sorry I didn't respect you.](#act3_good_3_respect)
+
 [I'm sorry I hurt you.](#act3_good_3_hurt)
-{{/if}}
 
 
 

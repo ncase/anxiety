@@ -4,7 +4,7 @@
 SceneSetup.act4();
 ```
 
-(...2001)
+(...5001)
 
 `publish("outside-hong", ["walk"])`
 
@@ -872,11 +872,11 @@ a: I- I mean- it's, it's okay if not, I just...
 # act4d_recognition
 
 {{if _.a2_ending=="fight"}}
-h2: Yeah it was the first party, where I had that panic attack and punched the host.
+h2: Yeah it was the first party, where I had that panic attack and punched the host!
 {{/if}}
 
 {{if _.a2_ending=="flight"}}
-h2: Yeah it was the first party, where I had that panic attack and ran out crying.
+h2: Yeah it was the first party, where I had that panic attack and ran out crying!
 {{/if}}
 
 b: Hang on human, we might be making them uncomfortable.
@@ -903,7 +903,7 @@ s: AAAHHH WE MADE SOMEONE REMEMBER A TRAUMATIC EVENT. OUR MERE PRESENCE HURTS OT
 
 # act4d_yes
 
-b: Hang on human, we might be making them uncomfortable.
+b: Hang on human, they seem uncomfortable.
 
 h2: Ah, I don't mean to make you feel awkward!
 
@@ -1100,11 +1100,11 @@ publish("end-pat", ["freak-out"])
 ```
 
 {{if _.fifteencigs}}
-b: AAAAA YOU'RE STILL BEING ALONE FIFTEEN CIGARETTES AAAAA
+b: AAAAA YOU'RE STILL EATING ALONE FIFTEEN CIGARETTES AAAAA
 {{/if}}
 
 {{if _.parasite}}
-b: AAAAA YOU'RE STILL NOT BEING PRODUCTIVE AAAAA
+b: AAAAA YOU'RE STILL NOT PRODUCTIVE WHILE EATING WE'RE PARASITES AAAAA
 {{/if}}
 
 {{if _.whitebread}}

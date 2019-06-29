@@ -90,9 +90,9 @@ bb({mouth:"normal", eyes:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: If we're not contributing to the body of society then we're a parasite!
+b: If we're not contributing to the body of society then we're a selfish parasite!
 
-b: The society-body will go to the society-doctor to get medication to kill their society-parasites and then we'll--
+b: The society-body will go to the society-doctor for medication to kill their society-parasites so we'll--
 
 ```
 bb({body:"panic", mouth:"normal", eyes:"fear"});
