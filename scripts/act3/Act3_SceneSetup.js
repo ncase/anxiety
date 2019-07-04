@@ -1,6 +1,6 @@
 Loader.addSounds([
 	{ id:"music_party2", src:"sounds/music/party2.mp3" },
-	{ id:"music_battle_dark", src:"sounds/music/battle_dark.mp3" }
+	{ id:"music_battle_dark", src:"sounds/music/battle_dark_FIRST.mp3" }
 ]);
 
 SceneSetup.act3 = function(){

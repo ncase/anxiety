@@ -1,5 +1,5 @@
 Loader.addSounds([
-	{ id:"intermission", src:"sounds/sfx/intermission.mp3" }
+	{ id:"intermission", src:"sounds/stings/you_winMIX.mp3" }
 ]);
 
 SceneSetup.intermission = function(STAGE){

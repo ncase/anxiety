@@ -21,13 +21,14 @@ function BG_Rooftop(){
 	});
 	self.hunterSprite = new Sprite({
 		image: Library.images.rooftop_hunter,
-		grid:{ width:4, height:1 },
+		grid:{ width:4, height:2 },
 		frame:{ width:400, height:400 },
 		y: 200,
 		frameNames:[
 			"side_smile",
 			"side_neutral",
-			"front_evil",
+			"front_badass",
+			"front_pissed",
 			"front_shock"
 		]
 	});
@@ -197,7 +198,7 @@ function BG_Rooftop(){
 		// WALK AWAY
 		subscribe("start-walkaway-anim", function(){
 			self.hongSprite.gotoFrame(23);
-			self.hunterSprite.gotoFrameByName("side_smile");
+			self.hunterSprite.gotoFrameByName("side_neutral");
 		}),
 
 		// INJURY

@@ -1,5 +1,5 @@
 Loader.addSounds([
-	{ id:"music_battle", src:"sounds/music/battle.mp3" },
+	{ id:"music_battle", src:"sounds/music/pogMIX.mp3" },
 	{ id:"music_pokemon", src:"sounds/music/pokemon.mp3" },
 	{ id:"fart", src:"sounds/sfx/fart.mp3" }
 ]);

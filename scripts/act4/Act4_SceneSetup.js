@@ -1,5 +1,5 @@
 Loader.addSounds([
-	{ id:"music_dontfight", src:"sounds/music/dontfight.mp3" }
+	{ id:"music_dontfight", src:"sounds/music/uplifting_pog_MIX.mp3" }
 ]);
 
 SceneSetup.act4 = function(){

@@ -2,32 +2,27 @@
 
 `SceneSetup.act3();`
 
-```
-/*
-r: Go on, kid, as hard as you can.
-r: FUCK that's hot.
----
-r: And... that's 10 laps in one minute.
-r: Damn, kid. I'm impressed.
-h: Told you I could run a marathon!
----
-*/
-```
+h2: *Ah* that hits the spot.
 
-r: Y'know, it's good to see you finally let loose, kid. To hell with all those bad vibes.
+r: You know, kid...
 
-h2: Yeah! I can't feel my own fear anymore!
+h2: Specifically, the spots hit are my left and right amygdala.
 
-r: Hmmm, ya sure 'bout that?
+r: You remind me of myself when I was younger. Back when I was tormented by the animal in my head.
 
-h2: What, you've got *another* dare for me?
+r: Hey, quick question: truth or da--
 
-r: Sure do, cutie. See that swimming pool *all* the way down there?
+h2: DARE!
+
+r: Haha! Good.
+
+r: Ok. You see that swimming pool down there?
 
 ```
 publish('hong-next');
-publish("hunter-roof", ["front_evil"]);
+publish("hunter-roof", ["front_badass"]);
 ```
+
 
 h2: Yeah? Ten floors down?
 
@@ -39,23 +34,50 @@ r: Jump in.
 
 h2: ...
 
-h2: What?
+h2: Wait, what?
 
-r: Prove your fear is gone. Jump.
+r: The animal's started whining, hasn't it?
 
-h2: um, wait, I...
+r: *Oh nooooo it's dangerous, don't do iiiiit.*
 
-r: C'mon, aren't we *friends?* Don't ya trust your *friends?*
+r: But that's why we need to do thrilling, death-defying stunts! Party hard! Carpe diem! Snort coke off a hooker's butt, #YOLO!
 
-r: Prove to us - and yourself - that you've conquered your fear once and for all. Jump.
+r: To show that animal we don't give two *dicks* about its bitching! Jump.
 
-r: Unless that nagging voice in your head is back?
+h2: Uh, but sometimes, um... fear has a point...
 
-h2: Yeah... it is...
+```
+music(null, {fade:2});
+publish("hunter-roof", ["front_pissed"]);
+```
 
-`publish('hong-next')`
+r: ...
 
-h2: But not for long.
+r: I'm sorry, did you fall for that "mindfulness" fad that claims feeling bad is *good?*
+
+r: Pleasure is the opposite of pain. There-fucking-fore, you can use pleasure to fight pain!
+
+r: How goddamn stupid are those California Buddhists to not see that?!
+
+r: Kid, I know that *you* know that animal *hurts* people like us. It *tortures* people like us.
+
+r: It's not your friend. It's a rabid beast, and rabid beasts need to be tranquilized,
+
+r: Or have a bullet put in its fucking skull.
+
+r: Otherwise, you're going to let it win.
+
+h2: No. You're wrong.
+
+```
+publish('hong-next');
+```
+
+h2: I'm not going to let it win.
+
+`publish("hunter-roof", ["front_badass"]);`
+
+r: Fuck yeah! I believe in you, babe! Kill it! <3
 
 (#act3a)
 
@@ -67,7 +89,7 @@ h2: But not for long.
 ```
 Game.clearText();
 publish("act3-out");
-music('battle_dark', {volume:1.0, fade:1});
+music('battle_dark', {volume:1.0});
 ```
 
 (...1500)
@@ -87,8 +109,6 @@ n: CHOOSE WISELY. PROTECT YOUR HUMAN
 b: AAAAAAAAAAAAAAAAAA
 
 n: GOOD LUCK
-
-(...999)
 
 `Game.clearText();`
 
@@ -356,6 +376,8 @@ hong({body:"angry"});
 bb({body:"dead"});
 ```
 
+(...999)
+
 h: *"The only thing to fear is fear itself."*
 
 h: *"Don't worry, be happy!"*
@@ -534,7 +556,9 @@ Game.FORCE_CANT_SKIP = true;
 
 # act3_walkaway
 
-`publish("start-walkaway-anim");`
+```
+publish("start-walkaway-anim");
+```
 
 (...2001)
 
@@ -554,13 +578,12 @@ Game.FORCE_CANT_SKIP = true;
 
 `Game.FORCE_CANT_SKIP = false;`
 
-r: What's the matter, kid?
+r: Oh *come on*. After all that, you're just walking away?
 
-r: Ya *scared?*
+r: What's the matter, kid? Are you *scared?*
 
 ```
 publish('hong-next');
-publish('hunter-roof', ["side_neutral"]);
 ```
 
 h2: Yes.
@@ -619,10 +642,6 @@ sfx("lock_door");
 (...2001)
 
 r: Did they just lock the door?
-
-r: ...
-
-r: shit.
 
 ```
 Game.clearAll();
@@ -736,7 +755,7 @@ publish("act4-injury-show");
 
 `publish("act4-injury", [1]);`
 
-(...2000)
+(...4000)
 
 `publish("act4-injury", [0]);`
 
@@ -744,7 +763,7 @@ publish("act4-injury-show");
 
 `publish("act4-injury", [2]);`
 
-(...2000)
+(...4000)
 
 `publish("act4-injury", [0]);`
 
@@ -752,7 +771,7 @@ publish("act4-injury-show");
 
 `publish("act4-injury", [3]);`
 
-(...2000)
+(...8000)
 
 `publish("act4-injury", [0]);`
 

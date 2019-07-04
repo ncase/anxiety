@@ -1,5 +1,5 @@
 Loader.addSounds([
-	{ id:"music_credits", src:"sounds/music/credits.mp3" }
+	{ id:"music_credits", src:"sounds/music/upbeatcreditMIX.mp3" }
 ]);
 
 SceneSetup.credits = function(){

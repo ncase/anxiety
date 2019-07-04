@@ -783,7 +783,7 @@ music('party1', {volume:0.4, fade:2});
 
 (...2000)
 
-r: Looks like you're caught up in a fight with yourself, kid.
+r: Looks like you're caught in a fight with yourself, kid.
 
 `publish("act2-party-action", ["twist2"]);`
 
@@ -796,16 +796,18 @@ r: Heck, just yesterday, I heard someone on campus had a nervous breakdown and s
 {{/if}}
 
 {{if _.act1_ending=="flight"}}
-r: Hell, just yesterday, I heard someone curled up into an armadillo ball and cried in public!
+r: Heck, just yesterday, I heard someone curled up into an armadillo ball and cried in public!
 {{/if}}
 
 h2: huh imagine that.
 
-r: That's why I throw all these parties. I want to help peeps forget their worries.
+r: Listen: I know what it's like to have that animal in your head.
+
+r: We all do. That's why we're here! I throw these parties every weekend so we can forget our worries, forget that animal.
 
 h2: but my anxiety...
 
-r: Don't worry, kid. There's a simple trick to get that negative voice in your head to be quiet forever.
+r: Don't worry, kid. I used to be like you. But then I found a little trick to get that negative voice to be quiet forever...
 
 ```
 Game.clearText();
@@ -1048,7 +1050,7 @@ music('party1', {volume:0.6, fade:1.5});
 
 (...2000)
 
-r: Y'okay there, kid?
+r: You alright, kid?
 
 {{if _.a2_ending=="fight"}}
 (#act2k_fight)
@@ -1087,25 +1089,31 @@ r: I like that. Come to my party next weekend, cutie.
 
 `publish("act2-party-action", ["end_run"]);`
 
-h2: ok thank you bye
+h2: ok bye ciao adios 
 
-r: I wanna see you let out that *vicious* side of you more, kid!
+r: The animal might have won today, but come back, and I'll mix something even stronger for you!
+
+h2: sayōnara au revoir auf wiedersehen zài jiàn
+
+r: You and me, kid, we'll show that beast who's boss!
 
 (#act2k_end)
 
 # act2k_flight
 
-h2: ok sorry i have to go
+h2: ok sorry i have to run
 
-r: Ah, the voice won, huh?
+r: Damn it. The animal won today, huh?
 
-r: Come to my party next weekend, cutie. I'll mix something even stronger for ya.
+h2: no no, just, uh, gotta run a marathon. gotta go fast.
+
+r: Come to my party next weekend, cutie. I'll mix something even stronger for you.
 
 `publish("act2-party-action", ["end_run"]);`
 
-h2: ok thank you bye
+h2: ok thanks gonna run run run run run
 
-r: I wanna see you finally let loose, kid!
+r: You and me, kid, we'll show that beast who's boss!
 
 (#act2k_end)
 

@@ -13,7 +13,7 @@ Loader.addImages([
 
 Loader.addSounds([
 	{ id:"yaps", src:"sounds/sfx/yaps.mp3" },
-	{ id:"youbothwin", src:"sounds/sfx/youbothwin.mp3" }
+	{ id:"youbothwin", src:"sounds/stings/you_both_winMIX.mp3" }
 ]);
 
 function BG_Act4(){

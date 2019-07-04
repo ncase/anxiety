@@ -131,7 +131,7 @@ b: I'm a battered shelter dog.
 
 b: We've been through rough stuff, possibly trauma, so that's why sometimes I over-react and go--
 
-`sfx("yaps");`
+`sfx("yaps", {volume:0.6});`
 
 b: YAP YAP YAP YAP YAP
 
@@ -822,9 +822,9 @@ b: This isn't some *game*, you know.
 
 b: Building a better relationship with your emotions isn't as simple as clicking buttons on a screen.
 
-b: *Can* we work as a team?
+b: *Can* we really get along?
 
-b: *Can* we be on the same side?
+b: *Can* we work together, as a team?
 
 h: Well,
 
@@ -905,7 +905,7 @@ s: AAAHHH WE MADE SOMEONE REMEMBER A TRAUMATIC EVENT. OUR MERE PRESENCE HURTS OT
 
 b: Hang on human, they seem uncomfortable.
 
-h2: Ah, I don't mean to make you feel awkward!
+h2: Ah, no pressure of course!
 
 h2: Just saying, you can sit here if you want to.
 
@@ -936,7 +936,7 @@ h2: It's just that, well, I jumped off a roof and almost killed myself.
 {{/if}}
 
 {{if !_.INJURED}}
-h2: It's just that, well, I almost jumped off a roof and killed myself.
+h2: It's just that, well, I almost jumped off a roof.
 {{/if}}
 
 h2: Please don't take it as a personal rejection, I just need quiet time to process some emotions.
@@ -974,11 +974,11 @@ publish("act4-out-3");
 
 (...1001)
 
-h: Huh. Wonder what *that* was about.
+h: Huh. I wonder what was going on in their head.
 
 h: Anyway, you were saying?
 
-b: Uh, I forget? Something about teams and sides?
+b: Uh, I forget? Something about teams and work?
 
 h: (shrug)
 
@@ -986,17 +986,19 @@ b: They say you should "make peace" with your emotions, as if your emotions are 
 
 b: But I want us to make *more* than mere peace! I want us to be *allies!*
 
-b: I want to be a good guard-dog. I want to protect you and your needs for safety, belonging, and goodness.
+b: I want to be a good guard-dog. Just like how hunger & thirst are alarms for your physical needs,
 
-b: But I suck at it, so I need you to train me.
+b: I want to be the alarm for your emotional needs – your needs for safety, belonging, goodness.
+
+b: But... I suck at my job, so I need you to train me.
 
 b: Teaching an old dog new tricks *will* take a while. Maybe *years.*
 
-b: And sometimes, I'll relapse a bit, I'll slip into my old habits.
+b: And sometimes I'll relapse, I'll slip into my old habits.
 
 b: I'll bark at shadows. I'll scare you with words. I might even show you some intrusive images of... things.
 
-b: I'm sorry! I'm a battered shelter dog! Battered dogs poop on your bed once in a while!
+b: I'm sorry! I'm a battered shelter dog! Battered dogs poop on your bed sometimes!
 
 b: But if you're patient with me... and just stay and sit with me...
 
@@ -1112,7 +1114,7 @@ b: AAAAA YOU'RE EATING MORE WHITE BREAD AAAAA
 {{/if}}
 
 ```
-sfx("yaps");
+sfx("yaps", {volume:0.6});
 Game.FORCE_CANT_SKIP = true;
 ```
 
