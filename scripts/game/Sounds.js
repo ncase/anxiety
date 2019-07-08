@@ -48,7 +48,7 @@ window.voice = function(name, options){
 }
 
 window.CURRENT_MUSIC = null;
-window.music = function(song, options){
+window.music = function(song, options, onend){
 
 	options = options || {};
 	options.volume = options.volume===undefined ? 1 : options.volume;
@@ -84,6 +84,11 @@ window.music = function(song, options){
 		window.CURRENT_MUSIC = song;
 		song.play();
 
+	}
+
+	// IF AN ON-END (used basically once in this whole game)
+	if(onend){
+		song.on('end', onend);
 	}
 
 };

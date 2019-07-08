@@ -871,12 +871,14 @@ a: I- I mean- it's, it's okay if not, I just...
 
 # act4d_recognition
 
+h2: Yeah you were on the couch! At the first party I went to,
+
 {{if _.a2_ending=="fight"}}
-h2: Yeah it was the first party, where I had that panic attack and punched the host!
+h2: The one where I had that panic attack and punched the host.
 {{/if}}
 
 {{if _.a2_ending=="flight"}}
-h2: Yeah it was the first party, where I had that panic attack and ran out crying!
+h2: The one where I had that panic attack and ran out crying.
 {{/if}}
 
 b: Hang on human, we might be making them uncomfortable.

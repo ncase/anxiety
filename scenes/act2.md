@@ -146,7 +146,7 @@ n: ROUND TWO: *FIGHT!*
 
 [Oh no they all hate us!](#act2a_social)
 
-[Oh no the redhead is hot!](#act2a_perv)
+[Were you *ogling* the redhead?](#act2a_perv)
 
 [Hey, let's talk about the meaning of life.](#act2a_meaning)
 
@@ -166,8 +166,6 @@ _.a2_attack_1 = "alone";
 (#act2b)
 
 # act2a_perv
-
-b: And we were totally ogling them!
 
 b: They're more attractive than us, which means if we even *look* at them, then--
 
@@ -258,7 +256,7 @@ _.a2_attack_2 = "alone";
 
 b: DON'T BE A CREEP. IT'S AGAINST THE LAW!
 
-b: Creep Law, Section 74.5: (1) Any Person who checks out (a) that sweet ass (b) that bulge (2) shall be hereby referred to as
+b: Creep Law, Section 74.5: (1) Any Person who checks out (a) that sweet booty (b) those juicy thighs (2) shall be hereby referred to as
 
 b: "A BIG DISGUSTING TRASH PERVERT"
 
@@ -595,7 +593,7 @@ h: *I am loved. I am good. I am smart. I am beautiful. I am special.*
 
 [You know affirmations were *disproven?*](#act2d_disproven)
 
-[omg you can't credit random stories to indigenous folk](#act2d_racist)
+[omg don't credit random stories to indigenous folk](#act2d_racist)
 
 # act2d_disproven
 
@@ -754,7 +752,7 @@ b: How do you think *I* feel, human?!
 
 b: I'm trying my best to be your guard-dog, but you keep seeing me as some Big Bad Wolf!
 
-b: So I try even *harder* to alert you to danger! More danger! Louder danger!
+b: So I try even *harder* to alert you to danger! *More* danger! *Louder* danger!
 
 b: But no matter how hard I try to protect you, you *still* think I'm your enemy!
 
@@ -787,9 +785,13 @@ r: Looks like you're caught in a fight with yourself, kid.
 
 `publish("act2-party-action", ["twist2"]);`
 
-h2: (nods)
+h2: Was it that obvious?
 
-r: You're not alone, friend. Anxiety's super common.
+r: You were, uh, mumbling at your hoodie.
+
+h2: oh god i'm such a mess.
+
+r: Hey. You're not alone, friend. Anxiety's super common.
 
 {{if _.act1_ending=="fight"}}
 r: Heck, just yesterday, I heard someone on campus had a nervous breakdown and smashed their phone!
@@ -799,15 +801,13 @@ r: Heck, just yesterday, I heard someone on campus had a nervous breakdown and s
 r: Heck, just yesterday, I heard someone curled up into an armadillo ball and cried in public!
 {{/if}}
 
-h2: huh imagine that.
-
 r: Listen: I know what it's like to have that animal in your head.
 
-r: We all do. That's why we're here! I throw these parties every weekend so we can forget our worries, forget that animal.
+r: We *all* do. That's why we're here! I throw these parties every weekend so we can forget our worries, forget that animal.
 
 h2: but my anxiety...
 
-r: Don't worry, kid. I used to be like you. But then I found a little trick to get that negative voice to be quiet forever...
+r: Don't worry, kid. I used to be like you. But then I found a little trick to get that negative voice to shut up forever...
 
 ```
 Game.clearText();
@@ -1093,7 +1093,7 @@ h2: ok bye ciao adios
 
 r: The animal might have won today, but come back, and I'll mix something even stronger for you!
 
-h2: sayōnara au revoir auf wiedersehen zài jiàn
+h2: au revoir sayōnara auf wiedersehen zài jiàn
 
 r: You and me, kid, we'll show that beast who's boss!
 

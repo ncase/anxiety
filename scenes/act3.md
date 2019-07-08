@@ -40,9 +40,9 @@ r: The animal's started whining, hasn't it?
 
 r: *Oh nooooo it's dangerous, don't do iiiiit.*
 
-r: But that's why we need to do thrilling, death-defying stunts! Party hard! Carpe diem! Snort coke off a hooker's butt, #YOLO!
+r: But that's exactly why we must do thrilling, death-defying stunts! Party hard! Carpe diem! Snort coke off a hooker's ass, #YOLO!
 
-r: To show that animal we don't give two *dicks* about its bitching! Jump.
+r: Let's show that animal we don't give two *dicks* about its bitching! Jump.
 
 h2: Uh, but sometimes, um... fear has a point...
 
@@ -53,17 +53,17 @@ publish("hunter-roof", ["front_pissed"]);
 
 r: ...
 
-r: I'm sorry, did you fall for that "mindfulness" fad that claims feeling bad is *good?*
+r: I'm sorry, did you fall for that McMindfulness fad that claims feeling bad is *good?*
 
 r: Pleasure is the opposite of pain. There-fucking-fore, you can use pleasure to fight pain!
 
-r: How goddamn stupid are those California Buddhists to not see that?!
+r: How do those Silicon Valley pseudo-Buddhists not see this shit?!
 
 r: Kid, I know that *you* know that animal *hurts* people like us. It *tortures* people like us.
 
-r: It's not your friend. It's a rabid beast, and rabid beasts need to be tranquilized,
+r: It's not our friend. It's a rabid beast, which needs to be *tranquilized*,
 
-r: Or have a bullet put in its fucking skull.
+r: Or have a *bullet put in its fucking skull*.
 
 r: Otherwise, you're going to let it win.
 
@@ -71,6 +71,9 @@ h2: No. You're wrong.
 
 ```
 publish('hong-next');
+music('battle_dark', {volume:1.0}, function(){
+	music('battle_dark_loop');
+});
 ```
 
 h2: I'm not going to let it win.
@@ -83,13 +86,11 @@ r: Fuck yeah! I believe in you, babe! Kill it! <3
 
 
 
-
 # act3a
 
 ```
 Game.clearText();
 publish("act3-out");
-music('battle_dark', {volume:1.0});
 ```
 
 (...1500)

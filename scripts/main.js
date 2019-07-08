@@ -36,7 +36,7 @@ subscribe("START_GAME", function(){
 
 	// Act 2
 	_ = {"CHAPTER":1,"attack_harm_ch1":3,"attack_alone_ch1":2,"attack_bad_ch1":1,"whitebread":true,"partyinvite":"ignore","subtweet":true,"serialkiller":true,"act1g":"dont","act1_ending":"flight","INTERMISSION_STAGE":1};
-	Game.goto("act2");
+	Game.goto("act3");
 	//Game.goto("act4");
 	
 	//Game.goto("intro");

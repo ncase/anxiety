@@ -1,6 +1,7 @@
 Loader.addSounds([
 	{ id:"music_party2", src:"sounds/music/party2.mp3" },
-	{ id:"music_battle_dark", src:"sounds/music/battle_dark_FIRST.mp3" }
+	{ id:"music_battle_dark", src:"sounds/music/battle_dark_FIRST.mp3" },
+	{ id:"music_battle_dark_loop", src:"sounds/music/battle_dark_LOOP.mp3" }
 ]);
 
 SceneSetup.act3 = function(){
@@ -14,7 +15,7 @@ SceneSetup.act3 = function(){
 	_.CHAPTER = 3;
 
 	// Music
-	music('party2', {volume:0.6});
+	music('party2', {volume:0.4});
 
 	// Background
 	var bg = new BG_Rooftop();

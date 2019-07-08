@@ -189,7 +189,7 @@ function BG_Rooftop(){
 		// JUMP OFF
 		subscribe("start-jump-anim", function(){
 			self.hongSprite.gotoFrame(4);
-			self.hunterSprite.gotoFrameByName("front_evil");
+			self.hunterSprite.gotoFrameByName("front_badass");
 		}),
 		subscribe("hong-next", function(){
 			self.hongSprite.nextFrame();
