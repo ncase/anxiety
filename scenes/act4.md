@@ -178,7 +178,7 @@ b: I want to protect your need for physical safety,
 b: But, gosh, there's so many dangerous things in the world!
 
 {{if _.a4_fears_discussed==1}}
-b: I dunno, what do *you* think, human?
+b: I dunno, enough of *me* choosing what to say next. What do *you* say, human?
 {{/if}}
 
 {{if _.a4_fears_discussed==2}}
@@ -413,7 +413,7 @@ b: I want to make sure you get your social needs met, the human need to belong..
 b: But, I worry: will we ever be loved? *Can* we ever be loved?
 
 {{if _.a4_fears_discussed==1}}
-b: I dunno, what do *you* think, human?
+b: I dunno, enough of *me* choosing what to say next. What do *you* say, human?
 {{/if}}
 
 {{if _.a4_fears_discussed==2}}
@@ -580,7 +580,7 @@ b: And don't tell me we're *not* messed up. We almost jumped off a *roof*.
 {{/if}}
 
 {{if _.a4_fears_discussed==1}}
-b: I dunno, what do *you* think, human?
+b: I dunno, enough of *me* choosing what to say next. What do *you* say, human?
 {{/if}}
 
 {{if _.a4_fears_discussed==2}}
@@ -976,7 +976,7 @@ publish("act4-out-3");
 
 (...1001)
 
-h: Huh. I wonder what was going on in their head.
+h: Huh. That was weird. I wonder what was going on in their head.
 
 h: Anyway, you were saying?
 

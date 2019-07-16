@@ -1,6 +1,6 @@
 # credits
 
-`music('credits', {NO_LOOP:true, volume:0.55});`
+`music('credits', {NO_LOOP:true, volume:0.45});`
 
 (...1884)
 

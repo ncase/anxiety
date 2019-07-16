@@ -16,7 +16,7 @@ h2: DARE!
 
 r: Haha! Good.
 
-r: Ok. You see that swimming pool down there?
+r: Ok. You see that baby-blue swimming pool down there?
 
 ```
 publish('hong-next');
@@ -27,8 +27,6 @@ publish("hunter-roof", ["front_badass"]);
 h2: Yeah? Ten floors down?
 
 r: Jump in.
-
-(...999)
 
 `publish('hong-next')`
 
@@ -42,7 +40,7 @@ r: *Oh nooooo it's dangerous, don't do iiiiit.*
 
 r: But that's exactly why we must do thrilling, death-defying stunts! Party hard! Carpe diem! Snort coke off a hooker's ass, #YOLO!
 
-r: Let's show that animal we don't give two *dicks* about its bitching! Jump.
+r: Let's show that animal we don't give two *dicks* about its bitching! Jump in.
 
 h2: Uh, but sometimes, um... fear has a point...
 

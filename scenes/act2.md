@@ -207,16 +207,16 @@ b: ...
 
 b: *GASP*
 
-b: I MUST WARN YOU...
+b: I MUST WARN YOU ABOUT...
 
-[*LOUDER!*](#act2b_louder)
+[The same fear, *LOUDER!*](#act2b_louder)
 
 {{if _.a2_first_danger=="social"}}
-[About a *different* social danger!](#act2b_different_social)
+[A *different* social danger!](#act2b_different_social)
 {{/if}}
 
 {{if _.a2_first_danger=="perv" || _.a2_first_danger=="meaning"}}
-[About a *different* moral danger!](#act2b_different_moral)
+[A *different* moral danger!](#act2b_different_moral)
 {{/if}}
 
 [You're ignoring danger! That's dangerous!](#act2b_ignore)
@@ -256,7 +256,7 @@ _.a2_attack_2 = "alone";
 
 b: DON'T BE A CREEP. IT'S AGAINST THE LAW!
 
-b: Creep Law, Section 74.5: (1) Any Person who checks out (a) that sweet booty (b) those juicy thighs (2) shall be hereby referred to as
+b: Creep Law, Section 74.5: (1) Any Person who checks out (a) that sweet booty (b) those thick thighs (2) shall be hereby referred to as
 
 b: "A BIG DISGUSTING TRASH PERVERT"
 
@@ -351,22 +351,22 @@ b: ...
 
 b: Oh thank goodness human, I think you can hear me again!
 
-b: I SHALL WARN YOU...
+b: I SHALL WARN YOU ABOUT...
 
 {{if _.a2_first_choice=="louder"}}
-[*EVEN LOUDER!*](#act2c_louder)
+[The same fear, *EVEN LOUDER!*](#act2c_louder)
 {{/if}}
 
 {{if _.a2_first_choice!="louder"}}
-[*LOUDER!*](#act2c_louder)
+[The same fear, *LOUDER!*](#act2c_louder)
 {{/if}}
 
 {{if _.a2_first_danger=="social"}}
-[About *another* social danger!](#act2c_different_social)
+[*Another* social danger!](#act2c_different_social)
 {{/if}}
 
 {{if _.a2_first_danger=="perv" || _.a2_first_danger=="meaning"}}
-[About *another* moral danger!](#act2c_different_moral)
+[*Another* moral danger!](#act2c_different_moral)
 {{/if}}
 
 [Did you check that punch before drinking?](#act2c_punch)
@@ -841,27 +841,27 @@ publish("hp_show");
 
 (...3500)
 
-[Oh my God.](#act2g_oh) `Game.OVERRIDE_CHOICE_LINE=true`
+[Oh my God.](#act2g_1) `Game.OVERRIDE_CHOICE_LINE=true`
 
-[This is a bad coping mechanism.](#act2g_please) `Game.OVERRIDE_CHOICE_LINE=true`
+[This is a bad coping mechanism.](#act2g_2) `Game.OVERRIDE_CHOICE_LINE=true`
 
-[We don't know what's in that drink.](#act2g_we) `Game.OVERRIDE_CHOICE_LINE=true`
+[Don't take drinks from strangers.](#act2g_3) `Game.OVERRIDE_CHOICE_LINE=true`
 
-# act2g_oh
+# act2g_1
 
 b: O--
 
 (#act2g)
 
-# act2g_please
+# act2g_2
 
 b: T--
 
 (#act2g)
 
-# act2g_we
+# act2g_3
 
-b: W--
+b: D--
 
 (#act2g)
 

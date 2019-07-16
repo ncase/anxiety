@@ -1386,7 +1386,7 @@ n: NOW THAT THEIR ENERGY IS ZERO, YOU CAN DIRECTLY CONTROL THEIR ACTIONS
 
 n: PICK YOUR ENDING MOVE
 
-`bb({mouth:"normal", eyes:"narrow"});`
+`//bb({mouth:"normal", eyes:"narrow"});`
 
 n: *FINISH THEM*
 
