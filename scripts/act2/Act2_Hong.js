@@ -10,32 +10,63 @@ function Act2_Hong(){
 	var spriteConfig = {
 		image: Library.images.act2_hong,
 		grid:{
-			width: 4,
-			height: 3
+			width: 6,
+			height: 6
 		},
 		frame:{
-			width: 720,
+			width: 400,
 			height: 400
 		},
 		anchor:{
-			x: 66,
-			y: 188
+			x: 78,
+			y: 200
 		},
 		frameNames:[
+
 			"body_ignore*",
 			"body_ignore_sweat*",
 			"body_attacked*",
-			"body_yell*",
-			"body_cry*",
-			"body_hold_alcohol*",
-			"body_drinking*",
-			"body_drunk*",
+			"body_attacked_2*",
+			"body_attacked_3*",
+			"body_facepalm*",
+
+			"body_facepalm_2*",
+			"body_facepalm_3*",
+			"body_smile",
+			"mouth_smile",
+			"mouth_smile_talk",
+			"body_yell",
+
+			"mouth_yell",
+			"mouth_yell_talk",
+			"body_cross",
+			"mouth_cross",
+			"mouth_cross_talk",
 			"body_defeated*",
-			"mouth_blank",
-			"eyes_blank",
+
+			"body_listen*",
+			"body_look*",
+			"mouth_blank", // BLANK!
+			"eyes_blank", // BLANK!
+			"eyes_asdf",
+			"eyes_omfg",
+
+			"body_hold*",
+			"body_drink*",
+			"body_forward",
+			"mouth_forward",
+			"mouth_forward_talk",
+			"body_back",
+
+			"mouth_back",
+			"mouth_back_talk",
+			"body_final",
+			"mouth_final",
+			"mouth_final_talk",
+
 		],
-		x: 66,
-		y: 258+188
+		x: 65 + 10,
+		y: 470 + 2
 	};
 
 	// ANIM LOOPS
@@ -49,7 +80,7 @@ function Act2_Hong(){
 		body: "ignore",
 		mouth: "blank",
 		eyes: "blank",
-	});
+	}, 0); // zero bounce
 	var _subscriptions = [];
 	_subscriptions.push( subscribe("hong", self.gotoFrames) );
 	_subscriptions.push( subscribe("attack_hong", self.showAttackedIcon) );

@@ -103,14 +103,21 @@ function Character(spriteConfig, animLoops){
 	// Draw
 	self.characterSpeakerID = "derp";
 	self.characterSquash = 1;
+	self.ALLOW_PARALLAX = false;
+	self.x = -1337;
 	self.draw = function(ctx){
 
 		var fname;
 		var l = self.layers;
 		var c = self.characterFrames;
 
-		// Attacked? SHAKE WHOLE CONTEXT
+		// ALLOW PARALLAX???
 		ctx.save();
+		if(self.ALLOW_PARALLAX){
+			ctx.translate(self.x, 0);
+		}
+
+		// Attacked? SHAKE WHOLE CONTEXT
 		if(IVE_BEEN_ATTACKED){
 			var shakeDuration = 0.6;
 			if(attackedTimer<shakeDuration){

@@ -2,6 +2,10 @@
 
 `SceneSetup.act2();`
 
+a: hack
+
+(#act2-preamble-end)
+
 {{if _.badnews && !_.factcheck}}
 (#act2-preamble-news1)
 {{/if}}
@@ -135,7 +139,7 @@ publish("act2-out-1");
 music(null, {fade:1});
 ```
 
-(...2500)
+(...3000)
 
 ```
 music('battle', {volume:0.5});
@@ -416,7 +420,7 @@ _.a2_attack_3 = "alone";
 
 b: The BIG DISGUSTING TRASH PERVERT shall be sentenced to 72 hours in one of those medieval public-humiliation devices
 
-b: unless they're actually *into* that sort of thing
+b: unless they're secretly *into* that sort of thing
 
 b: in which case that further proves them being a BIG DISGUSTING TRASH PERVERT
 
@@ -603,7 +607,7 @@ b: It was a well-designed study – randomized controlled trial, experimenter wa
 
 b: Results: if you already had low self-esteem, being asked to repeat affirmations makes you feel *worse* than if you'd said nothing at all!
 
-b: Wood et al, 2009. Look it up on Google Scholar, human,
+b: Wood et al, 2009, Psychol Sci. Look it up on Google Scholar, human,
 
 b: THEN STOP SPREADING UNSCIENTIFIC FAKE NEWS
 

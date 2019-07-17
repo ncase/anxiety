@@ -1,6 +1,7 @@
 TODO
 
 INTRO
+- preloader bug, before css shows, mask is not there
 - continue / new game
 - chapter select
 - (content note)
