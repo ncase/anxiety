@@ -92,11 +92,17 @@ music('battle', {volume:0.5});
 bb({body:"special_a"});
 ```
 
-[🗡](#act2h_attack) `_.SPECIAL_ATTACK="harm"; Game.OVERRIDE_CHOICE_LINE=true`
+`Game.OVERRIDE_CHOICE_SPEAKER = "fear_harm"`
 
-[💔](#act2h_attack) `_.SPECIAL_ATTACK="alone"; Game.OVERRIDE_CHOICE_LINE=true`
+[](#act2h_attack) `_.SPECIAL_ATTACK="harm"; Game.OVERRIDE_CHOICE_LINE=true`
 
-[👿](#act2h_attack) `_.SPECIAL_ATTACK="bad"; Game.OVERRIDE_CHOICE_LINE=true`
+`Game.OVERRIDE_CHOICE_SPEAKER = "fear_alone"`
+
+[](#act2h_attack) `_.SPECIAL_ATTACK="alone"; Game.OVERRIDE_CHOICE_LINE=true`
+
+`Game.OVERRIDE_CHOICE_SPEAKER = "fear_bad"`
+
+[](#act2h_attack) `_.SPECIAL_ATTACK="bad"; Game.OVERRIDE_CHOICE_LINE=true`
 
 # act2h_attack
 

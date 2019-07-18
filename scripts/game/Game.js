@@ -323,6 +323,15 @@ Game.executeText = function(line){
 		var speaker = line.match(regex)[1].trim();
 		var dialogue = line.match(regex)[2].trim();
 
+		// IF IT'S A SPECIAL ATTACK, SKIP ALL THIS SHIT
+		if(speaker=="fear_harm" || speaker=="fear_alone" || speaker=="fear_bad"){
+			Game.setTimeout(function(){
+				publish("hide_click_to_advance");
+				resolve(); // DONE WITH IT.
+			}, Game.TEXT_SPEED*7);
+			return;
+		}
+
 		// Add the bubble, with animation
 		var div = document.createElement("div");
 		Game.wordsDOM.appendChild(div);

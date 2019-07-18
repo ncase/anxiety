@@ -953,6 +953,28 @@ DIALOGUEZ
 #game_choices > div[speaker=h2]:hover{
 	color: #888;
 }
+#game_choices > div[speaker=fear_harm], #game_choices > div[speaker=fear_alone], #game_choices > div[speaker=fear_bad]{
+	background-size: 100%;
+	width:100px; height:100px;
+	padding: 0;
+	position: absolute;
+	margin-top: 25px;
+}
+#game_choices > div[speaker=fear_harm]{
+	background-image: url(../sprites/ui/fear_harm.png);
+	left:20px;
+}
+#game_choices > div[speaker=fear_alone]{
+	background-image: url(../sprites/ui/fear_alone.png);
+	left:130px;
+}
+#game_choices > div[speaker=fear_bad]{
+	background-image: url(../sprites/ui/fear_bad.png);
+	left:240px;
+}
+#game_choices > div[speaker=fear_harm]:hover, #game_choices > div[speaker=fear_alone]:hover, #game_choices > div[speaker=fear_bad]:hover{
+	margin-top: 22px;
+}
 
 /***********************************/
 /***********************************/
