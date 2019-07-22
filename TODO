@@ -14,17 +14,16 @@ ACT I
 - continuous shot, no glitch-stop (low prior)
 
 ACT II
-- actual party bg & fg
-- minor char voice (hansel & gretel)
-- parallax aligns
-- hong char + anims
-- bb char + anims
-- hunter better art
-- runaway better anim
-- SPECIAL ATTACK ICONS
-- sfx for running away
-! more sympathetic Hunter
+- art: lock mouth small gasp
+- art: lock mouth normal shut (...)
+- a fourth scream anim
+- art: bb frazzled, arm up
+- art: end-hunter two mouths
 - callbacks for "what you mumbling about"
+- sound: walking away
+- sound: boop, hunter's hand on hong
+- sound: vwoop, bb's hoodie is back
+- sound: judge gravel
 
 ACT III
 - callback for act ii ending

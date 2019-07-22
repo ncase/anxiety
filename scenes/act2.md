@@ -352,9 +352,9 @@ _.a2_attack_1 = "bad";
 
 # act2a_meaning
 
-`bb({body:"one_up"})`
+`bb({body:"one_up", eyes:"normal_r"})`
 
-b: What can we possibly do that matters in the end?
+b: I mean, what can we possibly do that matters in the end?
 
 `bb({body:"normal", eyes:"sad"})`
 
@@ -385,7 +385,11 @@ _.a2_attack_1 = "bad";
 
 b: ...
 
+`bb({eyes:"suspect"})`
+
 b: Um... can you hear me, human?
+
+`bb({eyes:"normal"})`
 
 b: ...
 
@@ -396,8 +400,6 @@ b: *GASP*
 b: I MUST WARN YOU ABOUT...
 
 [*More* of the same danger!](#act2b_louder)
-
-`bb({eyes:"normal", body:"normal", mouth:"normal"})`
 
 {{if _.a2_first_danger=="social"}}
 [A *different* social danger!](#act2b_different_social)
@@ -474,7 +476,9 @@ b: DON'T BE A CREEP. IT'S AGAINST THE LAW!
 
 (...501)
 
-b: Creep Law, Section 74.5: (1) Any Person who checks out (a) that sweet booty (b) those thick thighs (2) shall be hereby referred to as
+b: Creep Law, Section 74.5: (1) Any Person who checks out (a) those muscular shoulders (b) that bubble booty (2) shall be hereby known as
+
+`bb({eyes:"angry", body:"two_up", mouth:"normal"})`
 
 b: "A BIG DISGUSTING TRASH PERVERT"
 
@@ -487,15 +491,27 @@ _.a2_attack_2 = "bad";
 
 # act2b_louder_meaning
 
+`bb({eyes:"normal", body:"point", mouth:"normal"})`
+
 b: ACTUALLY YOU KNOW WHAT'S WORSE THAN HAVING NO IMPACT ON HUMANITY?
+
+`bb({body:"two_up", mouth:"normal", eyes:"shock"})`
 
 b: HAVING *ALL* THE IMPACT ON HUMANITY.
 
+`bb({body:"normal", mouth:"normal", eyes:"normal"})`
+
 b: Alfred Nobel wanted world peace, and for cultures to understand each other. So he decided to make travel easier.
+
+`bb({eyes:"normal_r"})`
 
 b: So he needed a way to cheaply create train tunnels. So he invented a new material called "dynamite"...
 
+`bb({body:"one_up", eyes:"normal"})`
+
 b: which was used in World War I to KILL MILLIONS OF PEOPLE
+
+`bb({body:"two_up", eyes:"shock"})`
 
 b: IT'S THE BUTTERFLY EFFECT, HUMAN! HOW MANY PEOPLE ARE YOU ACCIDENTALLY KILLING RIGHT NOW
 
@@ -510,11 +526,19 @@ _.a2_attack_2 = "bad";
 
 `_.a2_first_choice = "different"`
 
+`bb({eyes:"normal_r", body:"point", mouth:"normal"})`
+
 b: Actually, you know what's worse than no-one liking you? *Everyone* liking you.
+
+`bb({body:"one_up", eyes:"suspect", mouth:"normal"})`
 
 b: That is, becoming one of *these* shallow party animals.
 
+`bb({body:"normal", mouth:"small"})`
+
 b: A shallow life with shallow friends who only know the shallow you!
+
+`bb({body:"two_up", eyes:"shock", mouth:"normal"})`
 
 b: Human, we need to run away from these dopamine-zombies before they turn us into one of them!
 
@@ -529,11 +553,19 @@ _.a2_attack_2 = "alone";
 
 `_.a2_first_choice = "different"`
 
+`bb({body:"two_up", eyes:"shock", mouth:"normal"})`
+
 b: People are dying in famines and genocides *right now* and we're just partying!
+
+`bb({body:"point", eyes:"closed", mouth:"small"})`
 
 b: A wise person once said, "the only thing necessary for the triumph of evil is for good folks to do nothing."
 
+`bb({body:"two_up", eyes:"shock", mouth:"normal"})`
+
 b: WE'RE DOING NOTHING.
+
+`bb({mouth:"small"})`
 
 b: BY PARTYING, WE'RE HELPING *HITLER*.
 
@@ -548,11 +580,11 @@ _.a2_attack_2 = "bad";
 
 `_.a2_first_choice = "ignore"`
 
-`bb({eyes:"suspect"})`
+`bb({body:"normal", mouth:"normal", eyes:"suspect"})`
 
 b: You think you're safe just because you took the batteries out of the carbon monoxide detector?
 
-`bb({eyes:"normal"})`
+`bb({eyes:"suspect_r"})`
 
 b: You won't even smell the poison! You'll just get sleepy and then you'll--
 
@@ -580,11 +612,9 @@ b: ...
 
 b: Oh thank goodness human, I think you can hear me again!
 
-`bb({eyes:"shock", body:"point"})`
+`bb({eyes:"closed", body:"point"})`
 
 b: I SHALL WARN YOU ABOUT...
-
-`bb({eyes:"normal", body:"normal"})`
 
 {{if _.a2_first_choice=="louder"}}
 [*Even more* of the same danger!](#act2c_louder)
@@ -632,9 +662,15 @@ b: I SHALL WARN YOU ABOUT...
 
 # act2c_louder_netflix
 
+`bb({body:"normal", mouth:"normal", eyes:"shock"})`
+
 b: Actually, Netflix & food delivery isn't quarantined enough! We'd still infect the delivery person!
 
+`bb({body:"one_up", mouth:"small"})`
+
 b: We need to move to the Canadian Yukon territories, and have our food delivered by drone!
+
+`bb({body:"two_up", mouth:"normal"})`
 
 b: And then they'd have to sterilize the drone to rid it of our SAD LUMP GERMS
 
@@ -682,9 +718,15 @@ b: because they're a BIG DISGUSTING TRASH PERVERT
 
 # act2c_louder_butterfly
 
+`bb({body:"normal", mouth:"small", eyes:"suspect"})`
+
 b: BUTTERFLY EFFECT! You're using a non-biodegradable plastic cup?
 
+`bb({body:"two_up", mouth:"normal", eyes:"shock"})`
+
 b: BAM, A LANDFILL LEAKS POISON AND KILLS A KID
+
+`bb({body:"normal", mouth:"small", eyes:"suspect"})`
 
 b: You're sweating and your heart's pounding?
 
@@ -698,13 +740,17 @@ b: BAM, YOU BANKRUPT OUR HEALTHCARE SYSTEM AND MILLIONS DIE
 
 # act2c_louder_zombies
 
+`bb({body:"normal", mouth:"small", eyes:"angry"})`
+
 b: These popularity-zombies will stumble towards you mumbling,
+
+`bb({body:"normal", mouth:"normal", eyes:"shock"})`
 
 b: LIIIIIKES. LIIIIIIIIIIKES.
 
 `bb({body:"scream_a_1"})`
 
-b: And they'll bite you and turn you into a brainless bro and/or thoughtless thot!
+b: Then they'll BITE YOU and turn you into a BRAINLESS BRO and/or THOUGHTLESS THOT!
 
 `_.a2_attack_3 = "bad";`
 
@@ -716,9 +762,11 @@ b: And they'll bite you and turn you into a brainless bro and/or thoughtless tho
 
 b: THE NAZIS ARE GOOSE-STEPPING BACK ON THE STREETS RIGHT NOW
 
-b: And they're saying:
+`bb({body:"one_up", mouth:"smile", eyes:"happy"})`
 
-b: *Good thing those 'good folks' slacked off with stuff like 'relaxing' and 'self-care'!*
+b: Saying, *good thing those 'good folks' slacked off with stuff like 'relaxing' and 'self-care'!*
+
+`bb({body:"point", mouth:"smile", eyes:"happy_r"})`
 
 b: *Now our plans can go fourth, reich on schedule!*
 
@@ -728,13 +776,17 @@ b: *Now our plans can go fourth, reich on schedule!*
 
 # act2c_louder_ignore
 
+`bb({body:"normal", mouth:"normal", eyes:"normal_r"})`
+
 b: Come to think about it, do we know if this building *has* a monoxide detector?!
+
+`bb({body:"two_up", mouth:"small", eyes:"normal"})`
 
 b: What if we're all being poisoned *RIGHT NOW?*
 
 `bb({body:"scream_a_1"})`
 
-b: WE WOULDN'T EVEN KNOW. ONE MOMENT WE'RE HERE, NEXT MOMENT WE STOP EXISTING FOREVER AND EVER AND EV--
+b: WE WOULDN'T EVEN SEE DEATH APPROACH. WE'D JUST STOP EXISTING FOREVER AND EVER AND EV--
 
 `_.a2_attack_3 = "harm";`
 
@@ -742,7 +794,11 @@ b: WE WOULDN'T EVEN KNOW. ONE MOMENT WE'RE HERE, NEXT MOMENT WE STOP EXISTING FO
 
 # act2c_different_social
 
+`bb({body:"normal", mouth:"normal", eyes:"sad"})`
+
 b: What if we're just *fundamentally incapable* of ever being loved, or loving another?
+
+`bb({body:"normal", mouth:"small", eyes:"sad_r"})`
 
 b: What if something irreversibly broke inside of us a long time ago? Or never existed in us in the first place?
 
@@ -756,9 +812,15 @@ b: AHH WE'RE BROKEN! SO BROKEN SO BROKEN SO BROKE--
 
 # act2c_different_moral
 
+`bb({body:"normal", mouth:"normal", eyes:"normal"})`
+
 b: What if we're just *fundamentally rotten?*
 
+`bb({body:"one_up", eyes:"sad"})`
+
 b: Others have an inner drive to do goodness, but we only do "good" out of guilt or shame, if at all.
+
+`bb({body:"normal", mouth:"small", eyes:"sad_r"})`
 
 b: What if it's in our nature to hurt others? What if we can't be anything *other* than a burden to those close to us?
 
@@ -772,13 +834,17 @@ b: AHH WE'RE BROKEN! SO BROKEN SO BROKEN SO BROKE--
 
 # act2c_punch
 
+`bb({body:"normal", mouth:"normal", eyes:"normal"})`
+
 b: I'm not being irrational. People *do* drug punch bowls. That is an actual thing that actually happens.
+
+`bb({eyes:"suspect"})`
 
 b: Human, does your head hurt? Are your limbs limp? I think we're dying.
 
 `bb({body:"scream_a_1"})`
 
-b: HUMAN, WE'RE DYING. WE'RE DYING WE'RE DYING WE'RE DYI--
+b: AHHH WE'RE DYING! WE'RE DYING WE'RE DYING WE'RE DYI--
 
 `_.a2_attack_3 = "harm";`
 
@@ -853,11 +919,19 @@ h: *I am loved. I am good. I am smart. I am beautiful. I am special.*
 
 # act2d_disproven
 
+`bb({body:"point", mouth:"normal", eyes:"closed"})`
+
 b: In fact, they actually *backfire* for people with low self-esteem! 
+
+`bb({body:"one_up", mouth:"small", eyes:"normal"})`
 
 b: It was a well-designed study – randomized controlled trial, experimenter was blinded as to who was in which group.
 
-b: Resulta: if you already had low self-esteem, being asked to repeat affirmations makes you feel *worse* than if you'd said nothing at all!
+`bb({body:"two_up", mouth:"small", eyes:"normal_r"})`
+
+b: Results: if you already had low self-esteem, being asked to repeat affirmations makes you feel *worse* than if you'd said nothing at all!
+
+`bb({body:"point", mouth:"normal", eyes:"closed"})`
 
 b: Wood et al, 2009, Psychological Science. Look it up on Google Scholar, human,
 
@@ -867,6 +941,7 @@ b: THEN STOP SPREADING UNSCIENTIFIC FAKE NEWS
 
 ```
 hong({body:"attacked"});
+bb({body:"normal", mouth:"normal", eyes:"normal"});
 attack("10p", "bad");
 ```
 
@@ -876,9 +951,15 @@ attack("10p", "bad");
 
 # act2d_narcissist
 
+`bb({body:"normal", mouth:"normal", eyes:"suspect"})`
+
 b: You *need* to humbly see your own flaws in order to grow as a person!
 
-b: You can't spray air freshener over a moldy room! Covering up your flaws with narcissism makes you worse in the long-run.
+`bb({body:"two_up"})`
+
+b: You can't spray air freshener over a moldy room! Covering up your flaws makes you worse in the long-run.
+
+`bb({body:"chest", mouth:"smile", eyes:"closed"})`
 
 b: Thankfully, I, as your loyal guard-wolf, can alert you to your flaws. And right now, it's-
 
@@ -888,6 +969,7 @@ b: EVERYTHING. EVERYTHING IS WRONG
 
 ```
 hong({body:"attacked"});
+bb({body:"normal", mouth:"normal", eyes:"normal"});
 attack("10p", "bad");
 ```
 
@@ -897,7 +979,11 @@ attack("10p", "bad");
 
 # act2d_racist
 
+`bb({body:"normal", mouth:"normal", eyes:"suspect"})`
+
 b: Native Americans are *actual people*, not some "noble savages" you can namedrop to make your fortune-cookie advice more *exotic*.
+
+`bb({eyes:"suspect_r"})`
 
 b: You're reducing individual persons & complex cultures to a Hallmark card! That's "benevolent racism"! 
 
@@ -907,6 +993,7 @@ b: STOP BEING RACIST YOU SQUINTY-EYED JERK
 
 ```
 hong({body:"attacked"});
+bb({body:"normal", mouth:"normal", eyes:"normal"});
 attack("10p", "bad");
 ```
 
@@ -928,9 +1015,9 @@ h: Everyone already knows emotions are irrational! Especially fear!
 
 h: Why should I listen to a moron shitstain like you?!
 
-b: ...
+`bb({eyes:"sad"})`
 
-`bb({body:"sad"})`
+b: ...
 
 [...jeez human. That's really hurtful.](#act2e_hurtful)
 
@@ -940,13 +1027,18 @@ b: ...
 
 # act2e_hurtful
 
+`bb({body:"chest"})`
+
 b: I'm *part* of you, you know. When you say that, you're hurting *yourself*.
+
+`bb({body:"scream_a_1"})`
 
 b: Why are you hitting yourself, human? STOP HITTING YOURSELF.
 
 ```
 music(null);
 hong({body:"attacked"});
+bb({body:"normal", mouth:"normal", eyes:"normal"});
 attack("10p", "harm");
 ```
 
@@ -956,15 +1048,22 @@ attack("10p", "harm");
 
 # act2e_rational
 
+bb({body:"normal", mouth:"normal", eyes:"normal_r"});
+
 b: Which means if *I'm* irrational, then *you're* irrational!
+
+bb({body:"two_up", eyes:"shock"});
 
 b: And if we're both so dumb and stupid, we'll *never* figure out how to be happy!
 
-b: Ahhh we're so lost! So lost so lost so los--
+`bb({body:"scream_a_1"})`
+
+b: AHHH WE'RE SO LOST! SO LOST SO LOST SO LOST--
 
 ```
 music(null);
 hong({body:"attacked"});
+bb({body:"normal", mouth:"normal", eyes:"normal"});
 attack("10p", "bad");
 ```
 
@@ -974,17 +1073,26 @@ attack("10p", "bad");
 
 # act2e_valid
 
+`bb({body:"normal", mouth:"normal", eyes:"suspect"});`
+
 b: Hang on... "they" say that feelings are valid, that you should always accept your emotions.
+
+`bb({eyes:"suspect_r"});`
 
 b: But "they" also say emotions are irrational, that emotions are not to be trusted.
 
+`bb({eyes:"angry"});`
+
 b: Maybe "they" are just full of crud!
 
-b: "They" are feeding us contradictions to maintain our dependency on the Self-Help Industrial Complex!
+`bb({body:"scream_a_1"})`
+
+b: "THEY" ARE FEEDING US CONTRADICTIONS AS PART OF THE SELF-HELP INDUSTRIAL COMPLEX
 
 ```
 music(null);
 hong({body:"attacked"});
+bb({body:"normal", mouth:"normal", eyes:"normal"});
 attack("10p", "harm");
 ```
 
