@@ -112,7 +112,40 @@ function Act2_Beebee(){
 	};
 
 	// ANIM LOOPS
-	var animLoops = [];
+	var animLoops = [
+
+		// Scream A - Fisticuffs
+		{ target:"body", ifOnFrame:"scream_a_1*", wait:0.10, thenGoToFrame:"scream_a_2*" },
+		{ target:"body", ifOnFrame:"scream_a_2*", wait:0.10, thenGoToFrame:"scream_a_1*" },
+
+		// Scream B - Bounce
+		{ target:"body", ifOnFrame:"scream_b_1*", wait:0.10, thenGoToFrame:"scream_b_2*" },
+		{ target:"body", ifOnFrame:"scream_b_2*", wait:0.10, thenGoToFrame:"scream_b_1*" },
+
+		// Scream C - DIEEEEE
+		{ target:"body", ifOnFrame:"scream_c_1*", wait:0.07, thenGoToFrame:"scream_c_2*" },
+		{ target:"body", ifOnFrame:"scream_c_2*", wait:0.07, thenGoToFrame:"scream_c_1*" },
+
+		// HADOUKEN
+		{ target:"body", ifOnFrame:"special_b_1*", wait:0.10, thenGoToFrame:"special_b_2*" },
+		{ target:"body", ifOnFrame:"special_b_2*", wait:0.10, thenGoToFrame:"special_b_3*" },
+		{ target:"body", ifOnFrame:"special_b_3*", wait:0.10, thenGoToFrame:"special_b_1*" },
+
+		// FLAIL
+		{ target:"body", ifOnFrame:"final_1*", wait:0.05, thenGoToFrame:"final_2*" },
+		{ target:"body", ifOnFrame:"final_2*", wait:0.05, thenGoToFrame:"final_3*" },
+		{ target:"body", ifOnFrame:"final_3*", wait:0.05, thenGoToFrame:"final_4*" },
+		{ target:"body", ifOnFrame:"final_4*", wait:0.05, thenGoToFrame:"final_1*" },
+
+		// Final scream
+		{ target:"body", ifOnFrame:"yell_1*", wait:0.10, thenGoToFrame:"yell_2*" },
+		{ target:"body", ifOnFrame:"yell_2*", wait:0.10, thenGoToFrame:"yell_1*" },
+
+		// Final scream (angry)
+		{ target:"body", ifOnFrame:"yell_angry_1*", wait:0.10, thenGoToFrame:"yell_angry_2*" },
+		{ target:"body", ifOnFrame:"yell_angry_2*", wait:0.10, thenGoToFrame:"yell_angry_1*" },
+
+	];
 
 	// Inherit from Character!
 	Character.apply(self, [spriteConfig, animLoops]);
@@ -121,8 +154,8 @@ function Act2_Beebee(){
 	// Go To Frames!
 	self.gotoFrames({
 		body: "normal",
-		mouth: "normal",
-		eyes: "normal",
+		mouth: "shocked",
+		eyes: "blank",
 	});
 	var _subscriptions = [];
 	_subscriptions.push( subscribe("bb", self.gotoFrames) );

@@ -208,7 +208,7 @@ function BG_Party(){
 				// Stage 4 end
 				if(STAGE==4){
 					ticker = 0;
-					self.party_hong.gotoFrame(26);
+					ALPHAS[8] = 0; // HIDE Battle Beebee
 				}
 
 				// Stage 5 transition end
@@ -218,6 +218,10 @@ function BG_Party(){
 					self.act2_end.gotoFrame(1);
 				}
 
+			}else{
+				if(STAGE==4){
+					OFFSETS[8] += 2; // BYE BB
+				}
 			}
 
 		}
@@ -323,7 +327,15 @@ function BG_Party(){
 	var _subscriptions = [];
 	_subscriptions.push(
 		subscribe("act2", function(thing, frame){
-			self[thing].gotoFrame(frame);
+			if(typeof frame=="string"){
+				if(frame=="next"){
+					self[thing].nextFrame();
+				}else{
+					self[thing].gotoFrameByName(frame);
+				}
+			}else{
+				self[thing].gotoFrame(frame);
+			}
 		}),
 		subscribe("act2-out-1", function(){
 
@@ -348,7 +360,7 @@ function BG_Party(){
 			self.alshire.visible = false;
 
 			// Party Hong
-			self.party_hunter.gotoFrame(2); // talk
+			self.party_hunter.gotoFrame(3); // look right
 			self.party_hong.gotoFrame(12); // look left
 
 			ALPHAS[6] = 1; // SHOW Party Hong
@@ -383,7 +395,7 @@ function BG_Party(){
 
 			ALPHAS[6] = 1; // SHOW Party Hong
 			ALPHAS[7] = 0; // HIDE Battle Hong
-			ALPHAS[8] = 0; // HIDE Battle Beebee
+			//ALPHAS[8] = 0; // HIDE Battle Beebee
 
 			// WHOOSH
 			STAGE = 4;

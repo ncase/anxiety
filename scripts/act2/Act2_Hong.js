@@ -40,8 +40,8 @@ function Act2_Hong(){
 			"mouth_yell",
 			"mouth_yell_talk",
 			"body_cross",
-			"mouth_cross",
 			"mouth_cross_talk",
+			"mouth_cross",
 			"body_defeated*",
 
 			"body_listen*",

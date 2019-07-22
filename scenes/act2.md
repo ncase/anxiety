@@ -2,10 +2,6 @@
 
 `SceneSetup.act2();`
 
-a: hack
-
-(#act2-preamble-end)
-
 {{if _.badnews && !_.factcheck}}
 (#act2-preamble-news1)
 {{/if}}
@@ -23,68 +19,196 @@ a: hack
 
 # act2-preamble-news1
 
-a: But did you *see* that "news story" about that horrible thing happening somewhere?
+```
+publish("act2",["dee",3]);
+```
+
+s: But did you *see* that "news story" about that horrible thing happening somewhere?
+
+```
+publish("act2",["dee",2]);
+publish("act2",["party_hong","next"]);
+```
 
 h2: h-hi...
 
-s: God I hate the news. It's all sensationalism and clickbait.
+```
+publish("act2",["party_hunter",1]);
+publish("act2",["party_hong","next"]);
+publish("act2",["dum",3]);
+```
+
+a: God I hate the news. It's all sensationalism and clickbait.
+
+```
+publish("act2",["dum",2]);
+publish("act2",["party_hong","next"]);
+```
 
 h2: n... nice party...
 
-a: True, but they're just following incentives. The *real* problem is people who click the clickbait.
+```
+publish("act2",["party_hong","next"]);
+publish("act2",["party_hunter",0]);
+publish("act2",["dee",1]);
+```
 
-a: Who would retweet a terrible news story, and make all their friends feel bad?
+s: True, but they're just following incentives. The *real* problem is people who click the clickbait.
 
-s: Ugh, I know right?
+```
+publish("act2",["dee",3]);
+```
+
+s: Who would retweet a terrible news story, and make all their friends feel bad?
+
+```
+publish("act2",["party_hunter",1]);
+publish("act2",["dee",2]);
+publish("act2",["dum",3]);
+```
+
+a: Ugh, I know right?
 
 (#act2-preamble-end)
 
 
 # act2-preamble-news2
 
-a: But did you *see* that "news story" going viral?
+```
+publish("act2",["dee",3]);
+```
+
+s: But did you *see* that "news story" going viral?
+
+```
+publish("act2",["dee",2]);
+publish("act2",["party_hong","next"]);
+```
 
 h2: h-hi...
 
-s: Yeah, totally fake. Who would fall for that and retweet it?
+```
+publish("act2",["party_hunter",1]);
+publish("act2",["party_hong","next"]);
+publish("act2",["dum",3]);
+```
+
+a: Yeah, totally fake. Who would fall for that and retweet it?
+
+```
+publish("act2",["dum",2]);
+publish("act2",["party_hong","next"]);
+```
 
 h2: n... nice party...
 
-a: Seriously dude. Like, hello, open up Google and factcheck first?
+```
+publish("act2",["party_hong","next"]);
+publish("act2",["party_hunter",0]);
+publish("act2",["dee",3]);
+```
 
-s: Ugh, I know right?
+s: Seriously dude. Like, hello, open up Google and factcheck first?
+
+```
+publish("act2",["party_hunter",1]);
+publish("act2",["dee",2]);
+publish("act2",["dum",3]);
+```
+
+a: Ugh, I know right?
 
 (#act2-preamble-end)
 
 
 # act2-preamble-cat
 
-a: Like I was saying man, the Meme Industrial Complex exploits cats.
+```
+publish("act2",["dee",3]);
+```
+
+s: Like I was saying, the Meme Industrial Complex exploits cats.
+
+```
+publish("act2",["dee",2]);
+publish("act2",["party_hong","next"]);
+```
 
 h2: h-hi...
 
-s: Do elaborate on this thesis.
+```
+publish("act2",["party_hunter",1]);
+publish("act2",["party_hong","next"]);
+publish("act2",["dum",1]);
+```
+
+a: Elaborate on this thesis.
+
+```
+publish("act2",["dum",0]);
+publish("act2",["party_hong","next"]);
+```
 
 h2: n... nice party...
 
-a: Well, I saw someone retweet a GIF of a cat drinking milk yesterday.
+```
+publish("act2",["party_hong","next"]);
+publish("act2",["party_hunter",0]);
+publish("act2",["dee",1]);
+```
 
-a: They can't digest that shit! Who would retweet *animal abuse* like that?
+s: Well, I saw someone retweet a GIF of a cat drinking milk yesterday.
 
-s: Ugh, I know right?
+```
+publish("act2",["dee",3]);
+```
+
+s: They can't digest that shit! Who would retweet *animal abuse* like that?
+
+```
+publish("act2",["party_hunter",1]);
+publish("act2",["dee",2]);
+publish("act2",["dum",3]);
+```
+
+a: Ugh, I know right?
 
 (#act2-preamble-end)
 
 
 # act2-preamble-tinder
 
-a: So yeah they never replied back!
+```
+publish("act2",["dee",1]);
+```
+
+s: So yeah they never replied back!
+
+```
+publish("act2",["dee",0]);
+publish("act2",["party_hong","next"]);
+```
 
 h2: h-hi...
 
-s: Even though you both matched each other on Tinder?
+```
+publish("act2",["party_hunter",1]);
+publish("act2",["party_hong","next"]);
+publish("act2",["dum",1]);
+```
+
+a: Even though you both matched each other on Tinder?
+
+```
+publish("act2",["dum",0]);
+publish("act2",["party_hong","next"]);
+```
 
 h2: n... nice party...
+
+```
+publish("act2",["party_hong","next"]);
+```
 
 {{if _.serialkiller}}
 (#act2-preamble-serialkiller)
@@ -100,33 +224,62 @@ h2: n... nice party...
 
 # act2-preamble-serialkiller
 
-a: Yeah I dunno! What, did they think I was a *serial killer* or something? So paranoid.
+```
+publish("act2",["party_hunter",0]);
+publish("act2",["dee",3]);
+```
 
-s: Ugh, I know right?
+s: Yeah I dunno! What, did they think I was a *serial killer* or something? So paranoid.
+
+```
+publish("act2",["party_hunter",1]);
+publish("act2",["dee",2]);
+publish("act2",["dum",3]);
+```
+
+a: Ugh, I know right?
 
 (#act2-preamble-end)
 
 
 # act2-preamble-hookuphole
 
-a: Yeah I dunno! Maybe they think hookups can't fill the hole in their heart?
+```
+publish("act2",["party_hunter",0]);
+publish("act2",["dee",3]);
+```
 
-a: Stop being such a prude! Open your mind, then your legs!
+s: Yeah I dunno! Maybe they think hookups can't fill the hole in their heart?
 
-s: Ugh, I know right?
+s: Stop being such a prude! Open your mind, then open your legs!
+
+```
+publish("act2",["party_hunter",1]);
+publish("act2",["dee",2]);
+publish("act2",["dum",3]);
+```
+
+a: Ugh, I know right?
 
 (#act2-preamble-end)
 
 
 # act2-preamble-pokemon
 
-a: Yeah I dunno! They weren't that hot, but they would have been a nice catch!
+```
+publish("act2",["party_hunter",0]);
+publish("act2",["dee",3]);
+```
+
+s: Yeah I dunno! They weren't that hot, but they would have been a nice catch!
+
+```
+publish("act2",["party_hunter",1]);
+publish("act2",["dee",2]);
+publish("act2",["dum",3]);
+```
 
 a: Gotta catch 'em all!
-
-a: But, nope, they just had to tease my genitals like that.
-
-s: Ugh, I know right?
 
 (#act2-preamble-end)
 
@@ -144,6 +297,7 @@ music(null, {fade:1});
 ```
 music('battle', {volume:0.5});
 publish("hp_show");
+bb({mouth:"normal", eyes:"normal"});
 ```
 
 n: ROUND TWO: *FIGHT!*
@@ -156,9 +310,15 @@ n: ROUND TWO: *FIGHT!*
 
 # act2a_social
 
+`bb({eyes:"sad"})`
+
 b: We're bringing down the mood of this party by being such a sad lump!
 
+`bb({eyes:"shock", body:"two_up"})`
+
 b: We're killing the good vibes! We're committing first-degree vibe-murder!
+
+`bb({eyes:"normal", body:"normal"})`
 
 b: Human, we have to leave *now* before--
 
@@ -171,9 +331,15 @@ _.a2_attack_1 = "alone";
 
 # act2a_perv
 
+`bb({eyes:"suspect"})`
+
 b: They're more attractive than us, which means if we even *look* at them, then--
 
+`bb({eyes:"shock", body:"two_up"})`
+
 b: WE'RE CREEPS
+
+`bb({body:"normal"})`
 
 b: We're creepy, evil, bad bad bad terrible terrible perv--
 
@@ -186,13 +352,25 @@ _.a2_attack_1 = "bad";
 
 # act2a_meaning
 
-b: I mean, what can we possibly do that matters in the grand scheme of things?
+`bb({body:"one_up"})`
 
-b: Even in the Hollywood-ending scenario, where we save humanity and the world... so what?
+b: What can we possibly do that matters in the end?
 
-b: Everything dies anyway.
+`bb({body:"normal", eyes:"sad"})`
 
-b: Humanity dies, the sun dies, the whole universe dies, what the heck are we supposed to--
+b: All art will be forgotten. All inventions will be obsolete. All moral movements will be overturned.
+
+`bb({eyes:"sad_r"})`
+
+b: All family lines die. All humans die. All planets and suns and galaxies die.
+
+`bb({eyes:"suspect"})`
+
+b: The arc of the moral universe is long, but it bends toward *entropic heat death*.
+
+`bb({eyes:"shock", body:"two_up"})`
+
+b: How can our existence *matter* when in a few trillion years even *matter* won't exist?! What ca--
 
 ```
 _.a2_first_danger = 'meaning';
@@ -203,17 +381,23 @@ _.a2_attack_1 = "bad";
 
 # act2b
 
+`bb({eyes:"normal", mouth:"normal", body:"normal"})`
+
 b: ...
 
 b: Um... can you hear me, human?
 
 b: ...
 
+`bb({eyes:"shock", mouth:"small", body:"chest"})`
+
 b: *GASP*
 
 b: I MUST WARN YOU ABOUT...
 
-[The same fear, *LOUDER!*](#act2b_louder)
+[*More* of the same danger!](#act2b_louder)
+
+`bb({eyes:"normal", body:"normal", mouth:"normal"})`
 
 {{if _.a2_first_danger=="social"}}
 [A *different* social danger!](#act2b_different_social)
@@ -243,9 +427,13 @@ b: I MUST WARN YOU ABOUT...
 
 # act2b_louder_social
 
+`bb({eyes:"shock", body:"two_up", mouth:"normal"})`
+
 b: EMOTIONS ARE CONTAGIOUS! SO IF YOU DON'T LEAVE YOU'LL INFECT EVERYONE WITH YOUR MENTAL ILLNESS! 
 
 b: You'll create a deadly outbreak of SAD LUMP SYNDROME
+
+`bb({eyes:"suspect", body:"normal", mouth:"normal"})`
 
 b: We need to get out of here and quarantine ourselves forever in a small room with Netflix and food delivery!
 
@@ -258,7 +446,33 @@ _.a2_attack_2 = "alone";
 
 # act2b_louder_perv
 
+`bb({eyes:"suspect", body:"two_up", mouth:"normal"})`
+
 b: DON'T BE A CREEP. IT'S AGAINST THE LAW!
+
+`bb({eyes:"judge", body:"judge_1", mouth:"normal"})`
+
+(...201)
+
+`bb({body:"judge_2"}, 0)`
+
+(...201)
+
+`bb({body:"judge_1"}, 0)`
+
+(...201)
+
+`bb({body:"judge_2"}, 0)`
+
+(...201)
+
+`bb({body:"judge_1"}, 0)`
+
+(...201)
+
+`bb({body:"judge_2"}, 0)`
+
+(...501)
 
 b: Creep Law, Section 74.5: (1) Any Person who checks out (a) that sweet booty (b) those thick thighs (2) shall be hereby referred to as
 
@@ -334,9 +548,15 @@ _.a2_attack_2 = "bad";
 
 `_.a2_first_choice = "ignore"`
 
+`bb({eyes:"suspect"})`
+
 b: You think you're safe just because you took the batteries out of the carbon monoxide detector?
 
+`bb({eyes:"normal"})`
+
 b: You won't even smell the poison! You'll just get sleepy and then you'll--
+
+`bb({body:"scream_c_1"})`
 
 b: DIEEEEEEEEEEEEEEEEEE
 
@@ -349,28 +569,37 @@ _.a2_attack_2 = "harm";
 
 # act2c
 
-``hong({body:"ignore_sweat"});`
+```
+hong({body:"ignore_sweat"});
+bb({eyes:"normal", mouth:"normal", body:"normal"});
+```
 
 b: ...
 
+`bb({eyes:"happy", mouth:"smile", body:"chest"})`
+
 b: Oh thank goodness human, I think you can hear me again!
+
+`bb({eyes:"shock", body:"point"})`
 
 b: I SHALL WARN YOU ABOUT...
 
+`bb({eyes:"normal", body:"normal"})`
+
 {{if _.a2_first_choice=="louder"}}
-[The same fear, *EVEN LOUDER!*](#act2c_louder)
+[*Even more* of the same danger!](#act2c_louder)
 {{/if}}
 
 {{if _.a2_first_choice!="louder"}}
-[The same fear, *LOUDER!*](#act2c_louder)
+[*More* of the same danger!](#act2c_louder)
 {{/if}}
 
 {{if _.a2_first_danger=="social"}}
-[*Another* social danger!](#act2c_different_social)
+[A *different* social danger!](#act2c_different_social)
 {{/if}}
 
 {{if _.a2_first_danger=="perv" || _.a2_first_danger=="meaning"}}
-[*Another* moral danger!](#act2c_different_moral)
+[A *different* moral danger!](#act2c_different_moral)
 {{/if}}
 
 [Did you check that punch before drinking?](#act2c_punch)
@@ -409,25 +638,45 @@ b: We need to move to the Canadian Yukon territories, and have our food delivere
 
 b: And then they'd have to sterilize the drone to rid it of our SAD LUMP GERMS
 
-```
-_.a2_first_attack = "alone";
-_.a2_attack_3 = "alone";
-```
+`_.a2_attack_3 = "alone";`
 
 (#act2d)
 
 # act2c_louder_law
 
+`bb({eyes:"judge", body:"judge_1", mouth:"normal"})`
+
+(...201)
+
+`bb({body:"judge_2"}, 0)`
+
+(...201)
+
+`bb({body:"judge_1"}, 0)`
+
+(...201)
+
+`bb({body:"judge_2"}, 0)`
+
+(...201)
+
+`bb({body:"judge_1"}, 0)`
+
+(...201)
+
+`bb({body:"judge_2"}, 0)`
+
+(...501)
+
 b: The BIG DISGUSTING TRASH PERVERT shall be sentenced to 72 hours in one of those medieval public-humiliation devices
 
 b: unless they're secretly *into* that sort of thing
 
-b: in which case that further proves them being a BIG DISGUSTING TRASH PERVERT
+`bb({body:"scream_a_1"})`
 
-```
-_.a2_first_attack = "bad";
-_.a2_attack_3 = "bad";
-```
+b: because they're a BIG DISGUSTING TRASH PERVERT
+
+`_.a2_attack_3 = "bad";`
 
 (#act2d)
 
@@ -437,14 +686,13 @@ b: BUTTERFLY EFFECT! You're using a non-biodegradable plastic cup?
 
 b: BAM, A LANDFILL LEAKS POISON AND KILLS A KID
 
-b: Remember when you said that mean thing to that stranger online?
+b: You're sweating and your heart's pounding?
 
-b: BAM, THEY'RE PROBABLY SUICIDED BY NOW
+`bb({body:"scream_a_1"})`
 
-```
-_.a2_first_attack = "bad";
-_.a2_attack_3 = "bad";
-```
+b: BAM, YOU BANKRUPT OUR HEALTHCARE SYSTEM AND MILLIONS DIE
+
+`_.a2_attack_3 = "bad";`
 
 (#act2d)
 
@@ -454,16 +702,17 @@ b: These popularity-zombies will stumble towards you mumbling,
 
 b: LIIIIIKES. LIIIIIIIIIIKES.
 
+`bb({body:"scream_a_1"})`
+
 b: And they'll bite you and turn you into a brainless bro and/or thoughtless thot!
 
-```
-_.a2_first_attack = "bad";
-_.a2_attack_3 = "bad";
-```
+`_.a2_attack_3 = "bad";`
 
 (#act2d)
 
 # act2c_louder_hitler
+
+`bb({body:"scream_a_1"})`
 
 b: THE NAZIS ARE GOOSE-STEPPING BACK ON THE STREETS RIGHT NOW
 
@@ -473,10 +722,7 @@ b: *Good thing those 'good folks' slacked off with stuff like 'relaxing' and 'se
 
 b: *Now our plans can go fourth, reich on schedule!*
 
-```
-_.a2_first_attack = "bad";
-_.a2_attack_3 = "bad";
-```
+`_.a2_attack_3 = "bad";`
 
 (#act2d)
 
@@ -486,12 +732,11 @@ b: Come to think about it, do we know if this building *has* a monoxide detector
 
 b: What if we're all being poisoned *RIGHT NOW?*
 
+`bb({body:"scream_a_1"})`
+
 b: WE WOULDN'T EVEN KNOW. ONE MOMENT WE'RE HERE, NEXT MOMENT WE STOP EXISTING FOREVER AND EVER AND EV--
 
-```
-_.a2_first_attack = "harm";
-_.a2_attack_3 = "harm";
-```
+`_.a2_attack_3 = "harm";`
 
 (#act2d)
 
@@ -501,12 +746,11 @@ b: What if we're just *fundamentally incapable* of ever being loved, or loving a
 
 b: What if something irreversibly broke inside of us a long time ago? Or never existed in us in the first place?
 
-b: Ahhh we're broken! We're so broken so broken so brok--
+`bb({body:"scream_a_1"})`
 
-```
-_.a2_first_attack = "alone";
-_.a2_attack_3 = "alone";
-```
+b: AHH WE'RE BROKEN! SO BROKEN SO BROKEN SO BROKE--
+
+`_.a2_attack_3 = "alone";`
 
 (#act2d)
 
@@ -518,12 +762,11 @@ b: Others have an inner drive to do goodness, but we only do "good" out of guilt
 
 b: What if it's in our nature to hurt others? What if we can't be anything *other* than a burden to those close to us?
 
-b: Ahhh we're broken! We're so broken so broken so brok--
+`bb({body:"scream_a_1"})`
 
-```
-_.a2_first_attack = "bad";
-_.a2_attack_3 = "bad";
-```
+b: AHH WE'RE BROKEN! SO BROKEN SO BROKEN SO BROKE--
+
+`_.a2_attack_3 = "bad";`
 
 (#act2d)
 
@@ -531,20 +774,20 @@ _.a2_attack_3 = "bad";
 
 b: I'm not being irrational. People *do* drug punch bowls. That is an actual thing that actually happens.
 
-b: Human, is your head hurting? Do your limbs feel limp? I think we're dying. We need to call an ambulance RIGHT NOW.
+b: Human, does your head hurt? Are your limbs limp? I think we're dying.
+
+`bb({body:"scream_a_1"})`
 
 b: HUMAN, WE'RE DYING. WE'RE DYING WE'RE DYING WE'RE DYI--
 
-```
-_.a2_first_attack = "harm";
-_.a2_attack_3 = "harm";
-```
+`_.a2_attack_3 = "harm";`
 
 (#act2d)
 
 # act2d
 
 ```
+bb({body:"normal", mouth:"normal", eyes:"normal"});
 hong({body:"attacked"});
 attack("20p", _.a2_attack_1);
 ```
@@ -552,14 +795,14 @@ attack("20p", _.a2_attack_1);
 (...401)
 
 ```
-hong({body:"attacked"});
+hong({body:"attacked_2"});
 attack("20p", _.a2_attack_2);
 ```
 
 (...401)
 
 ```
-hong({body:"attacked"});
+hong({body:"attacked_3"});
 attack("20p", _.a2_attack_3);
 ```
 
@@ -569,29 +812,38 @@ h: FUCK!
 
 h: FUCKING FUCK-FUKKITY *FUUUUUCK*
 
-`bb({body:"happy"})`
+`bb({body:"two_up", mouth:"smile", eyes:"happy"});`
 
 b: Yay, human! I'm so happy you can hear me again!
 
-`bb({body:"sad"})`
+`bb({body:"normal", mouth:"small", eyes:"sad"})`
 
-b: Why did you try ignoring me?
+b: Why were you ignoring me?
 
-`hong({body:"yell"})`
+`hong({body:"facepalm"})`
 
 h: Holy hell, you stupid sack of shit.
+
+`hong({body:"facepalm_2"})`
 
 h: You know that Native American story?
 
 h: "There are two wolves inside you, one is hope, one is despair, which wolf wins? The one you feed."
 
+```
+hong({body:"facepalm_3"});
+bb({eyes:"normal"});
+```
+
 h: I was trying to fucking *starve* you, you sadistic asshole!
+
+`hong({body:"smile", mouth:"smile"})`
 
 h: Fuck it, I'll do positive affirmations instead.
 
 h: *I am loved. I am good. I am smart. I am beautiful. I am special.*
 
-`bb({body:"neutral"})`
+`bb({eyes:"suspect"});`
 
 [Golly, that's so narcissistic!](#act2d_narcissist)
 
@@ -605,9 +857,11 @@ b: In fact, they actually *backfire* for people with low self-esteem!
 
 b: It was a well-designed study – randomized controlled trial, experimenter was blinded as to who was in which group.
 
-b: Results: if you already had low self-esteem, being asked to repeat affirmations makes you feel *worse* than if you'd said nothing at all!
+b: Resulta: if you already had low self-esteem, being asked to repeat affirmations makes you feel *worse* than if you'd said nothing at all!
 
-b: Wood et al, 2009, Psychol Sci. Look it up on Google Scholar, human,
+b: Wood et al, 2009, Psychological Science. Look it up on Google Scholar, human,
+
+`bb({body:"scream_b_1"})`
 
 b: THEN STOP SPREADING UNSCIENTIFIC FAKE NEWS
 
@@ -628,6 +882,8 @@ b: You can't spray air freshener over a moldy room! Covering up your flaws with 
 
 b: Thankfully, I, as your loyal guard-wolf, can alert you to your flaws. And right now, it's-
 
+`bb({body:"scream_b_1"})`
+
 b: EVERYTHING. EVERYTHING IS WRONG
 
 ```
@@ -645,6 +901,8 @@ b: Native Americans are *actual people*, not some "noble savages" you can namedr
 
 b: You're reducing individual persons & complex cultures to a Hallmark card! That's "benevolent racism"! 
 
+`bb({body:"scream_b_1"})`
+
 b: STOP BEING RACIST YOU SQUINTY-EYED JERK
 
 ```
@@ -660,11 +918,13 @@ attack("10p", "bad");
 
 h: FUCKDAMMIT.
 
-`hong({body:"yell"})`
+`hong({body:"yell", mouth:"yell"})`
 
 h: You know what? You're *irrational*.
 
 h: Everyone already knows emotions are irrational! Especially fear!
+
+`hong({body:"cross", mouth:"cross"})`
 
 h: Why should I listen to a moron shitstain like you?!
 
@@ -734,7 +994,7 @@ attack("10p", "harm");
 
 # act2f
 
-`hong({body:"cry"});`
+`hong({body:"defeated"});`
 
 h: ...
 
@@ -744,39 +1004,57 @@ h: I can't appease you. I can't ignore you. I can't fight you.
 
 h: No matter what I do, I can't seem to get rid of yo--
 
-```
-bb({body:"yell"});
-```
+`bb({body:"cry_1"});`
 
-b: Well maybe you're NOT *SUPPOSED* TO GET RID ME.
+b: Well maybe you're NOT *SUPPOSED* TO GET RID OF ME.
+
+`bb({body:"cry_2"});`
 
 b: How do you think *I* feel, human?!
 
-`bb({body:"cry"})`
+`bb({body:"cry_4", mouth:"cry", eyes:"cry"})`
 
 b: I'm trying my best to be your guard-dog, but you keep seeing me as some Big Bad Wolf!
 
-b: So I try even *harder* to alert you to danger! *More* danger! *Louder* danger!
+b: So I try even *harder* to alert you to danger! *More* danger! *Different* danger!
+
+`bb({eyes:"cry_2"})`
 
 b: But no matter how hard I try to protect you, you *still* think I'm your enemy!
 
+`bb({body:"cry_5"});`
+
 b: What am I doing wrong?!
+
+`bb({body:"cry_2"});`
 
 b: I *know* I suck at my job. But I'm *trying*, human!
 
+`bb({body:"cry_3"});`
+
 b: ...I'm trying.
+
+`bb({body:"cry_6", mouth:"right", eyes:"cry_r_1"});`
 
 b: You don't have to heed my warnings, or agree with me, or even *like* me.
 
+`bb({eyes:"cry_r_2"});`
+
 b: I just... all I want is for you to be patient with me.
+
+`bb({eyes:"cry_r_3"});`
 
 b: I just want for you to sit with me for a while, instead of turning away and--
 
-`publish("act2-party-action", ["twist1"]);`
+```
+bb({eyes:"cry_r_4"});
+hong({body:"listen"});
+```
 
 r: Hey.
 
 ```
+hong({body:"look"});
 Game.clearText();
 publish("act2-in-2");
 publish("hp_hide");
@@ -785,17 +1063,50 @@ music('party1', {volume:0.4, fade:2});
 
 (...2000)
 
+```
+publish("act2",["party_hunter",2]);
+```
+
 r: Looks like you're caught in a fight with yourself, kid.
 
-`publish("act2-party-action", ["twist2"]);`
+```
+publish("act2",["party_hunter",3]);
+publish("act2",["party_hong",13]);
+```
 
 h2: Was it that obvious?
 
+```
+publish("act2",["party_hunter",4]);
+publish("act2",["party_hong",14]);
+```
+
 r: You were, uh, mumbling at your hoodie.
+
+```
+publish("act2",["party_hunter",13]);
+publish("act2",["party_hong",15]);
+setTimeout(function(){
+	publish("act2",["party_hong",16]);
+},401);
+setTimeout(function(){
+	publish("act2",["party_hong",17]);
+},801);
+```
 
 h2: oh god i'm such a mess.
 
+```
+publish("act2",["party_hunter",7]);
+publish("act2",["party_hong",18]);
+```
+
 r: Hey. You're not alone, friend. Anxiety's super common.
+
+```
+publish("act2",["party_hunter",5]);
+publish("act2",["party_hong",19]);
+```
 
 {{if _.act1_ending=="fight"}}
 r: Heck, just yesterday, I heard someone on campus had a nervous breakdown and smashed their phone!
@@ -805,39 +1116,71 @@ r: Heck, just yesterday, I heard someone on campus had a nervous breakdown and s
 r: Heck, just yesterday, I heard someone curled up into an armadillo ball and cried in public!
 {{/if}}
 
+```
+publish("act2",["party_hunter",2]);
+```
+
 r: Listen: I know what it's like to have that animal in your head.
 
-r: We *all* do. That's why we're here! I throw these parties every weekend so we can forget our worries, forget that animal.
+```
+publish("act2",["party_hunter",8]);
+```
+
+r: We *all* do. That's why I throw these parties every weekend, to forget our worries, forget that animal.
+
+```
+publish("act2",["party_hunter",9]);
+publish("act2",["party_hong",20]);
+```
 
 h2: but my anxiety...
+
+```
+publish("act2",["party_hunter",2]);
+publish("act2",["party_hong",21]);
+```
 
 r: Don't worry, kid. I used to be like you. But then I found a little trick to get that negative voice to shut up forever...
 
 ```
+publish("act2",["party_hunter",3]);
 Game.clearText();
 music(null, {fade:1});
 ```
 
-(...2000)
+(...2001)
 
 ```
-publish("act2-party-action", ["twist3"]);
+publish("act2",["party_hunter",10]);
+publish("act2",["party_hong",22]);
 sfx("rustle");
 ```
 
-(...2500)
+(...2501)
 
-`publish("act2-party-action", ["twist4"]);`
+```
+publish("act2",["party_hunter",10]);
+publish("act2",["party_hong",23]);
+```
 
-(...1000)
+(...1001)
+
+```
+publish("act2",["party_hunter",11]);
+```
 
 r: My own specialty blend. It's a mix of... well, everything.
+
+```
+publish("act2",["party_hunter",12]);
+publish("act2",["party_hong",24]);
+```
 
 r: Bottoms up, motherfucker.
 
 ```
-hong({body:"hold_alcohol"});
-bb({body:"shock"});
+hong({body:"hold"});
+bb({body:"normal", mouth:"small", eyes:"wat"});
 Game.clearText();
 publish("act2-out-3");
 publish("hp_show");
@@ -872,7 +1215,7 @@ b: D--
 # act2g
 
 ```
-hong({body:"drinking"});
+hong({body:"drink"});
 bb({body:"attacked"});
 attackBB("40p", "harm");
 ```
@@ -880,8 +1223,8 @@ attackBB("40p", "harm");
 (...2000)
 
 ```
-hong({body:"drunk"});
-bb({body:"pained"});
+hong({body:"forward", mouth:"forward"});
+bb({body:"frazzled", mouth:"frazzled", eyes:"frazzled"});
 ```
 
 h: Mmm, what an exquisite palette!
@@ -918,7 +1261,7 @@ b: I *knew* th--
 # act2h
 
 ```
-hong({body:"drinking"});
+hong({body:"drink"});
 bb({body:"attacked"});
 attackBB("40p", "harm");
 ```
@@ -926,8 +1269,8 @@ attackBB("40p", "harm");
 (...2000)
 
 ```
-hong({body:"drunk"});
-bb({body:"pained"});
+hong({body:"back", mouth:"back"});
+bb({body:"panicked", mouth:"panicked", eyes:"panicked"});
 ```
 
 h: Delicious, *and* cheaper than therapy!
@@ -942,24 +1285,36 @@ b: I'm so sorry, human.
 
 b: I'm going to have to use my SPECIAL ATTACK
 
-`music('battle', {volume:0.5});`
+```
+bb({body:"special_a"});
+music('battle', {volume:0.5});
+```
 
-[🗡](#act2h_attack) `_.SPECIAL_ATTACK="harm"; Game.OVERRIDE_CHOICE_LINE=true`
+`Game.OVERRIDE_CHOICE_SPEAKER = "fear_harm"`
 
-[💔](#act2h_attack) `_.SPECIAL_ATTACK="alone"; Game.OVERRIDE_CHOICE_LINE=true`
+[](#act2h_attack) `_.SPECIAL_ATTACK="harm"; Game.OVERRIDE_CHOICE_LINE=true`
 
-[👿](#act2h_attack) `_.SPECIAL_ATTACK="bad"; Game.OVERRIDE_CHOICE_LINE=true`
+`Game.OVERRIDE_CHOICE_SPEAKER = "fear_alone"`
+
+[](#act2h_attack) `_.SPECIAL_ATTACK="alone"; Game.OVERRIDE_CHOICE_LINE=true`
+
+`Game.OVERRIDE_CHOICE_SPEAKER = "fear_bad"`
+
+[](#act2h_attack) `_.SPECIAL_ATTACK="bad"; Game.OVERRIDE_CHOICE_LINE=true`
 
 # act2h_attack
 
-`bb({body:"special_1"})`
+```
+bb({body:"special_b_1"});
+hong({body:"forward", mouth:"forward"});
+```
 
 h: What's this crap?
 
-h: You're gonna yap more stupid words at me again to try t--
+h: You're gonna yap more stupid *words* at me to--
 
 ```
-bb({body:"special_2"});
+bb({body:"special_c"});
 sfx("hadouken");
 ```
 
@@ -979,11 +1334,13 @@ stopAllSounds();
 (...5000)
 
 ```
-publish("remove_special_attack");
-hong({body:"defeated"});
-bb({body:"sad"});
+hong({ body:"final", mouth:"final" });
+bb({ body:"normal", mouth:"normal", eyes:"sad" });
 attack("100p", _.SPECIAL_ATTACK);
 Game.FORCE_CANT_SKIP = false;
+setTimeout(function(){
+	publish("remove_special_attack");
+},30);
 ```
 
 (...2500)
@@ -1014,13 +1371,17 @@ n: *FINISH THEM*
 
 # act2j_fight
 
+`bb({ eyes:"angry" });`
+
 b: That psychopath was taking advantage of you.
 
 b: They were trying to corrupt you, make you as messed up as they are!
 
+`bb({ body:"yell_angry_1" });`
+
 b: Punch that jerk! Knock their friggin' lights out!
 
-`bb({body:"yell"})`
+`bb({ body:"final_1" });`
 
 b: PUNCH THEM PUNCH THEM PUNCH THEM PUNCH THEM PUNCH THEM PUNCH THEM PUNCH THEM PUNCH THE--
 
@@ -1032,9 +1393,11 @@ b: PUNCH THEM PUNCH THEM PUNCH THEM PUNCH THEM PUNCH THEM PUNCH THEM PUNCH THEM 
 
 b: I *knew* all these partygoers were deeply messed up. They all dull their pain with horrible things!
 
+`bb({ body:"yell_1" });`
+
 b: And they're tricking you into doing the same thing! They're corrupting you! We need to get out!
 
-`bb({body:"yell"})`
+`bb({ body:"final_1" });`
 
 b: GET OUT GET OUT GET OUT GET OUT GET OUT GET OUT GET OUT GET OUT GET OUT GET OU--
 
@@ -1048,13 +1411,20 @@ b: GET OUT GET OUT GET OUT GET OUT GET OUT GET OUT GET OUT GET OUT GET OUT GET O
 Game.clearText();
 publish("act2-in-4");
 publish("hp_hide");
-publish("act2-party-action", ["end"]);
 music('party1', {volume:0.6, fade:1.5});
 ```
 
-(...2000)
+(...2001)
+
+`publish("act2",["party_hong",26]);`
+
+(...1001)
+
+`publish("act2",["party_hunter",14]);`
 
 r: You alright, kid?
+
+`publish("act2",["party_hunter",13]);`
 
 {{if _.a2_ending=="fight"}}
 (#act2k_fight)
@@ -1068,7 +1438,8 @@ r: You alright, kid?
 
 ```
 Game.clearText();
-publish("act2-party-action", ["end_slap1"]);
+publish("act2",["party_hunter",21]);
+publish("act2",["party_hong",33]);
 music(null);
 sfx("hit");
 ```
@@ -1077,13 +1448,19 @@ sfx("hit");
 
 ```
 sfx("record_scratch");
-publish("act2-party-action", ["end_slap2"]);
+publish("act2",["party_hunter",22]);
+publish("act2",["party_hong",34]);
+publish("act2",["dee",6]);
+publish("act2",["dum",6]);
 ```
 
 r: Y-you...
 
 ```
-publish("act2-party-action", ["end_slap3"]);
+publish("act2",["party_hunter",23]);
+publish("act2",["party_hong",35]);
+publish("act2",["dee",5]);
+publish("act2",["dum",5]);
 music('party1', {volume:0.6, fade:6});
 ```
 
@@ -1091,13 +1468,16 @@ r: are *kinky*.
 
 r: I like that. Come to my party next weekend, cutie.
 
-`publish("act2-party-action", ["end_run"]);`
+```
+publish("act2",["party_hunter",19]);
+publish("act2",["party_hong",36]);
+```
 
-h2: ok bye ciao adios 
+h2: ok bye, ciao, adios, au revoir
 
 r: The animal might have won today, but come back, and I'll mix something even stronger for you!
 
-h2: au revoir sayōnara auf wiedersehen zài jiàn
+h2: sayōnara, auf wiedersehen, zài jiàn, shalom
 
 r: You and me, kid, we'll show that beast who's boss!
 
@@ -1105,15 +1485,21 @@ r: You and me, kid, we'll show that beast who's boss!
 
 # act2k_flight
 
+`publish("act2",["party_hong",36]);`
+
 h2: ok sorry i have to run
+
+`publish("act2",["party_hunter",16]);`
 
 r: Damn it. The animal won today, huh?
 
+`publish("act2",["party_hunter",15]);`
+
 h2: no no, just, uh, gotta run a marathon. gotta go fast.
 
-r: Come to my party next weekend, cutie. I'll mix something even stronger for you.
+`publish("act2",["party_hunter",19]);`
 
-`publish("act2-party-action", ["end_run"]);`
+r: Come to my party next weekend, cutie. I'll mix something even stronger for you.
 
 h2: ok thanks gonna run run run run run
 
@@ -1133,7 +1519,7 @@ music("hum", {fade:2, volume:0.6});
 (...2500)
 
 ```
-publish("act2-outro", ["end2"]);
+publish("act2", ["act2_end",2]);
 sfx("whoosh");
 ```
 
@@ -1141,11 +1527,15 @@ sfx("whoosh");
 
 b: Human! Are you okay?!
 
+```
+publish("act2", ["act2_end","next"]);
+```
+
 b: Gosh, that was *close.* We really could've--
 
 ```
 Game.clearText();
-publish("act2-outro", ["end3"]);
+publish("act2", ["act2_end","next"]);
 music(null);
 sfx("squeak");
 ```
@@ -1153,7 +1543,7 @@ sfx("squeak");
 (...1500)
 
 ```
-publish("act2-outro", ["end4"]);
+publish("act2", ["act2_end","next"]);
 sfx("hit");
 ```
 
@@ -1167,20 +1557,23 @@ h: I'm going to fucking *kill* you.
 
 ```
 Game.clearText();
-publish("act2-outro", ["end5"]);
+publish("act2", ["act2_end","next"]);
 sfx("grass_step1");
 ````
 
 (...901)
 
 ```
+publish("act2", ["act2_end","next"]);
 sfx("grass_step2", {volume:0.8});
-publish("act2-outro", ["end6"]);
 ```
 
 (...901)
 
-`sfx("grass_step1", {volume:0.5});`
+```
+publish("act2", ["act2_end","next"]);
+sfx("grass_step1", {volume:0.5});
+```
 
 (...901)
 
