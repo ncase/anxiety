@@ -35,11 +35,15 @@ subscribe("START_GAME", function(){
 	$("#gear").style.display = "block";
 	$("#about").style.display = "block";
 
-	// Act 2
-	_ = {"CHAPTER":1,"attack_harm_ch1":3,"attack_alone_ch1":2,"attack_bad_ch1":1,"whitebread":true,"partyinvite":"ignore","subtweet":true,"serialkiller":true,"act1g":"dont","badnews":true,"factcheck":false,"act1_ending":"flight","INTERMISSION_STAGE":1};
 	Game.TEXT_SPEED = 5;
-	Game.goto("act2");
-	//Game.goto("act4");
+
+	// Act 2
+	//_ = {"CHAPTER":1,"attack_harm_ch1":3,"attack_alone_ch1":2,"attack_bad_ch1":1,"whitebread":true,"partyinvite":"ignore","subtweet":true,"serialkiller":true,"act1g":"dont","badnews":true,"factcheck":false,"act1_ending":"flight","INTERMISSION_STAGE":1};
+	//Game.goto("act2");
+
+	// Act 3
+	_ = {"CHAPTER":2,"attack_harm_ch1":3,"attack_alone_ch1":2,"attack_bad_ch1":1,"whitebread":true,"partyinvite":"ignore","subtweet":true,"serialkiller":true,"act1g":"dont","badnews":true,"factcheck":false,"act1_ending":"flight","INTERMISSION_STAGE":2,"attack_harm_ch2":2,"attack_alone_ch2":1,"attack_bad_ch2":3,"a2_first_danger":"social","a2_attack_1":"alone","a2_first_choice":"ignore","a2_second_danger":"ignore","a2_attack_2":"harm","a2_attack_3":"harm","SPECIAL_ATTACK":"bad","a2_ending":"fight"};
+	Game.goto("act3");
 	
 	//Game.goto("intro");
 

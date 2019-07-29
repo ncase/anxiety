@@ -951,11 +951,11 @@ attack("10p", "bad");
 
 # act2d_narcissist
 
-`bb({body:"normal", mouth:"normal", eyes:"suspect"})`
+`bb({body:"normal", mouth:"normal", eyes:"normal"})`
 
 b: You *need* to humbly see your own flaws in order to grow as a person!
 
-`bb({body:"two_up"})`
+`bb({body:"two_up", eyes:"suspect"})`
 
 b: You can't spray air freshener over a moldy room! Covering up your flaws makes you worse in the long-run.
 
@@ -1011,9 +1011,13 @@ h: You know what? You're *irrational*.
 
 h: Everyone already knows emotions are irrational! Especially fear!
 
+`hong({body:"facepalm_2"})`
+
+h: You're nothing but neuro-chemicals. You're just a useless evolutionary leftover like my appendix or wisdom teeth.
+
 `hong({body:"cross", mouth:"cross"})`
 
-h: Why should I listen to a moron shitstain like you?!
+h: So why should I listen to a worthless, irrational shitstain like you?!
 
 `bb({eyes:"sad"})`
 
@@ -1048,11 +1052,11 @@ attack("10p", "harm");
 
 # act2e_rational
 
-bb({body:"normal", mouth:"normal", eyes:"normal_r"});
+`bb({body:"normal", mouth:"normal", eyes:"normal_r"});`
 
 b: Which means if *I'm* irrational, then *you're* irrational!
 
-bb({body:"two_up", eyes:"shock"});
+`bb({body:"two_up", eyes:"shock"});`
 
 b: And if we're both so dumb and stupid, we'll *never* figure out how to be happy!
 

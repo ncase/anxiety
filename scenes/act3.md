@@ -2,6 +2,8 @@
 
 `SceneSetup.act3();`
 
+r: Cheers!
+
 h2: *Ah* that hits the spot.
 
 r: You know, kid...
@@ -59,7 +61,7 @@ r: How do those Silicon Valley pseudo-Buddhists not see this shit?!
 
 r: Kid, I know that *you* know that animal *hurts* people like us. It *tortures* people like us.
 
-r: It's not our friend. It's a rabid beast, which needs to be *tranquilized*,
+r: It's not our friend. It's a rabid beast, which either needs to be *tranquilized*,
 
 r: Or have a *bullet put in its fucking skull*.
 
@@ -154,11 +156,18 @@ h: You know, I might've believed you... if you hadn't tried that a zillion times
 
 h: You're the wolf who cried wolf.
 
-[🗡](#act3_fork) `Game.OVERRIDE_CHOICE_LINE=true`
+`Game.OVERRIDE_CHOICE_SPEAKER = "fear_harm"`
 
-[💔](#act3_fork) `Game.OVERRIDE_CHOICE_LINE=true`
+[](#act3_fork) `_.SPECIAL_ATTACK="harm"; Game.OVERRIDE_CHOICE_LINE=true`
 
-[👿](#act3_fork) `Game.OVERRIDE_CHOICE_LINE=true`
+`Game.OVERRIDE_CHOICE_SPEAKER = "fear_alone"`
+
+[](#act3_fork) `_.SPECIAL_ATTACK="alone"; Game.OVERRIDE_CHOICE_LINE=true`
+
+`Game.OVERRIDE_CHOICE_SPEAKER = "fear_bad"`
+
+[](#act3_fork) `_.SPECIAL_ATTACK="bad"; Game.OVERRIDE_CHOICE_LINE=true`
+
 
 # act3_fork
 
@@ -189,7 +198,7 @@ h: Some people throw themselves into sex, drugs, and refreshing their Facebook f
 
 h: Some people throw themselves into other people. 
 
-h: I'm going to throw myself into that pool.
+h: I'm going to throw myself into that swimming pool.
 
 [You're drunk and it's TEN FLOORS DOWN](#act3_bad_1_harm)
 
@@ -389,7 +398,7 @@ b: human... please...
 
 h: A while back, I said: “I just want to be free from all this pain.”
 
-h: I got my wish! I no longer feel pain, or fear, or anxiety...
+h: I got my wish. I no longer feel pain, or fear, or anxiety...
 
 h: I don't feel anything at all.
 
@@ -474,7 +483,7 @@ b: I'm sorry.
 
 b: I was supposed to be *your* loyal guard-dog, but I acted as if you were supposed to obey *me*.
 
-b: There's a difference between protective and suffocating, and I crossed the line.
+b: There's a difference between protector and prison warden, and I crossed the line.
 
 b: I'm sorry.
 

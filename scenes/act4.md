@@ -276,9 +276,9 @@ h: It's called exposure therapy!
 
 h: Since you're a dog, it should work for you too, right? All mammals have the same fight-or-flight response.
 
-[What if we desensitize ourselves *too* much?](#act4_harm_exposure_overboard)
+[What if we desensitize *too* much?](#act4_harm_exposure_overboard)
 
-[What if we expose ourselves to *real* danger?](#act4_harm_exposure_hurt)
+[What if we're exposed to *real* danger?](#act4_harm_exposure_hurt)
 
 [I'm a wolf, not a dog.](#act4_harm_exposure_dog)
 
