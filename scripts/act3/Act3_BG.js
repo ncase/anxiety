@@ -2,6 +2,8 @@ Loader.addImages([
 	{ id:"rooftop_bg", src:"sprites/act3/rooftop_bg.png" },
 	{ id:"rooftop_hunter", src:"sprites/act3/hunter.png" },
 	{ id:"rooftop_hong", src:"sprites/act3/hong.png" },
+	{ id:"rooftop_dd", src:"sprites/act3/dd.png" },
+	{ id:"dizzy", src:"sprites/act3/dizzy.png" },
 	{ id:"hospital", src:"sprites/act3/hospital.png" },
 ]);
 
@@ -13,33 +15,50 @@ function BG_Rooftop(){
 
 	var self = this;
 
-	// Sprites!
-	self.bgSprite = new Sprite({
+	// BACKGROUND SPRITES
+	var BGSpriteConfig = {
 		image: Library.images.rooftop_bg,
-		grid:{ width:1, height:1 },
-		frame:{ width:720, height:1200 },
-	});
-	self.hunterSprite = new Sprite({
+		grid:{ width:2, height:2 },
+		frame:{ width:1400, height:1200 },
+	};
+	self.bg = new Sprite(BGSpriteConfig);
+	self.skyline = new Sprite(BGSpriteConfig);
+	self.skyline.gotoFrame(1);
+	self.clouds = new Sprite(BGSpriteConfig);
+	self.clouds.gotoFrame(2);
+	self.roof = new Sprite(BGSpriteConfig);
+	self.roof.gotoFrame(3);
+
+	// ROOF HUNTER, HONG, DEEDUM, DIZZIES
+	self.roofhunter = new Sprite({
 		image: Library.images.rooftop_hunter,
-		grid:{ width:4, height:2 },
-		frame:{ width:400, height:400 },
-		y: 200,
-		frameNames:[
-			"side_smile",
-			"side_neutral",
-			"front_badass",
-			"front_pissed",
-			"front_shock"
-		]
+		grid:{ width:8, height:5 },
+		frame:{ width:400, height:360 },
+		y: 219
 	});
-	self.hongSprite = new Sprite({
+	self.roofhong = new Sprite({
 		image: Library.images.rooftop_hong,
-		grid:{ width:6, height:7 },
+		grid:{ width:8, height:8 },
 		frame:{ width:720, height:800 },
 		y: 225
 	});
+	self.dd = new Sprite({
+		image: Library.images.rooftop_dd,
+		grid:{ width:4, height:2 },
+		frame:{ width:240, height:120 },
+		y: 300
+	});
+	var DizzySpriteConfig = {
+		image: Library.images.dizzy,
+		grid:{ width:4, height:2 },
+		frame:{ width:50, height:50 }
+	}
+	self.dizzyhunter = new Sprite(DizzySpriteConfig);
+	self.dizzyhunter.y = 205;
+	self.dizzyhong = new Sprite(DizzySpriteConfig);
+	self.dizzyhong.y = 221;
 
-	// Anxiety BG
+	// Anxiety BG - TODO: ALL BOXES FALL DOWN
 	self.anxiety = new BG_Anxiety();
 
 	// Characters
@@ -54,35 +73,88 @@ function BG_Rooftop(){
 	});
 	self.hospitalSprite.visible = false;
 
-	// LAYERS
+	////////////////////////////////////////
+	// LAYERS //////////////////////////////
+	////////////////////////////////////////
+
 	self.layers = [
-		self.bgSprite,
-		self.hunterSprite,
+
+		self.bg,
+		self.skyline,
+		self.clouds,
+		self.roof,
+
+		self.roofhunter,
+		self.dd,
+		self.dizzyhunter,
+		self.dizzyhong,
+		self.roofhong,
+
 		self.anxiety,
-		self.hongSprite,
 		self.hong,
-		self.beebee
+		self.beebee,
+
 	];
 	var PARALLAXES = [
-		0.5, // party bg
-		0.6, // HUNTER SPRITE
-		0.0, // anxiety bg
-		1.0, // HONG SPRITE
-		0.0, // battle hong
-		0.0, // battle beebee
+		
+		0.05,	// bg
+		0.1,	// skyline
+		0.0,	// clouds
+		0.3,	// roof
+
+		0.5,	// roofhunter
+		0.5,	// dd
+		0.5,	// dizzyhunter
+		0.5,	// dizzyhong
+		1.0,	// roofhong
+
+		0.0,	// anxiety
+		0.0,	// hong
+		0.0,	// beebee
+
+	];
+	var OFFSETS = [
+
+		0, // bg
+		0, // skyline
+		0, // clouds
+		0, // roof
+
+		0, // roofhunter
+		0, // dd
+		79, // dizzyhunter
+		211, // dizzyhong
+		0, // roofhong
+		
+		0, // anxiety
+		0, // hong
+		0, // beebee
+
 	];
 	var ALPHAS = [
-		1.0, // party bg
-		1.0, // HUNTER SPRITE
-		0.0, // anxiety bg
-		1.0, // HONG SPRITE
-		0.0, // battle hong
-		0.0, // battle beebee
+		
+		1, // bg
+		1, // skyline
+		1, // clouds
+		1, // roof
+
+		1, // roofhunter
+		1, // dd
+		1, // dizzyhunter
+		1, // dizzyhong
+		1, // roofhong
+		
+		0, // anxiety
+		0, // hong
+		0, // beebee
+
 	];
+
 
 	var parallax = 0;
 	var parallaxTicker = 0;
 	var PARALLAXING = null;
+	var ticker = 0;
 	self.update = function(){
 
 		// START PARALLAXING IN / OUT
@@ -103,33 +175,41 @@ function BG_Rooftop(){
 			parallax = -t*190;
 
 			// Anxiety Alpha
-			ALPHAS[2] = t;
+			//ALPHAS[2] = t;
 
 			// DONE
 			if(t==1 || t==0){
 				PARALLAXING = null;
 
 				// Stage 1 transition end
-				if(STAGE==1){
+				/*if(STAGE==1){
 					ALPHAS[1] = 0; // HIDE Hunter
 					ALPHAS[3] = 0; // HIDE Old Hong
 					ALPHAS[4] = 1; // SHOW new hong
 					ALPHAS[5] = 1; // SHOW Beebee
-				}
+				}*/
 
 			}
 
 		}
 
+		// SUPER HACKY - ANIMATE THE DIZZIES
+		ticker += 1/60;
+		var fps = 4;
+		var frame = Math.round(ticker*fps) % 4; // fps times a second
+		self.dizzyhunter.gotoFrame(frame);
+		var frame = Math.round(ticker*fps) % 4 + 4; // fps times a second
+		self.dizzyhong.gotoFrame(frame);
+
 		// Anxiety BG
-		if(ALPHAS[2]>0){
+		/*if(ALPHAS[2]>0){
 			self.anxiety.update(ALPHAS[2]);
 			if(ALPHAS[2]==1){ // if fully visible...
 				ALPHAS[0] = 0; // hide everything under
 			}else{
 				ALPHAS[0] = 1; // show everything under
 			}
-		}
+		}*/
 
 	};
 
@@ -141,7 +221,7 @@ function BG_Rooftop(){
 
 			for(var i=0; i<self.layers.length; i++){
 				var layer = self.layers[i];
-				layer.x = PARALLAXES[i] * parallax;// - OFFSETS[i];
+				layer.x = PARALLAXES[i] * parallax + OFFSETS[i];
 				if(ALPHAS[i]>0){
 					ctx.globalAlpha = ALPHAS[i];
 					layer.draw(ctx);
@@ -169,10 +249,12 @@ function BG_Rooftop(){
 		subscribe("act3-in", function(){
 
 			// SHOW ACTION, HIDE CHARS
+			/*
 			ALPHAS[1] = 1; // SHOW Hunter
 			ALPHAS[3] = 1; // SHOW Roof Hong
 			ALPHAS[4] = 0; // HIDE battle Hong
 			ALPHAS[5] = 0; // HIDE battle Beebee
+			*/
 
 			// WHOOSH
 			STAGE = 2;

@@ -80,6 +80,7 @@ function Sprite(config){
 	self.draw = function(ctx){
 
 		if(!self.visible) return; // nah
+		if(self.alpha==0) return; // also nah
 
 		ctx.save();
 

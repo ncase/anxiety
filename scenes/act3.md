@@ -115,9 +115,9 @@ n: GOOD LUCK
 
 [Human, you could actually DIE here!](#act3a_harm) `Game.OVERRIDE_CHOICE_LINE=true`
 
-[These sickos aren't really your friends!](#act3a_alone) `Game.OVERRIDE_CHOICE_LINE=true`
+[This is stupid and self-destructive!](#act3a_bad) `Game.OVERRIDE_CHOICE_LINE=true`
 
-[You're being stupid and terrible right now!](#act3a_bad) `Game.OVERRIDE_CHOICE_LINE=true`
+[These sickos aren't really your friends!](#act3a_alone) `Game.OVERRIDE_CHOICE_LINE=true`
 
 # act3a_harm
 
@@ -133,7 +133,7 @@ b: T--
 
 # act3a_bad
 
-b: Y--
+b: T--
 
 (#act3a_after)
 
