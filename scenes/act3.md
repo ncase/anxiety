@@ -1,76 +1,206 @@
 # act3
 
-`SceneSetup.act3();`
+```
+SceneSetup.act3();
+Game.WORDS_HEIGHT_BOTTOM = 205;
+```
 
 r: Cheers!
 
+(#act3_skip)
+
+```
+publish("act3",["roofhunter",1]);
+publish("act3",["roofhong",1]);
+```
+
+(...1001)
+
+```
+publish("act3-alpha", ["dizzyhunter",1]);
+publish("act3-alpha", ["dizzyhong",1]);
+publish("act3",["roofhunter",3]);
+publish("act3",["roofhong",3]);
+```
+
 h2: *Ah* that hits the spot.
+
+```
+publish("act3",["roofhunter",2]);
+publish("act3",["roofhong",2]);
+```
 
 r: You know, kid...
 
+```
+publish("act3",["roofhunter",3]);
+publish("act3",["roofhong",6]);
+```
+
 h2: Specifically, the spots hit are my left and right amygdala.
+
+```
+publish("act3",["roofhunter",8]);
+publish("act3",["roofhong",5]);
+```
 
 r: You remind me of myself when I was younger. Back when I was tormented by the animal in my head.
 
+```
+publish("act3",["roofhunter",2]);
+publish("act3",["roofhong",2]);
+```
+
 r: Hey, quick question: truth or da--
+
+```
+publish("act3",["roofhunter",3]);
+publish("act3",["roofhong",7]);
+publish("act3-alpha", ["dizzyhong",0]);
+```
 
 h2: DARE!
 
+```
+publish("act3-alpha", ["dizzyhong",1]);
+publish("act3",["roofhunter",10]);
+publish("act3",["roofhong",2]);
+```
+
 r: Haha! Good.
+
+```
+publish("act3",["roofhunter",21]);
+publish("act3",["roofhong",4]);
+```
 
 r: Ok. You see that baby-blue swimming pool down there?
 
 ```
-publish('hong-next');
-publish("hunter-roof", ["front_badass"]);
+publish("act3-alpha", ["dizzyhong",0]);
+publish("act3",["roofhunter",11]);
+publish("act3",["roofhong",9]);
 ```
 
+h2: Yeah? Six floors down?
 
-h2: Yeah? Ten floors down?
+```
+publish("act3",["roofhunter",10]);
+publish("act3",["roofhong",8]);
+```
 
 r: Jump in.
 
-`publish('hong-next')`
+```
+publish("act3",["roofhunter",11]);
+publish("act3",["roofhong",10]);
+```
 
 h2: ...
 
+```
+publish("act3",["roofhong",11]);
+```
+
 h2: Wait, what?
+
+```
+publish("act3",["roofhong",10]);
+publish("act3",["roofhunter",2]);
+```
 
 r: The animal's started whining, hasn't it?
 
+```
+publish("act3",["roofhunter",23]);
+```
+
 r: *Oh nooooo it's dangerous, don't do iiiiit.*
 
-r: But that's exactly why we must do thrilling, death-defying stunts! Party hard! Carpe diem! Snort coke off a hooker's ass, #YOLO!
+```
+publish("act3",["roofhunter",22]);
+```
+
+r: But that's exactly why we need death-defying thrills! Party hard! Carpe diem! Snort coke off a hooker's ass, #YOLO!
+
+```
+publish("act3",["roofhunter",10]);
+```
 
 r: Let's show that animal we don't give two *dicks* about its bitching! Jump in.
+
+```
+publish("act3",["roofhunter",11]);
+publish("act3",["roofhong",13]);
+```
 
 h2: Uh, but sometimes, um... fear has a point...
 
 ```
+publish("act3",["roofhunter",5]);
+publish("act3",["roofhong",12]);
 music(null, {fade:2});
-publish("hunter-roof", ["front_pissed"]);
 ```
 
 r: ...
 
+```
+publish("act3-alpha", ["dizzyhunter",0]);
+publish("act3",["roofhunter",6]);
+publish("act3",["dd",1]);
+```
+
 r: I'm sorry, did you fall for that McMindfulness fad that claims feeling bad is *good?*
+
+```
+publish("act3",["roofhunter",17]);
+```
 
 r: Pleasure is the opposite of pain. There-fucking-fore, you can use pleasure to fight pain!
 
+```
+publish("act3",["roofhunter",18]);
+```
+
 r: How do those Silicon Valley pseudo-Buddhists not see this shit?!
+
+```
+publish("act3",["roofhunter",6]);
+```
 
 r: Kid, I know that *you* know that animal *hurts* people like us. It *tortures* people like us.
 
+```
+publish("act3",["roofhunter",19]);
+```
+
 r: It's not our friend. It's a rabid beast, which either needs to be *tranquilized*,
+
+```
+publish("act3",["roofhunter",20]);
+```
 
 r: Or have a *bullet put in its fucking skull*.
 
+```
+publish("act3",["roofhunter",27]);
+```
+
 r: Otherwise, you're going to let it win.
+
+```
+publish("act3",["roofhunter",31]);
+publish("act3",["roofhong",14]);
+publish("act3",["dd",2]);
+```
 
 h2: No. You're wrong.
 
+# act3_skip
+
 ```
-publish('hong-next');
+publish("act3",["roofhunter",13]);
+publish("act3",["roofhong",15]);
 music('battle_dark', {volume:1.0}, function(){
 	music('battle_dark_loop');
 });
@@ -78,7 +208,12 @@ music('battle_dark', {volume:1.0}, function(){
 
 h2: I'm not going to let it win.
 
-`publish("hunter-roof", ["front_badass"]);`
+```
+publish("act3",["roofhunter",25]);
+publish("act3-alpha", ["roofhong",0]);
+publish("act3-alpha", ["transition",1]);
+publish("act3",["dd",6]);
+```
 
 r: Fuck yeah! I believe in you, babe! Kill it! <3
 
@@ -91,6 +226,7 @@ r: Fuck yeah! I believe in you, babe! Kill it! <3
 ```
 Game.clearText();
 publish("act3-out");
+Game.WORDS_HEIGHT_BOTTOM = -1; /* reset */
 ```
 
 (...1500)
@@ -200,7 +336,7 @@ h: Some people throw themselves into other people.
 
 h: I'm going to throw myself into that swimming pool.
 
-[You're drunk and it's TEN FLOORS DOWN](#act3_bad_1_harm)
+[You're drunk and it's SIX FLOORS DOWN](#act3_bad_1_harm)
 
 [Dang it, this is the thanks I get?!](#act3_bad_1_insult)
 

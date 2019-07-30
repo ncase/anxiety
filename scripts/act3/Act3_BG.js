@@ -5,6 +5,7 @@ Loader.addImages([
 	{ id:"rooftop_dd", src:"sprites/act3/dd.png" },
 	{ id:"dizzy", src:"sprites/act3/dizzy.png" },
 	{ id:"hospital", src:"sprites/act3/hospital.png" },
+	{ id:"transition", src:"sprites/act3/transition.png" },
 ]);
 
 Loader.addSounds([
@@ -47,6 +48,12 @@ function BG_Rooftop(){
 		grid:{ width:4, height:2 },
 		frame:{ width:240, height:120 },
 		y: 300
+	});
+	self.transition = new Sprite({
+		image: Library.images.transition,
+		grid:{ width:8, height:1 },
+		frame:{ width:720, height:400 },
+		y: 258
 	});
 	var DizzySpriteConfig = {
 		image: Library.images.dizzy,
@@ -91,6 +98,7 @@ function BG_Rooftop(){
 		self.roofhong,
 
 		self.anxiety,
+		self.transition,
 		self.hong,
 		self.beebee,
 
@@ -109,6 +117,7 @@ function BG_Rooftop(){
 		1.0,	// roofhong
 
 		0.0,	// anxiety
+		1.0,	// transition
 		0.0,	// hong
 		0.0,	// beebee
 
@@ -117,7 +126,7 @@ function BG_Rooftop(){
 
 		0, // bg
 		0, // skyline
-		0, // clouds
+		80, // clouds
 		0, // roof
 
 		0, // roofhunter
@@ -127,6 +136,7 @@ function BG_Rooftop(){
 		0, // roofhong
 		
 		0, // anxiety
+		191, // transition
 		0, // hong
 		0, // beebee
 
@@ -140,11 +150,12 @@ function BG_Rooftop(){
 
 		1, // roofhunter
 		1, // dd
-		1, // dizzyhunter
-		1, // dizzyhong
+		0, // dizzyhunter
+		0, // dizzyhong
 		1, // roofhong
 		
 		0, // anxiety
+		0, // transition
 		0, // hong
 		0, // beebee
 
@@ -154,6 +165,7 @@ function BG_Rooftop(){
 	var parallax = 0;
 	var parallaxTicker = 0;
 	var PARALLAXING = null;
+	var MAGIC_NUMBER = 191;
 	var ticker = 0;
 	self.update = function(){
 
@@ -172,10 +184,10 @@ function BG_Rooftop(){
 			// 0 to -180 in one second, smoothed
 			var t = Math.cos(parallaxTicker*Math.TAU/2); // 1 to -1
 			t = (1-t)/2; // 0 to 1
-			parallax = -t*190;
+			parallax = -t*MAGIC_NUMBER;
 
 			// Anxiety Alpha
-			//ALPHAS[2] = t;
+			ALPHAS[9] = t;
 
 			// DONE
 			if(t==1 || t==0){
@@ -193,6 +205,9 @@ function BG_Rooftop(){
 
 		}
 
+		// BYE CLOUDS
+		OFFSETS[2] -= 3/60;
+
 		// SUPER HACKY - ANIMATE THE DIZZIES
 		ticker += 1/60;
 		var fps = 4;
@@ -201,15 +216,40 @@ function BG_Rooftop(){
 		var frame = Math.round(ticker*fps) % 4 + 4; // fps times a second
 		self.dizzyhong.gotoFrame(frame);
 
-		// Anxiety BG
-		/*if(ALPHAS[2]>0){
-			self.anxiety.update(ALPHAS[2]);
-			if(ALPHAS[2]==1){ // if fully visible...
-				ALPHAS[0] = 0; // hide everything under
-			}else{
-				ALPHAS[0] = 1; // show everything under
+		// ANIMATE HUNTER 
+		if(self.roofhunter.currentFrame==23 || self.roofhunter.currentFrame==24){
+			self.roofhunter._hack_timer = (self.roofhunter._hack_timer===undefined) ? 0 : self.roofhunter._hack_timer;
+			self.roofhunter._hack_timer += 1/60;
+			if(self.roofhunter._hack_timer>1/24){ // 24 times a second
+				if(self.roofhunter.currentFrame==23){
+					self.roofhunter.gotoFrame(24);
+				}else{
+					self.roofhunter.gotoFrame(23);
+				}
+				self.roofhunter._hack_timer = 0;
 			}
-		}*/
+		}
+
+		// ANIMATE HONG
+		if(self.transition.currentFrame>0){
+			self.transition._hack_timer = (self.transition._hack_timer===undefined) ? 0 : self.transition._hack_timer;
+			self.transition._hack_timer += 1/60;
+			if(self.transition._hack_timer>1/15){ // 15fps
+				self.transition._hack_timer = 0;
+				if(self.transition.currentFrame<7){
+					self.transition.nextFrame();
+				}else{
+					publish("act3-alpha", ["transition", 0]);
+					publish("act3-alpha", ["hong", 1]);
+					publish("act3-alpha", ["beebee", 1]);
+				}
+			}
+		}
+
+		// Anxiety BG
+		if(ALPHAS[9]>0){
+			self.anxiety.update(ALPHAS[9]);
+		}
 
 	};
 
@@ -241,10 +281,30 @@ function BG_Rooftop(){
 	var STAGE = 0;
 	var _subscriptions = [];
 	_subscriptions.push(
+		
+		subscribe("act3", function(thing, frame){
+			if(typeof frame=="string"){
+				if(frame=="next"){
+					self[thing].nextFrame();
+				}else{
+					self[thing].gotoFrameByName(frame);
+				}
+			}else{
+				self[thing].gotoFrame(frame);
+			}
+		}),
+		subscribe("act3-alpha", function(thing, alpha){
+			var index = self.layers.indexOf(self[thing]);
+			ALPHAS[index] = alpha;
+		}),
+
 		subscribe("act3-out", function(){
 			STAGE = 1;
 			PARALLAXING = "out";
 			sfx("whoosh"); // WHOOSH
+			setTimeout(function(){
+				self.transition.gotoFrame(1);
+			},400);
 		}),
 		subscribe("act3-in", function(){
 

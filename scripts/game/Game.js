@@ -277,11 +277,13 @@ Game.immediatePromise = function(){
 
 // Move the text DOM to latest
 Game.FORCE_TEXT_Y = -1;
+Game.WORDS_HEIGHT_BOTTOM = 250;
 Game.updateText = function(instant){
+	if(Game.WORDS_HEIGHT_BOTTOM<0) Game.WORDS_HEIGHT_BOTTOM=250; // back to default
 	if(Game.FORCE_TEXT_Y<0){
 		var wordsHeight = 80 + Game.wordsDOM.getBoundingClientRect().height;
 		var currentY = parseFloat(Game.wordsDOM.style.top) || 80;
-		var gotoY = (wordsHeight<250) ? 0 : wordsHeight-250;
+		var gotoY = (wordsHeight<Game.WORDS_HEIGHT_BOTTOM) ? 0 : wordsHeight-Game.WORDS_HEIGHT_BOTTOM;
 		gotoY = 80 - gotoY;
 		var nextY = instant ? gotoY : currentY*0.9 + gotoY*0.1;
 		Game.wordsDOM.style.top = (Math.round(nextY*10)/10)+"px";
