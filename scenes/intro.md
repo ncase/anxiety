@@ -4,7 +4,7 @@
 
 # intro-play-button
 
-`Game.HACK_MAKE_THE_LINE_BIG=true;`
+`Game.OVERRIDE_FONT_SIZE=30;`
 
 [<div class="mini-icon" pic="play1"></div> PLAY! <div class="mini-icon" pic="play2"></div>](#intro-start) `publish("intro-to-game-1"); Game.OVERRIDE_CHOICE_LINE=true;`
 

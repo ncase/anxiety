@@ -59,6 +59,10 @@ function Character(spriteConfig, animLoops){
 	self.bounceHookes = 0.2;
 	self.bounceDamp = 0.8;
 	self.characterFrames = {};
+	self.MOUTH_LOCK = false;
+	self.whenDoneSpeaking = function(){
+		self.MOUTH_LOCK = false;
+	};
 	self.gotoFrames = function(args, bounce){
 
 		// Bounce?
@@ -97,6 +101,11 @@ function Character(spriteConfig, animLoops){
 		l.body.gotoFrameByName( "body_"+c.body );
 		l.mouth.gotoFrameByName( "mouth_"+c.mouth );
 		l.eyes.gotoFrameByName( "eyes_"+c.eyes );
+
+		// MOUTH LOCK?
+		if(args.MOUTH_LOCK){
+			self.MOUTH_LOCK = l.mouth.currentFrameName;
+		}
 
 	};
 
@@ -144,17 +153,21 @@ function Character(spriteConfig, animLoops){
 		if(l.body.currentFrameName.indexOf("*")<0){
 
 			// Mouth
-			if(Game.WHO_IS_SPEAKING==self.characterSpeakerID){
-				// If I'm talking, switch to a talking mouth!
-				var mouthTalkFrame = "mouth_"+c.mouth+"_talk";
-				if( l.mouth.doesFrameNameExist(mouthTalkFrame) ){
-					l.mouth.gotoFrameByName(mouthTalkFrame);
-				}
+			if(self.MOUTH_LOCK){
+				l.mouth.gotoFrameByName(self.MOUTH_LOCK);
 			}else{
-				// If I'm not talking & my mouth is in the talk position, switch it back!
-				var isMyMouthTalking = (l.mouth.currentFrameName.indexOf("_talk")>=0);
-				if(isMyMouthTalking){
-					l.mouth.gotoFrameByName( "mouth_"+c.mouth );
+				if(Game.WHO_IS_SPEAKING==self.characterSpeakerID){
+					// If I'm talking, switch to a talking mouth!
+					var mouthTalkFrame = "mouth_"+c.mouth+"_talk";
+					if( l.mouth.doesFrameNameExist(mouthTalkFrame) ){
+						l.mouth.gotoFrameByName(mouthTalkFrame);
+					}
+				}else{
+					// If I'm not talking & my mouth is in the talk position, switch it back!
+					var isMyMouthTalking = (l.mouth.currentFrameName.indexOf("_talk")>=0);
+					if(isMyMouthTalking){
+						l.mouth.gotoFrameByName( "mouth_"+c.mouth );
+					}
 				}
 			}
 			l.mouth.draw(ctx);

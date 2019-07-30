@@ -194,19 +194,32 @@ function BG_Rooftop(){
 				PARALLAXING = null;
 
 				// Stage 1 transition end
-				/*if(STAGE==1){
-					ALPHAS[1] = 0; // HIDE Hunter
-					ALPHAS[3] = 0; // HIDE Old Hong
-					ALPHAS[4] = 1; // SHOW new hong
-					ALPHAS[5] = 1; // SHOW Beebee
-				}*/
+				if(STAGE==1){
+					ALPHAS.forEach(function(val, index){
+						if(index<9) ALPHAS[index]=0;
+					});
+				}
+				if(STAGE==2){
+					ALPHAS[11] = 0; // HIDE battle Hong
+					ALPHAS[12] = 0; // HIDE battle Beebee
+
+					// Transition BB in
+					if(_.a3_ending=="walkaway"){
+						setTimeout(function(){
+							self.roofhong.nextFrame();
+						},800);
+					}
+
+				}
 
 			}
 
 		}
 
 		// BYE CLOUDS
-		OFFSETS[2] -= 3/60;
+		if(ALPHAS[9]!=1){ // unless anxiety BG
+			OFFSETS[2] -= 3/60;
+		}
 
 		// SUPER HACKY - ANIMATE THE DIZZIES
 		ticker += 1/60;
@@ -230,7 +243,7 @@ function BG_Rooftop(){
 			}
 		}
 
-		// ANIMATE HONG
+		// ANIMATE TRANSITION
 		if(self.transition.currentFrame>0){
 			self.transition._hack_timer = (self.transition._hack_timer===undefined) ? 0 : self.transition._hack_timer;
 			self.transition._hack_timer += 1/60;
@@ -238,11 +251,23 @@ function BG_Rooftop(){
 				self.transition._hack_timer = 0;
 				if(self.transition.currentFrame<7){
 					self.transition.nextFrame();
-				}else{
+				}else if(!self.transition._HACK_DONE_FOREVER){
+					self.transition._HACK_DONE_FOREVER = true;
 					publish("act3-alpha", ["transition", 0]);
 					publish("act3-alpha", ["hong", 1]);
 					publish("act3-alpha", ["beebee", 1]);
 				}
+			}
+		}
+
+		// ANIMATE HONG
+		var h = self.roofhong;
+		if(h.currentFrame>=36 && h.currentFrame<43){
+			h._hack_timer = (h._hack_timer===undefined) ? 0 : h._hack_timer;
+			h._hack_timer += 1/60;
+			if(h._hack_timer>1/15){ // 15fps
+				h._hack_timer = 0;
+				h.nextFrame();
 			}
 		}
 
@@ -308,13 +333,19 @@ function BG_Rooftop(){
 		}),
 		subscribe("act3-in", function(){
 
-			// SHOW ACTION, HIDE CHARS
-			/*
-			ALPHAS[1] = 1; // SHOW Hunter
-			ALPHAS[3] = 1; // SHOW Roof Hong
-			ALPHAS[4] = 0; // HIDE battle Hong
-			ALPHAS[5] = 0; // HIDE battle Beebee
-			*/
+			// WEIRD PARALLAXIN' TIME
+			self.hong.ALLOW_PARALLAX = true;
+			self.beebee.ALLOW_PARALLAX = true;
+			PARALLAXES[11] = 1.0; // battle hong
+			PARALLAXES[12] = 1.27; // battle bb
+			OFFSETS[11] = MAGIC_NUMBER*PARALLAXES[11]; // battle hong
+			OFFSETS[12] = MAGIC_NUMBER*PARALLAXES[12]; // battle bb
+
+			// SHOW EVERYTHING BELOW ANXIETY BG
+			ALPHAS.forEach(function(val, index){
+				if(index<9) ALPHAS[index]=1;
+			});
+			ALPHAS[6] = ALPHAS[7] = 0; // Except dizzy
 
 			// WHOOSH
 			STAGE = 2;
@@ -323,24 +354,20 @@ function BG_Rooftop(){
 
 		}),
 
-		// HUNTER FRAME
-		subscribe("hunter-roof", function(frameName){
-			self.hunterSprite.gotoFrameByName(frameName);
-		}),
-
-		// JUMP OFF
+		// JUMP OFF / WALK AWAY
 		subscribe("start-jump-anim", function(){
-			self.hongSprite.gotoFrame(4);
-			self.hunterSprite.gotoFrameByName("front_badass");
+			self.dd.gotoFrame(2);
+			self.roofhunter.gotoFrame(15);
+			self.roofhong.gotoFrame(16);
+		}),
+		subscribe("start-walkaway-anim", function(){
+			self.dd.gotoFrame(2);
+			self.roofhunter.gotoFrame(5);
+			self.roofhong.gotoFrame(35);
 		}),
 		subscribe("hong-next", function(){
-			self.hongSprite.nextFrame();
-		}),
-
-		// WALK AWAY
-		subscribe("start-walkaway-anim", function(){
-			self.hongSprite.gotoFrame(23);
-			self.hunterSprite.gotoFrameByName("side_neutral");
+			//self.hongSprite.nextFrame();
+			self.roofhong.nextFrame();
 		}),
 
 		// INJURY

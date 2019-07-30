@@ -339,6 +339,9 @@ Game.executeText = function(line){
 		Game.wordsDOM.appendChild(div);
 		Game.WHO_IS_SPEAKING = speaker; // WHO'S SPEAKING?!
 		Game.CURRENT_SPEAKING_SPEED = Game.OVERRIDE_TEXT_SPEED;
+		if(Game.OVERRIDE_FONT_SIZE){
+			div.style.fontSize = Game.OVERRIDE_FONT_SIZE+"px";
+		}
 		switch(speaker){
 			case "b":
 				div.className = "beebee-bubble";
@@ -595,6 +598,7 @@ Game.executeText = function(line){
 
 		// Return overrides to default
 		Game.OVERRIDE_TEXT_SPEED = 1;
+		Game.OVERRIDE_FONT_SIZE = false;
 		Game.FORCE_TEXT_DURATION = -1;
 		Game.FORCE_NO_VOICE = false;
 
@@ -610,6 +614,7 @@ Game.executeText = function(line){
 		// No one's speaking anymore.
 		Game.setTimeout(function(){
 			Game.WHO_IS_SPEAKING = null;
+			publish("DONE_SPEAKING");
 		}, interval);
 
 		// Show the clicky UI
@@ -641,7 +646,7 @@ Loader.addSounds([
 // Execute choice! Add it to choice DOM.
 Game.OVERRIDE_CHOICE_LINE = false;
 Game.OVERRIDE_CHOICE_SPEAKER = null;
-Game.HACK_MAKE_THE_LINE_BIG = false;
+Game.OVERRIDE_FONT_SIZE = false;
 Game.executeChoice = function(line){
 	
 	var choiceText = line.match(/\[([^\]]*)\]/)[1].trim();
@@ -705,8 +710,8 @@ Game.executeChoice = function(line){
 	},10);
 
 	// Or... FORCE
-	if(Game.HACK_MAKE_THE_LINE_BIG){
-		div.style.fontSize = "30px";
+	if(Game.OVERRIDE_FONT_SIZE){
+		div.style.fontSize = Game.OVERRIDE_FONT_SIZE+"px";
 	}else{
 
 		// If it's too big, shrink font size
@@ -731,7 +736,7 @@ Game.executeChoice = function(line){
 		},1);
 		
 	}
-	Game.HACK_MAKE_THE_LINE_BIG = false;
+	Game.OVERRIDE_FONT_SIZE = false;
 
 	// Wait a bit before adding new line
 	return new RSVP.Promise(function(resolve){

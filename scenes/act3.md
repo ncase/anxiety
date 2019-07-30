@@ -7,8 +7,6 @@ Game.WORDS_HEIGHT_BOTTOM = 205;
 
 r: Cheers!
 
-(#act3_skip)
-
 ```
 publish("act3",["roofhunter",1]);
 publish("act3",["roofhong",1]);
@@ -196,8 +194,6 @@ publish("act3",["dd",2]);
 
 h2: No. You're wrong.
 
-# act3_skip
-
 ```
 publish("act3",["roofhunter",13]);
 publish("act3",["roofhong",15]);
@@ -227,6 +223,7 @@ r: Fuck yeah! I believe in you, babe! Kill it! <3
 Game.clearText();
 publish("act3-out");
 Game.WORDS_HEIGHT_BOTTOM = -1; /* reset */
+_.act3_bb_body = 1;
 ```
 
 (...1500)
@@ -243,11 +240,18 @@ b: NO NO NO NO NO NO NO NO NO NO NO NO NO NO
 
 n: CHOOSE WISELY. PROTECT YOUR HUMAN
 
+`bb({ eyes:"oh_crap", mouth:"normal_talk", MOUTH_LOCK:true });`
+
 b: AAAAAAAAAAAAAAAAAA
+
+`bb({ mouth:"normal" });`
 
 n: GOOD LUCK
 
-`Game.clearText();`
+```
+Game.clearText();
+bb({ eyes:"start" });
+```
 
 [Human, you could actually DIE here!](#act3a_harm) `Game.OVERRIDE_CHOICE_LINE=true`
 
@@ -257,17 +261,23 @@ n: GOOD LUCK
 
 # act3a_harm
 
+`bb({ MOUTH_LOCK:true, mouth:"normal_talk" });`
+
 b: H--
 
 (#act3a_after)
 
 # act3a_alone
 
+`bb({ MOUTH_LOCK:true, mouth:"normal_talk" });`
+
 b: T--
 
 (#act3a_after)
 
 # act3a_bad
+
+`bb({ MOUTH_LOCK:true, mouth:"normal_talk" });`
 
 b: T--
 
@@ -279,18 +289,23 @@ b: T--
 hong({body:"drink"});
 bb({body:"attacked"});
 attackBB("32p");
+_.act3_bb_body++;
 ```
 
 (...2000)
 
 ```
-hong({body:"angry"});
-bb({body:"scared"});
+hong({ body:"normal" });
+bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });
 ```
 
 h: You know, I might've believed you... if you hadn't tried that a zillion times before.
 
 h: You're the wolf who cried wolf.
+
+```
+bb({ eyes:"sad" });
+```
 
 `Game.OVERRIDE_CHOICE_SPEAKER = "fear_harm"`
 
@@ -311,40 +326,51 @@ h: You're the wolf who cried wolf.
 hong({body:"drink"});
 bb({body:"attacked"});
 attackBB("32p");
+_.act3_bb_body++;
 ```
 
 (...2000)
 
 ```
-hong({body:"angry"});
-bb({body:"scared"});
+hong({ body:"normal" });
+bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });
 ```
 
 h: You already tried that too.
 
 b: human, please...
 
+`hong({ eyes:"look_right" });`
+
 h: Oh I'm *sorry* Big Pharma doesn't approve of my self-medication.
 
 h: Look asshole, we *all* have a way of shutting you the fuck up.
 
+`hong({ body:"look_up", eyes:"look_up" });`
+
 h: Some people throw themselves into work.
+
+`hong({ body:"look_down", eyes:"look_down" });`
 
 h: Some people throw themselves into sex, drugs, and refreshing their Facebook feed.
 
+`hong({ body:"normal", eyes:"look_right" });`
+
 h: Some people throw themselves into other people. 
+
+`hong({ eyes:"angry" });`
 
 h: I'm going to throw myself into that swimming pool.
 
 [You're drunk and it's SIX FLOORS DOWN](#act3_bad_1_harm)
 
-[Dang it, this is the thanks I get?!](#act3_bad_1_insult)
+[Dang it, this is the thanks I get?!](#act3_bad_1_insult) `bb({eyes:"angry"});`
 
-[Okay, I admit it. I messed up.](#act3_good_1) `bb({body:"sad"})`
+[Okay, I admit it. I messed up.](#act3_good_1) `bb({mouth:"sorry", eyes:"sorry_down"});`
 
 # act3_bad_1_harm
 
-b: Even if you somehow land *in* the water, you'll still smash into the bottom of the pool and break your bones!
+b: Even if you land in the water, the surface tension will crack your ribs and give you a concussion *at the least!*
 
 h: Eh.
 
@@ -352,22 +378,27 @@ h: Eh.
 hong({body:"drink"});
 bb({body:"attacked"});
 attackBB("32p");
+_.act3_bb_body++;
 ```
 
 (...2000)
 
 ```
-hong({body:"angry"});
-bb({body:"scared"});
+hong({ body:"normal", mouth:"angry", eyes:"angry" });
+bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });
 ```
 
-h: I think I saw a Russian guy do this on YouTube once.
+h: I saw a Russian guy do this on YouTube once.
 
 (#act3_bad_2)
 
 # act3_bad_1_insult
 
+`hong({ eyes:"look_right" });`
+
 h: I- Excuse me, the *thanks?*
+
+`bb({ eyes:"angry" });`
 
 b: This is exactly why I *exist!* Because humans can't be trusted to protect themselves!
 
@@ -377,34 +408,50 @@ b: I've been trying to protect your stupid butt all my life and now you're just 
 hong({body:"drink"});
 bb({body:"attacked"});
 attackBB("32p");
+_.act3_bb_body++;
 ```
 
 (...2000)
 
 ```
-hong({body:"angry"});
-bb({body:"scared"});
+hong({ body:"normal", mouth:"angry", eyes:"angry" });
+bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });
 ```
 
 (#act3_bad_2)
 
 # act3_good_1
 
+`hong({ body:"laugh_1" })``
+
 h: heh.
+
+`hong({ body:"laugh_2" })``
 
 h: hahahaha
 
+`hong({ body:"laugh_3" })``
+
 h: HAHAHAHAHAHA
+
+```
+bb({ eyes:"sorry"});
+hong({ body:"yell_1", mouth:"yell", eyes:"blank" });
+```
 
 h: Oh WOW is that the biggest *fucking* understatement of the century!
 
+`hong({ body:"yell_2" });`
+
 h: Yeah, you rotting pile of blood-coated shit! You messed the fuck up!
+
+`hong({ body:"normal", mouth:"angry", eyes:"angry" });`
 
 h: Any other remarks, Captain Obvious?
 
-[But revenge on me isn't the answer!](#act3_good_1_fail_revenge) `bb({body:"scared"})`
+[But revenge on me isn't the answer!](#act3_good_1_fail_revenge) `bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });`
 
-[But this time I'm *actually* right!](#act3_good_1_fail_harm) `bb({body:"scared"})`
+[But this time I'm *actually* right!](#act3_good_1_fail_harm) `bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });`
 
 [I've hurt you.](#act3_good_2a)
 
@@ -417,13 +464,14 @@ b: You need to have a healthier relationship with your emotions, rather than dro
 hong({body:"drink"});
 bb({body:"attacked"});
 attackBB("32p");
+_.act3_bb_body++;
 ```
 
 (...2000)
 
 ```
-hong({body:"angry"});
-bb({body:"scared"});
+hong({ body:"normal", mouth:"angry", eyes:"angry" });
+bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });
 ```
 
 (#act3_bad_2)
@@ -438,13 +486,14 @@ b: So please, put the bottle down and let's--
 hong({body:"drink"});
 bb({body:"attacked"});
 attackBB("32p");
+_.act3_bb_body++;
 ```
 
 (...2000)
 
 ```
-hong({body:"angry"});
-bb({body:"scared"});
+hong({ body:"normal", mouth:"angry", eyes:"angry" });
+bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });
 ```
 
 (#act3_bad_2)
@@ -454,26 +503,39 @@ bb({body:"scared"});
 
 # act3_bad_2
 
+`bb({ eyes:"sad" });`
+
 b: please... don't...
 
 h: Your energy bar's looking awfully low there, wolf.
 
 h: If I were you, I'd choose your next words very carefully.
 
-[Fine. I'm done protecting you.](#act3_bad_2_jump)
+`bb({ eyes:"normal" });`
+
+[Fine. I'm done protecting you.](#act3_bad_2_jump) `bb({ mouth:"ignore", eyes:"ignore" });`
 
 [I was right all along.](#act3_bad_2_right)
 
-[I'm sorry.](#act3_good_2b) `bb({body:"sad"})`
+[I'm sorry.](#act3_good_2b) `bb({mouth:"sorry", eyes:"sorry_down"});`
 
 
 # act3_bad_2_jump
 
 b: So, go ahead and jump. See what I care.
 
+`hong({ eyes:"look_right", mouth:"normal", MOUTH_LOCK:true });`
+
 h: ...
 
+```
+hong({ eyes:"less_angry", mouth:"normal" });
+bb({ eyes:"ignore_oh_crap" });
+```
+
 h: Okay then. Bottoms up.
+
+`bb({ mouth:"normal", eyes:"oh_crap" });`
 
 b: WAIT NO THAT WAS REVERSE PSYCHOLOGY YOU WERE SUPPOSED TO DO THE *OPPOSITE* OF WHAT I SA--
 
@@ -483,20 +545,28 @@ b: WAIT NO THAT WAS REVERSE PSYCHOLOGY YOU WERE SUPPOSED TO DO THE *OPPOSITE* OF
 
 # act3_bad_2_right
 
+`bb({ eyes:"angry" });`
+
 b: You *are* putting yourself in danger. Your so-called friends *are* using you. And *you* are using your so-called friends.
+
+`bb({ eyes:"sad" });`
 
 b: So please, human... why don't you believe me?!
 
-h: Because you don't believe in *me*.
+h: Because you never believed in *me*.
 
 (#act3_bad_3)
 
 
 # act3_bad_2_terrible
 
-b: Other guard-wolves have humans who actually take time to patiently train them, to learn to work together,
+`bb({ eyes:"angry" });`
 
-b: Rather than hate the guard-wolves for trying to protect them! So why couldn't you jus--
+b: Other guard-wolves have humans who actually take time to patiently train them, to *learn* to work together,
+
+b: Rather than hate the guard-wolves for trying to protect them! So why can't you jus--
+
+`bb({ eyes:"normal" });`
 
 h: Wrong fucking answer.
 
@@ -510,27 +580,36 @@ h: Wrong fucking answer.
 music(null);
 hong({body:"drink"});
 bb({body:"attacked"});
+publish("bb_STOP_VIBRATING");
 attackBB("100p");
 ```
 
 (...2000)
 
 ```
-hong({body:"angry"});
-bb({body:"dead"});
+hong({ body:"normal", mouth:"normal", eyes:"normal" });
+bb({ body:"dead" });
 ```
 
 (...999)
 
 h: *"The only thing to fear is fear itself."*
 
+`hong({ body:"look_up", mouth:"happy", eyes:"blank" });`
+
 h: *"Don't worry, be happy!"*
 
+`hong({ body:"normal", mouth:"normal", eyes:"normal" });`
+
 h: All the wise folk of our time agree: negative emotions are *bad!*
+
+`hong({ eyes:"less_angry" });`
 
 h: Duh! That's why they're called *negative!*
 
 b: human... please...
+
+`hong({ eyes:"normal" });`
 
 h: A while back, I said: “I just want to be free from all this pain.”
 
@@ -546,11 +625,22 @@ h: I don't feel anything at all.
 
 # act3_good_2a
 
+`bb({mouth:"sorry", eyes:"sorry_down"});`
+
 b: I was so obsessed with making sure nothing else hurt you, that I didn't realize *I* was creating the hurt.
+
+```
+bb({ eyes:"sorry"});
+hong({ body:"yell_2", mouth:"yell", eyes:"blank" });
+```
 
 h: NO. SHIT.
 
+`hong({ body:"yell_1" });`
+
 h: GODDAMN. It really took you this long to finally figure it out?!
+
+`hong({ body:"cry", mouth:"cry", eyes:"blank" });`
 
 h: You could've saved us so much trouble, you big fluffy dumbass. Why didn't you realize this sooner?...
 
@@ -562,7 +652,11 @@ h: You could've saved us so much trouble, you big fluffy dumbass. Why didn't you
 
 # act3_good_2b
 
+`hong({ body:"normal", mouth:"angry", eyes:"look_right" });`
+
 h: ...you're *sorry.*
+
+`hong({ eyes:"angry", MOUTH_LOCK:true });`
 
 h: ...
 
@@ -572,6 +666,8 @@ h: Sorry for *what*?
 
 
 # act3_good_2q
+
+`bb({mouth:"sorry", eyes:"sorry"});`
 
 {{if _.apologized_for_hurt}}
 (#act3_good_2q_already_apologized)
@@ -584,6 +680,8 @@ h: Sorry for *what*?
 
 # act3_good_2q_already_apologized
 
+`hong({ body:"normal", mouth:"angry", eyes:"less_angry" });`
+
 [I'm sorry I wasn't a good protector.](#act3_good_3_protector)
 
 [I'm sorry I didn't respect you.](#act3_good_3_respect)
@@ -593,7 +691,9 @@ h: Sorry for *what*?
 
 # act3_good_2q_not_already_apologized
 
-[I'm sorry I have a terrible human!](#act3_bad_2_terrible) `bb({body:"scared"})`
+`hong({ body:"normal", mouth:"angry", eyes:"angry" }, 0);`
+
+[I'm sorry I have a terrible human!](#act3_bad_2_terrible) `bb({mouth:"normal", eyes:"normal"})`
 
 [I'm sorry I didn't respect you.](#act3_good_3_respect)
 
@@ -603,11 +703,19 @@ h: Sorry for *what*?
 
 # act3_good_3_protector
 
+`bb({eyes:"sorry_down"});`
+
 b: It's my duty to warn you against *real* danger, but I kept barking at cars and the mailman.
+
+`bb({eyes:"sorry_up"});`
 
 b: Barking at shadows. Barking so much.
 
+`bb({eyes:"sorry"});`
+
 b: It only makes sense that you'd want to muzzle me.
+
+`bb({eyes:"sorry_down"});`
 
 b: I'm sorry.
 
@@ -617,9 +725,15 @@ b: I'm sorry.
 
 # act3_good_3_respect
 
+`bb({eyes:"sorry_down"});`
+
 b: I was supposed to be *your* loyal guard-dog, but I acted as if you were supposed to obey *me*.
 
-b: There's a difference between protector and prison warden, and I crossed the line.
+`bb({eyes:"sorry_up"});`
+
+b: There's a difference between a protector and a prison warden, and I crossed the line.
+
+`bb({eyes:"sorry_down"});`
 
 b: I'm sorry.
 
@@ -629,9 +743,15 @@ b: I'm sorry.
 
 # act3_good_3_hurt
 
+`bb({eyes:"sorry_down"});`
+
 b: I was so obsessed with trying to protect you from being hurt, I never stopped to realize *I* was hurting you.
 
+`bb({eyes:"sorry_up"});`
+
 b: I was a bad dog.
+
+`bb({eyes:"sorry_down"});`
 
 b: I'm sorry.
 
@@ -641,13 +761,14 @@ b: I'm sorry.
 # act3_good_4
 
 ```
-music(null,{fade:5});
+music(null,{fade:3});
+hong({ eyes:"less_angry", MOUTH_LOCK:true },0);
 ```
 
 h: ...
 
 ```
-hong({body:"stop"});
+hong({ body:"stop", mouth:"stop", eyes:"blank" });
 ```
 
 h: Yeah, well, this was a dumb idea anyway.
@@ -655,6 +776,11 @@ h: Yeah, well, this was a dumb idea anyway.
 h: I only did this to fuck you up, and, well, I fucked you up.
 
 h: Let's just call this round a tie, okay?
+
+```
+bb({ mouth:"sorry", eyes:"sorry" });
+bb({ MOUTH_LOCK:true });
+```
 
 b: ...
 
@@ -702,11 +828,23 @@ Game.FORCE_CANT_SKIP = true;
 
 ```
 publish("start-walkaway-anim");
+Game.WORDS_HEIGHT_BOTTOM = 205;
 ```
 
-(...2001)
+(...3501)
 
-`publish('hong-next')`
+```
+publish('hong-next');
+publish("act3",["roofhunter",7]);
+```
+
+(...667)
+
+```
+publish("act3",["dd",4]);
+publish("act3",["roofhunter",26]);
+publish('hong-next');
+```
 
 (...667)
 
@@ -714,20 +852,20 @@ publish("start-walkaway-anim");
 
 (...667)
 
-`publish('hong-next')`
-
-(...667)
-
-`publish('hong-next')`
+```
+publish('hong-next');
+publish("act3",["roofhunter",27]);
+```
 
 `Game.FORCE_CANT_SKIP = false;`
 
-r: Oh *come on*. After all that, you're just walking away?
+r: Oh *come on*. After all that, you're just *giving up* the fight?
 
 r: What's the matter, kid? Are you *scared?*
 
 ```
 publish('hong-next');
+publish("act3",["roofhunter",26]);
 ```
 
 h2: Yes.
@@ -761,7 +899,11 @@ Game.FORCE_CANT_SKIP = true;
 
 (...1333)
 
-`publish('hong-next')`
+```
+publish('hong-next');
+publish("act3",["dd",5]);
+publish("act3",["roofhunter",31]);
+```
 
 (...667)
 
@@ -781,15 +923,21 @@ Game.FORCE_CANT_SKIP = true;
 publish('hong-next');
 Game.FORCE_CANT_SKIP = false;
 sfx("lock_door");
+publish("act3",["roofhunter",32]);
 ```
 
 (...2001)
+
+```
+publish("act3",["roofhunter",33]);
+```
 
 r: Did they just lock the door?
 
 ```
 Game.clearAll();
 _.INJURED = false;
+Game.WORDS_HEIGHT_BOTTOM = -1;
 ```
 
 (...2000)
@@ -801,7 +949,10 @@ _.INJURED = false;
 
 # act3_jump
 
-`publish("start-jump-anim");`
+```
+publish("start-jump-anim");
+Game.FORCE_TEXT_Y = 300;
+```
 
 (...2001)
 
@@ -809,15 +960,49 @@ _.INJURED = false;
 
 (...833)
 
-`publish('hong-next')`
+```
+publish('hong-next');
+publish("act3",["dd",4]);
+publish("act3",["roofhunter",28]);
+```
+(...125)
 
-(...501)
+`publish("act3",["roofhunter",29]);`
 
-`publish('hong-next')`
+(...125)
 
-(...501)
+`publish("act3",["roofhunter",28]);`
 
-`publish('hong-next')`
+(...125)
+
+`publish("act3",["roofhunter",29]);`
+
+(...125)
+
+```
+publish('hong-next');
+publish("act3",["roofhunter",28]);
+```
+
+(...125)
+
+`publish("act3",["roofhunter",29]);`
+
+(...125)
+
+`publish("act3",["roofhunter",28]);`
+
+(...125)
+
+`publish("act3",["roofhunter",29]);`
+
+(...125)
+
+```
+publish('hong-next');
+publish("act3",["dd",5]);
+publish("act3",["roofhunter",34]);
+```
 
 (...1167)
 
@@ -829,11 +1014,11 @@ _.INJURED = false;
 
 b: no...
 
-`publish('hong-next')`
-
 (...501)
 
 `Game.clearText();`
+
+`publish('hong-next')`
 
 (...1333)
 
@@ -857,11 +1042,11 @@ b: no no no
 
 (...501)
 
-`publish('hong-next')`
-
-(...167)
-
-`publish('hong-next')`
+```
+publish('hong-next');
+publish("act3",["dd",4]);
+publish("act3",["roofhunter",30]);
+```
 
 (...167)
 
@@ -871,7 +1056,16 @@ b: no no no
 
 ```
 publish('hong-next');
-publish("hunter-roof", ["front_shock"]);
+publish("act3",["dd",2]);
+publish("act3",["roofhunter",15]);
+```
+
+(...167)
+
+```
+publish('hong-next');
+publish("act3",["dd",3]);
+publish("act3",["roofhunter",16]);
 ```
 
 (...833)
@@ -884,13 +1078,19 @@ publish("hunter-roof", ["front_shock"]);
 
 (...167)
 
-`publish('hong-next')`
+```
+publish('hong-next');
+Game.FORCE_TEXT_Y = 325;
+Game.OVERRIDE_FONT_SIZE = 50;
+```
 
 b: NO!
 
 (...400)
 
 ```
+Game.WORDS_HEIGHT_BOTTOM = -1;
+Game.FORCE_TEXT_Y = -1;
 Game.clearText();
 publish("act4-injury-show");
 ```
