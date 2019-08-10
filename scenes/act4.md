@@ -625,9 +625,9 @@ h: But we can at least be *less* broken.
 
 h: Scars heal with time, but they never go away. And that's okay.
 
-b: I guess.
+b: I guess. Besides,
 
-b: Besides, scars are *sexy.*
+b: Scars are *sexy.*
 
 h: Please do not do that.
 
@@ -982,7 +982,7 @@ h: Anyway, you were saying?
 
 b: Uh, I forget? Something about teams and work?
 
-h: (shrug)
+h: ¯\\_(ツ)_/¯
 
 b: They say you should "make peace" with your emotions, as if your emotions are some kind of *war criminals*.
 
