@@ -102,7 +102,7 @@ function BG_Intro(){
 		0, // clouds
 		0,
 		0,
-		20,
+		20, // stump
 		0,
 		20
 	]

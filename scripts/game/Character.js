@@ -26,8 +26,10 @@ function Character(spriteConfig, animLoops){
 	self.animLoops = animLoops || [];
 
 	// Sprite!
+	var THERE_IS_A_CONE = !!spriteConfig.OVERRIDE_LAYER_NAMES;
+	var LAYER_NAMES = spriteConfig.OVERRIDE_LAYER_NAMES || ["body","mouth","eyes"];
 	self.layers = {};
-	["body","mouth","eyes"].forEach(function(layerName){
+	LAYER_NAMES.forEach(function(layerName){
 		self.layers[layerName] = new Sprite(spriteConfig);
 	});
 
@@ -102,6 +104,12 @@ function Character(spriteConfig, animLoops){
 		l.mouth.gotoFrameByName( "mouth_"+c.mouth );
 		l.eyes.gotoFrameByName( "eyes_"+c.eyes );
 
+		// LOCK IN THE CONE TO BODY + MOUTH, IF ANY 
+		if(THERE_IS_A_CONE){
+			l.cone.gotoFrameByName( "cone_normal" );
+			l.coneb.gotoFrameByName( "coneb_normal" );
+		}
+
 		// MOUTH LOCK?
 		if(args.MOUTH_LOCK){
 			self.MOUTH_LOCK = l.mouth.currentFrameName;
@@ -142,9 +150,17 @@ function Character(spriteConfig, animLoops){
 		self.bounceVel *= self.bounceDamp;
 		var totalSquash = self.characterSquash * self.bounce;
 		l.body.squash = l.mouth.squash = l.eyes.squash = totalSquash;
+		if(THERE_IS_A_CONE){
+			l.cone.squash = l.coneb.squash = totalSquash;
+		}
 
 		// Anim Loop rules!
 		self.runAnimLoopRules();
+
+		// SUPER HACK
+		if(THERE_IS_A_CONE){
+			l.coneb.draw(ctx);
+		}
 
 		// Body
 		l.body.draw(ctx);
@@ -175,6 +191,11 @@ function Character(spriteConfig, animLoops){
 			// Eyes
 			l.eyes.draw(ctx);
 
+		}
+
+		// SUPER HACK
+		if(THERE_IS_A_CONE){
+			l.cone.draw(ctx);
 		}
 
 		// Draw attacked icon

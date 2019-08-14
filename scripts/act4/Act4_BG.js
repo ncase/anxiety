@@ -1,13 +1,17 @@
 Loader.addImages([
-	
-	{ id:"placeholder_act4_bg", src:"sprites/act4/placeholder_act4_bg.png" },
+		
 	{ id:"act4_callback", src:"sprites/act4/callback.png" },
-	{ id:"al_shire", src:"sprites/act4/al_shire.png" },
-	{ id:"outside_hong", src:"sprites/act4/hong_outside.png" },
+	{ id:"a4_hong_walks_in", src:"sprites/act4/hong_walks_in.png" },
+	{ id:"a4_hong_transition", src:"sprites/act4/hong_transition.png" },
 
-	{ id:"a4_talk_1", src:"sprites/act4/talk_1.png" },
-	{ id:"a4_talk_2", src:"sprites/act4/talk_2.png" },
-	{ id:"a4_talk_smash", src:"sprites/act4/talk_smash.png" },
+	{ id:"break_hp", src:"sprites/act4/break_hp.png" },
+
+	{ id:"al_shire", src:"sprites/act4/al_shire.png" },
+	{ id:"hong_to_alshire", src:"sprites/act4/hong_to_alshire.png" },
+	{ id:"bb_to_alshire", src:"sprites/act4/bb_to_alshire.png" },
+	
+	{ id:"hong_closer", src:"sprites/act4/hong_closer.png" },
+	{ id:"bb_closer", src:"sprites/act4/bb_closer.png" }
 
 ]);
 
@@ -20,156 +24,384 @@ function BG_Act4(){
 
 	var self = this;
 
-	// Sprites!
-	self.bgSprite = new Sprite({
-		image: Library.images.placeholder_act4_bg,
-		grid:{ width:1, height:1 },
-		frame:{ width:720, height:1200 },
+	// BACKGROUND SPRITES
+	var BGSpriteConfig = {
+		image: Library.images.intro_bg,
+		grid:{ width:2, height:3 },
+		frame:{ width:1200, height:1200 },
+		anchor:{ x:0, y:0 },
+		frameNames:[ "sky", "clouds", "buildings", "grass", "stump" ],
+		x:0, y:0
+	};
+	self.sky = new Sprite(BGSpriteConfig);
+	self.sky.gotoFrameByName("sky");
+	self.clouds = new Sprite(BGSpriteConfig);
+	self.clouds.gotoFrameByName("clouds");
+	self.buildings = new Sprite(BGSpriteConfig);
+	self.buildings.gotoFrameByName("buildings");
+	self.grass = new Sprite(BGSpriteConfig);
+	self.grass.gotoFrameByName("grass");
+	self.stump = new Sprite(BGSpriteConfig);
+	self.stump.gotoFrameByName("stump");
+
+	/////////////////////////////////////////////
+	// EXTERNAL WORLD SPRITES ///////////////////
+	/////////////////////////////////////////////
+
+	// Hong in
+	self.hong_walks_in = new Sprite({
+		image: Library.images.a4_hong_walks_in,
+		grid:{ width:8, height:3 },
+		frame:{ width:720, height:500 },
+		anchor:{ x:0, y:0 },
+		x:0, y:200
 	});
-	self.callbackSprite = new Sprite({
+	self.hong_walks_in.gotoFrame(19); // blank
+
+	// Callback
+	self.callback = new Sprite({
 		image: Library.images.act4_callback,
 		grid:{ width:2, height:1 },
 		frame:{ width:400, height:200 },
-		y: 347,
-		frameNames:[
-			"phone",
-			"puddle"
-		]
+		y: 347
 	});
-	self.callbackSprite.gotoFrameByName( _.act1_ending=="fight" ? "phone" : "puddle" );
+	self.callback.gotoFrame( _.act1_ending=="fight" ? 0 : 1 );
 
-	self.alShireSprite = new Sprite({
+	var hongSitsSprite = {
+		image: Library.images.a4_hong_transition,
+		grid:{ width:8, height:3 },
+		frame:{ width:720, height:500 },
+		anchor:{ x:0, y:0 },
+		x:0, y:200
+	};
+
+	// The crutches
+	self.crutches = new Sprite(hongSitsSprite);
+	self.crutches.gotoFrame(2);
+	self.crutches.visible = false;
+	
+	// The legs
+	self.legs = new Sprite(hongSitsSprite);
+	self.legs.gotoFrame( _.INJURED ? 1 : 0);
+	self.legs.visible = false;
+
+	// Hong transition
+	self.hong_transition = new Sprite(hongSitsSprite);
+	self.hong_transition.gotoFrame(3);
+	self.hong_transition.visible = false;
+
+	// Hong transition Cone
+	self.hong_transition_cone = new Sprite(hongSitsSprite);	
+	self.hong_transition_cone.gotoFrame(6);
+	self.hong_transition_cone.visible = false;
+	
+	// Alshire
+	self.alshire = new Sprite({
 		image: Library.images.al_shire,
-		grid:{ width:4, height:1 },
+		grid:{ width:8, height:3 },
 		frame:{ width:360, height:360 },
-		y: 192,
-		frameNames:[
-			"ask",
-			"panic",
-			"run",
-			"blank"
-		]
+		y: 190
 	});
-	self.alShireSprite.gotoFrameByName("blank"); // blank
-	self.outsideHongSprite = new Sprite({
-		image: Library.images.outside_hong,
-		grid:{ width:4, height:3 },
-		frame:{ width:720, height:720 },
-		y: 90,
-		frameNames:[
-			"blank",
+	self.alshire.visible = false;
 
-			"walk",
-			"walk-injured",
-			"eat",
-			"eat-injured",
-			"talk",
-			"talk-injured",
-			"look-back",
-			"look-back-injured",
-		]
+	// Hong alshire
+	self.hong_to_alshire = new Sprite({
+		image: Library.images.hong_to_alshire,
+		grid:{ width:8, height:2 },
+		frame:{ width:300, height:300 },
+		/*x:210,*/ y:258
 	});
+	self.hong_to_alshire.visible = false;
+
+	// BB alshire
+	var bb_to_alshire_sprite = {
+		image: Library.images.bb_to_alshire,
+		grid:{ width:4, height:1 },
+		frame:{ width:200, height:300 },
+		/*x:261,*/ y:281
+	};
+	self.bb_to_alshire = new Sprite(bb_to_alshire_sprite);
+	self.bb_to_alshire.visible = false;
+
+	/////////////////////////////////////////////
+	// INTERNAL WORLD SPRITES ///////////////////
+	/////////////////////////////////////////////
 
 	// Anxiety BG... WHITE MODE
 	self.anxiety = new BG_Anxiety(true);
 
-	// Talking Sprites
-	self.smashSprite = new Sprite({
-		image: Library.images.a4_talk_smash,
-		grid:{ width:3, height:1 },
-		frame:{ width:720, height:600 },
+	// Hong
+	self.hong = new Act4_Hong();
+	
+	// BB
+	self.beebee = new Act4_Beebee();
+	
+	// Smash Sprite
+	var break_hp_sprite = {
+		image: Library.images.break_hp,
+		grid:{ width:8, height:2 },
+		frame:{ width:720, height:1000 },
+	};
+	self.break_hp = new Sprite(break_hp_sprite);
+	self.break_hp.y = -70;
+	self.break_hp.visible = false;
+	self.break_hp_cone = new Sprite(break_hp_sprite);
+	self.break_hp_cone.visible = false;
+
+	// Hong Closer
+	self.hong_closer = new Sprite({
+		image: Library.images.hong_closer,
+		grid:{ width:8, height:1 },
+		frame:{ width:300, height:300 },
+		y: 270
+	});
+	self.hong_closer.visible = false;
+
+	// BB Closer
+	var bb_closer_sprite = {
+		image: Library.images.bb_closer,
+		grid:{ width:8, height:4 },
+		frame:{ width:500, height:500 },
 		y: 200
-	});
-	self.smashSprite.gotoFrame(2); // blank
-	self.talk1Sprite = new Sprite({
-		image: Library.images.a4_talk_1,
-		grid:{ width:3, height:1 },
-		frame:{ width:720, height:400 },
-		y: 256
-	});
-	self.talk2Sprite = new Sprite({
-		image: Library.images.a4_talk_2,
-		grid:{ width:4, height:2 },
-		frame:{ width:720, height:400 },
-		y: 256,
-		frameNames:[
-
-			"talk",
-
-			"pat-bb-1",
-			"pat-bb-2",
-			"pat-bb-3",
-
-			"pat-hong-1",
-			"pat-hong-2",
-			"pat-hong-3",
-
-			"freak-out"
-
-		]
-	});
+	};
+	self.bb_closer = new Sprite(bb_closer_sprite);
+	self.bb_closer.visible = false;
+	self.bb_closer_cone = new Sprite(bb_closer_sprite);
+	self.bb_closer_cone.visible = false;
+	self.bb_closer_cone.gotoFrame(28);
+	self.bb_closer_coneb = new Sprite(bb_closer_sprite);
+	self.bb_closer_coneb.visible = false;
+	self.bb_closer_coneb.gotoFrame(29);
 
 	// LAYERS
 	self.layers = [
 		
-		self.bgSprite,
-		self.callbackSprite,
-		self.alShireSprite,
-		self.outsideHongSprite,
+		self.sky,
+		self.clouds,
+		self.buildings,
+		self.grass,
 
+		self.alshire,
+
+		self.hong_walks_in,
+		self.callback,
+
+		self.stump,
+
+		self.crutches,
 		self.anxiety,
+		self.legs,
+		self.hong_transition,
+		self.hong_transition_cone,
 
-		self.smashSprite,
-		self.talk1Sprite,
-		self.talk2Sprite
+		self.break_hp,
+		self.break_hp_cone,
+
+		self.hong,
+		self.beebee,
+
+		self.hong_to_alshire,
+		self.bb_to_alshire,
+
+		self.hong_closer,
+		self.bb_closer_coneb,
+		self.bb_closer,
+		self.bb_closer_cone,
 
 	];
 	var PARALLAXES = [
 		
-		0.5, // placeholder bg
-		0.8, // callback
-		0.6, // Al Shire
-		1.0, // outside Hong
+		0, // sky
+		0.1, // clouds
+		0.25, // buildings
+		0.48, // grass
 
-		0.0, // anxiety bg
+		0.8, // alshire
 
-		1.0, // smash sprite
-		1.0, // talk 1 sprite
-		1.0, // talk 2 sprite
+		1.0, // hong_walks_in
+		1.0, // callback
+
+		1.0, // stump
+
+		1.0, // crutches
+		0.0, // anxiety
+		1.0, // legs
+		1.0, // hong_transition
+		1.0, // hong_transition_cone
+
+		0, // break_hp
+		0, // break_hp_cone
+
+		1.0, // hong
+		1.0, // beebee
+
+		1.0, // hong_to_alshire
+		1.0, // bb_to_alshire
+
+		1.0, // hong_closer,
+		1.0, // bb_closer_coneb
+		1.0, // bb_closer,
+		1.0, // bb_closer_cone,
 
 	];
 	var ALPHAS = [
 
-		1.0, // placeholder bg
-		1.0, // callback
-		1.0, // callback
-		1.0, // outside Hong
+		1.0, // sky
+		1.0, // clouds
+		1.0, // buildings
+		1.0, // grass
 
-		0.0, // anxiety bg
+		1.0, // alshire
 
-		1.0, // smash sprite
-		0.0, // talk 1 sprite
-		0.0, // talk 2 sprite
+		1.0, // hong_walks_in
+		1.0, // callback
+		
+		1.0, // stump
+		
+		1.0, // crutches
+		0.0, // anxiety
+		1.0, // legs
+		1.0, // hong_transition
+		1.0, // hong_transition_cone
+
+		1.0, // break_hp
+		1.0, // break_hp_cone
+
+		0.0, // hong
+		0.0, // beebee
+
+		1.0, // hong_to_alshire
+		1.0, // bb_to_alshire
+
+		1.0, // hong_closer,
+		1.0, // bb_closer_coneb
+		1.0, // bb_closer,
+		1.0, // bb_closer_cone,
 
 	];
+	var MAGIC_NUMBER_2 = 163;
 	var OFFSETS = [
-		0,
-		0,
-		0,
-		0,
 
-		0,
+		0, // sky
+		0, // clouds
+		0, // buildings
+		0, // grass
 
-		-210,
-		-210,
-		-210
-	]
+		0, // alshire
+
+		0, // hong_walks_in
+		0, // callback
+		
+		0, // stump
+		
+		207, // crutches
+		0, // anxiety
+		207, // legs
+		207, // hong_transition
+		207, // hong_transition_cone
+
+		0, // break_hp
+		0, // break_hp_cone
+
+		0, // hong
+		0, // beebee
+
+		210, // hong_to_alshire
+		261+100, // bb_to_alshire
+
+		50 + MAGIC_NUMBER_2, // hong_closer,
+		96 + MAGIC_NUMBER_2, // bb_closer_coneb
+		96 + MAGIC_NUMBER_2, // bb_closer,
+		96 + MAGIC_NUMBER_2, // bb_closer_cone,
+
+	];
+
+	////////////////////////////////////////////////////////////////////////
+	// ANIMATIONS... ///////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
+
+	// animation: { ticker:0, target:"sprite_name", frames:[{when:0, wait:0.1, then:4}, ...] }
+	self.animations = [];
+	self.createAnimation = function(spriteName, frames){
+		self.animations.push({
+			ticker: 0,
+			target: spriteName,
+			frames: frames
+		});	
+	};
+	var _animSequence = function(from, to, duration, loop){
+		var frames = [];
+		for(var frame=from; frame<=to; frame++){
+			
+			if(loop){
+				// LOOP
+				var next = (frame==to) ? from : frame+1;
+				frames.push({ when:frame, wait:duration, then:next });
+			}else{
+				// NOT LOOP: FINAL FRAME IS "TO"
+				var next = frame+1;
+				if(next<=to){
+					frames.push({ when:frame, wait:duration, then:next });
+				}
+			}
+
+		}
+		return frames;
+	};
+	self.executeAnimation = function(anim){
+
+		// Frame...
+		var sprite = self[anim.target];
+		var frame = anim.frames.find(function(frame){
+			return frame.when == sprite.currentFrame;
+		});
+		if(frame){
+
+			var frameToGoTo = frame.when;
+
+			// Next?
+			anim.ticker += 1/60;
+			if(anim.ticker >= frame.wait){
+				anim.ticker = 0;
+				frameToGoTo = frame.then;
+			}
+
+			// Change sprite
+			sprite.gotoFrame(frameToGoTo);
+
+		}
+
+	};
+
+	// SMASH THAT
+	self.createAnimation("break_hp", _animSequence( 1,4, 1/12, true) );
+
+	// ALSHIRE
+	self.createAnimation("alshire", _animSequence( 6,9, 1/12, true) );
+	self.createAnimation("alshire", _animSequence( 11,22, 1/30, false) );
+
+	// BB
+	self.createAnimation("bb_closer", _animSequence( 18,21, 1/24, true) );
+
+	////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
+
 
 	var parallax = 0;
 	var parallaxTicker = 0;
 	var PARALLAXING = null;
-	var ALPHA_INDEX = 4;
+	var ANXIETY_INDEX = 9;
+	var ticker = 0;
+	var MAGIC_NUMBER = (210 + 8);
+
 	self.update = function(){
+
+		// TICKER
+		ticker += 1/60;
+
+		// CLOUD OFFSET
+		OFFSETS[1] = 80 - ticker*3;
 
 		// START PARALLAXING IN / OUT
 		if(PARALLAXING!=null){
@@ -186,21 +418,23 @@ function BG_Act4(){
 			// 0 to -180 in one second, smoothed
 			var t = Math.cos(parallaxTicker*Math.TAU/2); // 1 to -1
 			t = (1-t)/2; // 0 to 1
-			parallax = -t*210;
+			parallax = -t*MAGIC_NUMBER;
 
 			// Anxiety Alpha
-			ALPHAS[ALPHA_INDEX] = t;
+			ALPHAS[ANXIETY_INDEX] = t;
 
 			// DONE
 			if(t==1 || t==0){
 				PARALLAXING = null;
 
-				if(STAGE==1){
-					ALPHAS[6] = 1; // Talk 1
-				}
-
-				if(STAGE==3){
-					ALPHAS[7] = 1; // Talk 2
+				// Seeing Al-Shire
+				if(STAGE==2){
+					self.break_hp.visible = false;
+					self.bb_to_alshire.visible = true;
+					if(_.INJURED){
+						self.bb_to_alshire.gotoFrame(2); // CONE!
+					}
+					ALPHAS[16] = 0; // BB
 				}
 
 			}
@@ -208,27 +442,69 @@ function BG_Act4(){
 		}
 
 		// Anxiety BG
-		if(ALPHAS[ALPHA_INDEX]>0){
-			self.anxiety.update(ALPHAS[ALPHA_INDEX]);
-			if(ALPHAS[ALPHA_INDEX]==1){ // if fully visible...
-				ALPHAS[0] = ALPHAS[1] = ALPHAS[2] = ALPHAS[3] = 0; // hide everything under
-			}else{
-				ALPHAS[0] = ALPHAS[1] = ALPHAS[2] = ALPHAS[3] = 1; // hide everything under
-			}
+		if(ALPHAS[ANXIETY_INDEX]>0){
+			self.anxiety.update(ALPHAS[ANXIETY_INDEX]);
 		}
+
+		// BREAK_HP'S ALPHA
+		if(self.break_hp.visible){
+			self.break_hp.alpha = ALPHAS[ANXIETY_INDEX];
+		}
+
+		// ALL ANIMS
+		self.animations.forEach(self.executeAnimation);
 
 	};
 
 	self.draw = function(ctx){
 
+		// SUPER HACK FOR CONES
+
+		// INTRO
+		if(_.INJURED && self.hong_transition.visible && self.hong_transition.currentFrame>=16){
+			self.hong_transition_cone.visible = true;
+			self.hong_transition_cone.gotoFrame(self.hong_transition.currentFrame+5);
+		}else{
+			self.hong_transition_cone.visible = false;
+		}
+
+		// SMASHING
+		if(self.break_hp.visible){
+			self.break_hp.y = self.break_hp.y*0.8 + 0*0.2; // move in
+		}
+		if(_.INJURED && self.break_hp_cone.visible){
+			self.break_hp_cone.gotoFrame( self.break_hp.currentFrame+5 );
+		}
+		self.break_hp_cone.y = self.break_hp.y;
+
+		// ENDINGS YAP YAP YAP
+		if(self.bb_closer.currentFrame>=18 && self.bb_closer.currentFrame<=21){
+			self.bb_closer_coneb.gotoFrame(31); // blank
+			self.bb_closer_cone.gotoFrame(self.bb_closer.currentFrame + 4); // CONE
+		}
+
+		// BB EASES IN
+		if(self.bb_to_alshire.visible){
+			OFFSETS[18] = OFFSETS[18]*0.9 + 261*0.1;
+		}
+
+
+		/////////////////////////////////////////
+
 		ctx.save();
 
 		for(var i=0; i<self.layers.length; i++){
+			
 			var layer = self.layers[i];
-			layer.x = PARALLAXES[i] * parallax - OFFSETS[i];
+			layer.x = PARALLAXES[i] * parallax + OFFSETS[i];
+			
+			// DON'T DRAW ANYTHING UNDER ANXIETY_INDEX WHEN'S IT'S 1
+			var DONT_DRAW_BENEATH = (ALPHAS[ANXIETY_INDEX]==1);
 			if(ALPHAS[i]>0){
-				ctx.globalAlpha = ALPHAS[i];
-				layer.draw(ctx);
+				if( !(i<ANXIETY_INDEX && DONT_DRAW_BENEATH) ){
+					ctx.globalAlpha = ALPHAS[i];
+					layer.draw(ctx);
+				}
 			}
 		}
 
@@ -239,23 +515,94 @@ function BG_Act4(){
 	var STAGE = 0;
 	var _subscriptions = [];
 	_subscriptions.push(
+
+		subscribe("act4", function(thing, frame){
+			if(typeof frame=="string"){
+				if(frame=="next"){
+					self[thing].nextFrame();
+				}else{
+					self[thing].gotoFrameByName(frame);
+				}
+			}else{
+				self[thing].gotoFrame(frame);
+			}
+		}),
+		subscribe("act4_hong_sits", function(){
+
+			if(_.INJURED){
+				self.crutches.visible = true;
+				//self.hong_transition_cone.visible = true;
+			}
+			self.legs.visible = true;
+			self.hong_walks_in.visible = false;
+			self.hong_transition.visible = true;
+
+		}),
+
 		subscribe("act4-out-1", function(){
 			
-			self.talk1Sprite.gotoFrame( _.INJURED ? 0 : 1 );
-
-			// WHOOSH
 			STAGE = 1;
 			PARALLAXING = "out";
-			sfx("whoosh");
-
+			sfx("whoosh"); // WHOOSH
+			
 			// IT'S WHITE IN HERE
 			window.BLACK_CTA = true;
 
 		}),
+		subscribe("act4-show-chars", function(){
+			self.hong_transition.visible = false;
+			ALPHAS[15] = 1; // Hong
+			ALPHAS[16] = 1; // Beebee
+		}),
+
+
+		subscribe("smash", function(stage){
+			if(stage==0){
+
+				self.break_hp.visible = true;
+
+				sfx("ui_show_choice", {volume:0.4});
+
+				hong({ body:"normal", eyes:"look_up", mouth:"blank" });
+				bb({ eyes:"normal_u" });
+
+			}
+			if(stage==1){
+				
+				ALPHAS[15] = 0; // Hong
+				ALPHAS[16] = 0; // Beebee
+				
+				self.break_hp.gotoFrame(1);
+				if(_.INJURED){
+					self.break_hp_cone.visible = true;
+					self.break_hp_cone.gotoFrame(1+5);
+				}
+
+			}
+			if(stage==2){
+				
+				ALPHAS[15] = 1; // Hong
+				ALPHAS[16] = 1; // Beebee
+
+				self.break_hp.gotoFrame(5);
+				self.break_hp_cone.visible = false;
+				
+			}
+		}),
+
 		subscribe("act4-in-2", function(){
 
-			// SHOW ACTION, HIDE CHARS
-			ALPHAS[6] = 0; // Bye Talk 1
+			// Hide JUST HONG, parallax BB.
+			ALPHAS[15] = 0; // Hong
+			self.beebee.ALLOW_PARALLAX = true;
+			PARALLAXES[16] = 1.0; // battle bb
+			OFFSETS[16] = MAGIC_NUMBER*PARALLAXES[16]; // battle bb
+			PARALLAXES[13] = 1.0; // break_hp
+			OFFSETS[13] = MAGIC_NUMBER*PARALLAXES[13]; // break_hp
+
+			// Show Alshire sprites
+			self.alshire.visible = true;
+			self.hong_to_alshire.visible = true;
 
 			// WHOOSH
 			STAGE = 2;
@@ -266,6 +613,7 @@ function BG_Act4(){
 			window.BLACK_CTA = false;
 
 		}),
+
 		subscribe("act4-out-3", function(){
 
 			// WHOOSH
@@ -273,33 +621,31 @@ function BG_Act4(){
 			PARALLAXING = "out";
 			sfx("whoosh");
 
+			// PARALLAX
+			MAGIC_NUMBER = MAGIC_NUMBER_2;
+
+			// JUMP CUT TO THE FINAL BB
+			self.bb_to_alshire.visible = false;
+			self.bb_closer.visible = true;
+			if(_.INJURED){
+				self.bb_closer_coneb.visible = true;
+				self.bb_closer_cone.visible = true;
+			}
+
 			// IT'S WHITE IN HERE
 			window.BLACK_CTA = true;
 
 		}),
+		subscribe("act4-jumpcut-hong", function(){
+			self.hong_to_alshire.visible = false;
+			self.hong_closer.visible = true;
+		})
+
+		/*
 		subscribe("outside-hong", function(frame){
 			if(_.INJURED) frame += "-injured";
 			if(self.outsideHongSprite.doesFrameNameExist(frame)){
 				self.outsideHongSprite.gotoFrameByName(frame);
-			}
-		}),
-		subscribe("smash", function(stage){
-			if(stage==0){
-				Game.clearText();
-				HP.show();
-				sfx("ui_show_choice", {volume:0.4});
-			}
-			if(stage==1){
-				HP.hide(true);
-				self.talk1Sprite.alpha = 0;
-				self.smashSprite.gotoFrame(0);
-			}
-			if(stage==2){
-				self.talk1Sprite.alpha = 1;
-				self.smashSprite.gotoFrame(1);
-			}
-			if(stage==3){
-				self.smashSprite.gotoFrame(2);
 			}
 		}),
 		subscribe("al-shire", function(frame){
@@ -307,7 +653,7 @@ function BG_Act4(){
 		}),
 		subscribe("end-pat", function(frame){
 			self.talk2Sprite.gotoFrameByName(frame);
-		})
+		})*/
 	);
 
 	self.kill = function(){

@@ -2,21 +2,142 @@
 
 ```
 SceneSetup.act4();
+Game.FORCE_CANT_SKIP = true;
 ```
 
-(...5001)
+(...1001)
 
-`publish("outside-hong", ["walk"])`
+```
+/* (...5001) */
+var hong_frame = _.INJURED ? 9 : 0;
+publish("act4", ["hong_walks_in",hong_frame]);
+```
 
-(...2001)
+(...666)
 
-`publish("outside-hong", ["eat"])`
+`publish("act4", ["hong_walks_in", "next"]);`
 
-(...2001)
+(...666)
+
+`publish("act4", ["hong_walks_in", "next"]);`
+
+(...666)
+
+`publish("act4", ["hong_walks_in", "next"]);`
+
+(...666)
+
+`publish("act4", ["hong_walks_in", "next"]);`
+
+(...1667)
+
+`publish("act4", ["hong_walks_in", "next"]);`
+
+(...666)
+
+`publish("act4", ["hong_walks_in", "next"]);`
+
+(...666)
+
+`publish("act4", ["hong_walks_in", "next"]);`
+
+(...1333)
+
+`publish("act4", ["hong_walks_in", "next"]);`
+
+(...167)
+
+`publish("act4_hong_sits");`
+
+(...66)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...133)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...1333)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...333)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...1001)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...333)
+
+`publish("act4", ["hong_transition", 9]);`
+
+(...333)
+
+`publish("act4", ["hong_transition", 10]);`
+
+(...333)
+
+`publish("act4", ["hong_transition", 9]);`
+
+(...333)
+
+`publish("act4", ["hong_transition", 10]);`
+
+(...333)
+
+`publish("act4", ["hong_transition", 9]);`
+
+(...333)
+
+`publish("act4", ["hong_transition", 10]);`
+
+(...333)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...1466)
 
 `publish("act4-out-1");`
 
-(...2001)
+(...201)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...99)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...99)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...99)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...99)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...99)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...99)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...99)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...99)
+
+`publish("act4", ["hong_transition", "next"]);`
+
+(...99)
 
 `Game.FORCE_CANT_SKIP = false;`
 
@@ -24,7 +145,7 @@ h: *sigh*
 
 h: So what the hell was the moral of this story?
 
-h: What did we even *learn*? I *was* being stupid, my "friends" *were* using me, and we almost fucking *died*.
+h: What did we even *learn*? I *was* being stupid, my "friends" *were* using me, and we almost goddamn *died*.
 
 {{if _.INJURED}}
 [Yeah, not to mention the hospital bill.](#act4a_bill)
@@ -993,6 +1114,8 @@ b: I want to be a good guard-dog. Just like how hunger & thirst are alarms for y
 b: I want to be the alarm for your emotional needs – your needs for safety, belonging, goodness.
 
 b: But... I suck at my job, so I need you to train me.
+
+b: Help me help you.
 
 b: Teaching an old dog new tricks *will* take a while. Maybe *years.*
 
