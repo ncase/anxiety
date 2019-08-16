@@ -933,6 +933,9 @@ Game.resetScene = function(){
 	Game.scene = {};
 	Game.scene.children = [];
 
+	// Misc
+	Game.WORDS_HEIGHT_BOTTOM = -1;
+
 };
 Game.resetScene();
 

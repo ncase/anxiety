@@ -377,7 +377,8 @@ function BG_Act4(){
 	self.createAnimation("break_hp", _animSequence( 1,4, 1/12, true) );
 
 	// ALSHIRE
-	self.createAnimation("alshire", _animSequence( 6,9, 1/12, true) );
+	self.createAnimation("alshire", _animSequence( 4,5, 1/10, true) );
+	self.createAnimation("alshire", _animSequence( 6,9, 1/15, true) );
 	self.createAnimation("alshire", _animSequence( 11,22, 1/30, false) );
 
 	// BB
@@ -431,9 +432,7 @@ function BG_Act4(){
 				if(STAGE==2){
 					self.break_hp.visible = false;
 					self.bb_to_alshire.visible = true;
-					if(_.INJURED){
-						self.bb_to_alshire.gotoFrame(2); // CONE!
-					}
+					self.bb_to_alshire.gotoFrame(_.INJURED ? 2 : 0); // CONE?
 					ALPHAS[16] = 0; // BB
 				}
 
@@ -478,6 +477,14 @@ function BG_Act4(){
 		self.break_hp_cone.y = self.break_hp.y;
 
 		// ENDINGS YAP YAP YAP
+		if(self.bb_closer.currentFrame>=13 && self.bb_closer.currentFrame<=15){
+			self.bb_closer_coneb.gotoFrame(27);
+			self.bb_closer_cone.gotoFrame(26);
+		}
+		if(self.bb_closer.currentFrame==16){
+			self.bb_closer_coneb.gotoFrame(31); // blank
+			self.bb_closer_cone.gotoFrame(17);
+		}
 		if(self.bb_closer.currentFrame>=18 && self.bb_closer.currentFrame<=21){
 			self.bb_closer_coneb.gotoFrame(31); // blank
 			self.bb_closer_cone.gotoFrame(self.bb_closer.currentFrame + 4); // CONE
@@ -602,6 +609,7 @@ function BG_Act4(){
 
 			// Show Alshire sprites
 			self.alshire.visible = true;
+			self.alshire.gotoFrame(23);
 			self.hong_to_alshire.visible = true;
 
 			// WHOOSH
@@ -641,19 +649,6 @@ function BG_Act4(){
 			self.hong_closer.visible = true;
 		})
 
-		/*
-		subscribe("outside-hong", function(frame){
-			if(_.INJURED) frame += "-injured";
-			if(self.outsideHongSprite.doesFrameNameExist(frame)){
-				self.outsideHongSprite.gotoFrameByName(frame);
-			}
-		}),
-		subscribe("al-shire", function(frame){
-			self.alShireSprite.gotoFrameByName(frame);
-		}),
-		subscribe("end-pat", function(frame){
-			self.talk2Sprite.gotoFrameByName(frame);
-		})*/
 	);
 
 	self.kill = function(){

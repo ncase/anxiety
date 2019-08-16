@@ -1011,7 +1011,7 @@ h2: Just remembering a friendly face, is all.
 `publish("al-shire", ["panic"]);`
 
 {{if _.TOP_FEAR=="harm"}}
-s: AHHHHH I KNEW IT! THEY'RE A DANGEROUS CRAZY PSYCHO!
+s: AHHHHH I KNEW IT! THEY'RE A DANGEROUS PANIC-DRIVEN PSYCHO!
 {{/if}}
 
 {{if _.TOP_FEAR=="alone"}}

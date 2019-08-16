@@ -117,6 +117,12 @@ function Act4_Beebee(){
 	_subscriptions.push( subscribe("bb", self.gotoFrames) );
 	_subscriptions.push( subscribe("DONE_SPEAKING", self.whenDoneSpeaking) );
 
+	// Hide cone?
+	if(!_.INJURED){
+		self.layers.coneb.visible = false;
+		self.layers.cone.visible = false;
+	}
+
 	// Draw!
 	var ticker = 0;
 	self.characterSpeakerID = "b";
