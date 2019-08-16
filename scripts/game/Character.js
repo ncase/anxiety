@@ -157,6 +157,23 @@ function Character(spriteConfig, animLoops){
 		// Anim Loop rules!
 		self.runAnimLoopRules();
 
+		// SUPER DUPER HACK
+		if(THERE_IS_A_CONE){
+			if(l.mouth.currentFrameName.indexOf("scream")>=0){
+				l.cone.gotoFrameByName( "cone_scream" );
+				l.coneb.gotoFrameByName( "coneb_scream" );
+			}else if(l.body.currentFrameName.indexOf("karate")>=0){
+				l.cone.gotoFrameByName( "cone_karate" );
+				l.coneb.gotoFrameByName( "coneb_karate" );
+			}else if(l.body.currentFrameName.indexOf("yap")>=0){
+				l.cone.gotoFrame(l.body.currentFrame+4);
+				l.coneb.gotoFrameByName( "coneb_blank" );
+			}else{
+				l.cone.gotoFrameByName( "cone_normal" );
+				l.coneb.gotoFrameByName( "coneb_normal" );
+			}
+		}
+
 		// SUPER HACK
 		if(THERE_IS_A_CONE){
 			l.coneb.draw(ctx);

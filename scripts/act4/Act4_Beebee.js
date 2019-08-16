@@ -11,7 +11,7 @@ function Act4_Beebee(){
 		image: Library.images.act4_bb,
 		grid:{
 			width: 8,
-			height: 8
+			height: 9
 		},
 		frame:{
 			width: 500,
@@ -24,10 +24,10 @@ function Act4_Beebee(){
 		frameNames:[
 
 			"body_normal",
-			"body_normal_chest",
-			"body_normal_two_up",
-			"body_normal_one_up",
-			"body_normal_paw",
+			"body_chest",
+			"body_two_up",
+			"body_one_up",
+			"body_paw",
 			"cone_normal",
 			"coneb_normal",
 			"mouth_normal",
@@ -95,6 +95,8 @@ function Act4_Beebee(){
 			"eyes_blank", // BLANK
 			"mouth_blank", // BLANK
 
+			"coneb_blank", // BLANK
+
 		],
 		x: 110+171,
 		y: 200+242,
@@ -102,7 +104,15 @@ function Act4_Beebee(){
 	};
 
 	// ANIM LOOPS
-	var animLoops = [];
+	var animLoops = [
+
+		// YAP YAP YAP
+		{ target:"body", ifOnFrame:"yap_1*", wait:1/24, thenGoToFrame:"yap_2*" },
+		{ target:"body", ifOnFrame:"yap_2*", wait:1/24, thenGoToFrame:"yap_3*" },
+		{ target:"body", ifOnFrame:"yap_3*", wait:1/24, thenGoToFrame:"yap_4*" },
+		{ target:"body", ifOnFrame:"yap_4*", wait:1/24, thenGoToFrame:"yap_1*" },
+
+	];
 
 	// Inherit from Character!
 	Character.apply(self, [spriteConfig, animLoops]);

@@ -353,7 +353,7 @@ publish("act4", ["hong_to_alshire", 3]);
 publish("act4", ["bb_to_alshire", _.INJURED ? 2 : 0]);
 ```
 
-h2: Ah, I didn't mean to come off as rude!
+h2: Ah, I don't mean to be rude!
 
 `publish("act4", ["hong_to_alshire", 6]);`
 
