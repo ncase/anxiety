@@ -11,7 +11,9 @@ Loader.addImages([
 	{ id:"bb_to_alshire", src:"sprites/act4/bb_to_alshire.png" },
 	
 	{ id:"hong_closer", src:"sprites/act4/hong_closer.png" },
-	{ id:"bb_closer", src:"sprites/act4/bb_closer.png" }
+	{ id:"bb_closer", src:"sprites/act4/bb_closer.png" },
+
+	{ id:"sexy", src:"sprites/act4/sexy.png" }
 
 ]);
 
@@ -316,6 +318,14 @@ function BG_Act4(){
 
 	];
 
+	// HACK: THE SEXY SCENE
+	self.sexySprite = new Sprite({
+		image: Library.images.sexy,
+		grid:{ width:1, height:1 },
+		frame:{ width:720, height:1200 },
+	});
+	self.sexySprite.visible = false;
+
 	////////////////////////////////////////////////////////////////////////
 	// ANIMATIONS... ///////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////
@@ -457,65 +467,73 @@ function BG_Act4(){
 
 	self.draw = function(ctx){
 
-		// SUPER HACK FOR CONES
+		if(self.sexySprite.visible){
 
-		// INTRO
-		if(_.INJURED && self.hong_transition.visible && self.hong_transition.currentFrame>=16){
-			self.hong_transition_cone.visible = true;
-			self.hong_transition_cone.gotoFrame(self.hong_transition.currentFrame+5);
+			self.sexySprite.draw(ctx);
+
 		}else{
-			self.hong_transition_cone.visible = false;
-		}
 
-		// SMASHING
-		if(self.break_hp.visible){
-			self.break_hp.y = self.break_hp.y*0.8 + 0*0.2; // move in
-		}
-		if(_.INJURED && self.break_hp_cone.visible){
-			self.break_hp_cone.gotoFrame( self.break_hp.currentFrame+5 );
-		}
-		self.break_hp_cone.y = self.break_hp.y;
+			// SUPER HACK FOR CONES
 
-		// ENDINGS YAP YAP YAP
-		if(self.bb_closer.currentFrame>=13 && self.bb_closer.currentFrame<=15){
-			self.bb_closer_coneb.gotoFrame(27);
-			self.bb_closer_cone.gotoFrame(26);
-		}
-		if(self.bb_closer.currentFrame==16){
-			self.bb_closer_coneb.gotoFrame(31); // blank
-			self.bb_closer_cone.gotoFrame(17);
-		}
-		if(self.bb_closer.currentFrame>=18 && self.bb_closer.currentFrame<=21){
-			self.bb_closer_coneb.gotoFrame(31); // blank
-			self.bb_closer_cone.gotoFrame(self.bb_closer.currentFrame + 4); // CONE
-		}
+			// INTRO
+			if(_.INJURED && self.hong_transition.visible && self.hong_transition.currentFrame>=16){
+				self.hong_transition_cone.visible = true;
+				self.hong_transition_cone.gotoFrame(self.hong_transition.currentFrame+5);
+			}else{
+				self.hong_transition_cone.visible = false;
+			}
 
-		// BB EASES IN
-		if(self.bb_to_alshire.visible){
-			OFFSETS[18] = OFFSETS[18]*0.9 + 261*0.1;
-		}
+			// SMASHING
+			if(self.break_hp.visible){
+				self.break_hp.y = self.break_hp.y*0.8 + 0*0.2; // move in
+			}
+			if(_.INJURED && self.break_hp_cone.visible){
+				self.break_hp_cone.gotoFrame( self.break_hp.currentFrame+5 );
+			}
+			self.break_hp_cone.y = self.break_hp.y;
+
+			// ENDINGS YAP YAP YAP
+			if(self.bb_closer.currentFrame>=13 && self.bb_closer.currentFrame<=15){
+				self.bb_closer_coneb.gotoFrame(27);
+				self.bb_closer_cone.gotoFrame(26);
+			}
+			if(self.bb_closer.currentFrame==16){
+				self.bb_closer_coneb.gotoFrame(31); // blank
+				self.bb_closer_cone.gotoFrame(17);
+			}
+			if(self.bb_closer.currentFrame>=18 && self.bb_closer.currentFrame<=21){
+				self.bb_closer_coneb.gotoFrame(31); // blank
+				self.bb_closer_cone.gotoFrame(self.bb_closer.currentFrame + 4); // CONE
+			}
+
+			// BB EASES IN
+			if(self.bb_to_alshire.visible){
+				OFFSETS[18] = OFFSETS[18]*0.9 + 261*0.1;
+			}
 
 
-		/////////////////////////////////////////
+			/////////////////////////////////////////
 
-		ctx.save();
+			ctx.save();
 
-		for(var i=0; i<self.layers.length; i++){
-			
-			var layer = self.layers[i];
-			layer.x = PARALLAXES[i] * parallax + OFFSETS[i];
-			
-			// DON'T DRAW ANYTHING UNDER ANXIETY_INDEX WHEN'S IT'S 1
-			var DONT_DRAW_BENEATH = (ALPHAS[ANXIETY_INDEX]==1);
-			if(ALPHAS[i]>0){
-				if( !(i<ANXIETY_INDEX && DONT_DRAW_BENEATH) ){
-					ctx.globalAlpha = ALPHAS[i];
-					layer.draw(ctx);
+			for(var i=0; i<self.layers.length; i++){
+				
+				var layer = self.layers[i];
+				layer.x = PARALLAXES[i] * parallax + OFFSETS[i];
+				
+				// DON'T DRAW ANYTHING UNDER ANXIETY_INDEX WHEN'S IT'S 1
+				var DONT_DRAW_BENEATH = (ALPHAS[ANXIETY_INDEX]==1);
+				if(ALPHAS[i]>0){
+					if( !(i<ANXIETY_INDEX && DONT_DRAW_BENEATH) ){
+						ctx.globalAlpha = ALPHAS[i];
+						layer.draw(ctx);
+					}
 				}
 			}
-		}
 
-		ctx.restore();
+			ctx.restore();
+
+		}
 
 	};
 
@@ -647,6 +665,10 @@ function BG_Act4(){
 		subscribe("act4-jumpcut-hong", function(){
 			self.hong_to_alshire.visible = false;
 			self.hong_closer.visible = true;
+		}),
+
+		subscribe("act4-sexy", function(visible){
+			self.sexySprite.visible = visible;
 		})
 
 	);

@@ -112,6 +112,9 @@ function Act4_Beebee(){
 		{ target:"body", ifOnFrame:"yap_3*", wait:1/24, thenGoToFrame:"yap_4*" },
 		{ target:"body", ifOnFrame:"yap_4*", wait:1/24, thenGoToFrame:"yap_1*" },
 
+		// KARATE
+		{ target:"body", ifOnFrame:"karate_1*", wait:0.25, thenGoToFrame:"karate_2*" }, // no loop
+
 	];
 
 	// Inherit from Character!

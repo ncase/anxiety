@@ -52,8 +52,8 @@ function Act4_Hong(){
 
 			"mouth_normal",
 			"mouth_normal_talk",
-			"mouth_happy",
-			"mouth_happy_talk",
+			"mouth_smile",
+			"mouth_smile_talk",
 			"mouth_sad",
 			"mouth_sad_talk",
 			"mouth_narrow",

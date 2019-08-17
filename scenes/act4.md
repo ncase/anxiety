@@ -272,13 +272,13 @@ b: Well, it makes everything else less scary in comparison. It's also got me thi
 
 `bb({eyes:"normal", mouth:"normal"});`
 
-b: If me fighting you sucks...
+b: If me fighting you sucks, because it doesn't protect you...
 
-h: But me fighting *you* also sucks...
+h: But me fighting you *also* sucks, because it just makes you try harder...
 
 `bb({eyes:"normal_r"})`
 
-b: Because no matter who wins, we *both* lose, so maybe...
+b: Then maybe...
 
 `bb({eyes:"normal"})`
 
@@ -385,8 +385,6 @@ hong({body:"normal"});
 bb({eyes:"normal"});
 ```
 
-(#act4c)
-
 [I'm scared we'll be harmed.](#act4_harm)
 
 [I'm scared we'll be alone.](#act4_alone)
@@ -400,11 +398,15 @@ _.a4_talked_about_harm = true;
 _.a4_fears_discussed += 1;
 ```
 
-`//b: (insert callbacks to harm-fears you used)`
+`bb({eyes:"normal_d"})`
 
 b: I want to protect your need for physical safety,
 
+`bb({eyes:"sad_d"})`
+
 b: But, gosh, there's so many dangerous things in the world!
+
+`bb({eyes:"sad"})`
 
 {{if _.a4_fears_discussed==1}}
 b: I dunno, enough of *me* choosing what to say next. What do *you* say, human?
@@ -428,9 +430,21 @@ b: More thoughts, human?
 
 # act4_harm_skills
 
+`bb({eyes:"look_down", body:"paw"})`
+
 b: But... how? I have fangs and claws, but I'm just a metaphor.
 
+```
+bb({ body:"normal", eyes:"normal" });
+hong({ body:"one_up", eyes:"surprise" });
+```
+
 h: We could pick up self-defense? Improve our general health? Learn to better assert our boundaries?
+
+```
+bb({ eyes:"annoyed_r" });
+hong({ body:"normal", eyes:"normal" });
+```
 
 b: Maybe, but...
 
@@ -442,49 +456,99 @@ b: Maybe, but...
 
 # act4_harm_skills_start
 
+`bb({ eyes:"sad_d" })`
+
 b: There's so much to do, so much we need to fix about ourselves. What do we even *begin* with?
+
+`hong({ body:"shrug", eyes:"surprise" })`
 
 h: We're beginning right now.
 
+`bb({ eyes:"normal", mouth:"narrow" })`
+
 b: Eh?
 
-h: I mean, we're practicing good communication right now. Which will help us detect danger better, with fewer false positives,
+```
+bb({ body:"normal", mouth:"normal" });
+hong({ body:"normal", mouth:"normal", eyes:"normal"});
+```
 
-h: And that *will* help protect us from harm!
+h: We're practicing good communication right now. Which will help us detect danger better, with fewer false positives,
 
-h: Therefore: tis *is* self-defense training.
+`hong({ eyes:"surprise" });`
+
+h: And *that* will help protect us from harm!
+
+`hong({ eyes:"normal", mouth:"normal" });`
+
+h: Therefore: this *is* self-defense training.
+
+`bb({ eyes:"normal_r" })`
 
 b: Huh. I was expecting more of this:
 
-b: (insert karate chop pose)
+```
+Game.FORCE_CANT_SKIP = true;
+Game.clearText();
+hong({ eyes:"sad", mouth:"smile" });
+bb({ body:"karate_1" });
+```
 
-h: Heh.
+(...1001)
+
+`Game.FORCE_CANT_SKIP = false;`
 
 (#act4_something_else)
 
 # act4_harm_skills_work
 
+`bb({ eyes:"normal" });`
+
 h: True, there's no way to 100% protect ourselves...
+
+`hong({ body:"one_up" });`
 
 h: But even a 1% improvement is still worth something, right?
 
+```
+bb({ eyes:"annoyed" });
+hong({ normal:"one_up" });
+```
+
 b: You're seeing the glass as not 99% empty, but 1% full?
 
-h: Which is still worth something if you're stranded in the desert!
+`bb({ eyes:"normal" });`
 
-b: Heh. Bottoms up, then.
+h: Which is still worth something if you're stranded in the desert.
+
+`bb({ eyes:"closed" });`
+
+b: Well. Bottoms up, then.
 
 (#act4_something_else)
 
 # act4_harm_skills_overboard
 
+`bb({ body:"chest", eyes:"annoyed" })`
+
 b: I mean, the whole reason you ignored my warnings was because *I* went overboard with safety! 
+
+`bb({ body:"normal", eyes:"normal" })`
 
 h: Naw, you're right. We would want to do safety in moderation. Everything in moderation.
 
+`bb({ eyes:"suspect" })`
+
 b: Sorry, *EVERYTHING* in moderation?
 
+`hong({ eyes:"annoyed" })`
+
 h: *A moderate number of things* in moderation.
+
+```
+bb({ eyes:"closed" });
+hong({ eyes:"normal" });
+```
 
 b: Thank you for making your statements recursively self-consistent.
 
@@ -493,29 +557,53 @@ b: Thank you for making your statements recursively self-consistent.
 
 # act4_harm_exposure
 
+`bb({ mouth:"scream_talk", eyes:"scream", MOUTH_LOCK:true });`
+
 b: *WHAT*
+
+```
+bb({ mouth:"narrow", eyes:"suspect" });
+hong({ body:"one_up" });
+```
 
 h: I mean, let's say a dog is scared of thunder.
 
+`hong({ body:"hands_1" });`
+
 h: One trick trainers use is to play a recording of thunder at a low volume, then give the dog a treat for staying calm.
+
+`hong({ body:"hands_2" });`
 
 h: Over several days, the trainer raises the volume bit by bit, until the dog has overcome their fear of thunder.
 
+```
+hong({ body:"normal", eyes:"surprise" });
+bb({ mouth:"normal", eyes:"normal" });
+```
+
 h: It's called exposure therapy!
 
+`hong({ body:"point", eyes:"normal" });`
+
 h: Since you're a dog, it should work for you too, right? All mammals have the same fight-or-flight response.
+
+`hong({ body:"normal" });`
 
 [What if we desensitize *too* much?](#act4_harm_exposure_overboard)
 
 [What if we're exposed to *real* danger?](#act4_harm_exposure_hurt)
 
-[I'm a wolf, not a dog.](#act4_harm_exposure_dog)
+[I'm a wolf, not a dog.](#act4_harm_exposure_dog) `bb({ eyes:"suspect" })`
 
 # act4_harm_exposure_dog
 
 h: And I'll show you kindness and patience 'til you're domesticated into a cute lil' puppy.
 
+`bb({ MOUTH_LOCK:true })`
+
 b: ...
+
+`bb({ eyes:"sad", mouth:"smile" })`
 
 b: D'aw.
 
@@ -523,25 +611,43 @@ b: D'aw.
 
 # act4_harm_exposure_overboard
 
+`bb({ eyes:"annoyed" })`
+
 b: We *just* saw what happens if you shut down your fear – you put yourself in *actually* dangerous situations.
+
+`bb({ eyes:"angry_r", body:"one_up" })`
 
 b: Besides, won't *too* much desensitization turn us into psychopaths?
 
+`bb({ mouth:"scream", eyes:"scream", body:"two_up" })`
+
 b: Soon we'll give ourselves treats while watching snuff murder porn!
+
+`hong({ eyes:"annoyed" })`
 
 h: I... think there's a line between that and the thunder.
 
+`bb({ body:"normal", mouth:"normal", eyes:"suspect" })`
+
 b: But exactly *where*, human? *Where?!*
+
+`hong({ eyes:"surprise", body:"one_up" })`
 
 h: I don't know. But *you* can help me!
 
+`hong({ eyes:"normal", body:"normal" })`
+
 h: Working and negotiating with you, we'll draw that line.
+
+`bb({ body:"paw", mouth:"narrow", eyes:"closed" })`
 
 b: Okay. But I've got no opposable thumbs, so you have to do the drawing.
 
 (#act4_something_else)
 
 # act4_harm_exposure_hurt
+
+`bb({ body:"two_up", eyes:"angry_r" })`
 
 {{if _.INJURED}}
 b: For example: we jumped off a freaking *roof!*
@@ -551,11 +657,20 @@ b: For example: we jumped off a freaking *roof!*
 b: For example: we almost jumped off a freaking *roof!*
 {{/if}}
 
+```
+hong({ eyes:"annoyed" });
+bb({ body:"normal", eyes:"annoyed" });
+```
+
 h: Nah you're right. One *can* go too far.
+
+`hong({ eyes:"normal" });`
 
 h: But that's why, if we do exposure therapy, we'll start small, and make small steps upward.
 
 h: Just before we hit *actual* danger, we stop.
+
+`bb({ eyes:"annoyed_r", mouth:"narrow" });`
 
 b: Yeah I draw the line between hearing loud thunder, and standing in a storm with a tall pointy hat.
 
@@ -579,17 +694,32 @@ b: Yeah I draw the line between hearing loud thunder, and standing in a storm wi
 
 # act4_thanks_1
 
+`bb({ MOUTH_LOCK:true })`
+
 b: ...
+
+`bb({ eyes:"annoyed" })`
 
 b: Wait, no arguments for or against what I'm feeling? Just... "thank you"?
 
+`hong({ eyes:"surprise", body:"shrug" })`
+
 h: Yeah! Thank you for showing your concern for my {{_.thanks_for}}.
+
+```
+bb({ eyes:"closed_annoyed", MOUTH_LOCK:true });
+hong({ eyes:"normal", body:"normal" });
+```
 
 b: ...
 
 h: You okay?
 
+`bb({ eyes:"super_sad", mouth:"narrow" });`
+
 b: You've never said *thank you* to me before.
+
+`hong({ mouth:"smile" });`
 
 h: Aw you big fuzzy-wuzzy panic-wolf.
 
@@ -597,17 +727,30 @@ h: Aw you big fuzzy-wuzzy panic-wolf.
 
 # act4_thanks_2
 
-h: Even if you over-react, I appreciate you look out for my {{_.thanks_for}}.
+h: Even if you over-react, I appreciate you looking out for my {{_.thanks_for}}.
+
+`bb({ eyes:"annoyed" })`
 
 b: Wait... you're not just repeating "thank you" to avoid actually talking about these fears, are you?
 
+```
+bb({ eyes:"normal" });
+hong({ eyes:"annoyed", body:"chin" });
+```
+
 h: Well, stuff's complicated, and I don't always have answers ready.
 
+`hong({ eyes:"annoyed_l", body:"one_up" })`
+
 h: It's not like life gives you a list of 3 pre-made dialogue responses.
+
+`hong({ eyes:"normal", mouth:"smile", body:"normal" })`
 
 h: But for now, at least I can at least say thanks.
 
 b: Well, thank you too, for listening to me patiently.
+
+`bb({ eyes:"closed" });`
 
 b: You small hairless flesh-mammal.
 
@@ -617,9 +760,18 @@ b: You small hairless flesh-mammal.
 
 h: Even if your yapping scares me, you're simply trying to protect my {{_.thanks_for}}.
 
+`bb({ eyes:"smile_r" });`
+
 b: Okay, if you keep flattering me like this, the internet's gonna get some weird ideas about us.
 
+```
+bb({ eyes:"smile" });
+hong({ eyes:"annoyed" });
+```
+
 h: C'mon, I'm just a vulnerable college-age kid and you're a big, scary wolf. What's the worst that cou--
+
+`hong({ eyes:"normal", body:"point" });`
 
 h: Actually, do not answer that.
 
@@ -635,11 +787,15 @@ _.a4_talked_about_alone = true;
 _.a4_fears_discussed += 1;
 ```
 
-`//b: (insert callbacks to alone-fears you used)`
+`bb({ eyes:"sad_d" });`
 
-b: I want to make sure you get your social needs met, the human need to belong...
+b: I want to make sure you fulfil that deep, human need to belong...
 
-b: But, I worry: will we ever be loved? *Can* we ever be loved?
+`bb({ eyes:"sad_u" });`
+
+b: But I worry we'll be rejected, unloved, unloveable. Alone.
+
+`bb({ eyes:"sad" });`
 
 {{if _.a4_fears_discussed==1}}
 b: I dunno, enough of *me* choosing what to say next. What do *you* say, human?
@@ -655,7 +811,7 @@ b: More thoughts, human?
 
 `Game.OVERRIDE_CHOICE_SPEAKER = "h"`
 
-[I agree I'd like to work on our social life.](#act4_alone_skills)
+[I agree: let's work on our social life.](#act4_alone_skills)
 
 [I think people like us. Let's find out?](#act4_alone_experiment)
 
@@ -663,35 +819,63 @@ b: More thoughts, human?
 
 # act4_alone_skills
 
-h: We could practice skills like starting conversations, sharing interests, asking, listening, empathizing, etc?
+```
+bb({ eyes:"normal" });
+hong({ body:"chin" });
+```
+
+h: We could practice skills like starting conversations, asking good questions, listening and empathizing, etc?
+
+`hong({ eyes:"normal_l" });`
 
 h: Or make better social habits, like scheduling hangouts with friends or regularly going to meetups?
 
+`hong({ body:"one_up" });`
+
 h: Could also learn to get more comfortable with rejection.
 
-h: Or learn to know when people aren't rejecting us, they're just tired or have Resting Bitch Face.
+`hong({ eyes:"normal" });`
 
-b: That's a lot of options, but...
+h: Or learn to know when people *aren't* rejecting us, they're just tired or have Resting Bitch Face.
 
-[Isn't learning to be friendly *manipulative?*](#act4_alone_skills_manipulative)
+```
+hong({ body:"normal" });
+bb({ eyes:"annoyed_r" });
+```
 
-[Won't being friendly make us *easier to manipulate?*](#act4_alone_skills_manipulated)
+b: That's a lot of options. But, about "learning social skills"...
 
-[What if we try to get better, and still fail?](#act4_alone_skills_fail)
+[Isn't that *manipulative?*](#act4_alone_skills_manipulative)
+
+[Won't that make us *easier to manipulate?*](#act4_alone_skills_manipulated)
+
+[What if we still fail?](#act4_alone_skills_fail)
 
 # act4_alone_skills_manipulative
 
+`bb({ eyes:"suspect" });`
+
 b: Aren't serial killers who can read their victims' emotions great at "empathy"?
 
+`bb({ eyes:"annoyed" });`
+
 b: Didn't Charles Manson win friends and influence people?
+
+`hong({ eyes:"annoyed", body:"chin" });`
 
 h: No, you're right.
 
 h: "Social skills" mean nothing if we don't genuinely care *for* people.
 
+`hong({ body:"normal" });`
+
 h: Basically, just don't be a dick.
 
+`bb({ eyes:"annoyed", mouth:"smile" });`
+
 b: That's a motivational poster caption right there.
+
+`hong({ body:"shrug", mouth:"narrow" });`
 
 h: “Don't Be A Dick”
 
@@ -699,39 +883,79 @@ h: “Don't Be A Dick”
 
 # act4_alone_skills_manipulated
 
+`bb({ eyes:"angry" })`
+
 b: We'll become a Welcome doormat, saying Please and Thank You as people wipe their feet on us!
+
+`bb({ mouth:"scream", eyes:"scream" })`
 
 b: We'll kiss so much butt, it'll look like we're wearing brown lipstick!
 
+```
+bb({ mouth:"normal", eyes:"normal" });
+hong( body:"chin" });
+```
+
 h: Nah, you're right. "Social skills" can't be just about pleasing others, it's also got to be about setting *boundaries.*
 
-h: We can't invite others into our home, if we have no walls to hold up a home.
+`hong( body:"one_up" });`
 
-h: Also... that lipstick mental image... *ew??*
+h: We can't invite others into our home, if we have no walls to hold up our home.
+
+```
+hong( eyes:"angry", mouth:"narrow" });
+bb( eyes:"annoyed", mouth:"smile" });
+```
+
+h: Also... re: that lipstick mental image... *ew??*
 
 (#act4_something_else)
 
 # act4_alone_skills_fail
 
+`bb({ eyes:"annoyed" });`
+
 h: We might fail. Actually, we *will* fail.
+
+```
+bb({ eyes:"normal" });
+hong({ eyes:"surprise", body:"shrug" });
+```
 
 h: And that's fine! Failing is how anyone learns anything new at first!
 
-h: So let's fail our way forward together, yeah?
+`hong({ body:"normal", eyes:"normal" });`
 
-b: Sure... worst-case scenario we can just skip town and get a fake identity.
+h: So let's fail forward together, yeah?
 
-b: I think that only costs two bitcoins these days.
+`bb({ eyes:"normal_r" });`
+
+b: Sure, I guess... worst-case scenario, we can just skip town and get a new identity.
+
+`bb({ eyes:"normal" });`
+
+h: Yeah I think that only costs two bitcoins these days.
 
 (#act4_something_else)
 
 # act4_alone_experiment
 
+```
+hong({ body:"one_up" });
+bb({ eyes:"normal" });
+```
+
 h: We could try some experiments!
+
+`hong({ body:"chin" });`
 
 h: We could ping a friend to hang out, reconnect with an old pal, or even just chat with a barista.
 
-h: I think we may find we're more likable than we suspect.
+`hong({ body:"normal" });`
+
+h: I think we may find we're more likeable than we suspect.
+
+`bb({ eyes:"annoyed" });`
 
 [What if these experiments fail?](#act4_alone_experiment_fail)
 
@@ -741,15 +965,33 @@ h: I think we may find we're more likable than we suspect.
 
 # act4_alone_experiment_fail
 
+`bb({ eyes:"super_sad" });`
+
 b: What if our results are non-significant (p>0.05) and no journal will publish our null findings?
+
+```
+hong({ eyes:"surprise" });
+bb({ eyes:"normal" });
+```
 
 h: You're right, it *could* fail! That's good! It's not a *real* experiment if it couldn't.
 
+`hong({ eyes:"normal" });`
+
 h: And if we learn that we *are* awkward or inconsiderate, then let's improve our social skills.
 
-h: Like starting conversations, sharing interests, listening, empathizing, asking questions...
+`hong({ body:"one_up" });`
+
+h: Like starting conversations, asking good questions, listening and empathizing,...
+
+```
+hong({ body:"normal" });
+bb({ eyes:"annoyed" });
+```
 
 b: ...all that stuff those counselors told us but then we forgot.
+
+`hong({ mouth:"narrow" });`
 
 h: Yup.
 
@@ -759,13 +1001,28 @@ h: Yup.
 
 b: Saying "hi" to the barista isn't exactly gold-medal performance in the Social Butterfly Olympics.
 
+```
+hong({ body:"point", eyes:"surprise" });
+bb({ eyes:"normal" });
+```
+
 h: It is for *us!*
+
+`hong({ body:"one_up", eyes:"annoyed" });`
 
 h: In the social arena, we're not even featherweight class, we're like... quark-weight.
 
+`hong({ body:"normal", eyes:"normal" });`
+
 h: If we have to start with small, cheap wins, so be it. Gotta climb the 1st step before the 1000th step.
 
-b: Yeah! Maybe after saying "hi", we can advance to saying... *"How are you?"*
+b: Yeah! Maybe after saying "Hi", we can advance to saying...
+
+`bb({ body:"two_up", mouth:"smile", eyes:"smile_u" });`
+
+b: *"How are you?"*
+
+`hong({ body:"shrug", mouth:"smile", eyes:"surprise_l" });`
 
 h: *"Not much!"*
 
@@ -773,13 +1030,29 @@ h: *"Not much!"*
 
 # act4_alone_experiment_burden
 
+`bb({ eyes:"suspect_r" })`
+
 b: Maybe the barista just wants to make some dang coffee, not be an *experiment* to see if our social skills suck.
+
+`bb({ eyes:"annoyed" })`
 
 h: Well, if it turns out we *are* being a burden...
 
+```
+hong({ eyes:"surprise" });
+bb({ eyes:"normal" });
+```
+
 h: That's good to know, too!
 
+`hong({ eyes:"normal" });`
+
 h: We can then learn how to pro-actively ask people what they're comfortable with, to know and respect others' boundaries.
+
+```
+hong({ eyes:"annoyed_l", mouth:"narrow" });
+bb({ eyes:"annoyed", mouth:"smile" });
+```
 
 h: Y'know, all that "inter-personal skills" crap we see in counselor brochures.
 
@@ -794,11 +1067,15 @@ _.a4_talked_about_bad = true;
 _.a4_fears_discussed += 1;
 ```
 
-`//b: (insert callbacks to bad-fears you used)`
+`bb({ eyes:"annoyed_r" })`
 
 b: I want to defend your moral needs, that drive to become a better person,
 
+`bb({ eyes:"sad_d" })`
+
 b: But it just feels like we're so... broken.
+
+`bb({ body:"two_up", eyes:"angry" })`
 
 {{if _.INJURED}}
 b: And don't tell me we're *not* messed up. We jumped off a *roof*.
@@ -807,6 +1084,8 @@ b: And don't tell me we're *not* messed up. We jumped off a *roof*.
 {{if !_.INJURED}}
 b: And don't tell me we're *not* messed up. We almost jumped off a *roof*.
 {{/if}}
+
+`bb({ body:"normal", eyes:"sad" })`
 
 {{if _.a4_fears_discussed==1}}
 b: I dunno, enough of *me* choosing what to say next. What do *you* say, human?
@@ -830,9 +1109,18 @@ b: More thoughts, human?
 
 # act4_bad_fix
 
+```
+bb({eyes:"normal"});
+hong({body:"chin"});
+```
+
 h: We could slowly build better habits, get our life more in line with what we value,
 
+`hong({body:"one_up"});`
+
 h: And if needed, we could get professional help – a therapist or counsellor.
+
+`hong({body:"normal"});`
 
 h: There's ways to fix us.
 
@@ -844,19 +1132,46 @@ h: There's ways to fix us.
 
 # act4_bad_fix_cant
 
+`hong({eyes:"annoyed"});`
+
 h: Nah, I guess you're right.
 
 h: We can't fix it all.
 
+`bb({mouth:"scream", eyes:"scream_sad"});`
+
 b: Ahhh I knew it we'll always be broken!
+
+`hong({eyes:"surprise"});`
 
 h: But we can at least be *less* broken.
 
+```
+bb({mouth:"normal", eyes:"annoyed"});
+hong({eyes:"sad", mouth:"smile"});
+```
+
 h: Scars heal with time, but they never go away. And that's okay.
+
+`bb({eyes:"annoyed_r"});`
 
 b: I guess. Besides,
 
+```
+Game.FORCE_TEXT_Y = 460;
+Game.clearText();
+publish("act4-sexy", [true]);
+```
+
 b: Scars are *sexy.*
+
+```
+Game.FORCE_TEXT_Y = -1;
+Game.clearText();
+publish("act4-sexy", [false]);
+bb({body:"chest", mouth:"smile_talk", MOUTH_LOCK:true, eyes:"sexy"}, 0);
+hong({eyes:"normal", mouth:"normal"}, 0);
+```
 
 h: Please do not do that.
 
@@ -864,21 +1179,35 @@ h: Please do not do that.
 
 # act4_bad_fix_too_much
 
+`bb({ eyes:"angry_d" })`
+
 b: This feels sick to admit, but... some part of me *wants* to have this disorder.
+
+`bb({ eyes:"angry" })`
 
 b: I mean, without it, won't we be *boring?*
 
+`bb({ eyes:"sad_r", body:"one_up" })`
+
 b: Without the disorder, won't our art become stale and bland?
 
-b: Without the disorder, won't we be unable to connect with our pals who have the disorder?
+`bb({ eyes:"sad_u", body:"two_up" })`
 
-b: If we're content with life, will we stop driving ourselves to do great things?
+b: Without the disorder, won't we be unable to connect with our friends who have the disorder?
+
+`bb({ eyes:"sad", body:"chest" })`
+
+b: If we're ever content with life, won't we stop driving ourselves to do great things?
+
+`hong({ MOUTH_LOCK:true })`
 
 h: ...
 
-h: If we even have a fear of "running out of fears",
+h: If we even fear... "running out of fears"...
 
 h: I don't think we're gonna run out of fears.
+
+`bb({ eyes:"smile_u", body:"normal", mouth:"smile" })`
 
 b: Oh, yeah! Whew! What a relief!
 
@@ -886,34 +1215,72 @@ b: Oh, yeah! Whew! What a relief!
 
 # act4_bad_fix_afford
 
-b: "Doc, I'm anxious that I'm paying $100/hr just to hear you say *how does that make you feel?*"
+`bb({ body:"one_up", eyes:"sexy", mouth:"normal" })`
+
+b: "Doc, I'm anxious that I'm paying $100/hr just to hear you ask *how does that make you feel?*"
+
+`bb({ body:"paw", eyes:"closed", mouth:"narrow" })`
 
 b: "Mm-hmm. And how does that make you feel?"
 
+```
+bb({ body:"normal", eyes:"normal", mouth:"normal" });
+hong({ eyes:"sad" });
+```
+
 h: Nah, that's a totally reasonable worry.
+
+`hong({ eyes:"annoyed", mouth:"sad" });`
 
 h: And it genuinely sucks that mental healthcare isn't affordable for lots of folks.
 
+`hong({ eyes:"normal", mouth:"normal" });`
+
 h: Still, there are some cheap or free options:
+
+`hong({ body:"chin" })`
 
 h: Support groups, online therapy, student/non-profit health centers...
 
+`hong({ body:"hands_1" })`
+
 h: Picking up a free meditation habit, watching videos on evidence-based mental health...
+
+`hong({ body:"hands_2" })`
 
 h: Borrowing a library book on Cognitive Behavioral Therapy or Acceptance & Commitment Therapy...
 
+`hong({ body:"one_up" })`
+
 h: There's a full list of resources at the end of this game!
+
+```
+hong({ body:"normal" });
+bb({ eyes:"annoyed", mouth:"narrow" });
+```
 
 b: Well *that* fourth wall didn't last long.
 
-h: Mental well-being is more important than some measly narrative convention.
+`hong({ body:"point" });`
+
+h: Some things are more important than narrative convention. Such as mental health.
 
 (#act4_something_else)
 
 
 # act4_bad_accept
 
+```
+bb({ eyes:"normal" });
+hong({ eyes:"normal_l", body:"one_up", mouth:"narrow" });
+```
+
 h: I mean, that's what therapists say right? Accept all your emotions, even the negative ones?
+
+```
+bb({ eyes:"annoyed" });
+hong({ eyes:"normal", body:"normal", mouth:"normal" });
+```
 
 b: Wait.
 
@@ -925,17 +1292,29 @@ b: Wait.
 
 # act4_bad_accept_give_up
 
+`bb({ eyes:"angry", body:"one_up" });`
+
 b: Do you think Martin Luther King would've said, "Shucks we can't sit in the front of the bus, let's just *accept* it?"
 
+`bb({ eyes:"angry_r", body:"two_up" });`
+
 b: Why does the Self-Help Industrial Complex think waving the white flag is some *profound wisdom?*
+
+`bb({ eyes:"annoyed", body:"normal" });`
 
 h: I think therapists mean "accept" bad things as in: acknowledging they exist and are hard to change,
 
 h: But not necessarily giving up a commitment to change.
 
+`bb({ eyes:"suspect" });`
+
 b: Then therapists should say *acknowledge*, not *accept*.
 
+`hong({ body:"chin", eyes:"annoyed" });`
+
 h: Yeah come to think of it, "accept" is kinda confusing.
+
+`bb({ eyes:"closed", mouth:"narrow" });`
 
 b: Well, I *acknowledge* that.
 
@@ -943,15 +1322,27 @@ b: Well, I *acknowledge* that.
 
 # act4_bad_accept_approve
 
+`bb({ eyes:"angry" });`
+
 b: Like it's *good* that we're broken or something? No!
+
+`bb({ eyes:"angry_r", body:"one_up" });`
 
 b: All those dang Hollywood screenwriters who romanticize mental illness are full of crud!
 
+`bb({ eyes:"angry", body:"two_up" });`
+
 b: Having a mental disorder *sucks!* It robs people of *lives!* Why should we "accept" that?!
+
+`bb({ body:"normal" });`
 
 h: I think therapists mean "accept" our emotions as in: be patient with them.
 
+`hong({ body:"one_up" });`
+
 h: Like how struggling in quicksand makes you sink faster, and the solution is to patiently lie flat,
+
+`hong({ eyes:"surprise" });`
 
 {{if _.INJURED}}
 h: Fighting against you, my fear, lead me to jump off a roof.
@@ -961,11 +1352,19 @@ h: Fighting against you, my fear, lead me to jump off a roof.
 h: Fighting against you, my fear, almost lead me to jump off a roof.
 {{/if}}
 
+`hong({ body:"normal", eyes:"normal" });`
+
 h: Instead, the solution is to do what we're doing now – not to fight, but to patiently be with each other.
+
+`bb({ eyes:"annoyed" });`
 
 b: Then they should say *that* instead of some problematic word like "accept".
 
+`hong({ body:"chin", eyes:"annoyed" });`
+
 h: Yeah come to think of it, "accept" kind of sucks.
+
+`bb({ eyes:"closed_annoyed", mouth:"narrow" });`
 
 b: I do not accept "accept".
 
@@ -973,17 +1372,32 @@ b: I do not accept "accept".
 
 # act4_bad_accept_literally
 
+`bb({ eyes:"sad", body:"one_up" });`
+
 b: But we already *know* you shouldn't take me literally!
+
+`bb({ eyes:"sad_u", body:"two_up" });`
 
 b: The whole *problem* is that I want to help you, but I suck at using words to do so!
 
+`bb({ eyes:"sad", body:"normal" });`
+
 h: I think therapists mean "accept" your emotions as in: "don't fight or ignore them."
+
+`hong({ eyes:"surprise", body:"one_up" });`
 
 h: To listen to you, work *with* you, but not take what you say as 100% literal truth.
 
+```
+hong({ eyes:"normal", body:"normal" });
+bb({ eyes:"annoyed", mouth:"normal" });`
+```
+
 b: Then therapists should say *that* instead of some vague confusing word like "accept".
 
-h: I guess they want to help, but suck at using words, too.
+`hong({ body:"chin", eyes:"annoyed" });`
+
+h: I guess they suck at using words, too.
 
 (#act4_something_else)
 
@@ -991,6 +1405,11 @@ h: I guess they want to help, but suck at using words, too.
 
 
 # act4_something_else
+
+```
+bb({ body:"normal", mouth:"normal", eyes:"normal" });
+hong({ body:"normal", mouth:"normal", eyes:"normal" });
+```
 
 {{if _.a4_fears_discussed==1}}
 h: Anyway, anything else you wanna chat about?
@@ -1057,7 +1476,7 @@ b: This isn't some *game*, you know.
 
 `bb({eyes:"angry_d", body:"one_up"})`
 
-b: Building a better relationship with your emotions isn't as simple as clicking buttons on a screen.
+b: Building a healthy relationship with your emotions isn't as simple as clicking buttons on a screen.
 
 `bb({eyes:"sad", body:"normal"})`
 
@@ -1240,7 +1659,7 @@ publish("act4", ["alshire", 4]);
 ```
 
 {{if _.TOP_FEAR=="harm"}}
-s: WHAT SICK, TWISTED THOUGHTS ARE THEY PROCESSING?! WHAT DARK DESIRES FILL THEIR HEART? GET AWAY FROM THIS PSYCHO!
+s: WHAT SICK, TWISTED THOUGHTS ARE THEY PROCESSING?! WHAT DARK DESIRES FILL THIS PSYCHO'S HEART?!
 {{/if}}
 
 {{if _.TOP_FEAR=="alone"}}
