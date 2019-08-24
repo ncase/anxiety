@@ -3,6 +3,7 @@
 ```
 SceneSetup.act3();
 Game.WORDS_HEIGHT_BOTTOM = 205;
+sfx("cheers");
 ```
 
 r: Cheers!
@@ -10,9 +11,10 @@ r: Cheers!
 ```
 publish("act3",["roofhunter",1]);
 publish("act3",["roofhong",1]);
+sfx("drinking");
 ```
 
-(...1001)
+(...4001)
 
 ```
 publish("act3-alpha", ["dizzyhunter",1]);
@@ -535,7 +537,10 @@ bb({ eyes:"ignore_oh_crap" });
 
 h: Okay then. Bottoms up.
 
-`bb({ mouth:"normal", eyes:"oh_crap" });`
+```
+bb({ mouth:"normal", eyes:"oh_crap" });
+Game.OVERRIDE_TEXT_SPEED = 2;
+```
 
 b: WAIT NO THAT WAS REVERSE PSYCHOLOGY YOU WERE SUPPOSED TO DO THE *OPPOSITE* OF WHAT I SA--
 
@@ -773,7 +778,7 @@ hong({ body:"stop", mouth:"stop", eyes:"blank" });
 
 h: Yeah, well, this was a dumb idea anyway.
 
-h: I only did this to fuck you up, and, well, I fucked you up.
+h: I only did this to mess you up, and, well, I messed you up.
 
 h: Let's just call this round a tie, okay?
 
@@ -834,6 +839,7 @@ Game.WORDS_HEIGHT_BOTTOM = 205;
 (...3501)
 
 ```
+sfx("bottle_toss");
 publish('hong-next');
 publish("act3",["roofhunter",7]);
 ```
@@ -844,11 +850,15 @@ publish("act3",["roofhunter",7]);
 publish("act3",["dd",4]);
 publish("act3",["roofhunter",26]);
 publish('hong-next');
+sfx("concrete_step1");
 ```
 
 (...667)
 
-`publish('hong-next')`
+```
+publish('hong-next');
+sfx("concrete_step2");
+```
 
 (...667)
 
@@ -859,7 +869,7 @@ publish("act3",["roofhunter",27]);
 
 `Game.FORCE_CANT_SKIP = false;`
 
-r: Oh *come on*. After all that, you're just *giving up* the fight?
+r: Oh *come on*. After all that animal's done to you, you're just *giving up?*
 
 r: What's the matter, kid? Are you *scared?*
 
@@ -891,11 +901,16 @@ Game.FORCE_CANT_SKIP = true;
 
 (...1167)
 
-`publish('hong-next')`
+```
+publish('hong-next');
+```
 
 (...833)
 
-`publish('hong-next')`
+```
+publish('hong-next');
+sfx("rustle2");
+```
 
 (...1333)
 
@@ -903,19 +918,29 @@ Game.FORCE_CANT_SKIP = true;
 publish('hong-next');
 publish("act3",["dd",5]);
 publish("act3",["roofhunter",31]);
+sfx("concrete_step4");
 ```
 
 (...667)
 
-`publish('hong-next')`
+```
+publish('hong-next');
+sfx("concrete_step1");
+```
 
 (...667)
 
-`publish('hong-next')`
+```
+publish('hong-next');
+sfx("door");
+```
 
 (...1333)
 
-`publish('hong-next')`
+```
+publish('hong-next');
+sfx("concrete_step2");
+```
 
 (...501)
 
@@ -956,11 +981,16 @@ Game.FORCE_TEXT_Y = 300;
 
 (...2001)
 
-`publish('hong-next')`
+```
+publish('hong-next');
+sfx("bottle_toss");
+```
 
 (...833)
 
 ```
+sfx("concrete_step1");
+sfx("claps");
 publish('hong-next');
 publish("act3",["dd",4]);
 publish("act3",["roofhunter",28]);
@@ -980,6 +1010,7 @@ publish("act3",["roofhunter",28]);
 (...125)
 
 ```
+sfx("concrete_step2");
 publish('hong-next');
 publish("act3",["roofhunter",28]);
 ```
@@ -999,6 +1030,7 @@ publish("act3",["roofhunter",28]);
 (...125)
 
 ```
+sfx("concrete_step3");
 publish('hong-next');
 publish("act3",["dd",5]);
 publish("act3",["roofhunter",34]);
@@ -1006,7 +1038,10 @@ publish("act3",["roofhunter",34]);
 
 (...1167)
 
-`publish('hong-next')`
+```
+sfx("rustle2");
+publish('hong-next');
+```
 
 (...1001)
 
@@ -1022,7 +1057,10 @@ b: no...
 
 (...1333)
 
-`publish('hong-next')`
+```
+sfx("quack");
+publish('hong-next');
+```
 
 (...1333)
 
@@ -1038,11 +1076,15 @@ b: no no no
 
 (...2001)
 
-`publish('hong-next')`
+```
+sfx("rustle2");
+publish('hong-next')
+```
 
 (...501)
 
 ```
+sfx("concrete_step1");
 publish('hong-next');
 publish("act3",["dd",4]);
 publish("act3",["roofhunter",30]);
@@ -1050,11 +1092,15 @@ publish("act3",["roofhunter",30]);
 
 (...167)
 
-`publish('hong-next')`
+```
+sfx("concrete_step2");
+publish('hong-next');
+```
 
 (...167)
 
 ```
+sfx("concrete_step3");
 publish('hong-next');
 publish("act3",["dd",2]);
 publish("act3",["roofhunter",15]);
@@ -1063,6 +1109,7 @@ publish("act3",["roofhunter",15]);
 (...167)
 
 ```
+sfx("bottle_slip");
 publish('hong-next');
 publish("act3",["dd",3]);
 publish("act3",["roofhunter",16]);
@@ -1070,7 +1117,10 @@ publish("act3",["roofhunter",16]);
 
 (...833)
 
-`publish('hong-next')`
+```
+sfx("rustle");
+publish('hong-next');
+```
 
 (...167)
 
@@ -1097,27 +1147,45 @@ publish("act4-injury-show");
 
 (...2000)
 
-`publish("act4-injury", [1]);`
+```
+/*sfx("hospital1");*/
+publish("act4-injury", [1]);
+```
 
 (...4000)
 
-`publish("act4-injury", [0]);`
+```
+/*stopAllSounds();*/
+publish("act4-injury", [0]);
+```
 
 (...2000)
 
-`publish("act4-injury", [2]);`
+```
+/*sfx("hospital2");*/
+publish("act4-injury", [2]);
+```
 
 (...4000)
 
-`publish("act4-injury", [0]);`
+```
+/*stopAllSounds();*/
+publish("act4-injury", [0]);
+```
 
 (...2000)
 
-`publish("act4-injury", [3]);`
+```
+/*sfx("hospital3");*/
+publish("act4-injury", [3]);
+```
 
-(...8000)
+(...6000)
 
-`publish("act4-injury", [0]);`
+```
+/*stopAllSounds();*/
+publish("act4-injury", [0]);
+```
 
 (...5000)
 

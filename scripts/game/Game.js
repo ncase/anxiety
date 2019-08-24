@@ -282,7 +282,7 @@ Game.updateText = function(instant){
 	if(Game.WORDS_HEIGHT_BOTTOM<0) Game.WORDS_HEIGHT_BOTTOM=250; // back to default
 	if(Game.FORCE_TEXT_Y<0){
 		var wordsHeight = 80 + Game.wordsDOM.getBoundingClientRect().height;
-		var currentY = parseFloat(Game.wordsDOM.style.top) || 80;
+		var currentY = Game.wordsDOM.style.top=="" ? 80 : parseFloat(Game.wordsDOM.style.top);
 		var gotoY = (wordsHeight<Game.WORDS_HEIGHT_BOTTOM) ? 0 : wordsHeight-Game.WORDS_HEIGHT_BOTTOM;
 		gotoY = 80 - gotoY;
 		var nextY = instant ? gotoY : currentY*0.9 + gotoY*0.1;
@@ -725,11 +725,21 @@ Game.executeChoice = function(line){
 				// And if still too much???		
 				setTimeout(function(){
 					var choiceHeight = div.getBoundingClientRect().height;
-					if(choiceHeight>40) div.style.fontSize = "14px";
+					if(choiceHeight>40) div.style.fontSize = "15px";
 					// And if still too much???		
 					setTimeout(function(){
 						var choiceHeight = div.getBoundingClientRect().height;
-						if(choiceHeight>40) div.style.fontSize = "12px";
+						if(choiceHeight>40) div.style.fontSize = "14px";
+						// And if still too much???		
+						setTimeout(function(){
+							var choiceHeight = div.getBoundingClientRect().height;
+							if(choiceHeight>40) div.style.fontSize = "13px";
+							// And if still too much???		
+							setTimeout(function(){
+								var choiceHeight = div.getBoundingClientRect().height;
+								if(choiceHeight>40) div.style.fontSize = "12px";
+							},1);
+						},1);
 					},1);
 				},1);
 			},1);

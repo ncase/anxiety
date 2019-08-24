@@ -160,6 +160,7 @@ function Act2_Beebee(){
 	var _subscriptions = [];
 	_subscriptions.push( subscribe("bb", self.gotoFrames) );
 	_subscriptions.push( subscribe("attack_bb", self.showAttackedIcon) );
+	_subscriptions.push( subscribe("DONE_SPEAKING", self.whenDoneSpeaking) );
 
 	// Draw! Same as earlier except a lot of vibration
 	var ticker = 0;

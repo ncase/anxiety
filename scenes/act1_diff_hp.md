@@ -362,7 +362,7 @@ bb({mouth:"normal", eyes:"normal"});
 hong({mouth:"neutral", eyes:"lookaway"});
 ```
 
-h: gee i wonder why.
+h: gee i wonder why
 
 `hong({eyes:"neutral"});`
 
@@ -412,7 +412,7 @@ h: What's new on Twitter?
 
 [Oh no, is that tweet secretly about *us?*](#act1d_subtweet)
 
-[Hey, a GIF of a cat drinking milk.](#act1d_milk)
+[hey, a GIF of a cat drinking milk](#act1d_milk)
 
 
 # act1d_news
@@ -591,11 +591,11 @@ bb({mouth:"normal", eyes:"normal"});
 [Change our answer! It's too crowded!](#act1e_yes_changetono)
 
 {{if _.subtweet}}
-[Yeah they were totally subtweeting us.](#act1e_ignore_subtweet)
+[yeah they were totally subtweeting us](#act1e_ignore_subtweet)
 {{/if}}
 
 {{if _.badnews}}
-[Wait we retweeted without fact-checking.](#act1e_ignore_factcheck)
+[wait we retweeted without fact-checking](#act1e_ignore_factcheck)
 {{/if}}
 
 {{if (!_.subtweet && !_.badnews)}}
@@ -700,11 +700,11 @@ h: Maybe I shouldn't have said no to the invite?
 [Change our answer! Don't die alone!](#act1e_no_changetoyes)
 
 {{if _.subtweet}}
-[Yeah they were totally subtweeting us.](#act1e_ignore_subtweet)
+[yeah they were totally subtweeting us](#act1e_ignore_subtweet)
 {{/if}}
 
 {{if _.badnews}}
-[Wait we retweeted without fact-checking.](#act1e_ignore_factcheck)
+[wait we retweeted without fact-checking](#act1e_ignore_factcheck)
 {{/if}}
 
 {{if (!_.subtweet && !_.badnews)}}
@@ -877,7 +877,7 @@ h: Maybe I shouldn't have ignored the invite?
 
 `bb({mouth:"normal", eyes:"normal"});`
 
-[Keep ignoring, we're still party poopers.](#act1e_ignore_continue)
+[Keep ignoring, we're still party poopers](#act1e_ignore_continue)
 
 [Actually, say yes.](#act1e_ignore_changetoyes)
 
@@ -1248,7 +1248,7 @@ b: wha?
 
 `hong({body:"phone1", eyes:"anger", mouth:"anger"});`
 
-h: I'm going to say YES to that party,
+h: I'm going to say YES to that party
 
 {{if _.act1g=="go"}}
 h: NOT because you want me to, but because *I* want to.

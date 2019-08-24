@@ -5,53 +5,82 @@ SceneSetup.act4();
 /*Game.FORCE_CANT_SKIP = true;*/
 ```
 
-(...1001)
+(...5001)
 
 ```
-/* (...5001) */
 var hong_frame = _.INJURED ? 9 : 0;
 publish("act4", ["hong_walks_in",hong_frame]);
+sfx("grass_step1", {volume:0.1});
 ```
 
 (...666)
 
-`publish("act4", ["hong_walks_in", "next"]);`
+```
+publish("act4", ["hong_walks_in", "next"]);
+sfx("grass_step2", {volume:0.2});
+```
 
 (...666)
 
-`publish("act4", ["hong_walks_in", "next"]);`
+```
+publish("act4", ["hong_walks_in", "next"]);
+sfx("grass_step1", {volume:0.25});
+```
 
 (...666)
 
-`publish("act4", ["hong_walks_in", "next"]);`
+```
+publish("act4", ["hong_walks_in", "next"]);
+sfx("grass_step2", {volume:0.3});
+```
 
 (...666)
 
-`publish("act4", ["hong_walks_in", "next"]);`
+```
+publish("act4", ["hong_walks_in", "next"]);
+sfx("grass_step1", {volume:0.35});
+```
 
 (...1667)
 
-`publish("act4", ["hong_walks_in", "next"]);`
+```
+publish("act4", ["hong_walks_in", "next"]);
+sfx("grass_step2", {volume:0.35});
+```
 
 (...666)
 
-`publish("act4", ["hong_walks_in", "next"]);`
+```
+publish("act4", ["hong_walks_in", "next"]);
+sfx("grass_step1", {volume:0.35});
+```
 
 (...666)
 
-`publish("act4", ["hong_walks_in", "next"]);`
+```
+publish("act4", ["hong_walks_in", "next"]);
+sfx("grass_step2", {volume:0.35});
+```
 
 (...1333)
 
-`publish("act4", ["hong_walks_in", "next"]);`
+```
+publish("act4", ["hong_walks_in", "next"]);
+sfx("grass_step1", {volume:0.20});
+```
 
 (...167)
 
-`publish("act4_hong_sits");`
+```
+publish("act4_hong_sits");
+```
 
 (...66)
 
-`publish("act4", ["hong_transition", "next"]);`
+```
+publish("act4", ["hong_transition", "next"]);
+sfx("squeak");
+```
 
 (...133)
 
@@ -59,7 +88,10 @@ publish("act4", ["hong_walks_in",hong_frame]);
 
 (...1333)
 
-`publish("act4", ["hong_transition", "next"]);`
+```
+publish("act4", ["hong_transition", "next"]);
+sfx("rustle");
+```
 
 (...333)
 
@@ -67,11 +99,16 @@ publish("act4", ["hong_walks_in",hong_frame]);
 
 (...1001)
 
-`publish("act4", ["hong_transition", "next"]);`
+```
+publish("act4", ["hong_transition", "next"]);
+```
 
 (...333)
 
-`publish("act4", ["hong_transition", 9]);`
+```
+publish("act4", ["hong_transition", 9]);
+sfx("sandwich");
+```
 
 (...333)
 
@@ -208,6 +245,13 @@ b: We definitely shaved a few years off our life expectancy...
 
 b: But at least we still *have* a life expectancy! We survived!
 
+```
+hong({eyes:"surprise"});
+bb({eyes:"normal"});
+```
+
+h: ?
+
 (#act4b)
 
 # act4a_worst
@@ -274,7 +318,7 @@ b: Well, it makes everything else less scary in comparison. It's also got me thi
 
 b: If me fighting you sucks, because it doesn't protect you...
 
-h: But me fighting you *also* sucks, because it just makes you try harder...
+h: But me fighting you *also* sucks, because it just makes you yell louder...
 
 `bb({eyes:"normal_r"})`
 
@@ -297,7 +341,7 @@ Game.clearText();
 
 ```
 publish("smash",[1]);
-sfx("grass_step1");
+sfx("smash_glass");
 ```
 
 (...2601)
@@ -404,7 +448,7 @@ b: I want to protect your need for physical safety,
 
 `bb({eyes:"sad_d"})`
 
-b: But, gosh, there's so many dangerous things in the world!
+b: But the *whole world* seems so dangerous. So full of tragedy and evil.
 
 `bb({eyes:"sad"})`
 
@@ -439,7 +483,7 @@ bb({ body:"normal", eyes:"normal" });
 hong({ body:"one_up", eyes:"surprise" });
 ```
 
-h: We could pick up self-defense? Improve our general health? Learn to better assert our boundaries?
+h: We could learn self-defense? Join a community that protects each other? Improve our general health & personal boundaries?
 
 ```
 bb({ eyes:"annoyed_r" });
@@ -492,6 +536,7 @@ Game.FORCE_CANT_SKIP = true;
 Game.clearText();
 hong({ eyes:"sad", mouth:"smile" });
 bb({ body:"karate_1" });
+sfx("hiya");
 ```
 
 (...1001)
@@ -793,7 +838,7 @@ b: I want to make sure you fulfil that deep, human need to belong...
 
 `bb({ eyes:"sad_u" });`
 
-b: But I worry we'll be rejected, unloved, unloveable. Alone.
+b: But I worry that if anyone ever knew us – the *real* us – we'd scare them all away.
 
 `bb({ eyes:"sad" });`
 
@@ -824,11 +869,11 @@ bb({ eyes:"normal" });
 hong({ body:"chin" });
 ```
 
-h: We could practice skills like starting conversations, asking good questions, listening and empathizing, etc?
+h: We could practice skills like asking questions, listening and empathizing, being open and vulnerable, etc?
 
 `hong({ eyes:"normal_l" });`
 
-h: Or make better social habits, like scheduling hangouts with friends or regularly going to meetups?
+h: Or make better social habits, like scheduling time with friends or regularly going to meetups?
 
 `hong({ body:"one_up" });`
 
@@ -957,45 +1002,55 @@ h: I think we may find we're more likeable than we suspect.
 
 `bb({ eyes:"annoyed" });`
 
-[What if these experiments fail?](#act4_alone_experiment_fail)
-
 [What if these are small, cheap "wins"?](#act4_alone_experiment_cheap)
 
 [What if this is a burden to others?](#act4_alone_experiment_burden)
 
-# act4_alone_experiment_fail
+[But small talk isn't the *real* us!](#act4_alone_experiment_real_us)
+
+# act4_alone_experiment_real_us
+
+`bb({ eyes:"sad" });`
+
+b: If we put on a shallow smile, we'll never really connect with anyone,
 
 `bb({ eyes:"super_sad" });`
 
-b: What if our results are non-significant (p>0.05) and no journal will publish our null findings?
+b: *But* if we open up, other people will see all our messed-up insides!
+
+`hong({body:"chin", mouth:"narrow", MOUTH_LOCK:true})`
+
+h: ...
 
 ```
-hong({ eyes:"surprise" });
-bb({ eyes:"normal" });
+hong({body:"normal", mouth:"normal"});
+bb({eyes:"normal"});
 ```
 
-h: You're right, it *could* fail! That's good! It's not a *real* experiment if it couldn't.
+h: Roll over.
 
-`hong({ eyes:"normal" });`
+b: What.
 
-h: And if we learn that we *are* awkward or inconsiderate, then let's improve our social skills.
+`hong({body:"hands_1"})`
 
-`hong({ body:"one_up" });`
+h: When dogs want to show love and trust, they make themselves vulnerable by exposing their belly.
 
-h: Like starting conversations, asking good questions, listening and empathizing,...
+`hong({body:"one_up"})`
 
-```
-hong({ body:"normal" });
-bb({ eyes:"annoyed" });
-```
+h: Right now we're not *yet* secure enough to be too vulnerable, but with enough training,
 
-b: ...all that stuff those counselors told us but then we forgot.
+`hong({body:"normal", eyes:"surprise"})`
 
-`hong({ mouth:"narrow" });`
+h: One day we can show people the real us – all messed-up, all human.
 
-h: Yup.
+`hong({eyes:"normal"})`
+
+b: I'll roll over if you give me a treat.
+
+h: No.
 
 (#act4_something_else)
+
 
 # act4_alone_experiment_cheap
 
@@ -1073,7 +1128,7 @@ b: I want to defend your moral needs, that drive to become a better person,
 
 `bb({ eyes:"sad_d" })`
 
-b: But it just feels like we're so... broken.
+b: But it just feels like deep down, we're so fundamentally... broken.
 
 `bb({ body:"two_up", eyes:"angry" })`
 
@@ -1338,7 +1393,10 @@ b: Having a mental disorder *sucks!* It robs people of *lives!* Why should we "a
 
 h: I think therapists mean "accept" our emotions as in: be patient with them.
 
-`hong({ body:"one_up" });`
+```
+hong({ body:"one_up" });
+bb({ eyes:"normal" });
+```
 
 h: Like how struggling in quicksand makes you sink faster, and the solution is to patiently lie flat,
 
@@ -1685,13 +1743,17 @@ s: RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN RUN
 Game.clearText();
 publish("act4", ["hong_to_alshire", 0]);
 publish("act4", ["alshire", 10]);
+sfx("pop");
 ```
 
 (...1001)
 
-`publish("act4", ["alshire", 11]);`
+```
+publish("act4", ["alshire", 11]);
+sfx("alshire_run");
+```
 
-(...1001)
+(...2601)
 
 ```
 publish("act4-out-3");
@@ -1745,15 +1807,19 @@ b: I want to be the alarm for your emotional needs – your needs for safety, be
 
 b: But... I suck at my job, so I need you to train me.
 
-`publish("act4", ["bb_closer", 5]);`
+`publish("act4", ["bb_closer", 4]);`
 
-b: Help me help you.
+b: I'm not "always valid", nor "always irrational". I'm just... trying my best. So, please,
+
+`publish("act4", ["bb_closer", 8]);`
+
+b: Help me help you!
 
 `publish("act4", ["bb_closer", 6]);`
 
-b: Teaching an old dog new tricks *will* take a while. Maybe *years.*
+b: Though, teaching an old dog new tricks *will* take a while. Maybe *years.*
 
-`publish("act4", ["bb_closer", 4]);`
+`publish("act4", ["bb_closer", 3]);`
 
 b: And sometimes I'll relapse, I'll slip into my old habits.
 
@@ -1884,7 +1950,7 @@ b: AAAAA YOU'RE STILL EATING ALONE FIFTEEN CIGARETTES AAAAA
 {{/if}}
 
 {{if _.parasite}}
-b: AAAAA YOU'RE STILL NOT PRODUCTIVE WHILE EATING WE'RE PARASITES AAAAA
+b: AAAAA YOU'RE STILL NOT PRODUCTIVE WHILE EATING WE'RE SOCIETY-PARASITES AAAAA
 {{/if}}
 
 {{if _.whitebread}}

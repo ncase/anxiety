@@ -33,18 +33,9 @@ function BG_Intro(){
 	});
 	var spriteConfig = {
 		image: Library.images.intro_bg,
-		grid:{
-			width: 2,
-			height: 3
-		},
-		frame:{
-			width: 1200,
-			height: 900
-		},
-		anchor:{
-			x: 0,
-			y: 0
-		},
+		grid:{ width:2, height:3 },
+		frame:{ width:1200, height:1200 },
+		anchor:{ x:0, y:0 },
 		frameNames:[
 			"sky",
 			"clouds",

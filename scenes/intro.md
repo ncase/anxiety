@@ -14,7 +14,7 @@
 
 `clearText()`
 
-n3: Welcome! This is less of a "game", more of an interactive story. Hope you like reading, sucka
+n3: Welcome! This is less of a "game", more of an interactive story. Hope you like reading, sucka!
 
 n3: So before we start, how would *you* like to read?
 

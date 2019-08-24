@@ -354,23 +354,31 @@ _.a2_attack_1 = "bad";
 
 `bb({body:"one_up", eyes:"normal_r"})`
 
-b: I mean, what can we possibly do that matters in the end?
+b: At the end of it all, what can we possibly do that really matters? 
 
 `bb({body:"normal", eyes:"sad"})`
 
-b: All art will be forgotten. All inventions will be obsolete. All moral movements will be overturned.
+b: Contribute to humanity? All great works fade away the way of Ozymandias. Love? Death will always do that part.
 
 `bb({eyes:"sad_r"})`
 
-b: All family lines die. All humans die. All planets and suns and galaxies die.
-
-`bb({eyes:"suspect"})`
-
-b: The arc of the moral universe is long, but it bends toward *entropic heat death*.
+b: And how much death there is! *We* will die. *Our loved ones* will die.
 
 `bb({eyes:"shock", body:"two_up"})`
 
-b: How can our existence *matter* when in a few trillion years even *matter* won't exist?! What ca--
+b: Heck, the Second Law of Thermodynamics means even our *universe* will die!
+
+`bb({eyes:"suspect", body:"normal"})`
+
+b: Oh, "death makes us appreciate life"? That's like saying we need to keep slaves to appreciate freedom!
+
+`bb({body:"one_up"})`
+
+b: Oh, "you need to make your own meaning"? That's what cultists and conspiracy theorists do!
+
+`bb({eyes:"shock", body:"two_up"})`
+
+b: Life has no meaning, death has no meaning, even *meaning* has no meaning! What is a mortal soul supposed to--
 
 ```
 _.a2_first_danger = 'meaning';
@@ -381,7 +389,7 @@ _.a2_attack_1 = "bad";
 
 # act2b
 
-`bb({eyes:"normal", mouth:"normal", body:"normal"})`
+`bb({eyes:"normal", mouth:"normal", body:"normal", MOUTH_LOCK:true})`
 
 b: ...
 
@@ -389,11 +397,11 @@ b: ...
 
 b: Um... can you hear me, human?
 
-`bb({eyes:"normal"})`
+`bb({eyes:"normal", MOUTH_LOCK:true})`
 
 b: ...
 
-`bb({eyes:"shock", mouth:"small", body:"chest"})`
+`bb({eyes:"shock", mouth:"small_talk", body:"chest", MOUTH_LOCK:true})`
 
 b: *GASP*
 
@@ -442,6 +450,7 @@ b: We need to get out of here and quarantine ourselves forever in a small room w
 ```
 _.a2_second_danger = 'netflix';
 _.a2_attack_2 = "alone";
+_.a2_hoodie_callback = "a quarantine";
 ```
 
 (#act2c)
@@ -456,48 +465,44 @@ b: DON'T BE A CREEP. IT'S AGAINST THE LAW!
 
 (...201)
 
-`bb({body:"judge_2"}, 0)`
+```
+bb({body:"judge_2"}, 0);
+sfx("gravel");
+```
 
-(...201)
-
-`bb({body:"judge_1"}, 0)`
-
-(...201)
-
-`bb({body:"judge_2"}, 0)`
-
-(...201)
+(...168)
 
 `bb({body:"judge_1"}, 0)`
 
-(...201)
+(...168)
 
 `bb({body:"judge_2"}, 0)`
+
+(...168)
+
+`bb({body:"judge_1"}, 0)`
 
 (...501)
 
 b: Creep Law, Section 74.5: (1) Any Person who checks out (a) those muscular shoulders (b) that bubble booty (2) shall be hereby known as
 
-`bb({eyes:"angry", body:"two_up", mouth:"normal"})`
+`bb({eyes:"shock", body:"two_up", mouth:"normal"})`
 
 b: "A BIG DISGUSTING TRASH PERVERT"
 
 ```
 _.a2_second_danger = 'law';
 _.a2_attack_2 = "bad";
+_.a2_hoodie_callback = "the law";
 ```
 
 (#act2c)
 
 # act2b_louder_meaning
 
-`bb({eyes:"normal", body:"point", mouth:"normal"})`
-
-b: ACTUALLY YOU KNOW WHAT'S WORSE THAN HAVING NO IMPACT ON HUMANITY?
-
 `bb({body:"two_up", mouth:"normal", eyes:"shock"})`
 
-b: HAVING *ALL* THE IMPACT ON HUMANITY.
+b: Actually, even if you find a noble purpose in life, you can *still* mess everything up!
 
 `bb({body:"normal", mouth:"normal", eyes:"normal"})`
 
@@ -518,6 +523,7 @@ b: IT'S THE BUTTERFLY EFFECT, HUMAN! HOW MANY PEOPLE ARE YOU ACCIDENTALLY KILLIN
 ```
 _.a2_second_danger = 'butterfly';
 _.a2_attack_2 = "bad";
+_.a2_hoodie_callback = "World War I";
 ```
 
 (#act2c)
@@ -532,7 +538,7 @@ b: Actually, you know what's worse than no-one liking you? *Everyone* liking you
 
 `bb({body:"one_up", eyes:"suspect", mouth:"normal"})`
 
-b: That is, becoming one of *these* shallow party animals.
+b: That is, becoming one of *these* pleasure-chasing party animals.
 
 `bb({body:"normal", mouth:"small"})`
 
@@ -540,11 +546,12 @@ b: A shallow life with shallow friends who only know the shallow you!
 
 `bb({body:"two_up", eyes:"shock", mouth:"normal"})`
 
-b: Human, we need to run away from these dopamine-zombies before they turn us into one of them!
+b: Human, we need to run away from these pleasure-zombies before they turn us into one of them!
 
 ```
 _.a2_second_danger = 'zombies';
 _.a2_attack_2 = "alone";
+_.a2_hoodie_callback = "zombies";
 ```
 
 (#act2c)
@@ -572,6 +579,7 @@ b: BY PARTYING, WE'RE HELPING *HITLER*.
 ```
 _.a2_second_danger = 'hitler';
 _.a2_attack_2 = "bad";
+_.a2_hoodie_callback = "Hitler";
 ```
 
 (#act2c)
@@ -595,6 +603,7 @@ b: DIEEEEEEEEEEEEEEEEEE
 ```
 _.a2_second_danger = 'ignore';
 _.a2_attack_2 = "harm";
+_.a2_hoodie_callback = "carbon monoxide";
 ```
 
 (#act2c)
@@ -603,7 +612,7 @@ _.a2_attack_2 = "harm";
 
 ```
 hong({body:"ignore_sweat"});
-bb({eyes:"normal", mouth:"normal", body:"normal"});
+bb({eyes:"normal", mouth:"normal", body:"normal", MOUTH_LOCK:true});
 ```
 
 b: ...
@@ -676,6 +685,8 @@ b: And then they'd have to sterilize the drone to rid it of our SAD LUMP GERMS
 
 `_.a2_attack_3 = "alone";`
 
+`_.a2_hoodie_callback = "a quarantine";`
+
 (#act2d)
 
 # act2c_louder_law
@@ -684,23 +695,22 @@ b: And then they'd have to sterilize the drone to rid it of our SAD LUMP GERMS
 
 (...201)
 
-`bb({body:"judge_2"}, 0)`
+```
+bb({body:"judge_2"}, 0);
+sfx("gravel");
+```
 
-(...201)
-
-`bb({body:"judge_1"}, 0)`
-
-(...201)
-
-`bb({body:"judge_2"}, 0)`
-
-(...201)
+(...168)
 
 `bb({body:"judge_1"}, 0)`
 
-(...201)
+(...168)
 
 `bb({body:"judge_2"}, 0)`
+
+(...168)
+
+`bb({body:"judge_1"}, 0)`
 
 (...501)
 
@@ -713,6 +723,8 @@ b: unless they're secretly *into* that sort of thing
 b: because they're a BIG DISGUSTING TRASH PERVERT
 
 `_.a2_attack_3 = "bad";`
+
+`_.a2_hoodie_callback = "the law";`
 
 (#act2d)
 
@@ -736,13 +748,15 @@ b: BAM, YOU BANKRUPT OUR HEALTHCARE SYSTEM AND MILLIONS DIE
 
 `_.a2_attack_3 = "bad";`
 
+`_.a2_hoodie_callback = "the butterfly effect";`
+
 (#act2d)
 
 # act2c_louder_zombies
 
 `bb({body:"normal", mouth:"small", eyes:"angry"})`
 
-b: These popularity-zombies will stumble towards you mumbling,
+b: These pleasure-zombies will stumble towards you mumbling,
 
 `bb({body:"normal", mouth:"normal", eyes:"shock"})`
 
@@ -753,6 +767,8 @@ b: LIIIIIKES. LIIIIIIIIIIKES.
 b: Then they'll BITE YOU and turn you into a BRAINLESS BRO and/or THOUGHTLESS THOT!
 
 `_.a2_attack_3 = "bad";`
+
+`_.a2_hoodie_callback = "zombies";`
 
 (#act2d)
 
@@ -772,6 +788,8 @@ b: *Now our plans can go fourth, reich on schedule!*
 
 `_.a2_attack_3 = "bad";`
 
+`_.a2_hoodie_callback = "Hitler";`
+
 (#act2d)
 
 # act2c_louder_ignore
@@ -789,6 +807,8 @@ b: What if we're all being poisoned *RIGHT NOW?*
 b: WE WOULDN'T EVEN SEE DEATH APPROACH. WE'D JUST STOP EXISTING FOREVER AND EVER AND EV--
 
 `_.a2_attack_3 = "harm";`
+
+`_.a2_hoodie_callback = "carbon monoxide";`
 
 (#act2d)
 
@@ -848,6 +868,8 @@ b: AHHH WE'RE DYING! WE'RE DYING WE'RE DYING WE'RE DYI--
 
 `_.a2_attack_3 = "harm";`
 
+`_.a2_hoodie_callback = "punch bowls";`
+
 (#act2d)
 
 # act2d
@@ -874,9 +896,9 @@ attack("20p", _.a2_attack_3);
 
 (...1001)
 
-h: FUCK!
+h: FAAACK!
 
-h: FUCKING FUCK-FUKKITY *FUUUUUCK*
+h: FACKING FACK-FAKKITY *FAAAAACK*
 
 `bb({body:"two_up", mouth:"smile", eyes:"happy"});`
 
@@ -888,7 +910,7 @@ b: Why were you ignoring me?
 
 `hong({body:"facepalm"})`
 
-h: Holy hell, you stupid sack of shit.
+h: Holy hell, you absolute moron.
 
 `hong({body:"facepalm_2"})`
 
@@ -901,11 +923,11 @@ hong({body:"facepalm_3"});
 bb({eyes:"normal"});
 ```
 
-h: I was trying to fucking *starve* you, you sadistic asshole!
+h: I was trying to *starve* you, you sadistic asshole!
 
 `hong({body:"smile", mouth:"smile"})`
 
-h: Fuck it, I'll do positive affirmations instead.
+h: Screw it, I'll do positive affirmations instead.
 
 h: *I am loved. I am good. I am smart. I am beautiful. I am special.*
 
@@ -913,7 +935,7 @@ h: *I am loved. I am good. I am smart. I am beautiful. I am special.*
 
 [Golly, that's so narcissistic!](#act2d_narcissist)
 
-[You know affirmations were *disproven?*](#act2d_disproven)
+[Y'know affirmations were *disproven?*](#act2d_disproven)
 
 [omg don't credit random stories to indigenous folk](#act2d_racist)
 
@@ -1003,23 +1025,27 @@ attack("10p", "bad");
 
 # act2e
 
-h: FUCKDAMMIT.
+h: ASSDAMMIT.
 
 `hong({body:"yell", mouth:"yell"})`
 
 h: You know what? You're *irrational*.
 
-h: Everyone already knows emotions are irrational! Especially fear!
+h: Everyone knows emotions are irrational! Especially fear!
 
 `hong({body:"facepalm_2"})`
 
-h: You're nothing but neuro-chemicals. You're just a useless evolutionary leftover like my appendix or wisdom teeth.
+h: You're just a useless evolutionary leftover, like my appendix or wisdom teeth!
+
+`hong({body:"yell", mouth:"yell"})`
+
+h: Hell, this whole wolf metaphor is stupid! You're just a bunch of neuro-chemicals in my head.
 
 `hong({body:"cross", mouth:"cross"})`
 
-h: So why should I listen to a worthless, irrational shitstain like you?!
+h: So why should I listen to a worthless, irrational, non-existent piece of shit like you?!
 
-`bb({eyes:"sad"})`
+`bb({eyes:"sad", MOUTH_LOCK:true})`
 
 b: ...
 
@@ -1027,7 +1053,7 @@ b: ...
 
 [What about "your feelings are valid"?](#act2e_valid)
 
-[We share a brain. We're equally rational.](#act2e_rational)
+[Human, we're *both* "just chemicals".](#act2e_rational)
 
 # act2e_hurtful
 
@@ -1054,15 +1080,23 @@ attack("10p", "harm");
 
 `bb({body:"normal", mouth:"normal", eyes:"normal_r"});`
 
-b: Which means if *I'm* irrational, then *you're* irrational!
+b: Your deepest motivations are dopamine, your richest joys are seratonin.
+
+`bb({body:"one_up"});`
+
+b: Your memories are synaptic weights, your reason is fault-prone electrical signals.
+
+`bb({eyes:"normal", body:"normal"});`
+
+b: So if me being "just chemicals" means *I'm* irrational... then that means *you're* irrational!
 
 `bb({body:"two_up", eyes:"shock"});`
 
-b: And if we're both so dumb and stupid, we'll *never* figure out how to be happy!
+b: And if we're *both* irrational, then we'll *never* figure out how to be fulfilled and happy!
 
 `bb({body:"scream_a_1"})`
 
-b: AHHH WE'RE SO LOST! SO LOST SO LOST SO LOST--
+b: AHHH WE'RE BROKEN! SO BROKEN SO BROKEN SO BROKEN--
 
 ```
 music(null);
@@ -1087,11 +1121,11 @@ b: But "they" also say emotions are irrational, that emotions are not to be trus
 
 `bb({eyes:"angry"});`
 
-b: Maybe "they" are just full of crud!
+b: Oh my gosh, "they" have been lying to us this whole time!
 
 `bb({body:"scream_a_1"})`
 
-b: "THEY" ARE FEEDING US CONTRADICTIONS AS PART OF THE SELF-HELP INDUSTRIAL COMPLEX
+b: "THEY" FEED US CONTRADICTIONS TO MAKE US DEPENDENT ON THE SELF-HELP INDUSTRIAL COMPLEX
 
 ```
 music(null);
@@ -1106,13 +1140,15 @@ attack("10p", "harm");
 
 # act2f
 
-`hong({body:"defeated"});`
+`hong({body:"defeated", MOUTH_LOCK:true});`
 
 h: ...
 
 h: I hate this. God it hurts so much I *hate* this.
 
 h: I can't appease you. I can't ignore you. I can't fight you. 
+
+`bb({eyes:"suspect"});`
 
 h: No matter what I do, I can't seem to get rid of yo--
 
@@ -1177,6 +1213,7 @@ music('party1', {volume:0.4, fade:2});
 
 ```
 publish("act2",["party_hunter",2]);
+Game.WORDS_HEIGHT_BOTTOM = 230;
 ```
 
 r: Looks like you're caught in a fight with yourself, kid.
@@ -1193,16 +1230,19 @@ publish("act2",["party_hunter",4]);
 publish("act2",["party_hong",14]);
 ```
 
-r: You were, uh, mumbling at your hoodie.
+r: You were, uh, mumbling at your hoodie about {{_.a2_hoodie_callback}} or something.
 
 ```
 publish("act2",["party_hunter",13]);
 publish("act2",["party_hong",15]);
+sfx("rustle", {volume:0.6});
 setTimeout(function(){
 	publish("act2",["party_hong",16]);
+	sfx("concrete_step3", {volume:0.6});
 },401);
 setTimeout(function(){
 	publish("act2",["party_hong",17]);
+	sfx("concrete_step4", {volume:0.6});
 },801);
 ```
 
@@ -1211,6 +1251,7 @@ h2: oh god i'm such a mess.
 ```
 publish("act2",["party_hunter",7]);
 publish("act2",["party_hong",18]);
+sfx("squeak");
 ```
 
 r: Hey. You're not alone, friend. Anxiety's super common.
@@ -1273,6 +1314,7 @@ sfx("rustle");
 ```
 publish("act2",["party_hunter",10]);
 publish("act2",["party_hong",23]);
+sfx("rustle2");
 ```
 
 (...1001)
@@ -1281,19 +1323,20 @@ publish("act2",["party_hong",23]);
 publish("act2",["party_hunter",11]);
 ```
 
-r: My own specialty blend. It's a mix of... well, everything.
+r: My own specialty blend. It's a bit stronger than... well, anything legal really.
 
 ```
 publish("act2",["party_hunter",12]);
 publish("act2",["party_hong",24]);
 ```
 
-r: Bottoms up, motherfucker.
+r: Bottoms up, bee-yatch!
 
 ```
 hong({body:"hold"});
 bb({body:"normal", mouth:"small", eyes:"wat"});
 Game.clearText();
+Game.WORDS_HEIGHT_BOTTOM = -1;
 publish("act2-out-3");
 publish("hp_show");
 ```
@@ -1419,6 +1462,7 @@ music('battle', {volume:0.5});
 ```
 bb({body:"special_b_1"});
 hong({body:"forward", mouth:"forward"});
+sfx("charging");
 ```
 
 h: What's this crap?
@@ -1528,11 +1572,17 @@ music('party1', {volume:0.6, fade:1.5});
 
 (...2001)
 
-`publish("act2",["party_hong",26]);`
+```
+publish("act2",["party_hong",26]);
+sfx("slide");
+```
 
 (...1001)
 
-`publish("act2",["party_hunter",14]);`
+```
+publish("act2",["party_hunter",14]);
+Game.WORDS_HEIGHT_BOTTOM = 230;
+```
 
 r: You alright, kid?
 
@@ -1626,6 +1676,7 @@ Game.clearText();
 publish("act2-out-5");
 publish("act2-outro", ["end1"]);
 music("hum", {fade:2, volume:0.6});
+Game.WORDS_HEIGHT_BOTTOM = -1;
 ```
 
 (...2500)
@@ -1661,7 +1712,7 @@ sfx("hit");
 
 (...1000)
 
-h: I'm going to the party next weekend.
+h: I'm coming back to the party next weekend.
 
 h: The next time we fight, I'm not just going to *defeat* you...
 
@@ -1670,26 +1721,26 @@ h: I'm going to fucking *kill* you.
 ```
 Game.clearText();
 publish("act2", ["act2_end","next"]);
-sfx("grass_step1");
+sfx("concrete_step1");
 ````
 
 (...901)
 
 ```
 publish("act2", ["act2_end","next"]);
-sfx("grass_step2", {volume:0.8});
+sfx("concrete_step2", {volume:0.8});
 ```
 
 (...901)
 
 ```
 publish("act2", ["act2_end","next"]);
-sfx("grass_step1", {volume:0.5});
+sfx("concrete_step3", {volume:0.5});
 ```
 
 (...901)
 
-`sfx("grass_step2", {volume:0.25});`
+`sfx("concrete_step4", {volume:0.25});`
 
 (...3000)
 

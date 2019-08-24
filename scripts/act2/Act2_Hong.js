@@ -84,6 +84,7 @@ function Act2_Hong(){
 	var _subscriptions = [];
 	_subscriptions.push( subscribe("hong", self.gotoFrames) );
 	_subscriptions.push( subscribe("attack_hong", self.showAttackedIcon) );
+	_subscriptions.push( subscribe("DONE_SPEAKING", self.whenDoneSpeaking) );
 
 	// Draw
 	self.characterSpeakerID = "h";

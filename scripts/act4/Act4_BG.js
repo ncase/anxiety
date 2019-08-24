@@ -19,7 +19,11 @@ Loader.addImages([
 
 Loader.addSounds([
 	{ id:"yaps", src:"sounds/sfx/yaps.mp3" },
-	{ id:"youbothwin", src:"sounds/stings/you_both_winMIX.mp3" }
+	{ id:"youbothwin", src:"sounds/stings/you_both_winMIX.mp3" },
+
+	{ id:"smash_glass", src:"sounds/sfx/smash_glass.mp3" },
+	{ id:"alshire_run", src:"sounds/sfx/alshire_run.mp3" },
+	{ id:"hiya", src:"sounds/sfx/hiya.mp3" },
 ]);
 
 function BG_Act4(){

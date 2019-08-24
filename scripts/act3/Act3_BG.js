@@ -9,7 +9,19 @@ Loader.addImages([
 ]);
 
 Loader.addSounds([
-	{ id:"lock_door", src:"sounds/sfx/lock_door.mp3" }
+	{ id:"lock_door", src:"sounds/sfx/lock_door.mp3" },
+
+	{ id:"cheers", src:"sounds/sfx/cheers.mp3" },
+	{ id:"drinking", src:"sounds/sfx/drinking.mp3" },
+	{ id:"claps", src:"sounds/sfx/claps.mp3" },
+	{ id:"quack", src:"sounds/sfx/quack.mp3" },
+	{ id:"bottle_toss", src:"sounds/sfx/bottle_toss.mp3" },
+	{ id:"bottle_slip", src:"sounds/sfx/bottle_slip.mp3" },
+	/*{ id:"hospital1", src:"sounds/sfx/hospital1.mp3" },
+	{ id:"hospital2", src:"sounds/sfx/hospital2.mp3" },
+	{ id:"hospital3", src:"sounds/sfx/hospital3.mp3" },*/
+	{ id:"door", src:"sounds/sfx/door.mp3" },
+
 ]);
 
 function BG_Rooftop(){

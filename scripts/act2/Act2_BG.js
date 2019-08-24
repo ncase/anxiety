@@ -14,9 +14,18 @@ Loader.addImages([
 ]);
 
 Loader.addSounds([
+	
 	{ id:"squeak", src:"sounds/sfx/squeak.mp3" },
 	{ id:"record_scratch", src:"sounds/sfx/record_scratch.mp3" },
-	{ id:"hadouken", src:"sounds/sfx/hadouken.mp3" }
+	{ id:"hadouken", src:"sounds/sfx/hadouken.mp3" },
+	{ id:"gravel", src:"sounds/sfx/gravel.mp3" },
+	{ id:"slide", src:"sounds/sfx/slide.mp3" },
+	{ id:"concrete_step1", src:"sounds/sfx/concrete_step1.mp3" },
+	{ id:"concrete_step2", src:"sounds/sfx/concrete_step2.mp3" },
+	{ id:"concrete_step3", src:"sounds/sfx/concrete_step3.mp3" },
+	{ id:"concrete_step4", src:"sounds/sfx/concrete_step4.mp3" },
+	{ id:"charging", src:"sounds/sfx/charging.mp3" },
+
 ]);
 
 function BG_Party(){

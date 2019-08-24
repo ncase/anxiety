@@ -22,11 +22,6 @@ function BG_Act1_Outro(){
 	var self = this;
 
 	// Sprites!
-	self.logoSprite = new Sprite({
-		image: Library.images.intro_logo,
-		grid:{ width:1, height:1 },
-		frame:{ width:720, height:900 },
-	});
 	var spriteConfig = {
 		image: Library.images.intro_bg,
 		grid:{
@@ -35,7 +30,7 @@ function BG_Act1_Outro(){
 		},
 		frame:{
 			width: 1200,
-			height: 900
+			height: 1200
 		},
 		anchor:{
 			x: 0,
