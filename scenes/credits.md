@@ -1,5 +1,10 @@
 # credits
 
-`SceneSetup.credits()`
+```
+Game.FORCE_CANT_SKIP = true;
+music('credits', {NO_LOOP:true, volume:0.45});
+```
 
-n: *CREDITS ROLL* (and mental health resource links)
+(...1901)
+
+`SceneSetup.credits()`

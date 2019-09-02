@@ -1967,8 +1967,4 @@ Game.WORDS_HEIGHT_BOTTOM = 205;
 
 b: YAP YAP YAP YAP YAP
 
-`music('credits', {NO_LOOP:true, volume:0.45});`
-
-(...1884)
-
 (#credits)

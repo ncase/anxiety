@@ -10,4 +10,8 @@ SceneSetup.credits = function(){
 	// RESET HP
 	HP.reset();
 
+	// Background
+	var bg = new BG_Credits();
+	Game.scene.children.push(bg);
+
 };
