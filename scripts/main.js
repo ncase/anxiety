@@ -35,7 +35,7 @@ subscribe("START_GAME", function(){
 	$("#about").style.display = "block";
 
 	// Intro
-	//Game.goto("intro");
+	Game.goto("intro");
 
 	//Game.TEXT_SPEED = 5;
 
@@ -52,9 +52,21 @@ subscribe("START_GAME", function(){
 	//Game.goto("act4");
 
 	// Credits
-	Game.goto("credits");
+	//Game.goto("credits");
 
 });
+
+subscribe("SAVE_GAME", function(nextChapter){
+	var json = JSON.stringify(_);
+	window.localStorage.setItem("continueChapter", nextChapter); // to Continue
+	window.localStorage.setItem(nextChapter, json); // for chapter select
+});
+
+subscribe("LOAD_GAME", function(fromNextChapter){
+	_ = JSON.parse(window.localStorage.getItem(fromNextChapter)); // LOAD IT!
+});
+
+// TODO: also save Sound options???
 
 window._SAVE = function(){
 	copy(JSON.stringify(_));

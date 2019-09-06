@@ -606,7 +606,7 @@ h: *"Don't worry, be happy!"*
 
 `hong({ body:"normal", mouth:"normal", eyes:"normal" });`
 
-h: All the wise folk of our time agree: negative emotions are *bad!*
+h: The sages all knew that simple Stoic truth: negative emotions are *bad!*
 
 `hong({ eyes:"less_angry" });`
 

@@ -4,9 +4,71 @@
 
 # intro-play-button
 
-`Game.OVERRIDE_FONT_SIZE=30;`
+```
+_.PLAYED_BEFORE = !!window.localStorage.continueChapter;
+```
 
-[<div class="mini-icon" pic="play1"></div> PLAY! <div class="mini-icon" pic="play2"></div>](#intro-start) `publish("intro-to-game-1"); Game.OVERRIDE_CHOICE_LINE=true;`
+{{if !_.PLAYED_BEFORE}}
+`Game.OVERRIDE_FONT_SIZE=30;`
+{{/if}}
+
+{{if !_.PLAYED_BEFORE}}
+[PLAY!](#intro-start) `publish("intro-to-game-1"); Game.OVERRIDE_CHOICE_LINE=true;`
+{{/if}}
+
+{{if _.PLAYED_BEFORE && window.localStorage.continueChapter=="act2"}}
+[CONTINUE: The Party](#act2) `publish("LOAD_GAME", ["act2"]); Game.OVERRIDE_CHOICE_LINE=true;`
+{{/if}}
+
+{{if _.PLAYED_BEFORE && window.localStorage.continueChapter=="act3"}}
+[CONTINUE: The Other Party](#act3) `publish("LOAD_GAME", ["act3"]); Game.OVERRIDE_CHOICE_LINE=true;`
+{{/if}}
+
+{{if _.PLAYED_BEFORE && window.localStorage.continueChapter=="act4"}}
+[CONTINUE: The Other Sandwich](#act4) `publish("LOAD_GAME", ["act4"]); Game.OVERRIDE_CHOICE_LINE=true;`
+{{/if}}
+
+{{if _.PLAYED_BEFORE && window.localStorage.continueChapter=="replay"}}
+`Game.OVERRIDE_FONT_SIZE=30;`
+{{/if}}
+
+{{if _.PLAYED_BEFORE && window.localStorage.continueChapter=="replay"}}
+[REPLAY!](#intro-start) `publish("intro-to-game-1"); Game.OVERRIDE_CHOICE_LINE=true;`
+{{/if}}
+
+{{if _.PLAYED_BEFORE}}
+[Chapter Select](#chapter-select) `Game.OVERRIDE_CHOICE_LINE=true;`
+{{/if}}
+
+[(content notes)](#content-notes) `Game.OVERRIDE_CHOICE_LINE=true;`
+
+# chapter-select
+
+`publish("HACK_chselect");`
+
+[I. The Sandwich](#intro-start) `publish("HACK_chselect_end"); publish("intro-to-game-1"); Game.OVERRIDE_CHOICE_LINE=true;`
+
+[II. The Party](#act2) `publish("HACK_chselect_end"); publish("LOAD_GAME", ["act2"]); Game.OVERRIDE_CHOICE_LINE=true;`
+
+{{if window.localStorage.act3}}
+[III. The Other Party](#act3) `publish("HACK_chselect_end"); publish("LOAD_GAME", ["act3"]); Game.OVERRIDE_CHOICE_LINE=true;`
+{{/if}}
+
+{{if !window.localStorage.act3}}
+[III. The Other Party]()
+{{/if}}
+
+{{if window.localStorage.act4}}
+[IV. The Other Sandwich](#act4) `publish("HACK_chselect_end"); publish("LOAD_GAME", ["act4"]); Game.OVERRIDE_CHOICE_LINE=true;`
+{{/if}}
+
+{{if !window.localStorage.act4}}
+[III. The Other Sandwich]()
+{{/if}}
+
+[V. Credits](#credits) `publish("HACK_chselect_end"); stopAllSounds(); Game.OVERRIDE_CHOICE_LINE=true;`
+
+[(main menu)](#intro-play-button) `publish("HACK_chselect_end"); Game.OVERRIDE_CHOICE_LINE=true;`
 
 # intro-start
 

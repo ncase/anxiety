@@ -2,7 +2,8 @@
 
 ```
 SceneSetup.act4();
-/*Game.FORCE_CANT_SKIP = true;*/
+publish("SAVE_GAME", ["act4"]);
+Game.FORCE_CANT_SKIP = true;
 ```
 
 (...5001)
@@ -203,7 +204,7 @@ h: So what the hell was the moral of this story?
 
 `hong({body:"one_up", eyes:"annoyed"})`
 
-h: What did we even *learn*? I *was* being stupid, my "friends" *were* using me, and we almost goddamn *died*.
+h: What did we even *learn*? I *was* being stupid, my "friends" *were* using me, and we almost frickin' *died*.
 
 `hong({body:"normal", eyes:"normal"})`
 

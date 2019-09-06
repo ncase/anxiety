@@ -22,6 +22,13 @@ SceneSetup.intermission = function(STAGE){
 	Game.FORCE_CANT_SKIP = true;
 	Game.NO_NARRATOR_SOUNDS = true;
 	$("#click_to_advance").style.color = "#000";
+
+	// SAVE
+	if(_.INTERMISSION_STAGE==1){ // between Act I and II
+		publish("SAVE_GAME", ["act2"]);
+	}else if(_.INTERMISSION_STAGE==2){ // between Act II and III
+		publish("SAVE_GAME", ["act3"]);
+	}
 	
 	// KILL
 	Game.scene.kill = function(){

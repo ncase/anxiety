@@ -146,6 +146,7 @@ var _unpauseOrSkip = function(){
 		Game.onUnpause();
 	}else{
 		Game.clearAllTimeouts();
+		publish("super_hack_skip_intro");
 	}
 };
 window.addEventListener("click", _unpauseOrSkip);
@@ -650,7 +651,13 @@ Game.OVERRIDE_FONT_SIZE = false;
 Game.executeChoice = function(line){
 	
 	var choiceText = line.match(/\[([^\]]*)\]/)[1].trim();
-	var choiceID = line.match(/\(\#([^\)]*)\)/)[1].trim().toLocaleLowerCase();
+	var choiceID = line.match(/\(\#([^\)]*)\)/);
+	var THERE_IS_NO_CHOICE;
+	if(!choiceID){
+		THERE_IS_NO_CHOICE = true;
+	}else{
+		choiceID = choiceID[1].trim().toLocaleLowerCase();
+	}
 
 	var preChoiceCodeIfAny = null;
 	if(/\`(.*)\`/.test(line)){
@@ -671,35 +678,39 @@ Game.executeChoice = function(line){
 	var div = document.createElement("div");
 	div.innerHTML = choiceText;
 	div.setAttribute("speaker", Game.OVERRIDE_CHOICE_SPEAKER ? Game.OVERRIDE_CHOICE_SPEAKER : "b");
-	div.onclick = function(event){
+	if(!THERE_IS_NO_CHOICE){
+		div.onclick = function(event){
 
-		// Any pre-choice code?
-		if(preChoiceCodeIfAny) Game.executeCode(preChoiceCodeIfAny);
+			// Any pre-choice code?
+			if(preChoiceCodeIfAny) Game.executeCode(preChoiceCodeIfAny);
 
-		// Override line... ONCE
-		if(!Game.OVERRIDE_CHOICE_LINE){
-			if(Game.OVERRIDE_CHOICE_SPEAKER){
-				Game.addToQueue(Game.OVERRIDE_CHOICE_SPEAKER+": "+originalChoiceText);
-			}else{
-				Game.addToQueue("b: "+originalChoiceText);
+			// Override line... ONCE
+			if(!Game.OVERRIDE_CHOICE_LINE){
+				if(Game.OVERRIDE_CHOICE_SPEAKER){
+					Game.addToQueue(Game.OVERRIDE_CHOICE_SPEAKER+": "+originalChoiceText);
+				}else{
+					Game.addToQueue("b: "+originalChoiceText);
+				}
 			}
-		}
-		Game.OVERRIDE_CHOICE_SPEAKER = null;
-		Game.OVERRIDE_CHOICE_LINE = false;
+			Game.OVERRIDE_CHOICE_SPEAKER = null;
+			Game.OVERRIDE_CHOICE_LINE = false;
 
-		// Play sound
-		sfx("ui_click");
+			// Play sound
+			sfx("ui_click");
 
-		// Goto that choice, now!
-		Game.goto(choiceID);
+			// Goto that choice, now!
+			Game.goto(choiceID);
 
-		// STOP THE PROP
-		event.stopPropagation();
+			// STOP THE PROP
+			event.stopPropagation();
 
-	};
-	div.onmouseover = function(){
-		sfx("ui_hover");
-	};
+		};
+		div.onmouseover = function(){
+			sfx("ui_hover");
+		};
+	}else{
+		div.setAttribute("speaker", Game.OVERRIDE_CHOICE_SPEAKER ? Game.OVERRIDE_CHOICE_SPEAKER : "none");
+	}
 
 	// Add choice, animated!
 	div.style.top = "150px";
@@ -807,7 +818,7 @@ Game.executeGoto = function(line){
 Game.getLineType = function(line){
 
 	// Is it a choice?
-	var isChoice = /\[.*\]\(\#.*\)/.test(line);
+	var isChoice = /\[.*\]\(.*\)/.test(line);
 	if(isChoice) return "choice";
 
 	// Is it a goto?

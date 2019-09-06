@@ -929,6 +929,14 @@ DIALOGUEZ
 	     -o-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
 	        transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); /* custom */
 }
+#game_choices > div[speaker=none]{
+	background: #000; 
+	color: #fff;
+	font-weight: lighter;
+	opacity: 0.5;
+	text-decoration: line-through;
+	cursor: default;
+}
 #game_choices > div[speaker=b]{
 	background: #000; 
 	color: #fff;

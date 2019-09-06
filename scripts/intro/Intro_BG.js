@@ -20,8 +20,7 @@ Loader.addSounds([
 
 function BG_Intro(){
 	
-	var ticker = 0; //18;//0;
-
+	var ticker = 0; // 18; // SKIP
 
 	var self = this;
 
@@ -201,6 +200,13 @@ function BG_Intro(){
 			// Music
 			music("hum", {fade:2, volume:0.6});
 
+		})
+	);
+	_subscriptions.push(
+		subscribe("super_hack_skip_intro", function(){
+			if(ticker>0.1 && ticker<18){
+				frameTicker = ticker = 18;
+			}
 		})
 	);
 

@@ -19,3 +19,10 @@ SceneSetup.intro = function(){
 	$("#about").style.display = "none";
 
 };
+
+subscribe("HACK_chselect", function(){
+	Game.choicesDOM.style.height = "250px";
+});
+subscribe("HACK_chselect_end", function(){
+	Game.choicesDOM.style.height = "130px";
+});

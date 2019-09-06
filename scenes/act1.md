@@ -28,7 +28,7 @@ n: QUICK, WARN THEM!
 
 b: Human! Listen, we're in danger! The danger is...
 
-n4: (LET *YOUR* ANXIETY COME OUT TO PLAY! PICK WHAT'S MOST SIMILAR TO WHAT *YOUR* FEAR TELLS YOU:)
+n4: (LET _YOUR_ ANXIETY COME OUT TO PLAY! PICK WHAT'S MOST SIMILAR TO WHAT _YOUR_ FEAR TELLS YOU)
 
 [We're eating alone for lunch! Again!](#act1a_alone)
 
@@ -412,7 +412,7 @@ h: What's new on Twitter?
 
 [Oh no, is that tweet secretly about *us?*](#act1d_subtweet)
 
-[Hey, a GIF of a cat drinking milk.](#act1d_milk)
+[Hey, a GIF of a cat drinking milk](#act1d_milk)
 
 
 # act1d_news
