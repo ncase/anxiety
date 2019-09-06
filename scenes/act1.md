@@ -1036,7 +1036,7 @@ bb({mouth:"normal"});
 Game.FORCE_TEXT_DURATION = 2400;
 ```
 
-b: ♫ I wanna be, the slutti-est-
+b: ♫ I wanna be, the ^slut^ti-est-
 
 (...500)
 
@@ -1054,7 +1054,7 @@ bb({eyes:"pretty"});
 Game.FORCE_TEXT_DURATION = 2300;
 ```
 
-b: ♫ Thighs n' ass, voluptuous breast-
+b: ♫ Thighs n' ^ass^, voluptuous breast-
 
 (...500)
 
@@ -1063,7 +1063,7 @@ bb({eyes:"fear", mouth:"normal"});
 Game.FORCE_TEXT_DURATION = 2000;
 ```
 
-b: ♫ with sweaty dick and balls!-
+b: ♫ with sweaty ^dick^ and balls!-
 
 (...1000)
 
@@ -1230,7 +1230,7 @@ bb({eyes:"wat", mouth:"small"});
 hong({body:"2_fuck"});
 ```
 
-h: *FUCK.*
+h: *^FUCK^.*
 
 `hong({body:"2_you"});`
 
@@ -1270,7 +1270,7 @@ sfx("rustle2");
 hong({body:"0_sammich", eyes:"0_annoyed", mouth:"0_neutral"});
 ```
 
-h: Now excuse me while I eat this delicious sandwich in goddamn peace.
+h: Now excuse me while I eat this delicious sandwich in ^goddamn^ peace.
 
 `hong({body:"2_sammich_eat"});`
 

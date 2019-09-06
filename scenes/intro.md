@@ -4,6 +4,8 @@
 
 # intro-play-button
 
+(...51)
+
 ```
 _.PLAYED_BEFORE = !!window.localStorage.continueChapter;
 ```
@@ -17,15 +19,15 @@ _.PLAYED_BEFORE = !!window.localStorage.continueChapter;
 {{/if}}
 
 {{if _.PLAYED_BEFORE && window.localStorage.continueChapter=="act2"}}
-[CONTINUE: The Party](#act2) `publish("LOAD_GAME", ["act2"]); Game.OVERRIDE_CHOICE_LINE=true;`
+[_CONTINUE_: The Party](#act2) `publish("LOAD_GAME", ["act2"]); Game.OVERRIDE_CHOICE_LINE=true;`
 {{/if}}
 
 {{if _.PLAYED_BEFORE && window.localStorage.continueChapter=="act3"}}
-[CONTINUE: The Other Party](#act3) `publish("LOAD_GAME", ["act3"]); Game.OVERRIDE_CHOICE_LINE=true;`
+[_CONTINUE_: The Other Party](#act3) `publish("LOAD_GAME", ["act3"]); Game.OVERRIDE_CHOICE_LINE=true;`
 {{/if}}
 
 {{if _.PLAYED_BEFORE && window.localStorage.continueChapter=="act4"}}
-[CONTINUE: The Other Sandwich](#act4) `publish("LOAD_GAME", ["act4"]); Game.OVERRIDE_CHOICE_LINE=true;`
+[_CONTINUE_: The Other Sandwich](#act4) `publish("LOAD_GAME", ["act4"]); Game.OVERRIDE_CHOICE_LINE=true;`
 {{/if}}
 
 {{if _.PLAYED_BEFORE && window.localStorage.continueChapter=="replay"}}
@@ -40,7 +42,7 @@ _.PLAYED_BEFORE = !!window.localStorage.continueChapter;
 [Chapter Select](#chapter-select) `Game.OVERRIDE_CHOICE_LINE=true;`
 {{/if}}
 
-[(content notes)](#content-notes) `Game.OVERRIDE_CHOICE_LINE=true;`
+[(content notes)](#intro-play-button) `Game.OVERRIDE_CHOICE_LINE=true; publish('show_cn');`
 
 # chapter-select
 
@@ -66,7 +68,13 @@ _.PLAYED_BEFORE = !!window.localStorage.continueChapter;
 [III. The Other Sandwich]()
 {{/if}}
 
+{{if window.localStorage.credits}}
 [V. Credits](#credits) `publish("HACK_chselect_end"); stopAllSounds(); Game.OVERRIDE_CHOICE_LINE=true;`
+{{/if}}
+
+{{if !window.localStorage.credits}}
+[V. Credits]()
+{{/if}}
 
 [(main menu)](#intro-play-button) `publish("HACK_chselect_end"); Game.OVERRIDE_CHOICE_LINE=true;`
 

@@ -224,7 +224,7 @@ h: What did we even *learn*? I *was* being stupid, my "friends" *were* using me,
 
 `hong({eyes:"annoyed_l", mouth:"narrow"});`
 
-h: Right. I don't think my insurance plan covers "being a dumbass".
+h: Right. I don't think my insurance plan covers "being a dumb^ass^".
 
 `hong({eyes:"annoyed", mouth:"normal"});`
 
@@ -915,7 +915,7 @@ h: "Social skills" mean nothing if we don't genuinely care *for* people.
 
 `hong({ body:"normal" });`
 
-h: Basically, just don't be a dick.
+h: Basically, just don't be a ^dick^.
 
 `bb({ eyes:"annoyed", mouth:"smile" });`
 
@@ -923,7 +923,7 @@ b: That's a motivational poster caption right there.
 
 `hong({ body:"shrug", mouth:"narrow" });`
 
-h: “Don't Be A Dick”
+h: “Don't Be A ^Dick^™”
 
 (#act4_something_else)
 

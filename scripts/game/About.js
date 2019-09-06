@@ -18,7 +18,7 @@ Loader.addSounds([
 	$("#the_newsletter").setAttribute("action", "https://sendy.ncase.me/subscribe");
 
 	// The About Button
-	var aboutDOM = $("#end_demo");
+	var aboutDOM = $("#about");
 
 	$("#about").onclick = function(){
 		aboutDOM.setAttribute("about","yes");
@@ -40,12 +40,6 @@ Loader.addSounds([
 		About.showing = false;
 
 	};
-
-	// SHOW TBC
-	var tbc = $("#end_demo_tbc");
-	subscribe("TO_BE_CONTINUED", function(){
-		tbc.style.display = "block";
-	});
 
 	// SHOW END
 	subscribe("END_OF_DEMO", function(){
@@ -82,7 +76,6 @@ Loader.addSounds([
 		setTimeout(function(){
 			aboutDOM.style.display = "block";
 		},100);
-		tbc.style.display = "none";
 
 		// Bye
 		About.showing = false;

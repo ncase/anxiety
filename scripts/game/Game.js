@@ -118,12 +118,12 @@ Game.pause = function(){
 	Game.pausedDOM.style.display = "block";
 	Howler.mute(true);
 
-	$("#paused").setAttribute("modal", (Options.showing||About.showing) ? "yes" : "no" );
+	$("#paused").setAttribute("modal", (Options.showing||About.showing||ContentNotes.showing) ? "yes" : "no" );
 	
 };
 window.addEventListener("blur", Game.pause);
 Game.onUnpause = function(){
-	if(Game.paused && !(Options.showing||About.showing)){
+	if(Game.paused && !(Options.showing||About.showing||ContentNotes.showing)){
 		Game.paused = false;
 		Game.pausedDOM.style.display = "none";
 		Howler.mute(false);
@@ -134,6 +134,8 @@ Game.pausedDOM.onclick = function(e){
 		publish("hide_options");
 	}else if(About.showing){
 		$("#close_about").onclick();
+	}else if(About.showing){
+		publish("hide_cn");
 	}else{
 		Game.onUnpause();
 	}
@@ -306,6 +308,11 @@ Game.clearAll = function(){
 };
 window.clearText = Game.clearText;
 
+// CUSSING?!
+window.NO_CUSS_MODE = false;
+var GRAWLIXES = ["@","#","✩","$","%","&"];
+var GRAWLIX_INDEX = 0;
+
 // Execute text! Just add it to text DOM.
 Game.TEXT_SPEED = 50;
 Game.CLICK_TO_ADVANCE = true;
@@ -326,7 +333,7 @@ Game.executeText = function(line){
 		var speaker = line.match(regex)[1].trim();
 		var dialogue = line.match(regex)[2].trim();
 
-		// IF IT'S A SPECIAL ATTACK, SKIP ALL THIS SHIT
+		// IF IT'S A SPECIAL ATTACK, SKIP ALL THIS
 		if(speaker=="fear_harm" || speaker=="fear_alone" || speaker=="fear_bad"){
 			Game.setTimeout(function(){
 				publish("hide_click_to_advance");
@@ -392,6 +399,27 @@ Game.executeText = function(line){
 		var clearBoth = document.createElement("div");
 		clearBoth.className = "clear-both";
 		Game.wordsDOM.appendChild(clearBoth);
+
+		// CUSSING OR NO CUSSING?
+		if(window.NO_CUSS_MODE){
+			// Slice it out with Grawlixes, 1 by 1.
+			var censorMode = false;
+			for(var i=0; i<dialogue.length; i++){
+				var chr = dialogue[i];
+				if(chr=="^"){
+					censorMode = !censorMode; // toggle
+					dialogue = dialogue.slice(0,i) + dialogue.slice(i+1); // slice out the one character
+					i--; // step back
+				}else if(censorMode){
+					var grawlix = GRAWLIXES[GRAWLIX_INDEX];
+					GRAWLIX_INDEX = (GRAWLIX_INDEX+1) % GRAWLIXES.length;
+					dialogue = dialogue.slice(0,i) + grawlix + dialogue.slice(i+1); // replace the character
+				}
+			}
+		}else{
+			// remove all "^" signs
+			dialogue = dialogue.replace(/\^/g, "");
+		}
 
 		// Add the text
 		var interval = 0;
@@ -673,6 +701,15 @@ Game.executeChoice = function(line){
 		var startOfMatch = results.index;
 		var endOfMatch = results.index + results[0].length;
 		choiceText = choiceText.slice(0,startOfMatch) + "<i>" + results[1] + "</i>" + choiceText.slice(endOfMatch);
+	}
+	// Add bold where _word word word_
+	var boldRegex = /\_([^\*]*)\_/g;
+	var results;
+	while(results=boldRegex.exec(choiceText)){
+		// Modify choiceText in place, it's fine.
+		var startOfMatch = results.index;
+		var endOfMatch = results.index + results[0].length;
+		choiceText = choiceText.slice(0,startOfMatch) + "<b>" + results[1] + "</b>" + choiceText.slice(endOfMatch);
 	}
 
 	var div = document.createElement("div");
