@@ -31,9 +31,6 @@ subscribe("START_GAME", function(){
 	$("#loading").style.display = "none";
 	Game.start();
 
-	$("#gear").style.display = "block";
-	$("#about").style.display = "block";
-
 	// Intro
 	Game.goto("intro");
 

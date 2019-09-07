@@ -15,8 +15,7 @@ SceneSetup.intro = function(){
 	Game.scene.children.push(bg);
 
 	// TOTAL HACK
-	$("#gear").style.display = "none";
-	$("#about").style.display = "none";
+	publish("hide_tabs");
 
 };
 

@@ -297,7 +297,7 @@ music(null, {fade:1});
 ```
 music('battle', {volume:0.5});
 publish("hp_show");
-bb({mouth:"normal", eyes:"normal"});
+bb({body:"normal", mouth:"normal", eyes:"normal"});
 ```
 
 n: ROUND TWO: *FIGHT!*
@@ -404,6 +404,8 @@ b: ...
 `bb({eyes:"shock", mouth:"small_talk", body:"chest", MOUTH_LOCK:true})`
 
 b: *GASP*
+
+`bb({mouth:"small_talk"})`
 
 b: I MUST WARN YOU ABOUT...
 
@@ -1051,9 +1053,9 @@ b: ...
 
 [Jeez, human. That's really hurtful.](#act2e_hurtful)
 
-[Because... "your feelings are valid"?](#act2e_valid)
+[I'm a feeling. Feelings are valid.](#act2e_valid)
 
-[Human, we're *both* "just chemicals".](#act2e_rational)
+[Human, we're *both* "just chemicals."](#act2e_rational)
 
 # act2e_hurtful
 
@@ -1384,7 +1386,7 @@ bb({body:"frazzled", mouth:"frazzled", eyes:"frazzled"});
 
 h: Mmm, what an exquisite palette!
 
-h: A full-bodied flavor of "shut your mind up", with a subtle aftertaste of "never feel anything ever again"!
+h: A full-bodied flavor of "shut your mind up," with a subtle aftertaste of "never feel anything ever again"!
 
 b: This is bad, human. This is really, really bad.
 
@@ -1481,6 +1483,7 @@ sfx("hadouken");
 # act2i
 
 ```
+publish("hide_tabs");
 publish("show_special_attack");
 Game.FORCE_CANT_SKIP = true;
 music(null);
@@ -1490,6 +1493,7 @@ stopAllSounds();
 (...5000)
 
 ```
+publish("show_tabs");
 hong({ body:"final", mouth:"final" });
 bb({ body:"normal", mouth:"normal", eyes:"sad" });
 attack("100p", _.SPECIAL_ATTACK);

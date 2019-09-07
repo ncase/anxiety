@@ -82,7 +82,7 @@ BOTTOM TABS
 
 ******************************************************************************************************/
 
-#gear, #about{
+#gear, #huh{
 	position: absolute;
     bottom: 0;
     background: #191919;
@@ -90,10 +90,10 @@ BOTTOM TABS
     height: 35px;
     cursor: pointer;
 }
-#gear:hover, #about:hover{
+#gear:hover, #huh:hover{
 	background: #575757;
 }
-#gear > .icon, #about > .icon{
+#gear > .icon, #huh > .icon{
 	position: absolute;
     width: 0;
     height: 0;
@@ -107,11 +107,11 @@ BOTTOM TABS
 #gear > .icon{
     left: 4px;
 }
-#about{
+#huh{
     right: 0;
     border-top-left-radius: 50px;
 }
-#about > .icon{
+#huh > .icon{
 	color: rgba(255,255,255,0.4);
 	font-weight: bold;
     right: 19px;
@@ -194,6 +194,7 @@ PAUSED & LOADING
 	background-size: 100%;
 }
 #loading{
+	cursor: default;
 	display:block;
 	background:#282828;
 }

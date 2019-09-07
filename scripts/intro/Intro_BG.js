@@ -25,11 +25,16 @@ function BG_Intro(){
 	var self = this;
 
 	// Sprites!
-	self.logoSprite = new Sprite({
+	var LOGO_SPRITE = {
 		image: Library.images.intro_logo,
-		grid:{ width:1, height:1 },
+		grid:{ width:2, height:1 },
 		frame:{ width:720, height:900 },
-	});
+	};
+	self.logoSprite = new Sprite(LOGO_SPRITE);
+	self.infoSprite = new Sprite(LOGO_SPRITE);
+	self.infoSprite.gotoFrame(1);
+	self.infoSprite.alpha = 0;
+
 	var spriteConfig = {
 		image: Library.images.intro_bg,
 		grid:{ width:2, height:3 },
@@ -101,6 +106,7 @@ function BG_Intro(){
 	var parallaxTicker = 0;
 	var SHOWN_PLAY_BUTTON = false;
 	var SHOWN_LOGO = false;
+	var tickerSinceShown = 0;
 	var thePreviousFrame;
 	self.draw = function(ctx){
 
@@ -162,6 +168,13 @@ function BG_Intro(){
 		}
 		if(GAME_TRANSITION==0 && SHOWN_LOGO){
 			self.logoSprite.draw(ctx);
+			self.infoSprite.draw(ctx);
+		}
+		if(SHOWN_LOGO){
+			tickerSinceShown += 1/60;
+			if(tickerSinceShown>1.5){
+				self.infoSprite.alpha = Math.min(1, tickerSinceShown-1.5);
+			}
 		}
 
 		// Show Play Button

@@ -6,21 +6,10 @@ Loader.addSounds([
 
 (function(){
 
-	// Newsletter stuff
-	var gdpr = $("#gdpr");
-	var submit = $("#submit");
-	gdpr.onchange = function(){
-		var isChecked = gdpr.checked;
-		submit.disabled = !isChecked;
-		submit.value = isChecked ? "Subscribe! →" : "← plz consent";
-	};
-	gdpr.onchange();
-	$("#the_newsletter").setAttribute("action", "https://sendy.ncase.me/subscribe");
-
 	// The About Button
 	var aboutDOM = $("#about");
 
-	$("#about").onclick = function(){
+	$("#huh").onclick = function(){
 		aboutDOM.setAttribute("about","yes");
 		aboutDOM.style.top = "40px";
 
@@ -42,7 +31,7 @@ Loader.addSounds([
 	};
 
 	// SHOW END
-	subscribe("END_OF_DEMO", function(){
+	subscribe("THE_END", function(){
 
 		// Hi
 		About.showing = true;

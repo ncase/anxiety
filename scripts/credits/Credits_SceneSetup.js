@@ -4,6 +4,9 @@ Loader.addSounds([
 
 SceneSetup.credits = function(){
 
+	// BYE TABS
+	publish("hide_tabs");
+
 	Game.resetScene();
 	Game.clearText();
 

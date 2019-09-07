@@ -9,6 +9,21 @@ Game.FORCE_CANT_SKIP = true;
 (...5001)
 
 ```
+publish("set_how_many_prompts", [1]);
+Game.FORCE_CANT_SKIP = false;
+Game.CLICK_TO_ADVANCE = true;
+```
+
+n3: (game auto-saved)
+
+```
+Game.clearText();
+Game.FORCE_CANT_SKIP = true;
+```
+
+(...1001)
+
+```
 var hong_frame = _.INJURED ? 9 : 0;
 publish("act4", ["hong_walks_in",hong_frame]);
 sfx("grass_step1", {volume:0.1});
@@ -374,7 +389,7 @@ b: I'm a battered shelter dog.
 
 `bb({eyes:"sad"})`
 
-b: We've been through rough stuff, possibly trauma, so that's why sometimes I over-react and go--
+b: We've been through rough stuff. Maybe trauma or neglect. That's why I sometimes over-react and go:
 
 ```
 sfx("yaps", {volume:0.6});
@@ -882,7 +897,7 @@ h: Could also learn to get more comfortable with rejection.
 
 `hong({ eyes:"normal" });`
 
-h: Or learn to know when people *aren't* rejecting us, they're just tired or have Resting Bitch Face.
+h: Or learn to know when people *aren't* rejecting us, they're just tired or have Resting ^Bitch^ Face.
 
 ```
 hong({ body:"normal" });
@@ -1038,15 +1053,20 @@ h: When dogs want to show love and trust, they make themselves vulnerable by exp
 
 `hong({body:"one_up"})`
 
-h: Right now we're not *yet* secure enough to be too vulnerable, but with enough training,
+h: Maybe we're not *yet* secure enough to be too vulnerable, but with enough training,
 
 `hong({body:"normal", eyes:"surprise"})`
 
 h: One day we can show people the real us – all messed-up, all human.
 
-`hong({eyes:"normal"})`
+```
+hong({eyes:"normal"});
+bb({ eyes:"super_sad", mouth:"smile", body:"chest" });
+```
 
 b: I'll roll over if you give me a treat.
+
+`bb({ eyes:"normal", mouth:"normal" });`
 
 h: No.
 
@@ -1802,7 +1822,7 @@ b: I want to be a good guard-dog. Just like how hunger & thirst are alarms for y
 
 `publish("act4", ["bb_closer", 8]);`
 
-b: I want to be the alarm for your emotional needs – your needs for safety, belonging, goodness.
+b: I want to be the alarm for your *psychological* needs – your needs for safety, belonging, goodness.
 
 `publish("act4", ["bb_closer", 1]);`
 
@@ -1810,9 +1830,9 @@ b: But... I suck at my job, so I need you to train me.
 
 `publish("act4", ["bb_closer", 4]);`
 
-b: I'm not "always valid", nor "always irrational". I'm just... trying my best. So, please,
+b: I'm not "always valid," nor "always irrational." I'm just... trying my best. So, please,
 
-`publish("act4", ["bb_closer", 8]);`
+`publish("act4", ["bb_closer", 30]);`
 
 b: Help me help you!
 
@@ -1848,11 +1868,11 @@ b: Maybe you can tame this wolf.
 
 `Game.OVERRIDE_CHOICE_SPEAKER = "h"`
 
-[Good dog.](#act4f-pat-bb) `Game.OVERRIDE_CHOICE_SPEAKER = "h"; publish("act4", ["hong_closer", 2]);`
+[Good dog.](#act4f-pat-bb) `Game.OVERRIDE_CHOICE_SPEAKER = "h"; publish("act4", ["hong_closer", 2]); publish("hide_tabs");`
 
 `Game.OVERRIDE_CHOICE_SPEAKER = "b"`
 
-[Good human.](#act4f-pat-hong) `Game.OVERRIDE_CHOICE_SPEAKER = "b"; publish("act4", ["bb_closer", 8]);`
+[Good human.](#act4f-pat-hong) `Game.OVERRIDE_CHOICE_SPEAKER = "b"; publish("act4", ["bb_closer", 8]); publish("hide_tabs");`
 
 # act4f-pat-hong
 

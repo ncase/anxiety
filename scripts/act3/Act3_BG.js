@@ -17,9 +17,9 @@ Loader.addSounds([
 	{ id:"quack", src:"sounds/sfx/quack.mp3" },
 	{ id:"bottle_toss", src:"sounds/sfx/bottle_toss.mp3" },
 	{ id:"bottle_slip", src:"sounds/sfx/bottle_slip.mp3" },
-	/*{ id:"hospital1", src:"sounds/sfx/hospital1.mp3" },
+	{ id:"hospital1", src:"sounds/sfx/hospital1.mp3" },
 	{ id:"hospital2", src:"sounds/sfx/hospital2.mp3" },
-	{ id:"hospital3", src:"sounds/sfx/hospital3.mp3" },*/
+	{ id:"hospital3", src:"sounds/sfx/hospital3.mp3" },
 	{ id:"door", src:"sounds/sfx/door.mp3" },
 
 ]);
@@ -290,6 +290,7 @@ function BG_Rooftop(){
 
 	};
 
+	var vibrateTicker = 0;
 	self.draw = function(ctx){
 
 		ctx.save();
@@ -307,6 +308,12 @@ function BG_Rooftop(){
 
 		}else{
 
+			if(self.hospitalSprite.currentFrame==2){ // ambulance
+				vibrateTicker += 1/60;
+				self.hospitalSprite.y = Math.sin(vibrateTicker*10*Math.TAU)*5;
+			}else{
+				self.hospitalSprite.y = 0;
+			}
 			self.hospitalSprite.draw(ctx);
 
 		}

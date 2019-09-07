@@ -46,6 +46,10 @@ publish("act3",["roofhong",5]);
 
 r: You remind me of myself when I was younger. Back when I was tormented by the animal in my head.
 
+`publish("act3",["roofhunter",9]);`
+
+r: I'm so grateful I can pay it forward, and help you kill the beast the way I killed mine.
+
 ```
 publish("act3",["roofhunter",2]);
 publish("act3",["roofhong",2]);
@@ -127,7 +131,7 @@ r: But that's exactly why we need death-defying thrills! Party hard! Carpe diem!
 publish("act3",["roofhunter",10]);
 ```
 
-r: Let's show that animal we don't give two *^dick^s* about its ^bitch^ing! Jump in.
+r: Show that animal we don't give two *^dick^s* about its ^bitch^ing! Jump in.
 
 ```
 publish("act3",["roofhunter",11]);
@@ -1143,51 +1147,52 @@ Game.WORDS_HEIGHT_BOTTOM = -1;
 Game.FORCE_TEXT_Y = -1;
 Game.clearText();
 publish("act4-injury-show");
+publish("hide_tabs");
 ```
 
 (...2000)
 
 ```
-/*sfx("hospital1");*/
+sfx("hospital1");
 publish("act4-injury", [1]);
 ```
 
 (...4000)
 
 ```
-/*stopAllSounds();*/
+stopAllSounds();
 publish("act4-injury", [0]);
 ```
 
 (...2000)
 
 ```
-/*sfx("hospital2");*/
+sfx("hospital2");
 publish("act4-injury", [2]);
 ```
 
 (...4000)
 
 ```
-/*stopAllSounds();*/
+stopAllSounds();
 publish("act4-injury", [0]);
 ```
 
 (...2000)
 
 ```
-/*sfx("hospital3");*/
+sfx("hospital3");
 publish("act4-injury", [3]);
 ```
 
-(...6000)
+(...8000)
 
 ```
-/*stopAllSounds();*/
+stopAllSounds();
 publish("act4-injury", [0]);
 ```
 
-(...5000)
+(...5500)
 
 `_.INJURED = true;`
 

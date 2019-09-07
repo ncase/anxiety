@@ -8,10 +8,14 @@ SceneSetup.act1 = function(){
 
 	Game.resetScene();
 
+	// HI TABS
+	publish("show_tabs");
+
 	// RESET HP
 	HP.reset();
 
 	// ATTACKS
+	Game.start(); /* RESET THE GLOBAL VAR _ */
 	_.CHAPTER = 1;
 	_.attack_harm_ch1 = 0;
 	_.attack_alone_ch1 = 0;

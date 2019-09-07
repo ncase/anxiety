@@ -6,6 +6,9 @@ Loader.addSounds([
 
 SceneSetup.act3 = function(){
 
+	// HI TABS
+	publish("show_tabs");
+
 	Game.resetScene();
 
 	// RESET HP

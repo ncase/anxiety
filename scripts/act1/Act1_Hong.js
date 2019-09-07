@@ -25,6 +25,7 @@ function Act1_Hong(){
 
 			"body_0_sammich_no_outline",
 			"body_0_sammich",
+			"body_0_squeeze*",
 			"eyes_0_neutral",
 			"eyes_0_lookaway",
 			"eyes_0_annoyed",
@@ -65,7 +66,9 @@ function Act1_Hong(){
 			"body_3_defeated1*",
 			"body_3_defeated2*",
 			"body_3_defeated3*",
-			"body_3_defeated3_no_outline*"
+			"body_3_defeated3_no_outline*",
+
+			"body_laugh*",
 
 		],
 		x: 65,

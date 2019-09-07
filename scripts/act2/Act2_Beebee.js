@@ -30,7 +30,7 @@ function Act2_Beebee(){
 			"body_one_up",
 			"body_scream_a_1*",
 			"body_scream_a_2*",
-			"mouth_shocked",
+			"body_shocked*",
 			"mouth_small",
 			"mouth_small_talk",
 
@@ -153,8 +153,8 @@ function Act2_Beebee(){
 
 	// Go To Frames!
 	self.gotoFrames({
-		body: "normal",
-		mouth: "shocked",
+		body: "shocked",
+		mouth: "blank",
 		eyes: "blank",
 	});
 	var _subscriptions = [];

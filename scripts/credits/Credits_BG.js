@@ -64,7 +64,7 @@ function BG_Credits(){
 	// END MESSAGE
 	var endMsg = {
 		image: Library.images.credits_end_message,
-		grid:{ width:3, height:2 },
+		grid:{ width:4, height:1 },
 		frame:{ width:720, height:1200 },
 		anchor:{ x:0, y:0 },
 		x:0, y:17
@@ -75,7 +75,7 @@ function BG_Credits(){
 	 {from:53.8333,to:54.4667},
 	 {from:57.8333,to:58.4667}].forEach(function(period, i){
 		var msg = new Sprite(endMsg);
-		msg.gotoFrame(i+1);
+		msg.gotoFrame(i);
 		msg._PERIOD = period;
 		self.endMessages.push(msg);
 	});

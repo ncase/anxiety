@@ -70,7 +70,12 @@ function Act1_Beebee(){
 			"mouth_shut",
 			"eyes_anger",
 
-			"body_meta*"
+			"body_meta*",
+			"body_laugh*",
+			"body_pride_talk*",
+			"body_pride*",
+			"body_squeeze_talk*",
+			"body_squeeze*",
 
 		],
 		x: 270-7.5,
@@ -116,6 +121,14 @@ function Act1_Beebee(){
 		// Vibration!
 		ticker += 1/60;
 		self.characterSquash = 1 + Math.sin(ticker*Math.TAU*7)*0.01; // seven vibes per second
+
+		// TOTAL HACK
+		var b = self.layers.body.currentFrameName;
+		if(b=="body_squeeze_talk*" || b=="body_squeeze*"){// || b=="body_pride_talk*" || b=="body_pride*"){
+			self.characterSquash = 1; // TOTAL HACK
+			self.bounce = 1;
+			self.bounceVel = 0;
+		}
 
 		// Old Draw
 		_oldDraw.apply(self, arguments);

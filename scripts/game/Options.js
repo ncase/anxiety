@@ -228,10 +228,19 @@ Loader.addSounds([
 		Game.goto("intro-start-2");
 
 		// Double total hack
-		$("#gear").style.display = "block";
-		$("#about").style.display = "block";
+		publish("show_tabs");
 
 	});
+
+	subscribe("hide_tabs", function(){
+		$("#gear").style.display = "none";
+		$("#huh").style.display = "none";
+	});
+	subscribe("show_tabs", function(){
+		$("#gear").style.display = "block";
+		$("#huh").style.display = "block";
+	});
+
 
 	subscribe("show_options", function(){
 

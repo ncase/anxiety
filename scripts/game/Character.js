@@ -67,12 +67,6 @@ function Character(spriteConfig, animLoops){
 	};
 	self.gotoFrames = function(args, bounce){
 
-		// Bounce?
-		if(bounce===undefined) bounce=0.03; // a LITTLE bit, by default
-		if(bounce!==undefined){
-			self.bounce += bounce;
-		}
-
 		// Gimme those args
 		if(args.body){
 			if(!self.layers.body.doesFrameNameExist("body_"+args.body)) args.body+="*"; // add * if missing
@@ -81,20 +75,35 @@ function Character(spriteConfig, animLoops){
 		if(args.mouth) self.characterFrames.mouth = args.mouth;
 		if(args.eyes) self.characterFrames.eyes = args.eyes;
 
+		// DID ANY PART CHANGE?
+		var ANY_PART_CHANGED = false;
+
 		if(args.body){
 			var bodyName = "body_"+args.body;
+			if(self.layers.body.currentFrameName!=bodyName) ANY_PART_CHANGED=true;
 			self.layers.body.gotoFrameByName(bodyName);
 			self.characterFrames.body = args.body;
 		}
 
 		if(args.mouth){
 			var mouthName = "mouth_"+args.mouth;
+			if(self.layers.mouth.currentFrameName!=mouthName) ANY_PART_CHANGED=true;
 			self.layers.mouth.gotoFrameByName(mouthName);
 		}
 
 		if(args.eyes){
 			var eyesName = "eyes_"+args.eyes;
+			if(self.layers.eyes.currentFrameName!=eyesName) ANY_PART_CHANGED=true;
 			self.layers.eyes.gotoFrameByName(eyesName);
+		}
+
+		// If NO CHANGE, then BOUNCE=0
+		if(!ANY_PART_CHANGED) bounce=0;
+
+		// Bounce?
+		if(bounce===undefined) bounce=0.03; // a LITTLE bit, by default
+		if(bounce!==undefined){
+			self.bounce += bounce;
 		}
 
 		// Go go go
