@@ -30,8 +30,8 @@ function BG_Intermission(STAGE){
 	});
 	self.bbSprite.gotoFrame( STAGE==1 ? 0 : 1 );
 
-	self.update = function(){
-		self.bgSprite.rotation += Math.TAU/2500;
+	self.update = function(delta){
+		self.bgSprite.rotation += (delta/(1/60)) * Math.TAU/2500;
 	};
 
 	self.draw = function(ctx){

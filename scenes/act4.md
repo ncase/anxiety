@@ -215,7 +215,7 @@ hong({body:"hold", eyes:"normal", mouth:"normal"});
 bb({eyes:"normal"});
 ```
 
-h: So what the hell was the moral of this story?
+h: So what the ^hell^ was the moral of this story?
 
 `hong({body:"one_up", eyes:"annoyed"})`
 
@@ -1130,7 +1130,7 @@ hong({ eyes:"annoyed_l", mouth:"narrow" });
 bb({ eyes:"annoyed", mouth:"smile" });
 ```
 
-h: Y'know, all that "inter-personal skills" crap we see in counselor brochures.
+h: Y'know, all that "inter-personal skills" ^crap^ we see in counselor brochures.
 
 (#act4_something_else)
 
@@ -1868,16 +1868,17 @@ b: Maybe you can tame this wolf.
 
 `Game.OVERRIDE_CHOICE_SPEAKER = "h"`
 
-[Good dog.](#act4f-pat-bb) `Game.OVERRIDE_CHOICE_SPEAKER = "h"; publish("act4", ["hong_closer", 2]); publish("hide_tabs");`
+[Good dog.](#act4f-pat-bb) `Game.OVERRIDE_CHOICE_SPEAKER = "h"; publish("act4", ["hong_closer", 2]);`
 
 `Game.OVERRIDE_CHOICE_SPEAKER = "b"`
 
-[Good human.](#act4f-pat-hong) `Game.OVERRIDE_CHOICE_SPEAKER = "b"; publish("act4", ["bb_closer", 8]); publish("hide_tabs");`
+[Good human.](#act4f-pat-hong) `Game.OVERRIDE_CHOICE_SPEAKER = "b"; publish("act4", ["bb_closer", 8]);`
 
 # act4f-pat-hong
 
 ```
 Game.clearText();
+publish("hide_tabs");
 Game.FORCE_CANT_SKIP = true;
 music(null,{fade:0.5});
 sfx("youbothwin");
@@ -1920,6 +1921,7 @@ publish("act4", ["bb_closer", 13]);
 
 ```
 Game.clearText();
+publish("hide_tabs");
 Game.FORCE_CANT_SKIP = true;
 music(null,{fade:0.5});
 sfx("youbothwin");

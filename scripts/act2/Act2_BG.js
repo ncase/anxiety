@@ -177,16 +177,16 @@ function BG_Party(){
 	var ticker = 0;
 	var ticker2 = 0;
 	var ticker3 = 0;
-	self.update = function(){
+	self.update = function(delta){
 
 		// START PARALLAXING IN / OUT
 		if(PARALLAXING!=null){
 			
 			if(PARALLAXING=="out"){
-				parallaxTicker += 1/60; // 0 to 1 in one second
+				parallaxTicker += delta; // 0 to 1 in one second
 			}
 			if(PARALLAXING=="in"){
-				parallaxTicker -= 1/60; // 1 to 0 in one second
+				parallaxTicker -= delta; // 1 to 0 in one second
 			}
 			if(parallaxTicker>1) parallaxTicker = 1;
 			if(parallaxTicker<0) parallaxTicker = 0;
@@ -237,7 +237,8 @@ function BG_Party(){
 
 		// Anxiety BG
 		if(ALPHAS[5]>0){
-			self.anxiety.update(ALPHAS[5]);
+			self.anxiety.updateAlpha(ALPHAS[5]);
+			self.anxiety.update(delta);
 			if(ALPHAS[5]==1){ // if fully visible...
 				// hide everything under
 				ALPHAS[0] = 0;
@@ -258,21 +259,21 @@ function BG_Party(){
 		// SUPER HACKY - ANIMATE PARTY-HONG
 		if(self.party_hong.currentFrame>=5 && self.party_hong.currentFrame<11){
 			if(ticker<1/20){
-				ticker += 1/60;
+				ticker += delta;
 			}else{
 				ticker = 0;
 				self.party_hong.nextFrame();
 			}
 		}else if(self.party_hong.currentFrame>=26 && self.party_hong.currentFrame<32){
 			if(ticker<1/15){
-				ticker += 1/60;
+				ticker += delta;
 			}else{
 				ticker = 0;
 				self.party_hong.nextFrame();
 			}
 		}else if(self.party_hong.currentFrame>=36 && self.party_hong.currentFrame<=39){
 			if(ticker<1/15){
-				ticker += 1/60;
+				ticker += delta;
 			}else{
 				ticker = 0;
 				if(self.party_hong.currentFrame==39){
@@ -288,7 +289,7 @@ function BG_Party(){
 		// SUPER HACKY - ANIMATE PARTY-HUNTER
 		if(self.party_hunter.currentFrame>=19 && self.party_hunter.currentFrame<=20){
 			if(ticker2<1/3){
-				ticker2 += 1/60;
+				ticker2 += delta;
 			}else{
 				ticker2 = 0;
 				if(self.party_hunter.currentFrame==20){
@@ -304,7 +305,7 @@ function BG_Party(){
 		// SUPER HACKER - ANIMATE THE END
 		if(self.act2_end.currentFrame>=2 && self.act2_end.currentFrame<10){
 			if(ticker3<1/15){
-				ticker3 += 1/60;
+				ticker3 += delta;
 			}else{
 				ticker3 = 0;
 				self.act2_end.nextFrame();
@@ -315,7 +316,7 @@ function BG_Party(){
 
 	};
 
-	self.draw = function(ctx){
+	self.draw = function(ctx, delta){
 
 		ctx.save();
 
@@ -324,7 +325,7 @@ function BG_Party(){
 			layer.x = PARALLAXES[i] * parallax + OFFSETS[i];
 			if(ALPHAS[i]>0){
 				ctx.globalAlpha = ALPHAS[i];
-				layer.draw(ctx);
+				layer.draw(ctx, delta);
 			}
 		}
 

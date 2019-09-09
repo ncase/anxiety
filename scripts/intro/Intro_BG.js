@@ -16,6 +16,8 @@ Loader.addSounds([
 	{ id:"bag_kick", src:"sounds/sfx/bag_kick.mp3" },
 	{ id:"sandwich", src:"sounds/sfx/sandwich.mp3" },
 
+	{ id:"laugh", src:"sounds/sfx/laugh.mp3" },
+
 ]);
 
 function BG_Intro(){
@@ -108,17 +110,17 @@ function BG_Intro(){
 	var SHOWN_LOGO = false;
 	var tickerSinceShown = 0;
 	var thePreviousFrame;
-	self.draw = function(ctx){
+	self.draw = function(ctx, DELTA){
 
 		// TICKER
-		ticker += 1/60;
+		ticker += DELTA;
 
 		// CLOUD OFFSET
 		OFFSETS[1] = -80 + ticker*3;
 
 		// Animate Hong: Which frame?
 		var parallax = 0;
-		frameTicker += 1/60;
+		frameTicker += DELTA;
 		if(GAME_TRANSITION==0 || GAME_TRANSITION==1 || GAME_TRANSITION==2){ 
 			if(frameTicker>590/30){
 				if(GAME_TRANSITION==0){
@@ -131,7 +133,7 @@ function BG_Intro(){
 		}
 		if(GAME_TRANSITION==3){ // START PARALLAXING
 			
-			parallaxTicker += 1/60; // 0 to 1 in one second
+			parallaxTicker += DELTA; // 0 to 1 in one second
 			if(parallaxTicker>1) parallaxTicker = 1;
 			self.layers[5].alpha = parallaxTicker; // blackout alpha
 
@@ -164,14 +166,14 @@ function BG_Intro(){
 		}
 		if(!SHOWN_LOGO && ticker>=530/30){
 			SHOWN_LOGO = true;
-			sfx("intro_scream", {volume:0.8});
+			sfx("intro_scream", {volume:0.7});
 		}
 		if(GAME_TRANSITION==0 && SHOWN_LOGO){
 			self.logoSprite.draw(ctx);
 			self.infoSprite.draw(ctx);
 		}
 		if(SHOWN_LOGO){
-			tickerSinceShown += 1/60;
+			tickerSinceShown += DELTA;
 			if(tickerSinceShown>1.5){
 				self.infoSprite.alpha = Math.min(1, tickerSinceShown-1.5);
 			}

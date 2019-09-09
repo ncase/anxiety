@@ -48,6 +48,12 @@ window.voice = function(name, options){
 }
 
 window.CURRENT_MUSIC = null;
+/*subscribe("GAME_PAUSED",function(){
+	if(window.CURRENT_MUSIC && window.CURRENT_MUSIC.playing()) window.CURRENT_MUSIC.pause();
+});
+subscribe("GAME_UNPAUSED",function(){
+	if(window.CURRENT_MUSIC && !window.CURRENT_MUSIC.playing()) window.CURRENT_MUSIC.play();
+});*/
 window.music = function(song, options, onend){
 
 	options = options || {};

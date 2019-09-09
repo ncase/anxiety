@@ -179,16 +179,16 @@ function BG_Rooftop(){
 	var PARALLAXING = null;
 	var MAGIC_NUMBER = 191;
 	var ticker = 0;
-	self.update = function(){
+	self.update = function(delta){
 
 		// START PARALLAXING IN / OUT
 		if(PARALLAXING!=null){
 			
 			if(PARALLAXING=="out"){
-				parallaxTicker += 1/60; // 0 to 1 in one second
+				parallaxTicker += delta; // 0 to 1 in one second
 			}
 			if(PARALLAXING=="in"){
-				parallaxTicker -= 1/60; // 1 to 0 in one second
+				parallaxTicker -= delta; // 1 to 0 in one second
 			}
 			if(parallaxTicker>1) parallaxTicker = 1;
 			if(parallaxTicker<0) parallaxTicker = 0;
@@ -230,11 +230,11 @@ function BG_Rooftop(){
 
 		// BYE CLOUDS
 		if(ALPHAS[9]!=1){ // unless anxiety BG
-			OFFSETS[2] -= 3/60;
+			OFFSETS[2] -= 3*delta; // 3 pixels per second
 		}
 
 		// SUPER HACKY - ANIMATE THE DIZZIES
-		ticker += 1/60;
+		ticker += delta;
 		var fps = 4;
 		var frame = Math.round(ticker*fps) % 4; // fps times a second
 		self.dizzyhunter.gotoFrame(frame);
@@ -244,7 +244,7 @@ function BG_Rooftop(){
 		// ANIMATE HUNTER 
 		if(self.roofhunter.currentFrame==23 || self.roofhunter.currentFrame==24){
 			self.roofhunter._hack_timer = (self.roofhunter._hack_timer===undefined) ? 0 : self.roofhunter._hack_timer;
-			self.roofhunter._hack_timer += 1/60;
+			self.roofhunter._hack_timer += delta;
 			if(self.roofhunter._hack_timer>1/24){ // 24 times a second
 				if(self.roofhunter.currentFrame==23){
 					self.roofhunter.gotoFrame(24);
@@ -258,7 +258,7 @@ function BG_Rooftop(){
 		// ANIMATE TRANSITION
 		if(self.transition.currentFrame>0){
 			self.transition._hack_timer = (self.transition._hack_timer===undefined) ? 0 : self.transition._hack_timer;
-			self.transition._hack_timer += 1/60;
+			self.transition._hack_timer += delta;
 			if(self.transition._hack_timer>1/15){ // 15fps
 				self.transition._hack_timer = 0;
 				if(self.transition.currentFrame<7){
@@ -276,7 +276,7 @@ function BG_Rooftop(){
 		var h = self.roofhong;
 		if(h.currentFrame>=36 && h.currentFrame<43){
 			h._hack_timer = (h._hack_timer===undefined) ? 0 : h._hack_timer;
-			h._hack_timer += 1/60;
+			h._hack_timer += delta;
 			if(h._hack_timer>1/15){ // 15fps
 				h._hack_timer = 0;
 				h.nextFrame();
@@ -285,13 +285,14 @@ function BG_Rooftop(){
 
 		// Anxiety BG
 		if(ALPHAS[9]>0){
-			self.anxiety.update(ALPHAS[9]);
+			self.anxiety.updateAlpha(ALPHAS[9]);
+			self.anxiety.update(delta);
 		}
 
 	};
 
 	var vibrateTicker = 0;
-	self.draw = function(ctx){
+	self.draw = function(ctx, delta){
 
 		ctx.save();
 
@@ -302,19 +303,19 @@ function BG_Rooftop(){
 				layer.x = PARALLAXES[i] * parallax + OFFSETS[i];
 				if(ALPHAS[i]>0){
 					ctx.globalAlpha = ALPHAS[i];
-					layer.draw(ctx);
+					layer.draw(ctx, delta);
 				}
 			}
 
 		}else{
 
 			if(self.hospitalSprite.currentFrame==2){ // ambulance
-				vibrateTicker += 1/60;
+				vibrateTicker += delta;
 				self.hospitalSprite.y = Math.sin(vibrateTicker*10*Math.TAU)*5;
 			}else{
 				self.hospitalSprite.y = 0;
 			}
-			self.hospitalSprite.draw(ctx);
+			self.hospitalSprite.draw(ctx, delta);
 
 		}
 

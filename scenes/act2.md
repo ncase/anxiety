@@ -163,7 +163,7 @@ s: Well, I saw someone retweet a GIF of a cat drinking milk yesterday.
 publish("act2",["dee",3]);
 ```
 
-s: They can't digest that crap! Who would retweet *animal abuse* like that?
+s: They can't digest that ^crap^! Who would retweet *animal abuse* like that?
 
 ```
 publish("act2",["party_hunter",1]);
@@ -508,7 +508,7 @@ b: Actually, even if you find a noble purpose in life, you can *still* mess ever
 
 `bb({body:"normal", mouth:"normal", eyes:"normal"})`
 
-b: Alfred Nobel wanted world peace, and for cultures to understand each other. So he decided to make travel easier.
+b: Alfred Nobel wanted world peace and for cultures to understand each other. So he decided to make travel easier.
 
 `bb({eyes:"normal_r"})`
 
@@ -981,7 +981,7 @@ b: You *need* to humbly see your own flaws in order to grow as a person!
 
 `bb({body:"two_up", eyes:"suspect"})`
 
-b: You can't spray air freshener over a moldy room! Covering up your flaws makes you worse in the long-run.
+b: You can't spray air freshener over a moldy room! Covering up your flaws makes you worse in the long run.
 
 `bb({body:"chest", mouth:"smile", eyes:"closed"})`
 
@@ -1467,7 +1467,7 @@ hong({body:"forward", mouth:"forward"});
 sfx("charging");
 ```
 
-h: What's this crap?
+h: What's this ^crap^?
 
 h: You're gonna yap more stupid *words* at me to--
 

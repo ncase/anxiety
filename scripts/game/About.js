@@ -36,19 +36,13 @@ Loader.addSounds([
 		// Hi
 		About.showing = true;
 		Game.pause();
-
-		// Cut in
 		aboutDOM.removeAttribute("about");
-		aboutDOM.style.display = "none";
-		aboutDOM.style.display = "block";
-		setTimeout(function(){
-			aboutDOM.style.top = "0px"; // slide in
-		},10);
+		aboutDOM.style.top = "0px"; // to TOP.
 
 		// Sound
 		Howler.mute(false);
 		sfx("rustle");
-		music('campus', {volume:0.5, fade:1});
+		music('campus', {volume:0.5, fade:1}); // aw yeah
 
 	});
 
@@ -57,7 +51,8 @@ Loader.addSounds([
 
 		// UI/SCREAM SOUNDS
 		stopAllSounds();
-		sfx("yelp");
+		//sfx("yelp");
+		sfx("pop");
 
 		// Cut out
 		aboutDOM.style.top = "";

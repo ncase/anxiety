@@ -362,7 +362,7 @@ function BG_Act4(){
 		}
 		return frames;
 	};
-	self.executeAnimation = function(anim){
+	self.executeAnimation = function(anim, delta){
 
 		// Frame...
 		var sprite = self[anim.target];
@@ -374,7 +374,7 @@ function BG_Act4(){
 			var frameToGoTo = frame.when;
 
 			// Next?
-			anim.ticker += 1/60;
+			anim.ticker += delta;
 			if(anim.ticker >= frame.wait){
 				anim.ticker = 0;
 				frameToGoTo = frame.then;
@@ -388,7 +388,7 @@ function BG_Act4(){
 	};
 
 	// SMASH THAT
-	self.createAnimation("break_hp", _animSequence( 1,4, 1/12, true) );
+	self.createAnimation("break_hp", _animSequence( 1,4, (1/12-0.01), true) );
 
 	// ALSHIRE
 	self.createAnimation("alshire", _animSequence( 4,5, 1/10, true) );
@@ -410,10 +410,10 @@ function BG_Act4(){
 	var ticker = 0;
 	var MAGIC_NUMBER = (210 + 8);
 
-	self.update = function(){
+	self.update = function(delta){
 
 		// TICKER
-		ticker += 1/60;
+		ticker += delta;
 
 		// CLOUD OFFSET
 		OFFSETS[1] = 80 - ticker*3;
@@ -422,10 +422,10 @@ function BG_Act4(){
 		if(PARALLAXING!=null){
 			
 			if(PARALLAXING=="out"){
-				parallaxTicker += 1/60; // 0 to 1 in one second
+				parallaxTicker += delta; // 0 to 1 in one second
 			}
 			if(PARALLAXING=="in"){
-				parallaxTicker -= 1/60; // 1 to 0 in one second
+				parallaxTicker -= delta; // 1 to 0 in one second
 			}
 			if(parallaxTicker>1) parallaxTicker = 1;
 			if(parallaxTicker<0) parallaxTicker = 0;
@@ -456,7 +456,8 @@ function BG_Act4(){
 
 		// Anxiety BG
 		if(ALPHAS[ANXIETY_INDEX]>0){
-			self.anxiety.update(ALPHAS[ANXIETY_INDEX]);
+			self.anxiety.updateAlpha(ALPHAS[ANXIETY_INDEX]);
+			self.anxiety.update(delta);
 		}
 
 		// BREAK_HP'S ALPHA
@@ -465,15 +466,17 @@ function BG_Act4(){
 		}
 
 		// ALL ANIMS
-		self.animations.forEach(self.executeAnimation);
+		self.animations.forEach(function(anim){
+			self.executeAnimation(anim, delta);
+		});
 
 	};
 
-	self.draw = function(ctx){
+	self.draw = function(ctx, delta){
 
 		if(self.sexySprite.visible){
 
-			self.sexySprite.draw(ctx);
+			self.sexySprite.draw(ctx, delta);
 
 		}else{
 
@@ -530,7 +533,7 @@ function BG_Act4(){
 				if(ALPHAS[i]>0){
 					if( !(i<ANXIETY_INDEX && DONT_DRAW_BENEATH) ){
 						ctx.globalAlpha = ALPHAS[i];
-						layer.draw(ctx);
+						layer.draw(ctx, delta);
 					}
 				}
 			}

@@ -95,7 +95,7 @@ function BG_Credits(){
 
 	var STAGE = 0;
 	var T_OFFSET = 1.9667; // stage 0
-	/*var T_OFFSET = 30;
+	/*var T_OFFSET = 18;
 	window.CURRENT_MUSIC.stop();
 	window.CURRENT_MUSIC.seek(T_OFFSET);
 	window.CURRENT_MUSIC.play();*/
@@ -122,13 +122,16 @@ function BG_Credits(){
 	STAGE_1_SCROLL_LENGTH -= 25; // HACK.
 
 	// STAGE 2
-	var S2_SCROLL_START = 34.1667 + 0.75;
+	var S2_SCROLL_START = 34.1667;// + 0.75;
 	var S2_SCROLL_END = 49.6667;
 	var S2_SCROLL_DUR = S2_SCROLL_END-S2_SCROLL_START;
 	var S2_SCROLL_LEN = 3600 + 600;
 
 	// STAGE 4
 	var YELPED = false;
+
+	// STAGE 6
+	var HAS_PUBLISHED_THE_END = false;
 
 	self.draw = function(ctx){
 
@@ -139,7 +142,12 @@ function BG_Credits(){
 		self.t += delta; //1/60;		
 
 		// What STAGE?
-		if(self.t >= 71.0333){
+		if(self.t >= 71.0333 + 1.5){
+			if(!HAS_PUBLISHED_THE_END){
+				HAS_PUBLISHED_THE_END = true;
+				publish("THE_END");
+			}
+		}else if(self.t >= 71.0333){
 			STAGE = 5; // THE END
 		}else if(self.t >= 63.9667){
 			STAGE = 4; // END WALK
@@ -238,9 +246,8 @@ function BG_Credits(){
 			self.velY *= 0.75;
 			self.accY = (self.gotoY - self.starring.y)*0.03;
 
-			// Draw GRAMM???
+			if(self.t > 33.6333){
 			//if(self.t > 33.7333){
-			if(self.t > 33.8333){
 
 				// Draw ANYWAY,
 				self.screens.x = 0;
@@ -263,6 +270,12 @@ function BG_Credits(){
 
 			}
 
+			// HACK - to load BB?
+			if(self.t > 31.8){
+				self.bb_dance.y = 300;
+				self.bb_dance.draw(ctx);
+			}
+
 		}
 
 		// STAGE 2 - THANKS & DANCE
@@ -282,10 +295,10 @@ function BG_Credits(){
 			}
 
 			// BB
-			if(self.t < 34.1667 + 0.5){
+			if(self.t < 34.1667){
 
 				// BB transitions in
-				var t = (self.t-33.9667)/(34.1667 + 0.5-33.9667);
+				var t = (self.t-33.9667)/(34.1667-33.9667);
 				var frame = Math.floor(t*6);
 				self.bb_dance.gotoFrame(frame);
 
@@ -325,6 +338,7 @@ function BG_Credits(){
 				}
 
 			}
+			self.bb_dance.y = 0;
 			self.bb_dance.draw(ctx);
 
 		}

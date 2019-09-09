@@ -968,6 +968,9 @@ DIALOGUEZ
 	     -o-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
 	        transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); /* custom */
 }
+#game_choices > div > * {
+	pointer-events: none; /* so italics and stuff doesn't trigger sound */
+}
 #game_choices > div[speaker=none]{
 	background: #000; 
 	color: #fff;

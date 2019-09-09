@@ -69,7 +69,7 @@ _.PLAYED_BEFORE = !!window.localStorage.continueChapter;
 {{/if}}
 
 {{if window.localStorage.credits}}
-[V. Credits](#credits) `publish("HACK_chselect_end"); stopAllSounds(); Game.OVERRIDE_CHOICE_LINE=true;`
+[V. Credits](#to-credits) `publish("HACK_chselect_end"); Game.OVERRIDE_CHOICE_LINE=true;`
 {{/if}}
 
 {{if !window.localStorage.credits}}
@@ -77,6 +77,14 @@ _.PLAYED_BEFORE = !!window.localStorage.continueChapter;
 {{/if}}
 
 [(main menu)](#intro-play-button) `publish("HACK_chselect_end"); Game.OVERRIDE_CHOICE_LINE=true;`
+
+# to-credits
+
+`stopAllSounds();`
+
+(...101)
+
+(#credits)
 
 # intro-start
 

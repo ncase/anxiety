@@ -22,6 +22,8 @@ n: _YOU_ ARE THE ANXIETY
 
 # act1_replay
 
+`hong({mouth:"0_neutral", eyes:"0_neutral"})`
+
 h: Oh hey! We're back here again?
 
 `hong({eyes:"0_neutral"})`
@@ -34,20 +36,26 @@ n: IN FACT, REPLAYING THIS GAME IS PUTTING THEM IN *DANGER* RIGHT NOW
 
 n: QUICK, WARN THEM!
 
-`bb({eyes:"fear", mouth:"normal"})`
+```
+sfx("squeak");
+bb({body:"squeeze_talk"});
+hong({body:"0_squeeze"});
+```
 
-b: Human! Listen, we're in danger! The danger is...
+b: Human! Listen, we're in danger! The player...
 
-[The player's gonna torture us again!](#act1_replay_torture)
+[...is gonna torture us again!](#act1_replay_torture)
 
-[The player won't find an alternate ending!](#act1_replay_alternate)
+[...won't find an alternate ending!](#act1_replay_alternate)
 
-[The player will get ludonarrative dissonance!](#act1_replay_dissonance)
+[...will get ludonarrative dissonance!](#act1_replay_dissonance)
 
 # act1_replay_torture
 
 ```
 window.HACK_REPLAY = JSON.parse(localStorage.act4);
+bb({body:"normal", mouth:"normal", eyes:"fear"});
+hong({body:"0_sammich"});
 ```
 
 {{if window.HACK_REPLAY.act1_ending=="fight"}}
@@ -63,7 +71,7 @@ b: They'll make us *NOT* punch the party host!
 {{/if}}
 
 {{if window.HACK_REPLAY.a2_ending=="flight"}}
-b: They'll make us punch the sympathetic-villain party host!
+b: They'll make us punch the Sympathetic Anti-Villain party host!
 {{/if}}
 
 {{if window.HACK_REPLAY.a3_ending=="jump"}}
@@ -74,6 +82,8 @@ h: Well at least we might not jump off the roof this ti--
 b: THEY'LL MAKE US JUMP OFF THE ROOF.
 {{/if}}
 
+`bb({body:"fear"});`
+
 b: ALL THESE NEW TERRIBLE THINGS WILL HAPPEN TO US, AND THEN WE'LL--
 
 (#act1_replay_end)
@@ -81,7 +91,14 @@ b: ALL THESE NEW TERRIBLE THINGS WILL HAPPEN TO US, AND THEN WE'LL--
 
 #act1_replay_alternate
 
+```
+bb({body:"normal", mouth:"normal", eyes:"fear"});
+hong({body:"0_sammich"});
+```
+
 h: Sure, the story as a *whole* is the same, but each chapter has two possible endings, plus all the branching dialogue opti--
+
+`bb({body:"fear"});`
 
 b: The player will be disappointed, close this browser tab, delete our software, and then we'll--
 
@@ -90,15 +107,30 @@ b: The player will be disappointed, close this browser tab, delete our software,
 
 # act1_replay_dissonance
 
+```
+bb({body:"normal", mouth:"normal", eyes:"fear"});
+hong({body:"0_sammich"});
+```
+
 h: A lewd-what now?
+
+`bb({eyes:"normal"});`
 
 b: The story arc was about how you can *CHOOSE* to build a healthy collaboration with your fear,
 
+`bb({eyes:"normal_right"});`
+
 b: But replaying the game will give the same story, implying your *CHOICES* don't matter,
+
+`bb({eyes:"narrow_eyebrow"});`
 
 b: Thus showing a contradiction between the game's message and mechanics,
 
+`bb({eyes:"fear"});`
+
 b: Thus unraveling the fabric of this narrative universe,
+
+`bb({body:"fear"});`
 
 b: And then we'll--
 
@@ -112,12 +144,25 @@ b: And then we'll--
 b: DIEEEEEEEEEEEEEEEEEEE
 
 ```
+bb({body:"normal", mouth:"normal", eyes:"normal"});
 Game.clearText();
 ```
 
 (...1001)
 
-b: hahaha
+```
+bb({body:"laugh"});
+hong({body:"laugh"});
+Game.clearText();
+sfx("laugh");
+```
+
+(...5001)
+
+```
+bb({body:"normal", mouth:"normal", eyes:"normal"});
+hong({body:"0_sammich"});
+```
 
 h: Okay let's get back into character.
 
@@ -126,6 +171,12 @@ Game.clearText();
 ```
 
 n4: (LET _YOUR_ ANXIETY BLAH BLAH BLAH MOST SIMILAR TO WHAT _YOUR_ FEAR BLAH BLAH YOU KNOW THE DRILL)
+
+```
+sfx("squeak");
+hong({body:"0_squeeze"});
+bb({body:"squeeze"});
+```
 
 (#act1_normal_choice)
 
@@ -148,6 +199,7 @@ n: IN FACT, THAT SANDWICH IS PUTTING THEM IN *DANGER* RIGHT NOW
 n: QUICK, WARN THEM!
 
 ```
+sfx("squeak");
 bb({body:"squeeze_talk"});
 hong({body:"0_squeeze"});
 ```
@@ -200,7 +252,7 @@ b: DIEEEEEEEEEEEEEEEEEEE
 ```
 bb({body:"normal", mouth:"normal", eyes:"normal"});
 hong({mouth:"0_shock", eyes:"0_shock"});
-attack("20p", "alone");
+attack("18p", "alone");
 publish("hp_show");
 ```
 
@@ -244,7 +296,7 @@ b: DIEEEEEEEEEEEEEEEEEEE
 ```
 bb({body:"normal", mouth:"normal", eyes:"normal"});
 hong({mouth:"0_shock", eyes:"0_shock"});
-attack("20p", "bad");
+attack("18p", "bad");
 publish("hp_show");
 ```
 
@@ -279,7 +331,7 @@ b: DIEEEEEEEEEEEEEEEEEEE
 ```
 bb({body:"normal", mouth:"normal", eyes:"normal"});
 hong({mouth:"0_shock", eyes:"0_shock"});
-attack("20p", "harm");
+attack("18p", "harm");
 publish("hp_show");
 ```
 
@@ -408,7 +460,7 @@ b: and we become WHALE POOP!
 
 ```
 hong({mouth:"shock", eyes:"shock"});
-attack("10p", "alone");
+attack("18p", "alone");
 ```
 
 (...2500)
@@ -463,7 +515,7 @@ b: We'll overdose on so many drugs the undertaker will wonder how our body was *
 
 ```
 hong({mouth:"shock", eyes:"shock"});
-attack("10p", "harm");
+attack("18p", "harm");
 ```
 
 (...2500)
@@ -521,7 +573,7 @@ b: ALL WE DO IS MAKE PEOPLE FEEL BAD, SO WE SHOULD FEEL BAD
 
 ```
 hong({mouth:"shock", eyes:"shock"});
-attack("10p", "bad");
+attack("18p", "bad");
 ```
 
 (...2500)
@@ -587,7 +639,7 @@ b: Let's retweet that story!
 
 ```
 hong({mouth:"shock", eyes:"shock"});
-attack("10p", "harm");
+attack("18p", "harm");
 ```
 
 (...2500)
@@ -655,7 +707,7 @@ h: ...
 
 ```
 hong({mouth:"shock", eyes:"shock"});
-attack("10p", "alone");
+attack("18p", "alone");
 ```
 
 (...2500)
@@ -687,7 +739,7 @@ b: CATS CAN'T DIGEST MILK AND WE'RE TERRIBLE PEOPLE FOR ENJOYING ANIMAL ABUSE
 
 ```
 bb({body:"normal", mouth:"normal", eyes:"fear"});
-attack("10p", "bad");
+attack("18p", "bad");
 ```
 
 (...2500)
@@ -764,7 +816,7 @@ b: WHALE. POOP.
 
 ```
 hong({mouth:"shock", eyes:"shock"});
-attack("10p", "alone");
+attack("18p", "alone");
 ```
 
 (...2500)
@@ -814,7 +866,7 @@ b: SAY NO SAY NO SAY NO SAY NO SAY NO SAY NO SAY NO SAY NO SAY N-
 ```
 bb({body:"normal", eyes:"fear", mouth:"normal"});
 hong({mouth:"shock", eyes:"shock"});
-attack("10p", "harm");
+attack("18p", "harm");
 ```
 
 (...2500)
@@ -865,7 +917,7 @@ b: ...to leave them alone and let them have a nice party without a horrible disg
 
 ```
 hong({mouth:"shock", eyes:"shock"});
-attack("10p", "bad");
+attack("18p", "bad");
 ```
 
 (...2500)
@@ -891,7 +943,7 @@ b: Chronic loneliness increases our cortisol levels as well as risk for cardiova
 
 ```
 hong({mouth:"shock", eyes:"shock"});
-attack("10p", "harm");
+attack("18p", "harm");
 ```
 
 (...2500)
@@ -928,7 +980,7 @@ b: We're gonna get called out and cancelled and dragged with a rope on horseback
 
 ```
 hong({mouth:"shock", eyes:"shock"});
-attack("10p", "alone");
+attack("18p", "alone");
 ```
 
 (...2500)
@@ -962,7 +1014,7 @@ b: We're the reason fascism will arise from the rubble of democracy!
 ```
 bb({body:"normal", eyes:"anger"});
 hong({mouth:"shock", eyes:"shock"});
-attack("10p", "bad");
+attack("18p", "bad");
 ```
 
 (...2500)
@@ -995,7 +1047,7 @@ b: That means you too.
 ```
 bb({body:"normal", mouth:"normal"});
 hong({mouth:"shock", eyes:"shock"});
-attack("10p", "harm");
+attack("18p", "harm");
 ```
 
 (...2500)
@@ -1034,11 +1086,11 @@ h: It's kinda rude to keep ignoring them though, no?
 
 `bb({eyes:"normal_right"});`
 
-b: Well other people always ignore *us* so
+b: Well other people always ignore *us*, so
 
 ```
 hong({mouth:"shock", eyes:"shock"});
-attack("10p", "alone");
+attack("18p", "alone");
 ```
 
 (...2500)
@@ -1143,7 +1195,7 @@ b: The point is WE'RE GOING TO DIE ALONE
 
 ```
 hong({mouth:"shock", eyes:"shock"});
-attack("30p", "alone");
+attack("18p", "alone");
 ```
 
 (...2500)
@@ -1229,7 +1281,7 @@ b: The point is we're a manipulative creep.
 
 ```
 hong({mouth:"shock", eyes:"shock"});
-attack("30p", "bad");
+attack("18p", "bad");
 ```
 
 (...2500)
@@ -1260,7 +1312,7 @@ b: How's THAT for a party invite?!
 
 ```
 hong({mouth:"shock", eyes:"shock"});
-attack("30p", "harm");
+attack("18p", "harm");
 ```
 
 (...2500)
@@ -1297,7 +1349,7 @@ h:
 {{if _.hookuphole}}"we'll die alone"... {{/if}}
 {{if _.serialkiller}}"they're a serial killer"... {{/if}}
 {{if _.catmilk}}"cats can't digest milk"... {{/if}}
-{{if _.pokemon}}a crappy parody song... {{/if}}
+{{if _.pokemon}}a ^crappy^ parody song... {{/if}}
 
 h: i just want to live my life.
 

@@ -69,11 +69,11 @@ function BG_Anxiety(whiteMode){
 		if(box.y>BG_HEIGHT) return true;
 		return false;
 	};
-	self.updateBox = function(box){
+	self.updateBox = function(box, delta){
 		
 		// Move it
-		box.x += box.velX;
-		box.y += box.velY;
+		box.x += box.velX * delta/(1/60);
+		box.y += box.velY * delta/(1/60);
 
 		// If it's out of sight, reset it
 		if(self.isBoxOutOfSight(box)){
@@ -91,11 +91,13 @@ function BG_Anxiety(whiteMode){
 		self.boxes.push(box);
 	}
 
-	var allBoxAlpha = 0;
-	self.update = function(alpha){
+	var allBoxAlpha = 1;
+	self.updateAlpha = function(alpha){
 		allBoxAlpha = alpha;
+	};
+	self.update = function(delta){
 		self.boxes.forEach(function(box){
-			self.updateBox(box);
+			self.updateBox(box, delta);
 		});
 	};
 	self.draw = function(ctx){

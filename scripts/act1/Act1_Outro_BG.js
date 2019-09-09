@@ -113,10 +113,10 @@ function BG_Act1_Outro(){
 	var parallaxTicker = 1;
 	var thePreviousFrame = -1;
 
-	self.draw = function(ctx){
+	self.draw = function(ctx, delta){
 
 		// TICKER
-		ticker += 1/60;
+		ticker += delta;
 
 		// CLOUD OFFSET
 		OFFSETS[1] = -80 + ticker*3;
@@ -125,7 +125,7 @@ function BG_Act1_Outro(){
 		var parallax = 0;
 		if(GAME_TRANSITION==0){
 
-			parallaxTicker -= 2/60; // 1 to 0 in 1/2 second
+			parallaxTicker -= 2*delta; // 1 to 0 in 1/2 second
 			
 			if(parallaxTicker<0) parallaxTicker = 0;
 			self.layers[5].alpha = parallaxTicker; // blackout alpha
@@ -138,7 +138,7 @@ function BG_Act1_Outro(){
 		}
 
 		// Smoking crater & Hong frame
-		frameTicker += 1/60;
+		frameTicker += delta;
 		var results;
 		if(ANIM_TO_USE == "fight"){
 			

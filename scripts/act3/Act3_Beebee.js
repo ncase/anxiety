@@ -84,10 +84,10 @@ function Act3_Beebee(){
 	self.bounceHookes = 0.25; // loose
 	self.bounceDamp = 0.9; // loose
 	self.isVibrating = true;
-	self.draw = function(ctx){
+	self.draw = function(ctx, delta){
 
 		// Vibration!
-		ticker += 1/60;
+		ticker += delta;
 		if(self.isVibrating){
 			self.characterSquash = 1 + Math.sin(ticker*Math.TAU*7)*0.01; // seven vibes per second
 		}else{

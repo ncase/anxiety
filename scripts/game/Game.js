@@ -77,17 +77,25 @@ Game.parseSceneMarkdown = function(md){
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 Game.start = function(){
+	Game.FORCE_CANT_SKIP = false; // for the replay
 	window._ = {}; // global var, reset
 };
 
+var LAST_TIME = (new Date()).getTime();
 Game.update = function(){
+
+	// TIME
+	var NOW = (new Date()).getTime();
+	var DELTA = (NOW - LAST_TIME)/1000;
+	DELTA = Math.min(DELTA, 1/20); // no slower than 20fps
+	LAST_TIME = NOW;
 
 	if(!Game.paused){
 
 		// Timeout callbacks...
 		for(var i=0; i<Game.timeoutCallbacks.length; i++){
 			var tc = Game.timeoutCallbacks[i];
-			tc.timeLeft -= 1000/60;
+			tc.timeLeft -= 1000*DELTA;
 			if(tc.timeLeft<=0){
 				tc.callback();
 				Game.timeoutCallbacks.splice(i,1); // delete that one
@@ -97,7 +105,7 @@ Game.update = function(){
 
 		// The interface
 		Game.updateText();
-		Game.updateCanvas();
+		Game.updateCanvas(DELTA);
 
 		// Ayyy
 		publish("update");
@@ -119,6 +127,8 @@ Game.pause = function(){
 	Howler.mute(true);
 
 	$("#paused").setAttribute("modal", (Options.showing||About.showing||ContentNotes.showing) ? "yes" : "no" );
+
+	publish("GAME_PAUSED");
 	
 };
 window.addEventListener("blur", Game.pause);
@@ -128,6 +138,9 @@ Game.onUnpause = function(){
 		Game.pausedDOM.style.display = "none";
 		Howler.mute(false);
 	}
+
+	publish("GAME_UNPAUSED");
+
 };
 Game.pausedDOM.onclick = function(e){
 	if(Options.showing){
@@ -661,6 +674,14 @@ Game.executeText = function(line){
 			resolve(); // DONE WITH IT.
 		}, interval+nextLineDelay);
 
+		// VISIBLE: FALSE FOR ANY ELEMENTS PAST 10
+		var VISIBLE_LIMIT = 10;
+		var w = Game.wordsDOM.children;
+		if(w.length>VISIBLE_LIMIT){
+			w[ w.length - VISIBLE_LIMIT - 1 ].style.visibility = "hidden";
+			w[ w.length - VISIBLE_LIMIT - 2 ].style.visibility = "hidden";
+		}
+
 	});
 
 }
@@ -998,20 +1019,20 @@ Game.resetScene = function(){
 Game.resetScene();
 
 // Update & draw all the kids!
-Game.updateCanvas = function(){
+Game.updateCanvas = function(DELTA){
 
 	// For retina
 	var ctx = Game.context;
 	ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
 	ctx.save();
 	ctx.scale(2,2);
-	
+
 	// Update/Draw all kids
 	Game.scene.children.forEach(function(child){
-		if(child.update) child.update();
+		if(child.update) child.update(DELTA);
 	});
 	Game.scene.children.forEach(function(child){
-		child.draw(ctx);
+		child.draw(ctx, DELTA);
 	});
 
 	// Restore

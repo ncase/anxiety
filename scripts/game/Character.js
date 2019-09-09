@@ -131,7 +131,7 @@ function Character(spriteConfig, animLoops){
 	self.characterSquash = 1;
 	self.ALLOW_PARALLAX = false;
 	self.x = -1337;
-	self.draw = function(ctx){
+	self.draw = function(ctx, delta){
 
 		var fname;
 		var l = self.layers;
@@ -164,7 +164,7 @@ function Character(spriteConfig, animLoops){
 		}
 
 		// Anim Loop rules!
-		self.runAnimLoopRules();
+		self.runAnimLoopRules(delta);
 
 		// SUPER DUPER HACK
 		if(THERE_IS_A_CONE){
@@ -239,7 +239,7 @@ function Character(spriteConfig, animLoops){
 				caption.draw(ctx);
 			}
 			
-			attackedTimer += 1/60;
+			attackedTimer += delta;
 			if(attackedTimer>1.75){
 				if(attackedIconShown){
 					icon.y -= 1;
@@ -263,7 +263,7 @@ function Character(spriteConfig, animLoops){
 		rule.active = false;
 		rule.countdown = -1;
 	});
-	self.runAnimLoopRules = function(){
+	self.runAnimLoopRules = function(delta){
 		for(var i=0; i<self.animLoops.length; i++){
 
 			// Find target
@@ -282,7 +282,7 @@ function Character(spriteConfig, animLoops){
 
 			// Countdown... and ACTIVATE!
 			if(rule.active){
-				rule.countdown -= 1/60;
+				rule.countdown -= delta;
 				if(rule.countdown<=0){
 					target.gotoFrameByName(rule.target+"_"+rule.thenGoToFrame);
 					rule.active = false;
