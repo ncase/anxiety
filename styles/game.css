@@ -278,10 +278,13 @@ ABOUT / END DEMO
 #about{
 	
 	position: absolute;
-	top:600px;
+	/*top:600px;*/
+	top:20px;
 	left:0;
 
-	background: #2E2E2E;
+	background: url(../sprites/about/the_end.png);
+    background-size: 100%;
+
 	width: 100%;
 	height: 100%;
 	color:#fff;
@@ -317,71 +320,6 @@ ABOUT / END DEMO
 }
 #about a.no_deco{
 	text-decoration: none;
-}
-
-#the_newsletter #email{
-	width: 300px;
-    font-size: 20px;
-    border: none;
-    padding: 5px;
-    font-weight: 300;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-#the_newsletter #email_info{
-	position: relative;
-	width: 310px;
-	height: 60px;
-}
-#the_newsletter #gdpr{
-	position: absolute;
-    transform: scale(2);
-    top: 11px;
-    left: 3px;
-}
-#the_newsletter #consent{
-	font-size: 13px;
-    position: absolute;
-    left: 31px;
-    top: 8px;
-    width: 110px;
-    line-height: 1em;
-    text-align: left;
-}
-#the_newsletter #submit{
-	background: #ff4040;
-    position: absolute;
-    top: 6px;
-    left: 150px;
-    width: 160px;
-    height: 30px;
-    font-size: 20px;
-    font-weight: 300;
-    border-radius: 30px;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-}
-#the_newsletter #submit:hover{
-	background: #ff7070;
-}
-#the_newsletter #submit[disabled]{
-	background: #555;
-    color: #222;
-    cursor: default;
-}
-
-#patreon{
-	width: 160px;
-    height: 56px;
-	background: url(../sprites/about/patreon.png);
-    background-size: 100%;
-    margin: 5px auto 10px auto;
-    cursor: pointer;
-    position: relative;
-}
-#patreon:hover{
-	top:-2px;
 }
 
 #share{
@@ -441,8 +379,8 @@ ABOUT / END DEMO
 }
 
 #about[about=yes]{
-	padding-top: 25px;
-    height: 490px;
+	/*padding-top: 25px;*/
+    height: 560px;
 }
 #about[about=yes] #end_words1{	display: none; }
 #about[about=yes] #end_words2{	display: inline; }

@@ -10,6 +10,7 @@ Loader.addScenes([
 	"scenes/credits.md"
 	
 ]);
+/*
 Loader.load(function(progress){
 
 	$("#loading_bar_bg").style.height = (progress*50)+"px";
@@ -25,6 +26,7 @@ Loader.load(function(progress){
 	Game.init();
 
 });
+*/
 
 subscribe("START_GAME", function(){
 		
