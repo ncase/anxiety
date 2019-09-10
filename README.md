@@ -1,12 +1,30 @@
-![](https://ncase.me/anxiety-demo/sharing/thumb.png)
+<!-- ![](https://ncase.me/anxiety/sharing/thumb.png) -->
 
-# [Play the demo here!](https://ncase.me/anxiety-demo/)
+# [Play the interactive story here!](https://ncase.me/anxiety/)
 
-Everything I've made here is dedicated to the public domain, under [Creative Commons Zero](https://creativecommons.org/choose/zero/)!
+## Public Domain
 
-Created by [Nicky Case](https://ncase.me/)
+Nicky Case and Monplaisir hereby dedicate all their work for this game to the public domain, under [Creative Commons Zero](https://creativecommons.org/choose/zero/).
+That means: you can remix and reuse *any* of the original art / code / music in this game for *any* purpose, even commercial use!
 
-Music is ["Battle of Pogs" by Komiku](http://freemusicarchive.org/music/Komiku/Captain_Glouglous_Incredible_Week_Soundtrack/pog) (Creative Commons Zero)
+**Q:** Do I have to give attribution?    
+**A:** You're not *legally* required to, but it's highly appreciated! <3
+
+**Q:** Legally speaking, can I claim *I* made this?    
+**A:** Yes, the same way you're legally allowed to claim to have written Mary Shelley's *Frankenstein*, or claim you have 13 nipples.
+
+**Q:** Can I sell a port of this game?    
+**A:** Yes! But to avoid confusion, I recommend labeling your game as "Fan-Made Port", and *link to this statement saying I'm explicitly allowing commercial remixes*. This is to avoid accusations of theft from folks who weren't aware I always open-source + public-domain my projects. (Example: [a Steam port of another one of my games!](https://store.steampowered.com/app/1103210/We_Become_What_We_Behold_FanMade_Port/))
+
+**Q:** Can I turn this game into a dating sim between the human and wolf?   
+**A:** uh
+
+
+## Full Credits
+
+Art / Code / Writing by [Nicky Case](https://ncase.me/)
+
+Music by [Monplaisir](https://loyaltyfreakmusic.com)
 
 **Sound Effects from FreeSound.org (Creative Commons)**
 
@@ -30,10 +48,17 @@ Music is ["Battle of Pogs" by Komiku](http://freemusicarchive.org/music/Komiku/C
 * [Tension Building](https://freesound.org/people/benjaminharveydesign/sounds/316649/) by benjaminharveydesign
 * [Short Fart](https://freesound.org/people/DSISStudios/sounds/241000/) by DSISStudios
 
-**Sound Effects from Kenney.nl (Creative Commons Zero)**
+**Sound Effects from Kenney.nl (All Creative Commons Zero)**
 
-* [Beebee's & Hong's voices](https://kenney.nl/assets/digital-audio)
-* [Narrator's voice](https://kenney.nl/assets/rpg-audio)
+* [Digital Audio Pack](https://kenney.nl/assets/digital-audio)
+* [RPG Audio Pack](https://kenney.nl/assets/rpg-audio)
+* [UI Audio Pack](https://kenney.nl/assets/ui-audio)
+
+**Copyrighted Sounds That I Really Hope Count As Fair Use:**
+
+* The Pokémon theme song is © The Pokémon Company. I used a ~22s  instrumental clip for a parody song about Tinder.
+* The "Hadouken!" sound is © Capcom. I used it as parody for the anxiety wolf's Special Attack.
+
 
 **Open Source Libraries**
 
@@ -43,9 +68,129 @@ Music is ["Battle of Pogs" by Komiku](http://freemusicarchive.org/music/Komiku/C
 * [Simple Sharing Buttons](https://simplesharingbuttons.com/) by Stefan Bohacek
 * [Ceaser](https://matthewlein.com/tools/ceaser) by Matthew Lein for CSS animation
 
-The Pokémon theme song is © of The Pokémon Company. It's a ~22s instrumental for a parody, probably fair use. I hope.
+**Thank you to my playtesters!**
 
-Thank you to my playtesters!
 B Cavello, EmilyKate McDonough, Glen Chiacchieri, Mikayla Hutchinson, Monica Srivastava, Rowan, Srini Kadamati
 
-And of course, thank you to the generous support of [my fans on Patreon.](https://www.patreon.com/ncase) Luv y'all <3
+**And of course, thank you to the generous support of [my fans on Patreon.](https://www.patreon.com/ncase)** Luv y'all <3
+
+## How To Translate
+
+Okay. I super, super seriously apologize in advance.
+
+Translating this thing will *suck.*
+
+Thus, I highly recommend collaborating online on a translation! There's about 9,000 words to translate, the rules of what to translate or not are a bit weird, and you'll need to edit some images. But if you're still up for it...
+
+### Step 1:
+
+[Make a fork](https://help.github.com/en/articles/fork-a-repo) on Github!
+
+### Step 2:
+
+*POST AN ISSUE WITH A LINK TO YOUR FORK.* This will let folks a) know a translation is in process, and b) let *you* find collaborators for the translation process!
+
+### Step 3:
+
+Translate all the Markdown files in `/scenes`. (about 9000 words) Personally I use [MacDown](https://macdown.uranusjr.com/) (Mac only), but there's [a whole bunch of other free open-source Markdown editors](https://opensource.com/article/18/11/markdown-editors).
+
+**THERE ARE RULES OF WHAT TO TRANSLATE OR NOT.** It's probably best to show it with examples. Excuse my terrible French...
+
+Original English:
+
+![](misc/english.png)
+
+Translated to "Nicky's Attempt At French":
+
+![](misc/french.png)
+
+As you can see, you *don't* translate everything.
+
+**Just translate:**
+
+* Anything after a letter + colon. This changes a dialogue *spoken*. "h:" is hong the human, "b:" is beebee the wolf, etc.
+* Anything in the square brackets of `[words words words](#section_name)`. This changes the dialogue *choices.*
+
+**Try to:**
+
+* Not make any translated line go 20% longer than the original English. Otherwise dialogue bubbles or choices may go off-screen. Paraphrase or cut words if you have to.
+
+**Do NOT translate:**
+
+* Anything within ``` `code({with:"backticks",like:"this"});` ```. This is the code that runs between dialogue lines.
+* Anything within ``` {{ these brackets either }} ```. These allow for changes in dialogue or choices based on previous choices (see example above).
+* Any line that starts with a `#`. That's a section name.
+* The part in the *round* brackets in `[words words words](#section_name)`. That's the name of the section you'll go to if you select that dialogue choice.
+
+Oh but of *course* that's not all the rules! Two more rules for translating swear words:
+
+Original English:
+
+![](misc/swear_english.png)
+
+Excusez mon français:
+
+![](misc/swear_french.png)
+
+**Rules for translating swears:**
+
+* Put all swear words in `^fucking^ carat symbols`. This is so they can be replaced with @#&!✩@ in the Cuss-Free Mode.
+* Beebee the wolf (almost) never swears. They swear a couple times in the perverted Pokémon parody song but that's it. Otherwise, they say "Heck" and "Dang".
+
+**One more dumb rule: Don't translate any words within #pounds#.**
+
+Like so. English:
+
+![](misc/hash_english.png)
+
+French:
+
+![](misc/hash_french.png)
+
+### Step 4:
+
+Translate `index.html`. (about 70 words) There's further instructions in that file itself. (Feel free to add yourself + your collaborators as translators in the top-left corner!)
+
+This translates some UI, and helps search engines + social networks understand the page is in your target language.
+
+### Step 5:
+
+Translate the images. This step sucks. You can use an image-editing program like MS Paint or [GIMP](https://www.gimp.org).
+
+Images to translate: (about 70 words)
+
+* `sharing/thumb.png` (so when folks share your game on social media, the thumbnail's in your language!)
+* `sprites/about/cc0.png`
+* `sprites/about/replay.png`
+* `sprites/act4/callback.png`
+* `sprites/credits/end_message.png`
+* `sprites/credits/screens.png` (feel free to add yourself in closing credits as a translator)
+* `sprites/credits/starring.png`
+* `sprites/credits/thanks.png`
+* `sprites/intermission/youwin.png`
+* `sprites/intro/intro_logo.png` (feel free to add yourself in opening credits as a translator)
+* `sprites/ui/fear_captions.png`
+* `sprites/ui/preloader.png`
+
+### Step 6:
+
+Your translated game is DONE! Now you just need to put it online. You can follow [Github Pages's instructions](https://pages.github.com) for free hosting. (it's the same way I'm hosting my game)
+
+### (OPTIONAL STEP):
+
+This game also has a link to a list of Mental Health Resources, [on a different webpage](https://ncase.me/mental-health-resources). It's not part of the "main" game, but it may still be valuable to make accessible in more languages.
+
+The repo & instructions for translating that are... [here!](https://github.com/ncase/mental-health-resources)
+
+### Step 7: TELL ME YOU ARE *DONE* 🎉🎉🎉
+
+Ping @ncase on the Github Issue you created in Step 2 so I know! Or email me at ![](misc/email.png)
+
+Do ***NOT*** send a Pull Request, because that will change the *original* game. I will, however, edit the original game to have a link to your translation!
+
+I'm usually busy and/or bad at email, so it'll take me a while to get around to it, but if I don't respond for a week, ping me again!
+
+Thank you you're the beeeeeest 💖🐺💖
+
+
+

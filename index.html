@@ -10,20 +10,20 @@
 	<!-- Schema.org markup for Google+ -->
 	<meta itemprop="name" content="Adventures With Anxiety!">
 	<meta itemprop="description" content="A story-game about a human and their anxiety. You play as the anxiety.">
-	<meta itemprop="image" content="https://ncase.me/anxiety-demo/sharing/thumb.png">
+	<meta itemprop="image" content="https://ncase.me/anxiety/sharing/thumb.png">
 
 	<!-- Twitter Card data -->
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@ncasenmare">
 	<meta name="twitter:title" content="Adventures With Anxiety!">
 	<meta name="twitter:description" content="A story-game about a human and their anxiety. You play as the anxiety.">
-	<meta name="twitter:image" content="https://ncase.me/anxiety-demo/sharing/thumb.png">
+	<meta name="twitter:image" content="https://ncase.me/anxiety/sharing/thumb.png">
 
 	<!-- Open Graph data -->
 	<meta property="og:title" content="Adventures With Anxiety!">
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://ncase.me/anxiety-demo/">
-	<meta property="og:image" content="https://ncase.me/anxiety-demo/sharing/thumb.png">
+	<meta property="og:url" content="https://ncase.me/anxiety/">
+	<meta property="og:image" content="https://ncase.me/anxiety/sharing/thumb.png">
 	<meta property="og:description" content="A story-game about a human and their anxiety. You play as the anxiety.">
 	<meta property="og:site_name" content="Adventures With Anxiety!">
 	
@@ -50,6 +50,10 @@
 
 </head>
 <body>
+
+<!-- - - - - - - - - - - - - - - - - - -->
+<!-- THE GAME ITSELF, FRONT AND CENTER -->
+<!-- - - - - - - - - - - - - - - - - - -->
 
 <div id="game_container">
 	
@@ -117,10 +121,10 @@
 			Enjoy!
 		</p>
 		<p style="color:#999; font-size: 16px; line-height: 1.3em;">
-			other notes: alcohol abuse, sexuality<span id="cn_cussing">, a @✩$!load of swearing</span>
+			other notes: alcohol abuse, sexuality<span class="hide-if-cuss-free">, a @✩$!load of swearing</span>
 		</p>
 		<p>
-			<a target="_blank" href="resources">mental health resources</a>
+			<a target="_blank" href="https://ncase.me/mental-health-resources">mental health resources</a>
 			&#x1f517;
 		</p>
 		<div id="cn_ok" onclick="publish('hide_cn');" style="float:none">
@@ -135,7 +139,7 @@
 		
 			<div style="font-size: 40px; margin-top: 42px; line-height: 30px;">
 				mental health
-				<a href="resources" target="_blank">resources</a>
+				<a href="https://ncase.me/mental-health-resources" target="_blank">resources</a>
 			</div>
 
 			<div style="margin-top: 26px; color: #999;">
@@ -192,9 +196,58 @@
 
 </div>
 
-<!-- Corner Text -->
-<div id="topleft"></div>
-<div id="bottomright"></div>
+<!-- - - - - - - - - - - - - - - - - - -->
+<!-- SHTUFF IN THE CORNER - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - -->
+
+<div class="corner-text" id="topleft">
+Created by
+<a href="https://ncase.me/" target="_blank">Nicky Case</a>
+<br>
+Music by
+<a href="https://loyaltyfreakmusic.com" target="_blank">Monplaisir</a> <!-- double check this is what they want -->
+<br>
+<a href="https://github.com/ncase/anxiety" target="_blank">Full credits</a> <!-- link to credits -->
+</div>
+
+<div class="corner-text" id="bottomleft">
+<img src="sprites/about/cc0.png" height="30" style="opacity:0.7"/>
+<br>
+You're already free to reuse &amp; remix this for any use!
+<a href="https://github.com/ncase/anxiety" target="_blank">(huh?)</a>
+<br>
+<a href="https://github.com/ncase/anxiety" target="_blank">Get the full source code</a>
+</div>
+
+<div class="corner-text" id="topright">
+Share on an anxiety-app:
+<div id="share">
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fncase.me%2Fanxiety%2F" target="_blank" class="no_deco">
+		<div id="share_fb"></div>
+	</a>
+	<a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fncase.me%2Fanxiety%2F&text=I%20just%20played%20this%20story-game%20about%20a%20human%20and%20their%20anxiety!%20You%20play%20*as*%20the%20anxiety.%20%F0%9F%98%B1%20https%3A%2F%2Fncase.me%2Fanxiety%2F"
+		target="_blank" class="no_deco">
+		<div id="share_tw"></div>
+	</a>
+	<a href="mailto:?subject=Adventures%20with%20Anxiety!&body=I%20just%20played%20this%20story-game%20about%20a%20human%20and%20their%20anxiety!%20You%20play%20*as*%20the%20anxiety.%20%F0%9F%98%B1%20https%3A%2F%2Fncase.me%2Fanxiety%2F"
+		target="_blank" class="no_deco">
+		<div id="share_em"></div>
+	</a>
+</div>
+</div>
+
+<div class="corner-text" id="bottomright">
+<a href="https://ncase.me/mental-health-resources" target="_blank">Mental Health Resources</a>
+<br><br>
+<span class="hide-if-cuss-free">
+	<a href="?c=1" target="_blank">Cuss-Free Mode</a><br>
+	(for educators who want to avoid an awkward PTA meeting)
+	<br><br>
+</span>
+No fan-made translations yet!
+<br>
+<a href="https://github.com/ncase/anxiety" target="_blank">Make one?</a>
+</div>
 	
 </body>
 </html>
@@ -266,17 +319,7 @@
 				A share on an anxiety-app helps too!
 			</div>
 			<div id="share">
-				<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fncase.me%2Fanxiety-demo%2F" target="_blank" class="no_deco">
-					<div id="share_fb"></div>
-				</a>
-				<a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fncase.me%2Fanxiety-demo%2F&text=I%20just%20played%20this%20story-game%20about%20a%20human%20and%20their%20anxiety!%20You%20play%20*as*%20the%20anxiety.%20%F0%9F%98%B1%20https%3A%2F%2Fncase.me%2Fanxiety-demo%2F"
-					target="_blank" class="no_deco">
-					<div id="share_tw"></div>
-				</a>
-				<a href="mailto:?subject=Adventures%20with%20Anxiety!%20(Demo)&body=I%20just%20played%20this%20story-game%20about%20a%20human%20and%20their%20anxiety!%20You%20play%20*as*%20the%20anxiety.%20%F0%9F%98%B1%20https%3A%2F%2Fncase.me%2Fanxiety-demo%2F"
-					target="_blank" class="no_deco">
-					<div id="share_em"></div>
-				</a>
+				
 			</div>
 			
 			<div style="clear:both" class="about_padding"></div>
