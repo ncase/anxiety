@@ -10,12 +10,17 @@ Loader.addSounds([
 	var aboutDOM = $("#about");
 
 	$("#huh").onclick = function(){
+
 		aboutDOM.setAttribute("about","yes");
 		aboutDOM.style.top = "20px";
 
 		// Hi
 		About.showing = true;
 		Game.pause();
+		Howler.mute(false); // hack
+
+		// sfx
+		sfx("ui_button1");
 
 	};
 	$("#close_about").onclick = function(){
@@ -37,7 +42,7 @@ Loader.addSounds([
 		About.showing = true;
 		Game.pause();
 		aboutDOM.removeAttribute("about");
-		aboutDOM.style.top = "0px"; // to TOP.
+		aboutDOM.style.top = "-10px"; // to TOP.
 
 		// Sound
 		Howler.mute(false);
@@ -56,7 +61,7 @@ Loader.addSounds([
 
 		// Cut out
 		aboutDOM.style.top = "";
-		aboutDOM.style.display = "none";
+		aboutDOM.style.display = "none"; // brief black-out
 		setTimeout(function(){
 			aboutDOM.style.display = "block";
 		},100);

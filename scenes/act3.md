@@ -46,13 +46,15 @@ publish("act3",["roofhong",5]);
 
 r: You remind me of myself when I was younger. Back when I was tormented by the animal in my head.
 
-`publish("act3",["roofhunter",9]);`
+```
+publish("act3",["roofhunter",9]);
+publish("act3",["roofhong",2]);
+```
 
 r: I'm so grateful I can pay it forward, and help you kill the beast the way I killed mine.
 
 ```
 publish("act3",["roofhunter",2]);
-publish("act3",["roofhong",2]);
 ```
 
 r: Hey, quick question: truth or da--

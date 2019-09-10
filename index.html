@@ -74,7 +74,7 @@
 	<div id="special_attack"></div>
 
 	<!-- Bottom Corner Tabs -->
-	<div id="gear" style="display:none" onclick="publish('show_options')">
+	<div id="gear" style="display:none" onclick="publish('show_options'); sfx('ui_button1');">
 		<div class="icon">
 			<div class="mini-icon" pic="gear"></div>
 		</div>
@@ -130,57 +130,42 @@
 	</div>
 
 	<!-- ABOUT -->
-	<div id="about">
+	<div id="about"><!-- about=yes-->
 		<div id="about_words">
 		
-			[TODO TODO TODO]
-			<br><br>
-			Links to mental health resources,
-			my games+Patreon,
-			the musician+album
+			<div style="font-size: 40px; margin-top: 42px; line-height: 30px;">
+				mental health
+				<a href="resources" target="_blank">resources</a>
+			</div>
 
-			<!--
-			<div class="about_padding">
-				Help me keep making free games?
-			</div>
-			<a href="https://www.patreon.com/ncase" target="_blank" class="no_deco">
-				<div id="patreon"></div>
-			</a>
-			
-			<div class="about_padding">
-				A share on an anxiety-app helps too!
-			</div>
-			<div id="share">
-				<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fncase.me%2Fanxiety-demo%2F" target="_blank" class="no_deco">
-					<div id="share_fb"></div>
-				</a>
-				<a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fncase.me%2Fanxiety-demo%2F&text=I%20just%20played%20this%20story-game%20about%20a%20human%20and%20their%20anxiety!%20You%20play%20*as*%20the%20anxiety.%20%F0%9F%98%B1%20https%3A%2F%2Fncase.me%2Fanxiety-demo%2F"
-					target="_blank" class="no_deco">
-					<div id="share_tw"></div>
-				</a>
-				<a href="mailto:?subject=Adventures%20with%20Anxiety!%20(Demo)&body=I%20just%20played%20this%20story-game%20about%20a%20human%20and%20their%20anxiety!%20You%20play%20*as*%20the%20anxiety.%20%F0%9F%98%B1%20https%3A%2F%2Fncase.me%2Fanxiety-demo%2F"
-					target="_blank" class="no_deco">
-					<div id="share_em"></div>
-				</a>
+			<div style="margin-top: 26px; color: #999;">
+				&mdash; or &mdash;
 			</div>
 			
-			<div style="clear:both" class="about_padding"></div>
+			<div style="font-size: 25px; text-align: left; width: 170px;
+						margin-left: 165px; line-height: 25px; margin-top: 31px;">
+				
+				<div>
+					play more of
+					<a href="https://ncase.me" target="_blank">my shtuff</a>
+				</div>
 
-			Above all, thank you for playing! &lt;3
-			<br>
-			<a href="https://ncase.me/" target="_blank">
-				my other games
-			</a>
-			&middot;
-			<a href="https://twitter.com/ncasenmare" target="_blank">
-				my twitter
-			</a>
-			-->
+				<div style="margin-top: 32px;">
+					throw coins<br>at me
+					<a href="https://www.patreon.com/ncase" target="_blank">on Patreon</a>
+				</div>
+
+				<div style="margin-top: 28px;">
+					please your ear-holes with Monplaisir's
+					<a href="https://chezmonplaisir.bandcamp.com/album/anxiety" target="_blank">original soundtrack</a>
+				</div>
+
+			</div>
 
 			<div id="replay"></div>
 
 			<div style="clear:both;"></div>
-			<div id="close_about">close</div>
+			<div id="close_about" style="margin: 0; float: right; margin-top: 20px;">close</div>
 
 		</div>
 	</div>
@@ -268,3 +253,41 @@
 <script src="scripts/intermission/Intermission_BG.js"></script>
 
 <script src="scripts/main.js"></script>
+
+<!--
+			<div class="about_padding">
+				Help me keep making free games?
+			</div>
+			<a href="https://www.patreon.com/ncase" target="_blank" class="no_deco">
+				<div id="patreon"></div>
+			</a>
+			
+			<div class="about_padding">
+				A share on an anxiety-app helps too!
+			</div>
+			<div id="share">
+				<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fncase.me%2Fanxiety-demo%2F" target="_blank" class="no_deco">
+					<div id="share_fb"></div>
+				</a>
+				<a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fncase.me%2Fanxiety-demo%2F&text=I%20just%20played%20this%20story-game%20about%20a%20human%20and%20their%20anxiety!%20You%20play%20*as*%20the%20anxiety.%20%F0%9F%98%B1%20https%3A%2F%2Fncase.me%2Fanxiety-demo%2F"
+					target="_blank" class="no_deco">
+					<div id="share_tw"></div>
+				</a>
+				<a href="mailto:?subject=Adventures%20with%20Anxiety!%20(Demo)&body=I%20just%20played%20this%20story-game%20about%20a%20human%20and%20their%20anxiety!%20You%20play%20*as*%20the%20anxiety.%20%F0%9F%98%B1%20https%3A%2F%2Fncase.me%2Fanxiety-demo%2F"
+					target="_blank" class="no_deco">
+					<div id="share_em"></div>
+				</a>
+			</div>
+			
+			<div style="clear:both" class="about_padding"></div>
+
+			Above all, thank you for playing! &lt;3
+			<br>
+			<a href="https://ncase.me/" target="_blank">
+				my other games
+			</a>
+			&middot;
+			<a href="https://twitter.com/ncasenmare" target="_blank">
+				my twitter
+			</a>
+			-->

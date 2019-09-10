@@ -278,15 +278,15 @@ ABOUT / END DEMO
 #about{
 	
 	position: absolute;
-	/*top:600px;*/
-	top:20px;
+	top:600px;
+	/*top:20px;*/
 	left:0;
 
 	background: url(../sprites/about/the_end.png);
     background-size: 100%;
 
 	width: 100%;
-	height: 100%;
+	height: 615px;
 	color:#fff;
 	text-align: center;
 
@@ -373,9 +373,6 @@ ABOUT / END DEMO
 #about #close_about{				display: none; }
 #about .about_padding{
 	padding-top: 10px;
-}
-#about #about_words{
-	padding-top: 50px;
 }
 
 #about[about=yes]{

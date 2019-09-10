@@ -1037,7 +1037,7 @@ h: Everyone knows emotions are irrational! Especially fear!
 
 `hong({body:"facepalm_2"})`
 
-h: You're just a useless evolutionary leftover, like my appendix or wisdom teeth!
+h: You're a useless evolutionary leftover, like my appendix or wisdom teeth!
 
 `hong({body:"yell", mouth:"yell"})`
 
