@@ -1,9 +1,16 @@
-html,body{
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
+* {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
-body{
+
+body {
+	width: 100%;
+	height: 100vh;
+	display: grid;
+	place-items: center;
+	overflow: hidden;
 	margin:0;
 	background: #111;
 }
@@ -14,19 +21,9 @@ MAIN GAME
 
 ******************************************************************************************************/
 
-div{ /*, #game_words, #game_choices, #paused, #options, #loading, #gear, #about, #click_to_advance{*/
-	-webkit-user-select: none; /* Safari 3.1+ */
-	-moz-user-select: none; /* Firefox 2+ */
-	-ms-user-select: none; /* IE 10+ */
-	user-select: none; /* Standard syntax */
-}
-
 #game_container{
-
-	position: absolute;
-	top:0; left:0; bottom:0; right:0;
-	margin: auto;
-
+	position: relative;
+	display: inline-block;
 	width: 360px;
 	height: 600px;
 	background: #000;
@@ -1045,41 +1042,4 @@ canvas{
 	top:-100px;
 	left:0;
 	transition: top 0.5s ease-in-out;
-}
-
-/******************************************************************************************************
-
-CORNER TEXT
-
-******************************************************************************************************/
-
-#topleft, #bottomright{
-	width: 200px;
-    color: #555;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.3em;
-    position: absolute;
-}
-#topleft a, #bottomright a{
-	color: #666;
-}
-#topleft a:hover, #bottomright a:hover{
-	color: #888;
-}
-#topleft{
-	top:10px;
-	left:10px;
-	text-align: left;
-}
-#bottomright{
-	bottom:10px;
-	right:10px;
-	text-align: right;
-}
-@media screen and (max-width: 800px) {
-	#topleft, #bottomright {
-		display: none;
-	}
 }
