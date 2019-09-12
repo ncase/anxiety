@@ -344,7 +344,7 @@ Game.WORDS_HEIGHT_BOTTOM = -1;
 	wordsObserver.watch(function(){ return Game.FORCE_TEXT_Y });
 	wordsObserver.watch(function(){ return Game.WORDS_HEIGHT_BOTTOM });
 	wordsObserver.watch(function(){ return Game.wordsDOM.children.length });
-    Game.updateText = function() { wordsObserver.tick() };
+	Game.updateText = function() { wordsObserver.tick() };
 })()
 
 // CLEAR TEXT
@@ -811,12 +811,12 @@ Game.executeChoice = function(line){
 	}
 
 	// Add choice, animated!
-	div.style.top = "150px";
+	div.classList.add("hidden");
 	Game.choicesDOM.appendChild(div);
-	setTimeout(function(){
-		div.style.top = "0px";
+	requestAnimationFrame(function(){
+		div.classList.remove("hidden");
 		sfx("ui_show_choice", {volume:0.4});
-	},10);
+	});
 
 	// Or... FORCE
 	if(Game.OVERRIDE_FONT_SIZE){
