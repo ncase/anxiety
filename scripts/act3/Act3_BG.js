@@ -294,7 +294,7 @@ function BG_Rooftop(){
 	var vibrateTicker = 0;
 	self.draw = function(ctx, delta){
 
-		ctx.save();
+		var oldAlpha = ctx.globalAlpha;
 
 		if(!self.hospitalSprite.visible){
 
@@ -319,7 +319,7 @@ function BG_Rooftop(){
 
 		}
 
-		ctx.restore();
+		ctx.globalAlpha = oldAlpha;
 
 	};
 

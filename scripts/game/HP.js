@@ -106,7 +106,8 @@ function HitPoints(){
 	self.rightRed = self.rightWhite = 1;
 	self.drawHalf = function(ctx, isRight){
 
-		ctx.save();
+		var movedY = 0;
+		let oldCompositeOp = ctx.globalCompositeOperation;
 
 		// Which side?
 		var side = isRight ? "right" : "left";
@@ -120,6 +121,7 @@ function HitPoints(){
 			var amp = self[side+"Shake"]/7;
 			var shakeY = Math.sin(self[side+"Shake"]*1.3)*amp;
 			ctx.translate(0,shakeY);
+			movedY += shakeY;
 			self[side+"Shake"]--;
 		}
 
@@ -174,14 +176,14 @@ function HitPoints(){
 		}
 
 		// Restore
-		ctx.restore();
+		ctx.translate(0, -movedY);
+		ctx.globalCompositeOperation = oldCompositeOp;
 
 	};
 	self.draw = function(){
 
 		var ctx = self.context;
 		ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
-		ctx.save();
 		ctx.scale(2,2);
 
 		// Draw Left & Right Sides
@@ -198,7 +200,7 @@ function HitPoints(){
 		var sx=0, sy=200*3, sw=720, sh=200; 
 		ctx.drawImage(self.image, sx,sy,sw,sh, 0,0,sw/2,sh/2);
 
-		ctx.restore();
+		ctx.scale(0.5, 0.5);
 
 	};
 

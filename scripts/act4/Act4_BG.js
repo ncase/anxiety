@@ -521,7 +521,7 @@ function BG_Act4(){
 
 			/////////////////////////////////////////
 
-			ctx.save();
+			var oldAlpha = ctx.globalAlpha;
 
 			for(var i=0; i<self.layers.length; i++){
 				
@@ -538,7 +538,7 @@ function BG_Act4(){
 				}
 			}
 
-			ctx.restore();
+			ctx.globalAlpha = oldAlpha;
 
 		}
 

@@ -1024,8 +1024,7 @@ Game.updateCanvas = function(DELTA){
 	// For retina
 	var ctx = Game.context;
 	ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
-	ctx.save();
-	ctx.scale(2,2);
+	ctx.scale(2, 2);
 
 	// Update/Draw all kids
 	Game.scene.children.forEach(function(child){
@@ -1036,7 +1035,7 @@ Game.updateCanvas = function(DELTA){
 	});
 
 	// Restore
-	ctx.restore();
+	ctx.scale(0.5, 0.5);
 
 	// Draw HP
 	HP.draw();
