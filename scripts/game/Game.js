@@ -310,59 +310,49 @@ Game.immediatePromise = function(){
 Game.FORCE_TEXT_Y = -1;
 Game.WORDS_HEIGHT_BOTTOM = -1;
 (function(){
-    const offset = 80
-    let lastCount = 0
-    let lastBottom = -1
-    Game.updateText = function(instant) {
+	var wordsObserver = new TickableObserver(function(){
+		var offset = 80
+		if(Game.WORDS_HEIGHT_BOTTOM < 0) Game.WORDS_HEIGHT_BOTTOM = 250;
+		let advanceTextPosition = 0
 
-        if(Game.WORDS_HEIGHT_BOTTOM < 0) Game.WORDS_HEIGHT_BOTTOM = 250;
-    
-        let updated = false
-        function updateTransform(){
-            if(updated) return
-			updated = true
-			
-			let advanceTextPosition = 0
-			if(Game.FORCE_TEXT_Y != -1){
-				Game.wordsDOM.style.transform = `translateY(${Game.FORCE_TEXT_Y}px)`;
-				advanceTextPosition = Game.wordsDOM.clientHeight + Game.FORCE_TEXT_Y + 5
-			} else {
-				const wordsHeight = Game.wordsDOM.clientHeight;
-				let diff = wordsHeight - (Game.WORDS_HEIGHT_BOTTOM - offset)
-				if(diff < 0) diff = 0
-				Game.wordsDOM.style.transform = `translateY(${offset - diff}px)`;
-				advanceTextPosition = offset - diff + wordsHeight + 5
-			}
+		// Either force the text somewhere...
+		if(Game.FORCE_TEXT_Y != -1){
+			Game.wordsDOM.style.transform = `translateY(${Game.FORCE_TEXT_Y}px)`;
+			advanceTextPosition = Game.wordsDOM.clientHeight + Game.FORCE_TEXT_Y + 5
+		}
+		// Or calculate its position based on a window...
+		else {
+			const wordsHeight = Game.wordsDOM.clientHeight;
+			let diff = wordsHeight - (Game.WORDS_HEIGHT_BOTTOM - offset)
+			if(diff < 0) diff = 0
+			Game.wordsDOM.style.transform = `translateY(${offset - diff}px)`;
+			advanceTextPosition = offset - diff + wordsHeight + 5
+		}
 
-			// Also, move click_to_advance DOM
-			$('#click_to_advance').style.transform = `translateY(${Math.round(advanceTextPosition)}px)`;
-        }
+		// "Instant mode" was only used for clearing... so lets just do it when it's clear?
+		if(Game.wordsDOM.children.length == 0){
+			Game.wordsDOM.classList.add("clear_transition");
+			Game.wordsDOM.clientHeight;
+			Game.wordsDOM.classList.remove("clear_transition");
+		}
 
-        if(Game.wordsDOM.children.length != lastCount){
-            updateTransform()
-            lastCount = Game.wordsDOM.children.length;
-        }
-        
-        if(Game.WORDS_HEIGHT_BOTTOM != lastBottom){
-            updateTransform()
-            lastBottom = Game.WORDS_HEIGHT_BOTTOM;
-        }  
-    
-        if(instant || Game.FORCE_TEXT_Y != -1){
-            updateTransform()
-            Game.wordsDOM.classList.add("clear_transition");
-            Game.wordsDOM.clientHeight;
-            Game.wordsDOM.classList.remove("clear_transition");
-        }
-        
-    };
+		// Also, move the click_to_advance DOM
+		$('#click_to_advance').style.transform = `translateY(${Math.round(advanceTextPosition)}px)`;
+	});
+
+	// The words UI depends on these things:
+	wordsObserver.watch(function(){ return Game.FORCE_TEXT_Y });
+	wordsObserver.watch(function(){ return Game.WORDS_HEIGHT_BOTTOM });
+	wordsObserver.watch(function(){ return Game.wordsDOM.children.length });
+    Game.updateText = function() { wordsObserver.tick() };
 })()
 
 // CLEAR TEXT
 Game.clearText = function(){
 	Game.wordsDOM.innerHTML = "";
-	Game.updateText(true);
+	Game.updateText();
 };
+
 Game.clearAll = function(){
 	Game.clearText();
 	Game.resetScene();

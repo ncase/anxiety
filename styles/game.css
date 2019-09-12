@@ -70,7 +70,7 @@ MAIN GAME
 	width: 100%;
 	position: absolute;
 	overflow: hidden;
-	transition: transform 0.3s;
+	transition: transform 0.5s;
 }
 #game_words.clear_transition {
 	transition: none !important;
