@@ -56,6 +56,10 @@ MAIN GAME
 
 ******************************************************************************************************/
 
+.clear_transition {
+	transition: none !important;
+}
+
 #game_container{
 	position: relative;
 	display: inline-block;
@@ -71,9 +75,6 @@ MAIN GAME
 	position: absolute;
 	overflow: hidden;
 	transition: transform 0.5s;
-}
-#game_words.clear_transition {
-	transition: none !important;
 }
 
 #game_words, #game_hp, #click_to_advance{
@@ -983,22 +984,14 @@ DIALOGUEZ
 	position: relative;
 
 	border-radius: 20px;
+	opacity: 1;
 
-	/* Spring OUT only */
-	-webkit-transition: transform 500ms cubic-bezier(0.350, 0.005, 0.370, 1); /* older webkit */
-	-webkit-transition: transform 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); 
-	   -moz-transition: transform 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); 
-	     -o-transition: transform 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); 
-	        transition: transform 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); /* custom */
-
-	-webkit-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1); /* older webkit */
-	-webkit-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
-	   -moz-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
-	     -o-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
-	        transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); /* custom */
+	/* TODO: Add vendor prefixes again, just removed them while working on css animation stuff [Spacie] */
+	transition: transform 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390), opacity 300ms ease-in-out;
 }
 #game_choices > div.hidden {
 	transform: translateY(150px);
+	opacity: 0;
 }
 #game_choices > div > * {
 	pointer-events: none; /* so italics and stuff doesn't trigger sound */
@@ -1070,11 +1063,14 @@ canvas{
 	top:0; left:0;
 }
 
-#game_hp{
+#game_hp {
 	position: absolute;
 	width: 360px;
 	height: 100px;
-	top:-100px;
-	left:0;
-	transition: top 0.5s ease-in-out;
+	transition: transform 0.5s ease-in-out;
+	transform: translateY(-100px);
+}
+
+#game_hp.show {
+	transform: none;
 }

@@ -38,16 +38,11 @@ function HitPoints(){
 
 	// Show/hide
 	self.show = function(){
-		self.dom.style.top = "0px";
+		self.dom.classList.add('show');
 	};
 	self.hide = function(instant){
-		if(instant){
-			self.dom.style.display = "none";
-			setTimeout(function(){
-				self.dom.style.display = "block";
-			},2000);
-		}
-		self.dom.style.top = "-100px";
+		self.dom.classList.remove('show');
+		if(instant) flushElementTransitions(self.dom);
 	};
 	subscribe("hp_show", self.show);
 	subscribe("hp_hide", self.hide);

@@ -330,11 +330,7 @@ Game.WORDS_HEIGHT_BOTTOM = -1;
 		}
 
 		// "Instant mode" was only used for clearing... so lets just do it when it's clear?
-		if(Game.wordsDOM.children.length == 0){
-			Game.wordsDOM.classList.add("clear_transition");
-			Game.wordsDOM.clientHeight;
-			Game.wordsDOM.classList.remove("clear_transition");
-		}
+		if(Game.wordsDOM.children.length == 0) flushElementTransitions(Game.wordsDOM);
 
 		// Also, move the click_to_advance DOM
 		$('#click_to_advance').style.transform = `translateY(${Math.round(advanceTextPosition)}px)`;
