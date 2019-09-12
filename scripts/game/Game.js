@@ -29,12 +29,22 @@ window.attackBB = function(damage, type){
 // Init
 Game.init = function(){
 
+	// Create the section debug menu
+	Object.keys(Game.sections).forEach(function(key){
+		const link = document.createElement('div');
+		link.className = "section_link";
+		link.innerText = key;
+		link.addEventListener('click', function() {
+			Game.goto(key);
+		});
+		document.getElementById("section_debug_list").appendChild(link);
+	})
+
 	// HP!
 	window.HP = new HitPoints();
 
 	// Animation!
 	console.log("init");
-	Game.wordsDOM.style.top = "80px";
 	var animloop = function(){
 		Game.update();
 		requestAnimationFrame(animloop);
@@ -42,6 +52,11 @@ Game.init = function(){
 	requestAnimationFrame(animloop);
 
 };
+
+// Call to toggle debug rendering
+Game.debug = function(){
+	document.body.classList.toggle('show_debug');
+}
 
 // Parse scene markdown!
 Game.parseSceneMarkdown = function(md){
@@ -293,20 +308,51 @@ Game.immediatePromise = function(){
 
 // Move the text DOM to latest
 Game.FORCE_TEXT_Y = -1;
-Game.WORDS_HEIGHT_BOTTOM = 250;
-Game.updateText = function(instant){
-	if(Game.WORDS_HEIGHT_BOTTOM<0) Game.WORDS_HEIGHT_BOTTOM=250; // back to default
-	if(Game.FORCE_TEXT_Y<0){
-		var wordsHeight = 80 + Game.wordsDOM.getBoundingClientRect().height;
-		var currentY = Game.wordsDOM.style.top=="" ? 80 : parseFloat(Game.wordsDOM.style.top);
-		var gotoY = (wordsHeight<Game.WORDS_HEIGHT_BOTTOM) ? 0 : wordsHeight-Game.WORDS_HEIGHT_BOTTOM;
-		gotoY = 80 - gotoY;
-		var nextY = instant ? gotoY : currentY*0.9 + gotoY*0.1;
-		Game.wordsDOM.style.top = (Math.round(nextY*10)/10)+"px";
-	}else{
-		Game.wordsDOM.style.top = Game.FORCE_TEXT_Y+"px";
-	}
-};
+Game.WORDS_HEIGHT_BOTTOM = -1;
+(function(){
+    const offset = 80
+    let lastCount = 0
+    let lastBottom = -1
+    Game.updateText = function(instant) {
+
+        if(Game.WORDS_HEIGHT_BOTTOM < 0) Game.WORDS_HEIGHT_BOTTOM = 250;
+    
+        let updated = false
+        function updateTransform(){
+            if(updated) return
+			updated = true
+			
+			if(Game.FORCE_TEXT_Y != -1){
+				Game.wordsDOM.style.transform = `translateY(${Game.FORCE_TEXT_Y}px)`;
+				return
+			}
+
+            const wordsHeight = Game.wordsDOM.clientHeight;
+            let diff = wordsHeight - (Game.WORDS_HEIGHT_BOTTOM - offset)
+			if(diff < 0) diff = 0
+			
+			Game.wordsDOM.style.transform = `translateY(${offset - diff}px)`;
+        }
+
+        if(Game.wordsDOM.children.length != lastCount){
+            updateTransform()
+            lastCount = Game.wordsDOM.children.length;
+        }
+        
+        if(Game.WORDS_HEIGHT_BOTTOM != lastBottom){
+            updateTransform()
+            lastBottom = Game.WORDS_HEIGHT_BOTTOM;
+        }  
+    
+        if(instant || Game.FORCE_TEXT_Y != -1){
+            updateTransform()
+            Game.wordsDOM.classList.add("clear_transition");
+            Game.wordsDOM.clientHeight;
+            Game.wordsDOM.classList.remove("clear_transition");
+        }
+        
+    };
+})()
 
 // CLEAR TEXT
 Game.clearText = function(){
