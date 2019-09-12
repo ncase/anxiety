@@ -322,16 +322,20 @@ Game.WORDS_HEIGHT_BOTTOM = -1;
             if(updated) return
 			updated = true
 			
+			let advanceTextPosition = 0
 			if(Game.FORCE_TEXT_Y != -1){
 				Game.wordsDOM.style.transform = `translateY(${Game.FORCE_TEXT_Y}px)`;
-				return
+				advanceTextPosition = Game.wordsDOM.clientHeight + Game.FORCE_TEXT_Y + 5
+			} else {
+				const wordsHeight = Game.wordsDOM.clientHeight;
+				let diff = wordsHeight - (Game.WORDS_HEIGHT_BOTTOM - offset)
+				if(diff < 0) diff = 0
+				Game.wordsDOM.style.transform = `translateY(${offset - diff}px)`;
+				advanceTextPosition = offset - diff + wordsHeight + 5
 			}
 
-            const wordsHeight = Game.wordsDOM.clientHeight;
-            let diff = wordsHeight - (Game.WORDS_HEIGHT_BOTTOM - offset)
-			if(diff < 0) diff = 0
-			
-			Game.wordsDOM.style.transform = `translateY(${offset - diff}px)`;
+			// Also, move click_to_advance DOM
+			$('#click_to_advance').style.transform = `translateY(${Math.round(advanceTextPosition)}px)`;
         }
 
         if(Game.wordsDOM.children.length != lastCount){

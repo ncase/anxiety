@@ -111,11 +111,6 @@ Loader.addSounds([
 			}
 		}
 
-		// Also, move click_to_advance DOM
-		var wordsTop = parseInt($("#game_words").style.top);
-		var wordsHeight = $("#game_words").getBoundingClientRect().height;
-		click_to_advance.style.top = Math.round(wordsTop+wordsHeight+5) + "px";
-
 	};
 
 	var _timeoutCallbacks = [];
