@@ -47,7 +47,7 @@ Game.init = function(){
 Game.parseSceneMarkdown = function(md){
 
 	// Split into sections...
-	md = md.trim();
+	md = md.trim().replace(/\r/g, "");
 	md = "\n" + md;
 	var sections = md.split(/\n\#\s*/);
 	sections.shift();
