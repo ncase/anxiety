@@ -56,7 +56,7 @@ MAIN GAME
 
 ******************************************************************************************************/
 
-.clear_transition {
+.clear_transition, .clear_transition * {
 	transition: none !important;
 }
 

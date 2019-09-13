@@ -96,35 +96,33 @@ Game.start = function(){
 	window._ = {}; // global var, reset
 };
 
-var LAST_TIME = (new Date()).getTime();
+var last_frame = Date.now();
 Game.update = function(){
 
 	// TIME
-	var NOW = (new Date()).getTime();
-	var DELTA = (NOW - LAST_TIME)/1000;
-	DELTA = Math.min(DELTA, 1/20); // no slower than 20fps
-	LAST_TIME = NOW;
+	const now = Date.now();
+	const delta = (now - last_frame) / 1000;
+	last_frame = now;
+
+	// Removing this till I can see why it's needed...
+	// Reshaping the passing of time will come back to haunt you! [Spacie]
+	// DELTA = Math.min(DELTA, 1/20); // no slower than 20fps
 
 	if(!Game.paused){
 
 		// Timeout callbacks...
-		for(var i=0; i<Game.timeoutCallbacks.length; i++){
-			var tc = Game.timeoutCallbacks[i];
-			tc.timeLeft -= 1000*DELTA;
-			if(tc.timeLeft<=0){
-				tc.callback();
-				Game.timeoutCallbacks.splice(i,1); // delete that one
-				i -= 1; // set index back one
-			}
-		}
+		Game.timeoutCallbacks.forEach(tc => {
+			tc.timeLeft -= 1000 * delta;
+			if(tc.timeLeft <= 0) tc.callback();
+		});
+		Game.timeoutCallbacks = Game.timeoutCallbacks.filter(tc => tc.timeLeft > 0);
 
 		// The interface
 		Game.updateText();
-		Game.updateCanvas(DELTA);
+		Game.updateCanvas(delta);
 
 		// Ayyy
 		publish("update");
-
 	}
 
 	// Options update
@@ -310,8 +308,8 @@ Game.immediatePromise = function(){
 Game.FORCE_TEXT_Y = -1;
 Game.WORDS_HEIGHT_BOTTOM = -1;
 (function(){
-	var wordsObserver = new TickableObserver(function(){
-		var offset = 80
+	const wordsObserver = new TickableObserver(() => {
+		const offset = 80
 		if(Game.WORDS_HEIGHT_BOTTOM < 0) Game.WORDS_HEIGHT_BOTTOM = 250;
 		let advanceTextPosition = 0
 
@@ -337,10 +335,11 @@ Game.WORDS_HEIGHT_BOTTOM = -1;
 	});
 
 	// The words UI depends on these things:
-	wordsObserver.watch(function(){ return Game.FORCE_TEXT_Y });
-	wordsObserver.watch(function(){ return Game.WORDS_HEIGHT_BOTTOM });
-	wordsObserver.watch(function(){ return Game.wordsDOM.children.length });
-	Game.updateText = function() { wordsObserver.tick() };
+	wordsObserver.watch(() => Game.FORCE_TEXT_Y);
+	wordsObserver.watch(() => Game.WORDS_HEIGHT_BOTTOM);
+	wordsObserver.watch(() => Game.wordsDOM.children.length);
+	Game.updateText = () => wordsObserver.tick();
+
 })()
 
 // CLEAR TEXT
@@ -1055,7 +1054,16 @@ Game.resetScene = function(){
 Game.resetScene();
 
 // Update & draw all the kids!
-Game.updateCanvas = function(DELTA){
+Game.updateCanvas = function(delta){
+
+	// UPDATING:
+	// -------------------------------------------------------------
+	for(const child of Game.scene.children) {
+		if(child.update) child.update(delta);
+	}
+
+	// RENDERING:
+	// -------------------------------------------------------------
 
 	// For retina
 	var ctx = Game.context;
@@ -1063,12 +1071,9 @@ Game.updateCanvas = function(DELTA){
 	ctx.scale(2, 2);
 
 	// Update/Draw all kids
-	Game.scene.children.forEach(function(child){
-		if(child.update) child.update(DELTA);
-	});
-	Game.scene.children.forEach(function(child){
-		child.draw(ctx, DELTA);
-	});
+	
+	for(const child of Game.scene.children) child.draw(ctx, delta);
+
 
 	// Restore
 	ctx.scale(0.5, 0.5);

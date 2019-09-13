@@ -62,61 +62,56 @@ function BG_Anxiety(whiteMode){
 		}
 
 	};
+
 	self.isBoxOutOfSight = function(box){
-		if(box.x<-box.w) return true;
-		if(box.y<-box.h) return true;
-		if(box.x>BG_WIDTH) return true;
-		if(box.y>BG_HEIGHT) return true;
+		if(box.x < -box.w) return true;
+		if(box.y < -box.h) return true;
+		if(box.x > BG_WIDTH) return true;
+		if(box.y > BG_HEIGHT) return true;
 		return false;
 	};
+
 	self.updateBox = function(box, delta){
-		
 		// Move it
-		box.x += box.velX * delta/(1/60);
-		box.y += box.velY * delta/(1/60);
+		const speedMultiplier = 60;
+		box.x += box.velX * delta * speedMultiplier;
+		box.y += box.velY * delta * speedMultiplier;
 
 		// If it's out of sight, reset it
-		if(self.isBoxOutOfSight(box)){
-			self.resetBox(box);
-		}
-
+		if(self.isBoxOutOfSight(box)) self.resetBox(box);
 	};
+	
+	var boxLayerAlpha = 1;
+	self.updateAlpha = function(alpha){
+		boxLayerAlpha = alpha;
+	};
+
+	self.update = function(delta){
+		for(const box of self.boxes) self.updateBox(box, delta);
+	};
+
 	self.drawBox = function(box, ctx){
-		ctx.fillStyle = self.whiteMode ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.03)";
+		ctx.globalAlpha = boxLayerAlpha * self.whiteMode ? 0.1 : 0.03;
+		ctx.fillStyle = "#fff";
 		ctx.fillRect(box.x, box.y, box.w, box.h);
 	};
-	for(var i=0; i<40; i++){
-		var box = {};
-		self.resetBox(box, true);
-		self.boxes.push(box);
-	}
 
-	var allBoxAlpha = 1;
-	self.updateAlpha = function(alpha){
-		allBoxAlpha = alpha;
-	};
-	self.update = function(delta){
-		self.boxes.forEach(function(box){
-			self.updateBox(box, delta);
-		});
-	};
 	self.draw = function(ctx){
 
 		// A big ol' black box
 		ctx.fillStyle = self.whiteMode ? "#dddddd" : "#111111";
 		ctx.fillRect(0,0, BG_WIDTH, BG_HEIGHT);
 
-		// All-box alpha
-		// allBoxAlpha += 1/30;
-		// if(allBoxAlpha>1) allBoxAlpha=1;
-
 		// Moving white boxes
-		ctx.globalAlpha = allBoxAlpha;
-		self.boxes.forEach(function(box){
-			self.drawBox(box, ctx);
-		});
+		for(const box of self.boxes) self.drawBox(box, ctx);
 		ctx.globalAlpha = 1;
 
 	};
+
+	for(var i=0; i<40; i++){
+		var box = {};
+		self.resetBox(box, true);
+		self.boxes.push(box);
+	}
 
 }
