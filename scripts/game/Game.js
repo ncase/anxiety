@@ -658,7 +658,8 @@ Game.executeText = function(line){
 					span.innerHTML = "";
 					span.style.display = "block";
 					var iconName = word.slice(1,-1)
-					var icon = Library.images["fear_"+iconName];
+					var icon = new Image();
+					icon.src = Library.images["fear_"+iconName].hackSrc;
 					div.children[i].appendChild(icon);
 					icon.style.display = "block";
 					if(speaker!="i"){
