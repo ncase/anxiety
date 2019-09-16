@@ -48,14 +48,16 @@ Loader.addImages = function(imageConfigs){
 };
 Loader.loadImage = function(imageConfig){
 	return new RSVP.Promise(function(resolve){
-		var img = new Image();
-		var id = imageConfig.id;
-		Library.images[id] = img; // ADD TO LIBRARY
-		img.onload = function(){
-			publish("assetLoaded");
-			resolve();
-		}
-		img.src = imageConfig.src;
+		const id = imageConfig.id;
+		fetch(imageConfig.src)
+			.then(response => response.blob())
+			.then(blobData => createImageBitmap(blobData))
+			.then(bitmap => {
+				bitmap.hackSrc = imageConfig.src;
+				Library.images[id] = bitmap;
+				publish("assetLoaded");
+				resolve();
+			})
 	});
 };
 

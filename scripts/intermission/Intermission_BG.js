@@ -35,11 +35,9 @@ function BG_Intermission(STAGE){
 	};
 
 	self.draw = function(ctx){
-		ctx.save();
 		self.bgSprite.draw(ctx);
 		self.youwinSprite.draw(ctx);
 		self.bbSprite.draw(ctx);
-		ctx.restore();
 	};
 
 	var _subscriptions = [];

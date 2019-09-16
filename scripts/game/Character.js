@@ -138,9 +138,10 @@ function Character(spriteConfig, animLoops){
 		var c = self.characterFrames;
 
 		// ALLOW PARALLAX???
-		ctx.save();
+		var xMoved = 0;
 		if(self.ALLOW_PARALLAX){
 			ctx.translate(self.x, 0);
+			xMoved += self.x;
 		}
 
 		// Attacked? SHAKE WHOLE CONTEXT
@@ -150,6 +151,7 @@ function Character(spriteConfig, animLoops){
 				var shakeAmp = (shakeDuration-attackedTimer)/shakeDuration;
 				var shakeX = Math.sin(attackedTimer*Math.TAU*10)*shakeAmp*10;
 				ctx.translate(shakeX, 0);
+				xMoved += shakeX;
 			}
 		}
 
@@ -253,7 +255,9 @@ function Character(spriteConfig, animLoops){
 			}
 
 		}
-		ctx.restore();
+		
+		// Instead of save / restore, just move back the amount that we moved!
+		ctx.translate(-xMoved, 0);
 
 	};
 	var iconAlpha_HACK = 0;

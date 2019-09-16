@@ -3,7 +3,7 @@
 <head>
 	
 	<!-- THE BIG META -->
-	<title>Adventures With Anxiety! [BETA, DO NOT SHARE YET]</title>
+	<title>Adventures With Anxiety!</title>
 	<meta name="description" content="A story-game about a human and their anxiety. You play as the anxiety." />
 	<link rel="icon" type="image/png" href="favicon.png">
 
@@ -29,24 +29,7 @@
 	
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="styles/game.css">
-
-	<!-- Mobile -->
-	<meta name="viewport" content="width=360, user-scalable=no" id="my_viewport">
-	<script>
-	window.addEventListener("load", function(){
-		var resizeViewport = function(){
-			var ratio = window.innerWidth/window.innerHeight;
-			var mvp = document.getElementById('my_viewport');
-			if(ratio > 360/600){
-			    mvp.setAttribute('content', 'width='+Math.round(ratio*600)+', height=600, user-scalable=no');
-			}else{
-				mvp.setAttribute('content', "width=360, user-scalable=no");
-			}
-		};
-		setInterval(resizeViewport,2000);
-		resizeViewport();
-	});
-	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
@@ -194,7 +177,13 @@
 		</div>
 	</div>
 
+	<!-- Dialogue position debugging elements -->
+	<div class='debug' style='position: absolute; width: 5px; height: 250px; background: red;'></div>
+	<div class='debug' style='position: absolute; width: 5px; height: 80px; background: white;'></div>
+
 </div>
+
+<div class="debug" id="section_debug_list"></div>
 
 <!-- - - - - - - - - - - - - - - - - - -->
 <!-- SHTUFF IN THE CORNER - - - - - - - -->
@@ -248,11 +237,14 @@ Share on an anxiety-app:
 	(for educators who want to avoid an awkward PTA meeting)
 </span>
 </div>
-	
+
+
 </body>
 </html>
 
 <!-- SCRIPTS -->
+<script src="scripts/lib/createImageBitmap.js"></script>
+<script src="scripts/lib/tickable_observer.js"></script>
 <script src="scripts/lib/helpers.js"></script>
 <script src="scripts/lib/rsvp.min.js"></script>
 <script src="scripts/lib/minpubsub.min.js"></script>
@@ -305,32 +297,5 @@ Share on an anxiety-app:
 <script src="scripts/intermission/Intermission_SceneSetup.js"></script>
 <script src="scripts/intermission/Intermission_BG.js"></script>
 
+<!-- LET'S GO! -->
 <script src="scripts/main.js"></script>
-
-<!--
-			<div class="about_padding">
-				Help me keep making free games?
-			</div>
-			<a href="https://www.patreon.com/ncase" target="_blank" class="no_deco">
-				<div id="patreon"></div>
-			</a>
-			
-			<div class="about_padding">
-				A share on an anxiety-app helps too!
-			</div>
-			<div id="share">
-				
-			</div>
-			
-			<div style="clear:both" class="about_padding"></div>
-
-			Above all, thank you for playing! &lt;3
-			<br>
-			<a href="https://ncase.me/" target="_blank">
-				my other games
-			</a>
-			&middot;
-			<a href="https://twitter.com/ncasenmare" target="_blank">
-				my twitter
-			</a>
-			-->

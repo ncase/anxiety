@@ -82,8 +82,6 @@ function Sprite(config){
 		if(!self.visible) return; // nah
 		if(self.alpha==0) return; // also nah
 
-		ctx.save();
-
 		// Which part of image to draw?
 		var sx = self.currentFrame % self.grid.width;
 		var sy = Math.floor((self.currentFrame - sx)/self.grid.width);
@@ -104,6 +102,7 @@ function Sprite(config){
 		ctx.rotate(self.rotation);
 
 		// Alpha
+		var oldAlpha = ctx.globalAlpha;
 		ctx.globalAlpha = self.alpha;
 
 		// Draw it!
@@ -113,7 +112,10 @@ function Sprite(config){
 			-self.anchor.x, -self.anchor.y, fw/2, fh/2
 		);
 
-		ctx.restore();
+		ctx.rotate(-self.rotation);
+		ctx.scale(1 / scaleX, 1 / scaleY);
+		ctx.translate(-dx, -dy);
+		ctx.globalAlpha = oldAlpha;
 
 	};
 

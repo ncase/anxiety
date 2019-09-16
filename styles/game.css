@@ -1,11 +1,53 @@
-html,body{
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
+* {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
-body{
+
+body {
+	width: 100%;
+	height: 100vh;
+	display: grid;
+	place-items: center;
+	overflow: hidden;
 	margin:0;
 	background: #111;
+	font-size: 20px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: 100;
+	line-height: 1.3em;
+}
+
+/******************************************************************************************************
+
+DEBUGGING
+
+******************************************************************************************************/
+
+body:not(.show_debug) .debug {
+	display: none;
+}
+
+body.show_debug #game_container  * {
+	outline: 1px solid red;
+}
+
+#section_debug_list {
+	position: absolute;
+	background: #fff;
+	padding: 20px;
+	height: 500px;
+	overflow-y: scroll;
+	transition: all 0.2s;
+	font-family: monospace;
+	opacity: 0.2;
+	transform: translateX(-95%);
+}
+
+#section_debug_list:hover {
+	transform: none;
+	opacity: 1;
 }
 
 /******************************************************************************************************
@@ -14,36 +56,25 @@ MAIN GAME
 
 ******************************************************************************************************/
 
-div{ /*, #game_words, #game_choices, #paused, #options, #loading, #gear, #about, #click_to_advance{*/
-	-webkit-user-select: none; /* Safari 3.1+ */
-	-moz-user-select: none; /* Firefox 2+ */
-	-ms-user-select: none; /* IE 10+ */
-	user-select: none; /* Standard syntax */
+.clear_transition, .clear_transition * {
+	transition: none !important;
 }
 
 #game_container{
-
-	position: absolute;
-	top:0; left:0; bottom:0; right:0;
-	margin: auto;
-
+	position: relative;
+	display: inline-block;
 	width: 360px;
 	height: 600px;
 	background: #000;
-
-	font-size: 20px;
-	font-family: Helvetica, Arial, sans-serif;
-	font-weight: 100;
-	line-height: 1.3em;
-
 	overflow: hidden;
 
 }
+
 #game_words{
-	width: auto;
-	position: relative;
-	top: 80px;
+	width: 100%;
+	position: absolute;
 	overflow: hidden;
+	transition: transform 0.5s;
 }
 
 #game_words, #game_hp, #click_to_advance{
@@ -438,7 +469,6 @@ OPTIONS
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 254px;
     color:#fff;
 }
 
@@ -848,7 +878,7 @@ DIALOGUEZ
 	text-align: center;
 
 }
-#game_choices > div{
+#game_choices > div {
 
 	width: 310px;
     margin: 0 auto 5px auto;
@@ -858,19 +888,14 @@ DIALOGUEZ
 	position: relative;
 
 	border-radius: 20px;
+	opacity: 1;
 
-	/* Spring OUT only */
-	-webkit-transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1); /* older webkit */
-	-webkit-transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); 
-	   -moz-transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); 
-	     -o-transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); 
-	        transition: top 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390); /* custom */
-
-	-webkit-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1); /* older webkit */
-	-webkit-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
-	   -moz-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
-	     -o-transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); 
-	        transition-timing-function: cubic-bezier(0.350, 0.005, 0.370, 1.390); /* custom */
+	/* TODO: Add vendor prefixes again, just removed them while working on css animation stuff [Spacie] */
+	transition: transform 500ms cubic-bezier(0.350, 0.005, 0.370, 1.390), opacity 300ms ease-in-out;
+}
+#game_choices > div.hidden {
+	transform: translateY(150px);
+	opacity: 0;
 }
 #game_choices > div > * {
 	pointer-events: none; /* so italics and stuff doesn't trigger sound */
@@ -942,13 +967,15 @@ canvas{
 	top:0; left:0;
 }
 
-#game_hp{
+#game_hp {
 	position: absolute;
 	width: 360px;
 	height: 100px;
-	top:-100px;
-	left:0;
-	transition: top 0.5s ease-in-out;
+	transition: transform 0.5s ease-in-out;
+	transform: translateY(-100px);
+}
+#game_hp.show {
+	transform: none;
 }
 
 /******************************************************************************************************

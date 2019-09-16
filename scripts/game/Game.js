@@ -29,12 +29,22 @@ window.attackBB = function(damage, type){
 // Init
 Game.init = function(){
 
+	// Create the section debug menu
+	Object.keys(Game.sections).forEach(function(key){
+		const link = document.createElement('div');
+		link.className = "section_link";
+		link.innerText = key;
+		link.addEventListener('click', function() {
+			Game.goto(key);
+		});
+		document.getElementById("section_debug_list").appendChild(link);
+	})
+
 	// HP!
 	window.HP = new HitPoints();
 
 	// Animation!
 	console.log("init");
-	Game.wordsDOM.style.top = "80px";
 	var animloop = function(){
 		Game.update();
 		requestAnimationFrame(animloop);
@@ -43,11 +53,16 @@ Game.init = function(){
 
 };
 
+// Call to toggle debug rendering
+Game.debug = function(){
+	document.body.classList.toggle('show_debug');
+}
+
 // Parse scene markdown!
 Game.parseSceneMarkdown = function(md){
 
 	// Split into sections...
-	md = md.trim();
+	md = md.trim().replace(/\r/g, "");
 	md = "\n" + md;
 	var sections = md.split(/\n\#\s*/);
 	sections.shift();
@@ -81,35 +96,33 @@ Game.start = function(){
 	window._ = {}; // global var, reset
 };
 
-var LAST_TIME = (new Date()).getTime();
+var last_frame = Date.now();
 Game.update = function(){
 
 	// TIME
-	var NOW = (new Date()).getTime();
-	var DELTA = (NOW - LAST_TIME)/1000;
-	DELTA = Math.min(DELTA, 1/20); // no slower than 20fps
-	LAST_TIME = NOW;
+	const now = Date.now();
+	const delta = (now - last_frame) / 1000;
+	last_frame = now;
+
+	// Removing this till I can see why it's needed...
+	// Reshaping the passing of time will come back to haunt you! [Spacie]
+	// DELTA = Math.min(DELTA, 1/20); // no slower than 20fps
 
 	if(!Game.paused){
 
 		// Timeout callbacks...
-		for(var i=0; i<Game.timeoutCallbacks.length; i++){
-			var tc = Game.timeoutCallbacks[i];
-			tc.timeLeft -= 1000*DELTA;
-			if(tc.timeLeft<=0){
-				tc.callback();
-				Game.timeoutCallbacks.splice(i,1); // delete that one
-				i -= 1; // set index back one
-			}
-		}
+		Game.timeoutCallbacks.forEach(tc => {
+			tc.timeLeft -= 1000 * delta;
+			if(tc.timeLeft <= 0) tc.callback();
+		});
+		Game.timeoutCallbacks = Game.timeoutCallbacks.filter(tc => tc.timeLeft > 0);
 
 		// The interface
 		Game.updateText();
-		Game.updateCanvas(DELTA);
+		Game.updateCanvas(delta);
 
 		// Ayyy
 		publish("update");
-
 	}
 
 	// Options update
@@ -293,26 +306,48 @@ Game.immediatePromise = function(){
 
 // Move the text DOM to latest
 Game.FORCE_TEXT_Y = -1;
-Game.WORDS_HEIGHT_BOTTOM = 250;
-Game.updateText = function(instant){
-	if(Game.WORDS_HEIGHT_BOTTOM<0) Game.WORDS_HEIGHT_BOTTOM=250; // back to default
-	if(Game.FORCE_TEXT_Y<0){
-		var wordsHeight = 80 + Game.wordsDOM.getBoundingClientRect().height;
-		var currentY = Game.wordsDOM.style.top=="" ? 80 : parseFloat(Game.wordsDOM.style.top);
-		var gotoY = (wordsHeight<Game.WORDS_HEIGHT_BOTTOM) ? 0 : wordsHeight-Game.WORDS_HEIGHT_BOTTOM;
-		gotoY = 80 - gotoY;
-		var nextY = instant ? gotoY : currentY*0.9 + gotoY*0.1;
-		Game.wordsDOM.style.top = (Math.round(nextY*10)/10)+"px";
-	}else{
-		Game.wordsDOM.style.top = Game.FORCE_TEXT_Y+"px";
-	}
-};
+Game.WORDS_HEIGHT_BOTTOM = -1;
+(function(){
+	const wordsObserver = new TickableObserver(() => {
+		const offset = 80
+		if(Game.WORDS_HEIGHT_BOTTOM < 0) Game.WORDS_HEIGHT_BOTTOM = 250;
+		let advanceTextPosition = 0
+
+		// Either force the text somewhere...
+		if(Game.FORCE_TEXT_Y != -1){
+			Game.wordsDOM.style.transform = `translateY(${Game.FORCE_TEXT_Y}px)`;
+			advanceTextPosition = Game.wordsDOM.clientHeight + Game.FORCE_TEXT_Y + 5
+		}
+		// Or calculate its position based on a window...
+		else {
+			const wordsHeight = Game.wordsDOM.clientHeight;
+			let diff = wordsHeight - (Game.WORDS_HEIGHT_BOTTOM - offset)
+			if(diff < 0) diff = 0
+			Game.wordsDOM.style.transform = `translateY(${offset - diff}px)`;
+			advanceTextPosition = offset - diff + wordsHeight + 5
+		}
+
+		// "Instant mode" was only used for clearing... so lets just do it when it's clear?
+		if(Game.wordsDOM.children.length == 0) flushElementTransitions(Game.wordsDOM);
+
+		// Also, move the click_to_advance DOM
+		$('#click_to_advance').style.transform = `translateY(${Math.round(advanceTextPosition)}px)`;
+	});
+
+	// The words UI depends on these things:
+	wordsObserver.watch(() => Game.FORCE_TEXT_Y);
+	wordsObserver.watch(() => Game.WORDS_HEIGHT_BOTTOM);
+	wordsObserver.watch(() => Game.wordsDOM.children.length);
+	Game.updateText = () => wordsObserver.tick();
+
+})()
 
 // CLEAR TEXT
 Game.clearText = function(){
 	Game.wordsDOM.innerHTML = "";
-	Game.updateText(true);
+	Game.updateText();
 };
+
 Game.clearAll = function(){
 	Game.clearText();
 	Game.resetScene();
@@ -623,7 +658,8 @@ Game.executeText = function(line){
 					span.innerHTML = "";
 					span.style.display = "block";
 					var iconName = word.slice(1,-1)
-					var icon = Library.images["fear_"+iconName];
+					var icon = new Image();
+					icon.src = Library.images["fear_"+iconName].hackSrc;
 					div.children[i].appendChild(icon);
 					icon.style.display = "block";
 					if(speaker!="i"){
@@ -771,12 +807,12 @@ Game.executeChoice = function(line){
 	}
 
 	// Add choice, animated!
-	div.style.top = "150px";
+	div.classList.add("hidden");
 	Game.choicesDOM.appendChild(div);
-	setTimeout(function(){
-		div.style.top = "0px";
+	requestAnimationFrame(function(){
+		div.classList.remove("hidden");
 		sfx("ui_show_choice", {volume:0.4});
-	},10);
+	});
 
 	// Or... FORCE
 	if(Game.OVERRIDE_FONT_SIZE){
@@ -1019,24 +1055,29 @@ Game.resetScene = function(){
 Game.resetScene();
 
 // Update & draw all the kids!
-Game.updateCanvas = function(DELTA){
+Game.updateCanvas = function(delta){
+
+	// UPDATING:
+	// -------------------------------------------------------------
+	for(const child of Game.scene.children) {
+		if(child.update) child.update(delta);
+	}
+
+	// RENDERING:
+	// -------------------------------------------------------------
 
 	// For retina
 	var ctx = Game.context;
 	ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
-	ctx.save();
-	ctx.scale(2,2);
+	ctx.scale(2, 2);
 
 	// Update/Draw all kids
-	Game.scene.children.forEach(function(child){
-		if(child.update) child.update(DELTA);
-	});
-	Game.scene.children.forEach(function(child){
-		child.draw(ctx, DELTA);
-	});
+	
+	for(const child of Game.scene.children) child.draw(ctx, delta);
+
 
 	// Restore
-	ctx.restore();
+	ctx.scale(0.5, 0.5);
 
 	// Draw HP
 	HP.draw();

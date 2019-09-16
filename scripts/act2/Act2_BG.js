@@ -318,7 +318,7 @@ function BG_Party(){
 
 	self.draw = function(ctx, delta){
 
-		ctx.save();
+		var oldAlpha = ctx.globalAlpha;
 
 		for(var i=0; i<self.layers.length; i++){
 			var layer = self.layers[i];
@@ -329,7 +329,7 @@ function BG_Party(){
 			}
 		}
 
-		ctx.restore();
+		ctx.globalAlpha = oldAlpha;
 
 	};
 
