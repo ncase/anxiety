@@ -1082,7 +1082,7 @@ attack("10p", "harm");
 
 `bb({body:"normal", mouth:"normal", eyes:"normal_r"});`
 
-b: Your deepest motivations are dopamine, your richest joys are seratonin.
+b: Your deepest motivations are dopamine, your richest joys are serotonin.
 
 `bb({body:"one_up"});`
 
