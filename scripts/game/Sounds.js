@@ -38,7 +38,7 @@ window.voice = function(name, options){
 	var delta = now - window._lastPlayedVoice[name];
 
 	// If too soon, DON'T PLAY.
-	if(delta < 5/60*1000) return; // 5 frames
+	if(delta < 8/60*1000) return; // 8 frames
 
 	// Otherwise, play
 	options = options || {};

@@ -233,7 +233,7 @@ b: Don't you know loneliness is associated with premature death as much as smoki
 
 `bb({mouth:"normal", eyes:"normal_right"})`
 
-b: (Holt-Lunstad et al, 2010, PLoS Medicine)
+b: (Holt-Lunstad 2010, PLoS Medicine)
 
 `hong({eyes:"0_annoyed"})`
 

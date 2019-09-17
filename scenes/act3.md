@@ -331,6 +331,16 @@ bb({ eyes:"sad" });
 # act3_fork
 
 ```
+Game.clearText();
+bb({body:"special_attack"});
+sfx("charging");
+Game.FORCE_CANT_SKIP = true;
+```
+
+(...1001)
+
+```
+Game.FORCE_CANT_SKIP = false;
 hong({body:"drink"});
 bb({body:"attacked"});
 attackBB("32p");
@@ -344,7 +354,7 @@ hong({ body:"normal" });
 bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });
 ```
 
-h: You already tried that too.
+h: You tried that too.
 
 b: human, please...
 

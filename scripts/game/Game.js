@@ -749,6 +749,10 @@ Game.executeChoice = function(line){
 		preChoiceCodeIfAny = line.match(/\`(.*)\`/)[0]; // 0, with backticks
 	}
 
+	// SUPER HACK: #play1# and #play2#
+	choiceText = choiceText.replace("#play1#", "<div class='mini-icon' pic='play1'></div>");
+	choiceText = choiceText.replace("#play2#", "<div class='mini-icon' pic='play2'></div>");
+
 	// Choice text, add italics where *word word words*
 	var originalChoiceText = choiceText;
 	var italicsRegex = /\*([^\*]*)\*/g;
@@ -822,27 +826,32 @@ Game.executeChoice = function(line){
 		// If it's too big, shrink font size
 		setTimeout(function(){
 			var choiceHeight = div.getBoundingClientRect().height;
-			if(choiceHeight>40) div.style.fontSize = "18px";	
+			if(choiceHeight>40) div.style.fontSize = "18px";
 			// And if still too much???		
 			setTimeout(function(){
 				var choiceHeight = div.getBoundingClientRect().height;
-				if(choiceHeight>40) div.style.fontSize = "16px";
+				if(choiceHeight>40) div.style.fontSize = "17px";
 				// And if still too much???		
 				setTimeout(function(){
 					var choiceHeight = div.getBoundingClientRect().height;
-					if(choiceHeight>40) div.style.fontSize = "15px";
+					if(choiceHeight>40) div.style.fontSize = "16px";
 					// And if still too much???		
 					setTimeout(function(){
 						var choiceHeight = div.getBoundingClientRect().height;
-						if(choiceHeight>40) div.style.fontSize = "14px";
+						if(choiceHeight>40) div.style.fontSize = "15px";
 						// And if still too much???		
 						setTimeout(function(){
 							var choiceHeight = div.getBoundingClientRect().height;
-							if(choiceHeight>40) div.style.fontSize = "13px";
+							if(choiceHeight>40) div.style.fontSize = "14px";
 							// And if still too much???		
 							setTimeout(function(){
 								var choiceHeight = div.getBoundingClientRect().height;
-								if(choiceHeight>40) div.style.fontSize = "12px";
+								if(choiceHeight>40) div.style.fontSize = "13px";
+								// And if still too much???		
+								setTimeout(function(){
+									var choiceHeight = div.getBoundingClientRect().height;
+									if(choiceHeight>40) div.style.fontSize = "12px";
+								},1);
 							},1);
 						},1);
 					},1);
@@ -1090,4 +1099,24 @@ window.addEventListener("keydown", function(e){
 		e.preventDefault();
 		e.stopPropagation();
 	}
+	if(e.keyCode==32){ // SPACE TO ADVANCE
+		_unpauseOrSkip();
+	}
 });
+
+// CUSSING
+var queryParams = {};
+if(window.location.search){
+	window.location.search.substr(1).split("&").forEach(function(item){
+	    var split = item.split("=");
+	    queryParams[split[0]] = split[1];
+	});
+}
+if(queryParams.c){
+	window.NO_CUSS_MODE = true;
+}else{
+	var doCuss = document.createElement("style");
+	doCuss.innerHTML = ".hide-if-cuss-free{ display:inline; }";
+	document.body.appendChild(doCuss);
+}
+

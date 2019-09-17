@@ -47,6 +47,7 @@ function Act3_Beebee(){
 			"eyes_ignore_oh_crap",
 			"body_attacked*",
 			"body_dead*",
+			"body_special_attack*",
 			//"eyes_blank", // BLANK
 			//"mouth_blank", // BLANK
 

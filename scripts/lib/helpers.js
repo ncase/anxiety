@@ -13,3 +13,11 @@ function flushElementTransitions(element){
 	element.clientHeight;
 	element.classList.remove('clear_transition');
 }
+
+// Is On Mobile?
+window.IS_ON_MOBILE = false;
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	window.IS_ON_MOBILE = true;
+	$("#instructions_if_not_mobile").style.display = "none";
+	$("#instructions_if_mobile").style.display = "inline";
+}

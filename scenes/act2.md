@@ -358,7 +358,7 @@ b: At the end of it all, what can we possibly do that really matters?
 
 `bb({body:"normal", eyes:"sad"})`
 
-b: Contribute to humanity? All great works fade away the way of Ozymandias. Love? Death will always do that part.
+b: Contribute to humanity? All great works decay the way of Ozymandias. Love? Death will always do it part.
 
 `bb({eyes:"sad_r"})`
 
@@ -370,7 +370,7 @@ b: Heck, the Second Law of Thermodynamics means even our *universe* will die!
 
 `bb({eyes:"suspect", body:"normal"})`
 
-b: Oh, "death makes us appreciate life"? That's like saying we need to keep slaves to appreciate freedom!
+b: Oh, "death makes us appreciate life"? That's like saying slavery is good because it makes us appreciate freedom!
 
 `bb({body:"one_up"})`
 
@@ -957,7 +957,7 @@ b: Results: if you already had low self-esteem, being asked to repeat affirmatio
 
 `bb({body:"point", mouth:"normal", eyes:"closed"})`
 
-b: Wood et al, 2009, Psychological Science. Look it up on Google Scholar, human,
+b: Wood 2009, Psychological Science. Look it up on Google Scholar, human,
 
 `bb({body:"scream_b_1"})`
 
