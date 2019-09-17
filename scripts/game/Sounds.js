@@ -38,7 +38,8 @@ window.voice = function(name, options){
 	var delta = now - window._lastPlayedVoice[name];
 
 	// If too soon, DON'T PLAY.
-	if(delta < 8/60*1000) return; // 8 frames
+	var delay = (name=="voice_beebee") ? 8 : 5;
+	if(delta < delay/60*1000) return;
 
 	// Otherwise, play
 	options = options || {};
