@@ -6,9 +6,9 @@ SceneSetup.act1();
 
 (...300)
 
-n: AND THIS IS THE HUMAN'S ANXIETY
+n: 그리고 이것은 인간의 불안감입니다
 
-n: _YOU_ ARE THE ANXIETY
+n: _당신_ 이 사람의 불안감입니다
 
 {{if window.localStorage.continueChapter=="replay"}}
 (#act1_replay)
@@ -24,17 +24,17 @@ n: _YOU_ ARE THE ANXIETY
 
 `hong({mouth:"0_neutral", eyes:"0_neutral"})`
 
-h: Oh hey! We're back here again?
+h: 오! 또 온 거야?
 
 `hong({eyes:"0_neutral"})`
 
-n: YOUR JOB IS TO PROTECT YOUR HUMAN FROM *DANGER*
+n: 당신의 임무는 인간을 *위험* 으로부터 보호하는 것입니다
 
 `bb({eyes:"look", mouth:"small_lock"})`
 
-n: IN FACT, REPLAYING THIS GAME IS PUTTING THEM IN *DANGER* RIGHT NOW
+n: 사실, 이 게임을 다시 시작하는 것만으로도 이미 당신의 인간은 *위험* 에 빠졌습니다
 
-n: QUICK, WARN THEM!
+n: 빨리, 주의를 주세요!
 
 ```
 sfx("squeak");
@@ -42,13 +42,13 @@ bb({body:"squeeze_talk"});
 hong({body:"0_squeeze"});
 ```
 
-b: Human! Listen, we're in danger! The player...
+b: 인간! 내 말을 들어, 우린 지금 위험해! 플레이어가...
 
-[...is gonna torture us again!](#act1_replay_torture)
+[...다시 우리를 고문시킬 거야!](#act1_replay_torture)
 
-[...won't find an alternate ending!](#act1_replay_alternate)
+[...다른 엔딩을 찾지 못 할 거야!](#act1_replay_alternate)
 
-[...will get ludonarrative dissonance!](#act1_replay_dissonance)
+[...해설적 충돌과 맞닥뜨릴 거야!](#act1_replay_dissonance)
 
 # act1_replay_torture
 
@@ -59,32 +59,32 @@ hong({body:"0_sammich"});
 ```
 
 {{if window.HACK_REPLAY.act1_ending=="fight"}}
-b: They'll make us curl up into a ball and cry!
+b: 플레이어는 우리를 울게 만들 거야!
 {{/if}}
 
 {{if window.HACK_REPLAY.act1_ending=="flight"}}
-b: They'll make us kill your phone for giving you a panic attack!
+b: 플레이어는 우리가 공황 발작을 일으켜서 핸드폰을 부수게 할 거야!
 {{/if}}
 
 {{if window.HACK_REPLAY.a2_ending=="fight"}}
-b: They'll make us *NOT* punch the party host!
+b: 플레이어는 우리가 파티 호스트를 때리지 *못하게* 할 거야!
 {{/if}}
 
 {{if window.HACK_REPLAY.a2_ending=="flight"}}
-b: They'll make us punch the Sympathetic Anti-Villain party host!
+b: 플레이어는 우리가 동정어리고 정의로운 파티 호스트를 때리게 할 거야!
 {{/if}}
 
 {{if window.HACK_REPLAY.a3_ending=="jump"}}
-h: Well at least we might not jump off the roof this ti--
+h: 뭐 최소한에 우리를 지붕에서 떨어트리진 않을 테니--
 {{/if}}
 
 {{if window.HACK_REPLAY.a3_ending=="walkaway"}}
-b: THEY'LL MAKE US JUMP OFF THE ROOF.
+b: 우린 지붕에서 떨어질 거야.
 {{/if}}
 
 `bb({body:"fear"});`
 
-b: ALL THESE NEW TERRIBLE THINGS WILL HAPPEN TO US, AND THEN WE'LL--
+b: 이 모든 새로운 끔찍한 일들이 우리한테 일어나고 나면--
 
 (#act1_replay_end)
 
@@ -96,11 +96,10 @@ bb({body:"normal", mouth:"normal", eyes:"fear"});
 hong({body:"0_sammich"});
 ```
 
-h: Sure, the story as a *whole* is the same, but each chapter has two possible endings, plus all the branching dialogue opti--
-
+h: 그래, *전반적으로* 스토리는 하나지만, 각 장마다 두 개의 엔딩이 있고 선택지에 따라서 대사도 달라지는ㄷ--
 `bb({body:"fear"});`
 
-b: The player will be disappointed, close this browser tab, delete our software, and then we'll--
+b: 플레이어는 실망하고 이 브라우저 탭을 닫고, 프로그램을 지우고, 그러면 우리는--
 
 (#act1_replay_end)
 
@@ -112,7 +111,7 @@ bb({body:"normal", mouth:"normal", eyes:"fear"});
 hong({body:"0_sammich"});
 ```
 
-h: A lewd-what now?
+h: 해설적 뭐?
 
 `bb({eyes:"normal"});`
 
