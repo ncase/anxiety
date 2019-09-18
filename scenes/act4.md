@@ -820,7 +820,7 @@ b: Seni küçük tüysüz memeli.
 
 # act4_thanks_3
 
-h: Gevelemelerin beni korkutsa bile, yapmaya çalıştığın şey ...'mı korumak.
+h: Gevelemelerin beni korkutsa bile, yapmaya çalıştığın şey {{_.thanks_for}}'mı korumak.
 
 `bb({ eyes:"smile_r" });`
 
