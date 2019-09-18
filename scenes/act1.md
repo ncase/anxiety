@@ -96,7 +96,7 @@ bb({body:"normal", mouth:"normal", eyes:"fear"});
 hong({body:"0_sammich"});
 ```
 
-h: 그래, *전반적으로* 스토리는 하나지만, 각 장마다 두 개의 엔딩이 있고 선택지에 따라서 대사도 달라지는ㄷ--
+h: 그래, *전반적으로* 이야기는 하나지만, 각 장마다 두 개의 엔딩이 있고 선택지에 따라서 대사도 달라지는ㄷ--
 `bb({body:"fear"});`
 
 b: 플레이어는 실망하고 이 브라우저 탭을 닫고, 프로그램을 지우고, 그러면 우리는--
@@ -115,23 +115,23 @@ h: 해설적 뭐?
 
 `bb({eyes:"normal"});`
 
-b: The story arc was about how you can *CHOOSE* to build a healthy collaboration with your fear,
+b: 이 이야기는 불안감과 건강한 관계를 유지하는 방법을 *선택* 할 수 있다는 주제를 가지고 있는데,
 
 `bb({eyes:"normal_right"});`
 
-b: But replaying the game will give the same story, implying your *CHOICES* don't matter,
+b: 게임을 다시 플레이하고 같은 이야기가 나오면 결국 *선택* 은 중요하지 않다는 걸 알게 되고,
 
 `bb({eyes:"narrow_eyebrow"});`
 
-b: Thus showing a contradiction between the game's message and mechanics,
+b: 이 게임이 전하고자 하는 내용과 게임 자체의 모순이 탄로나버리면서,
 
 `bb({eyes:"fear"});`
 
-b: Thus unraveling the fabric of this narrative universe,
+b: 이 이야기 속 세상의 정체도 드러나버리면,
 
 `bb({body:"fear"});`
 
-b: And then we'll--
+b: 우리는--
 
 (#act1_replay_end)
 
@@ -140,7 +140,7 @@ b: And then we'll--
 
 `bb({body:"panic"})`
 
-b: DIEEEEEEEEEEEEEEEEEEE
+b: 죽을 거야아아아아아아아
 
 ```
 bb({body:"normal", mouth:"normal", eyes:"normal"});
@@ -163,13 +163,13 @@ bb({body:"normal", mouth:"normal", eyes:"normal"});
 hong({body:"0_sammich"});
 ```
 
-h: Okay let's get back into character.
+h: 그래 그럼 다시 분위기 잡자.
 
 ```
 Game.clearText();
 ```
 
-n4: (LET _YOUR_ ANXIETY BLAH BLAH BLAH MOST SIMILAR TO WHAT _YOUR_ FEAR BLAH BLAH YOU KNOW THE DRILL)
+n4: (당신의 _불안감_ 이 어쩌구 _당신_ 이 가장 불안해하는 것과 비슷하게 저쩌구 뭐 해야 하는지 이미 아시죠?)
 
 ```
 sfx("squeak");
@@ -185,17 +185,17 @@ bb({body:"squeeze"});
 
 `hong({mouth:"0_neutral", eyes:"0_annoyed"})`
 
-h: Oh good, my wolf's back. Faaaaantastic.
+h: 아, 그래. 내 늑대가 돌아왔네. 아이고 좋아라.
 
 `hong({eyes:"0_neutral"})`
 
-n: YOUR JOB IS TO PROTECT YOUR HUMAN FROM *DANGER*
+n: 당신의 임무는 인간을 *위험* 으로부터 보호하는 것입니다
 
 `bb({eyes:"look", mouth:"small_lock"})`
 
-n: IN FACT, THAT SANDWICH IS PUTTING THEM IN *DANGER* RIGHT NOW
+n: 지금 저 샌드위치가 인간을 *위험* 에 빠트리고 있군요
 
-n: QUICK, WARN THEM!
+n: 빨리, 주의를 주세요!
 
 ```
 sfx("squeak");
@@ -203,21 +203,21 @@ bb({body:"squeeze_talk"});
 hong({body:"0_squeeze"});
 ```
 
-b: Human! Listen, we're in danger! The danger is...
+b: 인간! 내 말을 들어, 우린 지금 위험에 빠졌어!
 
 `bb({body:"squeeze"})`
 
-n4: (LET _YOUR_ ANXIETY COME OUT TO PLAY! PICK WHAT'S MOST SIMILAR TO WHAT _YOUR_ FEAR TELLS YOU)
+n4: (_당신_ 의 불안감이 게임을 플레이하게 두세요! _당신_ 이 불안해하는 것과 제일 비슷한 선택지를 고르세요)
 
 (#act1_normal_choice)
 
 # act1_normal_choice
 
-[We're eating alone for lunch! Again!](#act1a_alone) `bb({body:"squeeze_talk"})`
+[혼자서 점심을 먹고 있잖아! 또!](#act1a_alone) `bb({body:"squeeze_talk"})`
 
-[We're not productive while eating!](#act1a_productive) `bb({body:"squeeze_talk"})`
+[밥을 먹는 동안 시간이 낭비되고 있어!](#act1a_productive) `bb({body:"squeeze_talk"})`
 
-[That white bread's bad for us!](#act1a_bread) `bb({body:"squeeze_talk"})`
+[저 흰 식빵은 건강에 나빠!](#act1a_bread) `bb({body:"squeeze_talk"})`
 
 # act1a_alone
 
@@ -226,27 +226,27 @@ bb({body:"normal", mouth:"small", eyes:"narrow"});
 hong({body:"0_sammich"});
 ```
 
-b: Don't you know loneliness is associated with premature death as much as smoking 15 cigarettes a day?-
+b: 너 외로움을 느끼면 담배를 하루에 15 개비를 피는 것만큼 일찍 죽을 수 있다는 사실 몰라?-
 
 `Game.OVERRIDE_TEXT_SPEED = 2;`
 
 `bb({mouth:"normal", eyes:"normal_right"})`
 
-b: (Holt-Lunstad 2010, PLoS Medicine)
+b: (출처: Holt-Lunstad 2010, PLoS Medicine)
 
 `hong({eyes:"0_annoyed"})`
 
-h: Um, thanks for citing your sources but--
+h: 아, 출처 밝혀준 건 고마운데--
 
 `Game.OVERRIDE_TEXT_SPEED = 2;`
 
 `bb({body:"fear", mouth:"normal", eyes:"fear"})`
 
-b: Which means if we don't hang out with someone *right now* we're gonna-
+b: 우리가 *지금 당장* 다른 사람과 어울리지 않으면 우리는-
 
 `bb({body:"panic"})`
 
-b: DIEEEEEEEEEEEEEEEEEEE
+b: 죽을 거야아아아아아아아
 
 ```
 bb({body:"normal", mouth:"normal", eyes:"normal"});
