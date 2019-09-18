@@ -99,7 +99,7 @@ n3: Başlamadan önce, *nasıl* okumayı seversin?
 
 # intro-start-2
 
-n3: Mükemmel! Not: ayarları aşağıdaki ⚙ simgesinden her zaman değiştirebilirsin, Ayrıca oyun bölümde kayıt edilir!
+n3: Mükemmel! Not: ayarları aşağıdaki ⚙ simgesinden her zaman değiştirebilirsin, Ayrıca oyun her bölümde kayıt edilir!
 
 n3: Şimdi, hadi hikayemize başlayalım...
 `clearText()`
