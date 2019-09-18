@@ -396,6 +396,8 @@ sfx("yaps", {volume:0.6});
 bb({body:"yap_1"});
 Game.FORCE_CANT_SKIP = true;
 Game.WORDS_HEIGHT_BOTTOM = 215;
+Game.FORCE_TEXT_DURATION = 90;
+Game.FORCE_NO_VOICE = true;
 ```
 
 b: YAP YAP YAP YAP YAP
@@ -1320,11 +1322,11 @@ h: Support groups, online therapy, student/non-profit health centers...
 
 `hong({ body:"hands_1" })`
 
-h: Picking up a free meditation habit, watching videos on evidence-based mental health...
+h: Building habits like meditation, sleeping well, chatting regularly with friends, learning new things...
 
 `hong({ body:"hands_2" })`
 
-h: Borrowing a library book on Cognitive Behavioral Therapy or Acceptance & Commitment Therapy...
+h: Going to a library to borrow workbooks for evidence-based psychotherapies...
 
 `hong({ body:"one_up" })`
 
@@ -1986,6 +1988,8 @@ publish("act4", ["hong_closer", 6]);
 sfx("yaps", {volume:0.6});
 Game.FORCE_CANT_SKIP = true;
 Game.WORDS_HEIGHT_BOTTOM = 205;
+Game.FORCE_TEXT_DURATION = 90;
+Game.FORCE_NO_VOICE = true;
 ```
 
 b: YAP YAP YAP YAP YAP

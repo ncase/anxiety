@@ -1035,6 +1035,9 @@ CORNER TEXT
 .no_deco{
 	text-decoration: none;
 }
+#sharing_title, #sharing_desc{
+	display: none;
+}
 #share{
 	overflow: hidden;
 	text-align: right;
