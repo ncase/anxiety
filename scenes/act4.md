@@ -789,53 +789,53 @@ h: Ahh seni kocaman, tüylü ve endişeli kurt.
 
 # act4_thanks_2
 
-h: Even if you over-react, I appreciate you looking out for my {{_.thanks_for}}.
+h: Aşırı tepki versen bile, {{_.thanks_for}}'mı koruduğun için minnettarım .
 
 `bb({ eyes:"annoyed" })`
 
-b: Wait... you're not just repeating "thank you" to avoid actually talking about these fears, are you?
+b: Bekle... sırf korkuların hakkında konuşmaktan kaçınmak için mi "teşekkür ederim" diyorsun?
 
 ```
 bb({ eyes:"normal" });
 hong({ eyes:"annoyed", body:"chin" });
 ```
 
-h: Well, stuff's complicated, and I don't always have answers ready.
+h: Aslında, işler biraz karmaşık, ve her zaman verecek cevabım da yok.
 
 `hong({ eyes:"annoyed_l", body:"one_up" })`
 
-h: It's not like life gives you a list of 3 pre-made dialogue responses.
+h: Hayat sana önceden hazırlanmış 3 şıklı cevap listesi veriyor değil ya.
 
 `hong({ eyes:"normal", mouth:"smile", body:"normal" })`
 
-h: But for now, at least I can at least say thanks.
+h: Ama şimdilik, en azından teşekkür edebilirim.
 
-b: Well, thank you too, for listening to me patiently.
+b: Şey, ben de teşşekkür ederim, beni sabırla dinlediğin için
 
 `bb({ eyes:"closed" });`
 
-b: You small hairless flesh-mammal.
+b: Seni küçük tüysüz memeli.
 
 (#act4_something_else)
 
 # act4_thanks_3
 
-h: Even if your yapping scares me, you're simply trying to protect my {{_.thanks_for}}.
+h: Gevelemelerin beni korkutsa bile, yapmaya çalıştığın şey ...'mı korumak.
 
 `bb({ eyes:"smile_r" });`
 
-b: Okay, if you keep flattering me like this, the internet's gonna get some weird ideas about us.
+b: Pekala, eğer beni beni övmeye devam edersen internet bizim hakkımızda garip şeyler düşünecek
 
 ```
 bb({ eyes:"smile" });
 hong({ eyes:"annoyed" });
 ```
 
-h: C'mon, I'm just a vulnerable college-age kid and you're a big, scary wolf. What's the worst that cou--
+h: Hadi ama, ben sadece narin bir üniversite öğrencisiyim ve sen de büyük, korkunç bir kurtsun. En kötü ne düşü--
 
 `hong({ eyes:"normal", body:"point" });`
 
-h: Actually, do not answer that.
+h: Aslında, buna cevap verme
 
 (#act4_something_else)
 
