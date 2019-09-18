@@ -716,7 +716,7 @@ bb({body:"scream"});
 Game.OVERRIDE_TEXT_SPEED = 1.8;
 ```
 
-b: KEDİLER SÜTÜ HAZMEDEMEZ VE İNSANLARIN HAYVAN SÖMÜRÜSÜNDEN KEYİF ALMALARI KORKUNÇ
+b: KEDİLER SÜTÜ HAZMEDEMEZ VE HAYVAN SÖMÜRÜSÜNDEN KEYİF ALMAMAMIZ KORKUNÇ BİR ŞEY
 
 ```
 bb({body:"normal", mouth:"normal", eyes:"fear"});
