@@ -253,7 +253,7 @@ publish("hp_show");
 
 `_.fifteencigs = true`
 
-n: *SEVİLMEME KORKUSU*NU KULLANDIN
+n: *YALNIZLIK KORKUSU*NU KULLANDIN
 
 (#act1b)
 
@@ -332,7 +332,7 @@ publish("hp_show");
 
 `_.whitebread = true`
 
-n: *ZARAR GÖRME KORKUSU*NU KULLANDIN
+n: *İNCİNME KORKUSU*NU KULLANDIN
 
 (#act1b)
 
@@ -354,8 +354,8 @@ n: İNSANININ ENERJİ BARINI SIFIRA İNDİR
 
 n: FİZİKSEL + SOSYAL + ETİK DEĞERLERİNİ KORUMAK İÇİN KULLANABİLECEKLERİN:
 
-n: *ZARAR GÖRME* KORKUSU #harm#
-n: *SEVİLMEME* KORKUSU #alone#
+n: *İNCİNME* KORKUSU #harm#
+n: *YALNIZLIK* KORKUSU #alone#
 n: VE *KÖTÜ BİRİSİ OLMA* KORKUSU #bad#
 `Game.OVERRIDE_TEXT_SPEED = 1.25;`
 
