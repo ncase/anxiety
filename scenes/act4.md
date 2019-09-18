@@ -255,11 +255,11 @@ h: ?
 
 `bb({eyes:"normal_d"});`
 
-b: Harbiden de tahmini ömrümüzden bir kaç yıl çaldık...
+b: Gerçekten de gelecek ömrümüzden bir kaç yıl çaldık...
 
 `bb({eyes:"surprise"});`
 
-b: Ama en azından hala tahmini bir ömrümüz *var*! Kurtulduk!
+b: Ama en azından hala olası bir ömrümüz *var*! Kurtulduk!
 
 ```
 hong({eyes:"surprise"});
@@ -276,7 +276,7 @@ h: ?
 
 b: Ve yine de...
 
-h: Hm?
+h: Hımm?
 
 `bb({eyes:"surprise"});`
 
@@ -292,7 +292,7 @@ b: Fakat... sen de haklıydın.
 
 `hong({eyes:"surprise"});`
 
-h: Hm?
+h: Hımm?
 
 `bb({eyes:"normal"});`
 
@@ -492,60 +492,60 @@ b: Daha başka bir düşünce, insan?
 
 `bb({eyes:"look_down", body:"paw"})`
 
-b: But... how? I have fangs and claws, but I'm just a metaphor.
+b: Fakat... nasıl? Dişim ve pençem var, ama ben sadece bir hayalim.
 
 ```
 bb({ body:"normal", eyes:"normal" });
 hong({ body:"one_up", eyes:"surprise" });
 ```
 
-h: We could learn self-defense? Join a community that protects each other? Improve our general health & personal boundaries?
+h: Kendimizi korumayı öğrensek? Birbirini koruyan kişilerin olduğu bir topluluğa katılsak? Kendimizi sağlık ve kişilik anlamında geliştirsek?
 
 ```
 bb({ eyes:"annoyed_r" });
 hong({ body:"normal", eyes:"normal" });
 ```
 
-b: Maybe, but...
+b: Belki, ama...
 
-[Where do we even start?](#act4_harm_skills_start)
+[Nereden başlayabiliriz ki?](#act4_harm_skills_start)
 
-[What if they still don't work?](#act4_harm_skills_work)
+[Ya bizimle çalışmak istemezlerse?](#act4_harm_skills_work)
 
-[What if we go overboard on "safety"?](#act4_harm_skills_overboard)
+[Ya bu "güvenlik" konusunu çok abartırsak?](#act4_harm_skills_overboard)
 
 # act4_harm_skills_start
 
 `bb({ eyes:"sad_d" })`
 
-b: There's so much to do, so much we need to fix about ourselves. What do we even *begin* with?
+b: Yapacak çok şey var, kendimizde düzelteceğimiz çok şey. Buna nereden *başlayabiliriz* ki?
 
 `hong({ body:"shrug", eyes:"surprise" })`
 
-h: We're beginning right now.
+h: Tam da şimdi başlıyoruz.
 
 `bb({ eyes:"normal", mouth:"narrow" })`
 
-b: Eh?
+b: Hıh?
 
 ```
 bb({ body:"normal", mouth:"normal" });
 hong({ body:"normal", mouth:"normal", eyes:"normal"});
 ```
 
-h: We're practicing good communication right now. Which will help us detect danger better, with fewer false positives,
+h: İyi iletişim kurmak için alıştırma yapıyoruz şuan. Bu da tehlikeyi daha çabuk farketmemizi ve daha az yanlış alarm vermemizi sağlayacak,
 
 `hong({ eyes:"surprise" });`
 
-h: And *that* will help protect us from harm!
+h: Ve *bu* bizi zarar görmekten koruyacak!
 
 `hong({ eyes:"normal", mouth:"normal" });`
 
-h: Therefore: this *is* self-defense training.
+h: Yani: bu bir *kendimizi koruma* çalışması*.
 
 `bb({ eyes:"normal_r" })`
 
-b: Huh. I was expecting more of this:
+b: Hah. Bundan fazlasını bekliyordum:
 
 ```
 Game.FORCE_CANT_SKIP = true;
@@ -566,25 +566,26 @@ sfx("hiya");
 `bb({ eyes:"normal" });`
 
 h: True, there's no way to 100% protect ourselves...
+h: Doğru, kendimizi %100 koruyabilmemizin bir yolu yok...
 
 `hong({ body:"one_up" });`
 
-h: But even a 1% improvement is still worth something, right?
+h: Fakat %1 iyileşme bile bir ilerlemedir, değil mi?
 
 ```
 bb({ eyes:"annoyed" });
 hong({ normal:"one_up" });
 ```
 
-b: You're seeing the glass as not 99% empty, but 1% full?
+b: Bardağın %99 boş kısmını görüyorsun, peki ya %1'lik kısmı?
 
 `bb({ eyes:"normal" });`
 
-h: Which is still worth something if you're stranded in the desert.
+h: Ki çölün ortasındaki biri için bunu hala bir değeri vardır.
 
 `bb({ eyes:"closed" });`
 
-b: Well. Bottoms up, then.
+b: O zaman, İç onu 
 
 (#act4_something_else)
 
@@ -592,26 +593,26 @@ b: Well. Bottoms up, then.
 
 `bb({ body:"chest", eyes:"annoyed" })`
 
-b: I mean, the whole reason you ignored my warnings was because *I* went overboard with safety! 
+b: Demeye çalıştığım şey uyarılarımı görmezden gelmenin tüm nedeni *benim* güvenliğe olan takıntımdı!
 
 `bb({ body:"normal", eyes:"normal" })`
 
-h: Naw, you're right. We would want to do safety in moderation. Everything in moderation.
+h: Yoo, haklısın. Güvenliği orta düzeyde isteyebiliriz. Her şey kararında
 
 `bb({ eyes:"suspect" })`
 
-b: Sorry, *EVERYTHING* in moderation?
+b: Afedersin, *HER ŞEY* mi kararında?
 
 `hong({ eyes:"annoyed" })`
 
-h: *A moderate number of things* in moderation.
+h: *Kararında şey* kararında.
 
 ```
 bb({ eyes:"closed" });
 hong({ eyes:"normal" });
 ```
 
-b: Thank you for making your statements recursively self-consistent.
+b: Bu ifadeyi kendi içinde tutarlı, sonsuz döndüye soktuğun için sağol
 
 (#act4_something_else)
 
@@ -620,45 +621,45 @@ b: Thank you for making your statements recursively self-consistent.
 
 `bb({ mouth:"scream_talk", eyes:"scream", MOUTH_LOCK:true });`
 
-b: *WHAT*
+b: *NE*
 
 ```
 bb({ mouth:"narrow", eyes:"suspect" });
 hong({ body:"one_up" });
 ```
 
-h: I mean, let's say a dog is scared of thunder.
+h: Diyelim ki bir köpek yıldırımdan korkuyor.
 
 `hong({ body:"hands_1" });`
 
-h: One trick trainers use is to play a recording of thunder at a low volume, then give the dog a treat for staying calm.
+h: Bir eğitmen de yıldırım sesini alçak seste köpeğe dinletir, ardından da köpek sakin kalırsa ödül verir.
 
 `hong({ body:"hands_2" });`
 
-h: Over several days, the trainer raises the volume bit by bit, until the dog has overcome their fear of thunder.
+h: İlerleyen günlerde eğitmen sesi azar azar arttırır, buna köpek yıldırım korkusunu yenene kadar devam eder.
 
 ```
 hong({ body:"normal", eyes:"surprise" });
 bb({ mouth:"normal", eyes:"normal" });
 ```
 
-h: It's called exposure therapy!
+h: Buna "maruz bırakma terapisi" diyorlar!
 
 `hong({ body:"point", eyes:"normal" });`
 
-h: Since you're a dog, it should work for you too, right? All mammals have the same fight-or-flight response.
+h: Sen de bir köpeksin, yani bu sende de işe yarar mı? Tüm memeliler aynı savaş ya da kaç tepkilerine sahiptir
 
 `hong({ body:"normal" });`
 
-[What if we desensitize *too* much?](#act4_harm_exposure_overboard)
+[Ya *çok* fazla duyarsızlaşırsak?](#act4_harm_exposure_overboard)
 
-[What if we're exposed to *real* danger?](#act4_harm_exposure_hurt)
+[Ya *gerçek* tehlikeye maruz kalırsak?](#act4_harm_exposure_hurt)
 
-[I'm a wolf, not a dog.](#act4_harm_exposure_dog) `bb({ eyes:"suspect" })`
+[Ben kurdum, köpek değil.](#act4_harm_exposure_dog) `bb({ eyes:"suspect" })`
 
 # act4_harm_exposure_dog
 
-h: And I'll show you kindness and patience 'til you're domesticated into a cute lil' puppy.
+h: Ve ben de sana karçı nazik ve sabırlı olacağım, ta ki şirin bir ev köpeğine ehlileşene kadar
 
 `bb({ MOUTH_LOCK:true })`
 
@@ -666,7 +667,7 @@ b: ...
 
 `bb({ eyes:"sad", mouth:"smile" })`
 
-b: D'aw.
+b: Öff.
 
 (#act4_something_else)
 
@@ -674,35 +675,35 @@ b: D'aw.
 
 `bb({ eyes:"annoyed" })`
 
-b: We *just* saw what happens if you shut down your fear – you put yourself in *actually* dangerous situations.
+b: Korkularına sırt çevirdiğinde neler olduğunu *az önce* gördük - kendini *gerçek* tehlikelere soktun.
 
 `bb({ eyes:"angry_r", body:"one_up" })`
 
-b: Besides, won't *too* much desensitization turn us into psychopaths?
+b: Ayrıca, *fazla* duyarsızlaşmak bizi bir ruh hastasına dönüştürmeyecek mi?
 
 `bb({ mouth:"scream", eyes:"scream", body:"two_up" })`
 
-b: Soon we'll give ourselves treats while watching snuff murder porn!
+b: Çok geçmeden cinayet pornosu izlerken kendimize ödüller vereceğiz 
 
 `hong({ eyes:"annoyed" })`
 
-h: I... think there's a line between that and the thunder.
+h: Sanırım... yıldırım ile bunun arasında bir çizgi var.
 
 `bb({ body:"normal", mouth:"normal", eyes:"suspect" })`
 
-b: But exactly *where*, human? *Where?!*
+b: Tam olarak *nerede* bu çizgi, insan? *nerede?!*
 
 `hong({ eyes:"surprise", body:"one_up" })`
 
-h: I don't know. But *you* can help me!
+h: Bilmiyorum. Ama bana *yardım edebilirsin!?*
 
 `hong({ eyes:"normal", body:"normal" })`
 
-h: Working and negotiating with you, we'll draw that line.
+h: Seninle çalışmak ve anlaşmak, çiziyi burada çizeceğiz.
 
 `bb({ body:"paw", mouth:"narrow", eyes:"closed" })`
 
-b: Okay. But I've got no opposable thumbs, so you have to do the drawing.
+b: Tamam. Ama baş parmağım yok, yani çizim işi sende.
 
 (#act4_something_else)
 
@@ -711,11 +712,11 @@ b: Okay. But I've got no opposable thumbs, so you have to do the drawing.
 `bb({ body:"two_up", eyes:"angry_r" })`
 
 {{if _.INJURED}}
-b: For example: we jumped off a freaking *roof!*
+b: Örneğin: lanet bir *çatıdan* atladık!
 {{/if}}
 
 {{if !_.INJURED}}
-b: For example: we almost jumped off a freaking *roof!*
+b: Örneğin: neredeyse lanet bir *çatıdan* atlıyorduk!
 {{/if}}
 
 ```
@@ -723,17 +724,17 @@ hong({ eyes:"annoyed" });
 bb({ body:"normal", eyes:"annoyed" });
 ```
 
-h: Nah you're right. One *can* go too far.
+h: Hayır sen haklısın. Birisi çok ileriye *gidilebilir*.
 
 `hong({ eyes:"normal" });`
 
-h: But that's why, if we do exposure therapy, we'll start small, and make small steps upward.
+h: Bu yüzden, maruz kalma terapisini yaparsak, ufaktan başlayacağız ve yukarıya doğru ufak adımlar atacağız
 
-h: Just before we hit *actual* danger, we stop.
+h: Tam da *gerçek* tehlikeden önce, duracağız.
 
 `bb({ eyes:"annoyed_r", mouth:"narrow" });`
 
-b: Yeah I draw the line between hearing loud thunder, and standing in a storm with a tall pointy hat.
+b: Evet, yüksek bir şimşek sesi dinlemek ile fırtınanın ortasında paratonerle beklemek arasında çizgi çiziyorum.
 
 (#act4_something_else)
 
@@ -761,11 +762,11 @@ b: ...
 
 `bb({ eyes:"annoyed" })`
 
-b: Wait, no arguments for or against what I'm feeling? Just... "thank you"?
+b: Bekle, hislerime dair bir şey demeyecek misin? Sadece... "teşekkür ederim" mi?
 
 `hong({ eyes:"surprise", body:"shrug" })`
 
-h: Yeah! Thank you for showing your concern for my {{_.thanks_for}}.
+h: Evet! Benim {{_.thanks_for}}'ime ilgi gösterdiğin için teşekkür ederim.
 
 ```
 bb({ eyes:"closed_annoyed", MOUTH_LOCK:true });
@@ -774,15 +775,15 @@ hong({ eyes:"normal", body:"normal" });
 
 b: ...
 
-h: You okay?
+h: İyi misin?
 
 `bb({ eyes:"super_sad", mouth:"narrow" });`
 
-b: You've never said *thank you* to me before.
+b: Bana daha önce hiç *teşekkür* etmemiştin.
 
 `hong({ mouth:"smile" });`
 
-h: Aw you big fuzzy-wuzzy panic-wolf.
+h: Ahh seni kocaman, tüylü ve endişeli kurt.
 
 (#act4_something_else)
 
