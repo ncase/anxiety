@@ -6,7 +6,7 @@ Game.WORDS_HEIGHT_BOTTOM = 205;
 sfx("cheers");
 ```
 
-r: Cheers!
+r: Şerefe!
 
 ```
 publish("act3",["roofhunter",1]);
@@ -23,41 +23,42 @@ publish("act3",["roofhunter",3]);
 publish("act3",["roofhong",3]);
 ```
 
-h2: *Ah* that hits the spot.
+h2: *Ah* tam da olması gerektiği gibi.
 
 ```
 publish("act3",["roofhunter",2]);
 publish("act3",["roofhong",2]);
 ```
 
-r: You know, kid...
+r: Bilirsin, çocuk...
 
 ```
 publish("act3",["roofhunter",3]);
 publish("act3",["roofhong",6]);
 ```
 
-h2: Specifically, the spots hit are my left and right amygdala.
+h2: Spesifik olarak, sağ ve sol amigdalam zarar gördü
 
 ```
 publish("act3",["roofhunter",8]);
 publish("act3",["roofhong",5]);
 ```
 
-r: You remind me of myself when I was younger. Back when I was tormented by the animal in my head.
+r: Bana gençliğimi hatırlatıyorsun. Kafamdaki hayvan bana işkence etmeye başlamadan önceki beni.
+
 
 ```
 publish("act3",["roofhunter",9]);
 publish("act3",["roofhong",2]);
 ```
 
-r: I'm so grateful I can pay it forward, and help you kill the beast the way I killed mine.
+r: Kafamdaki canavarı yok ettiğim gibi sana da yardım edebileceğim için çok mutluyum.
 
 ```
 publish("act3",["roofhunter",2]);
 ```
 
-r: Hey, quick question: truth or da--
+r: Hızlı soru: doğruluk mu ces--
 
 ```
 publish("act3",["roofhunter",3]);
@@ -65,7 +66,7 @@ publish("act3",["roofhong",7]);
 publish("act3-alpha", ["dizzyhong",0]);
 ```
 
-h2: DARE!
+h2: CESARET!
 
 ```
 publish("act3-alpha", ["dizzyhong",1]);
@@ -73,14 +74,14 @@ publish("act3",["roofhunter",10]);
 publish("act3",["roofhong",2]);
 ```
 
-r: Haha! Good.
+r: Haha! Güzel.
 
 ```
 publish("act3",["roofhunter",21]);
 publish("act3",["roofhong",4]);
 ```
 
-r: Ok. You see that baby-blue swimming pool down there?
+r: Tamam. Aşağıdaki masmavi havuzu görüyor musun?
 
 ```
 publish("act3-alpha", ["dizzyhong",0]);
@@ -88,14 +89,14 @@ publish("act3",["roofhunter",11]);
 publish("act3",["roofhong",9]);
 ```
 
-h2: Yeah? Six floors down?
+h2: Evet, Altı kat aşağıdaki?
 
 ```
 publish("act3",["roofhunter",10]);
 publish("act3",["roofhong",8]);
 ```
 
-r: Jump in.
+r: Atla.
 
 ```
 publish("act3",["roofhunter",11]);
@@ -108,39 +109,39 @@ h2: ...
 publish("act3",["roofhong",11]);
 ```
 
-h2: Wait, what?
+h2: Bekle, Ne?
 
 ```
 publish("act3",["roofhong",10]);
 publish("act3",["roofhunter",2]);
 ```
 
-r: The animal's started whining, hasn't it?
+r: Hayvanın söylenmeye başladı, değil mi?
 
 ```
 publish("act3",["roofhunter",23]);
 ```
 
-r: *Oh nooooo it's dangerous, don't do iiiiit.*
+r: *Oh hayıııır çok tehlikeli, bunu sakın yapma.*
 
 ```
 publish("act3",["roofhunter",22]);
 ```
 
-r: But that's exactly why we need death-defying thrills! Party hard! Carpe diem! Snort coke off a hooker's ^ass^, #YOLO!
+r: İşte bu yüzden ölümü-teğet geçen anlar yaşamalıyız! Sabahlar olmasın! Anı yaşa! Fahişelerin ^götünden^ kokain çek, #YOLO
+
 
 ```
 publish("act3",["roofhunter",10]);
 ```
 
-r: Show that animal we don't give two *^dick^s* about its ^bitch^ing! Jump in.
-
+r: O hayvanın gevelemelerinin 'sikimizde' olmadığını göster! Atla.
 ```
 publish("act3",["roofhunter",11]);
 publish("act3",["roofhong",13]);
 ```
 
-h2: Uh, but sometimes, um... fear has a point...
+h2: Ama Bazen, ıııı... korkuda bir haklılık payı vardır...
 
 ```
 publish("act3",["roofhunter",5]);
@@ -156,43 +157,43 @@ publish("act3",["roofhunter",6]);
 publish("act3",["dd",1]);
 ```
 
-r: I'm sorry, did you fall for that McMindfulness fad that claims feeling bad is *good?*
+r: Afedersin ama şu Bay Farkındalık'ın *kötü* hissetmek aslında *iyi* hissetmektir yalanına mı kandın?
 
 ```
 publish("act3",["roofhunter",17]);
 ```
 
-r: Pleasure is the opposite of pain. There-^fuck^ing-fore, you can use pleasure to fight pain!
+r: Zevk acının tersidir. Yani, acıyla savaşmak için keyif al ^amk^!
 
 ```
 publish("act3",["roofhunter",18]);
 ```
 
-r: How do those Silicon Valley pseudo-Buddhists not see this ^shit^?!
+r: Silikon Vadisi'nin sözde budistleri bu ^siktiğimin^ gerçeğini nasıl göremiyor?
 
 ```
 publish("act3",["roofhunter",6]);
 ```
 
-r: Kid, I know that *you* know that animal *hurts* people like us. It *tortures* people like us.
+r: Evlat, Bu hayvanın bizim gibileri *incitiğini* *bildiğini* biliyorum. Bizlere *işkence* eder.
 
 ```
 publish("act3",["roofhunter",19]);
 ```
 
-r: It's not our friend. It's a rabid beast, which either needs to be *tranquilized*,
+r: Arkadaşımız değil o. O kuduz canavarı *uyutmalı*,
 
 ```
 publish("act3",["roofhunter",20]);
 ```
 
-r: Or have a *bullet put in its skull*.
+r: veya *kafasına bir kurşun sıkmalıyız*.
 
 ```
 publish("act3",["roofhunter",27]);
 ```
 
-r: Otherwise, you're going to let it win.
+r: Aksi halde onun kazanmasına izin verirsin.
 
 ```
 publish("act3",["roofhunter",31]);
@@ -200,7 +201,7 @@ publish("act3",["roofhong",14]);
 publish("act3",["dd",2]);
 ```
 
-h2: No. You're wrong.
+h2: Hayır. Yanılıyorsun.
 
 ```
 publish("act3",["roofhunter",13]);
@@ -210,7 +211,7 @@ music('battle_dark', {volume:1.0}, function(){
 });
 ```
 
-h2: I'm not going to let it win.
+h2: Onun kazanmasına izin vermeyeceğim.
 
 ```
 publish("act3",["roofhunter",25]);
@@ -219,7 +220,7 @@ publish("act3-alpha", ["transition",1]);
 publish("act3",["dd",6]);
 ```
 
-r: ^Fuck^ yeah! I believe in you, babe! Kill it! <3
+r: Evet ^amk^! Sana inanıyorum bebeğim! Öldür onu <3
 
 (#act3a)
 
@@ -240,13 +241,13 @@ _.act3_bb_body = 1;
 publish("hp_show");
 ```
 
-b: no no no no no no
+b: hayır hayır hayır
 
-n: THIS CHAPTER HAS TWO POSSIBLE ENDINGS. ONE IS *VERY, VERY BAD.*
+n: BU BÖLÜMÜN İKİ SONU VAR. BİRİSİ *ÇOK, ÇOK KÖTÜ.*
 
-b: NO NO NO NO NO NO NO NO NO NO NO NO NO NO
+b: hayır hayır hayır hayır hayır hayır
 
-n: CHOOSE WISELY. PROTECT YOUR HUMAN
+n: AKILLICA SEÇ. İNSANINI KORU
 
 `bb({ eyes:"oh_crap", mouth:"normal_talk", MOUTH_LOCK:true });`
 
@@ -254,18 +255,18 @@ b: AAAAAAAAAAAAAAAAAA
 
 `bb({ mouth:"normal" });`
 
-n: GOOD LUCK
+n: İYİ ŞANSLAR
 
 ```
 Game.clearText();
 bb({ eyes:"start" });
 ```
 
-[Human, you could actually DIE here!](#act3a_harm) `Game.OVERRIDE_CHOICE_LINE=true`
+[İnsan, burada gerçekten ÖLEBİLİRSİN!](#act3a_harm) `Game.OVERRIDE_CHOICE_LINE=true`
 
-[This is stupid and self-destructive!](#act3a_bad) `Game.OVERRIDE_CHOICE_LINE=true`
+[Bu aptalca ve kendine zarar veriyor!](#act3a_bad) `Game.OVERRIDE_CHOICE_LINE=true`
 
-[These sickos aren't really your friends!](#act3a_alone) `Game.OVERRIDE_CHOICE_LINE=true`
+[Bu SERSEMLER senin arkadaşın değil!](#act3a_alone) `Game.OVERRIDE_CHOICE_LINE=true`
 
 # act3a_harm
 
@@ -307,9 +308,9 @@ hong({ body:"normal" });
 bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });
 ```
 
-h: You know, I might've believed you... if you hadn't tried that a zillion times before.
+h: Biliyor musun, sana inanabilirdim... Bunu daha önce zilyon kere denemiş olmasaydın.
 
-h: You're the wolf who cried wolf.
+h: Sen yalancı bir çobansın, kurt.
 
 ```
 bb({ eyes:"sad" });
@@ -354,43 +355,43 @@ hong({ body:"normal" });
 bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });
 ```
 
-h: You tried that too.
+h: Bunu da denemiştin.
 
-b: human, please...
+b: insan, Lütfen...
 
 `hong({ eyes:"look_right" });`
 
-h: Oh I'm *sorry* Big Pharma doesn't approve of my self-medication.
+h: Oh *üzgünüm*, büyük ilaç firmaları benim bu yöntemimi pek onaylamıyor.
 
-h: Look ^asshole^, we *all* have a way of shutting you the ^fuck^ up.
+h: Bak seni ^göt^, seni ^siktir^ etmek için hepimizin farklı yöntemleri var.
 
 `hong({ body:"look_up", eyes:"look_up" });`
 
-h: Some people throw themselves into work.
+h: Kimileri kendini iş yığının arasına atar,
 
 `hong({ body:"look_down", eyes:"look_down" });`
 
-h: Some people throw themselves into sex, drugs, and refreshing their Facebook feed.
+h: bazıları sekse, uyuşturucuya ve Facebook'a,
 
 `hong({ body:"normal", eyes:"look_right" });`
 
-h: Some people throw themselves into other people. 
+h: bazılarıysa diğer insanların arasına.
 
 `hong({ eyes:"angry" });`
 
-h: I'm going to throw myself into that swimming pool.
+h: Bense kendimi bu havuza atacağım.
 
-[You're drunk and it's SIX FLOORS DOWN](#act3_bad_1_harm)
+[Sarhoşsun ve havuz ALTI KAT AŞAĞIDA](#act3_bad_1_harm)
 
-[Dang it, this is the thanks I get?!](#act3_bad_1_insult) `bb({eyes:"angry"});`
+[Gerçekten, aldığım teşekkür bu mu?!](#act3_bad_1_insult) `bb({eyes:"angry"});`
 
-[Okay, I admit it. I messed up.](#act3_good_1) `bb({mouth:"sorry", eyes:"sorry_down"});`
+[Tamam, kabul ediyorum batırdım.](#act3_good_1) `bb({mouth:"sorry", eyes:"sorry_down"});`
 
 # act3_bad_1_harm
 
-b: Even if you land in the water, the surface tension will crack your ribs and give you a concussion *at the least!*
+b: Suya düşebilsen bile, yüzey gerilimi *en az* birkaç kaburganı kıracak ve beyin sarsıntısı geçireceksin! 
 
-h: Eh.
+h: Heh.
 
 ```
 hong({body:"drink"});
@@ -406,7 +407,7 @@ hong({ body:"normal", mouth:"angry", eyes:"angry" });
 bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });
 ```
 
-h: I saw a Russian guy do this on YouTube once.
+h: Bir keresinde Youtube'de bunu yapan bir Rus görmüştüm.
 
 (#act3_bad_2)
 
@@ -414,11 +415,11 @@ h: I saw a Russian guy do this on YouTube once.
 
 `hong({ eyes:"look_right" });`
 
-h: I- Excuse me, the *thanks?*
+h: Be- Afedersin, *Teşekkür* mü?
 
 `bb({ eyes:"angry" });`
 
-b: This is exactly why I *exist!* Because humans can't be trusted to protect themselves!
+b: İşte bu yüzden *varım!* İnsanlara kendilerini koruma konusunda güvenemezsin!
 
 b: I've been trying to protect your stupid butt all my life and now you're just going t--
 
