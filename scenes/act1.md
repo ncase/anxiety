@@ -259,7 +259,7 @@ publish("hp_show");
 
 `_.fifteencigs = true`
 
-n: YOU USED *FEAR OF BEING UNLOVED*
+n: 당신은 *사랑받지 않음에 대한 공포* 를 사용했습니다
 
 (#act1b)
 
@@ -270,27 +270,27 @@ bb({body:"normal", mouth:"small", eyes:"normal"});
 hong({body:"0_sammich"});
 ```
 
-b: Whip out your laptop and do some work right now!
+b: 빨리 노트북 꺼내서 작업이라도 조금 해!
 
 `hong({eyes:"0_annoyed"})`
 
-h: Um, I'd rather not get crumbs in my keyboa--
+h: 아, 키보드에 빵가루 흘리기는 싫은ㄷ--
 
 ```
 bb({mouth:"normal", eyes:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: If we're not contributing to the body of society then we're a society-parasite!
+b: 사회에 공헌하는 게 없으면 우린 사회의 기생충이나 다름 없어!
 
-b: The society-body will go to the society-doctor for medication to kill their society-parasites then we'll--
+b: 사회가 사회 병원으로 가서 사회의 기생충들을 죽이는 구충제를 받게 되면 우리는--
 
 ```
 bb({body:"panic", mouth:"normal", eyes:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: DIEEEEEEEEEEEEEEEEEEE
+b: 죽을 거야아아아아아아아
 
 ```
 bb({body:"normal", mouth:"normal", eyes:"normal"});
@@ -303,7 +303,7 @@ publish("hp_show");
 
 `_.parasite = true`
 
-n: YOU USED *FEAR OF BEING A BAD PERSON*
+n: 당신은 *나쁜 사람이 되는 것에 대한 공포* 를 사용했습니다
 
 (#act1b)
 
@@ -314,18 +314,18 @@ bb({body:"normal", mouth:"normal", eyes:"fear"});
 hong({body:"0_sammich", eyes:"0_annoyed"});
 ```
 
-h: Have those studies been replicat--
+h: 그 연구 검증된 거 맞--
 
 ```
 bb({body:"fear", mouth:"normal", eyes:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: Processed wheat will spike our blood sugar so they'll have to amputate all our limbs and then we'll-
+b: 가공된 밀을 먹으면 혈당이 너무 높아져서 팔다리를 잘라야 할 거고 그렇게 되면 우리는-
 
 `bb({body:"panic"})`
 
-b: DIEEEEEEEEEEEEEEEEEEE
+b: 죽을 거야아아아아아아아
 
 ```
 bb({body:"normal", mouth:"normal", eyes:"normal"});
@@ -338,37 +338,37 @@ publish("hp_show");
 
 `_.whitebread = true`
 
-n: YOU USED *FEAR OF BEING HARMED*
+n: 당신은 *해를 입는 것에 대한 공포* 를 사용했습니다
 
 (#act1b)
 
 # act1b
 
-n: IT'S SUPER EFFECTIVE
+n: 매우 효과적입니다
 
 `bb({mouth:"smile", eyes:"smile"});`
 
-b: See, human? I am your loyal guard-wolf!
+b: 봤지? 난 너를 지키는 충직한 늑대라고!
 
 `bb({body:"pride_talk"});`
 
-b: Trust your gut! Your feelings are always valid!
+b: 네 감을 믿어! 네 감정은 항상 옳아!
 
 `bb({body:"pride"});`
 
-n: GET YOUR HUMAN'S ENERGY BAR TO ZERO
+n: 인간의 에너지를 0 까지 내리십시오
 
-n: TO PROTECT THEIR PHYSICAL + SOCIAL + MORAL NEEDS, YOU CAN USE:
+n: 인간의 물리적 + 사회적 + 정신적 건강을 보호하기 위해 당신은:
 
-n: FEAR OF *BEING HARMED* #harm#
+n: *해를 입는 것* 에 대한 공포, #harm#
 
-n: FEAR OF *BEING UNLOVED* #alone#
+n: *사랑받지 않음* 에 대한 공포, #alone#
 
-n: AND FEAR OF *BEING A BAD PERSON* #bad#
+n: 그리고 *나쁜 사람이 되는 것* 에 대한 공포를 사용할 수 있습니다 #bad#
 
 `Game.OVERRIDE_TEXT_SPEED = 1.25;`
 
-n4: (PRO-TIP: PLAY THE CHOICES THAT PERSONALLY HIT YOUR DEEPEST, DARKEST FEARS!~)
+n4: (꿀팁: 여러분들의 깊은 곳에 있는 두려움을 자극하는 선택지를 골라보세요!~)
 
 h: ...
 
@@ -382,18 +382,18 @@ bb({body:"normal", mouth:"normal", eyes:"normal"});
 
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
-h: you know what maybe it's time to check my phone.
+h: 내 폰이나 봐야겠다.
 
 ```
 sfx("rustle2");
 hong({body:"phone1", mouth:"neutral", eyes:"neutral"})
 ```
 
-n: PROTECT YOUR HUMAN
+n: 당신의 인간을 보호하십시오
 
-n: FROM THE WORLD. FROM OTHER PEOPLE. FROM THEMSELF.
+n: 이 세상으로부터. 다른 사람들로부터. 자기 자신으로부터
 
-n: GOOD LUCK
+n: 행운을 빕니다
 
 (...500)
 
@@ -407,27 +407,27 @@ n: GOOD LUCK
 
 `music('battle', {volume:0.5})`
 
-n: ROUND ONE: *FIGHT!*
+n: 라운드 1: *파이트!*
 
 `bb({body:"normal", mouth:"normal", eyes:"normal"});`
 
-h: Huh. Facebook feed says there's a party happening this weekend.
+h: 흠. 이번 주 주말에 파티가 있다고 페북에 뜨네.
 
 `bb({eyes:"uncertain"});`
 
-b: Doesn't that weirdo throw a party *every* weekend?
+b: 그 이상한 녀석은 *매 주* 마다 파티 열지 않아?
 
 `bb({eyes:"uncertain_right"});`
 
-b: What inner void are they trying to fill? They must be deeply messed up inside!
+b: 대체 그 인간은 어떤 공허함을 채우려고 하는 거지? 심각하게 망가진 사람일 게 뻔해!
 
 `hong({eyes:"surprise"});`
 
-h: Also, I got an invite?
+h: 나 초대까지 받았는데?
 
 `bb({eyes:"fear", mouth:"normal"});`
 
-b: Well then!
+b: 그럼 답이 나왔네!
 
 [Say yes, or we'll die from loneliness!](#act1c_loner)
 
