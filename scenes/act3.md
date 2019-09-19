@@ -135,7 +135,8 @@ r: İşte bu yüzden ölümü-teğet geçen anlar yaşamalıyız! Sabahlar olmas
 publish("act3",["roofhunter",10]);
 ```
 
-r: O hayvanın gevelemelerinin 'sikimizde' olmadığını göster! Atla.
+r: O hayvanın gevelemelerinin ^sikimizde^ olmadığını göster! Atla.
+
 ```
 publish("act3",["roofhunter",11]);
 publish("act3",["roofhong",13]);
@@ -371,7 +372,7 @@ h: Kimileri kendini iş yığının arasına atar,
 
 `hong({ body:"look_down", eyes:"look_down" });`
 
-h: bazıları sekse, uyuşturucuya ve Facebook'a,
+h: bazıları sekse, uyuşturucuya veya Facebook'a,
 
 `hong({ body:"normal", eyes:"look_right" });`
 
@@ -421,7 +422,7 @@ h: Be- Afedersin, *Teşekkür* mü?
 
 b: İşte bu yüzden *varım!* İnsanlara kendilerini koruma konusunda güvenemezsin!
 
-b: I've been trying to protect your stupid butt all my life and now you're just going t--
+b: Hayatım boyunca seni korumaya çalıştım ve şimdi kalkm--
 
 ```
 hong({body:"drink"});
@@ -458,26 +459,26 @@ bb({ eyes:"sorry"});
 hong({ body:"yell_1", mouth:"yell", eyes:"blank" });
 ```
 
-h: Oh WOW is that the biggest *^fuck^ing* understatement of the century!
+h: Bu yüzyılın en ^götü kalkık^ lafı bu olabilir!
 
 `hong({ body:"yell_2" });`
 
-h: Yeah, you rotting pile of blood-coated ^shit^! You messed the ^fuck^ up!
+h: Evet, seni çürümüş ^bok^ parçası! ^Sıçtın^ batırdın!
 
 `hong({ body:"normal", mouth:"angry", eyes:"angry" });`
 
-h: Any other remarks, Captain Obvious?
+h: Söyleyeceğin başka bir şey var mı, Kaptan Çokbilmiş?
 
-[But revenge on me isn't the answer!](#act3_good_1_fail_revenge) `bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });`
+[Benden intikam almak bir cevap değil!](#act3_good_1_fail_revenge) `bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });`
 
-[But this time I'm *actually* right!](#act3_good_1_fail_harm) `bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });`
+[Bu sefer *sahiden* ben haklıyım!](#act3_good_1_fail_harm) `bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });`
 
-[I've hurt you.](#act3_good_2a)
+[Sana zarar verdim.](#act3_good_2a)
 
 
 # act3_good_1_fail_revenge
 
-b: You need to have a healthier relationship with your emotions, rather than drown them wi--
+b: Duygularınla daha sağlıklı bir ilişkin olmalı, onları boğ--
 
 ```
 hong({body:"drink"});
@@ -499,7 +500,7 @@ bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });
 
 # act3_good_1_fail_harm
 
-b: So please, put the bottle down and let's--
+b: Lütfen, şişeyi yavaşça yere indir ve--
 
 ```
 hong({body:"drink"});
@@ -524,24 +525,24 @@ bb({ body:"normal_"+_.act3_bb_body, mouth:"normal", eyes:"normal" });
 
 `bb({ eyes:"sad" });`
 
-b: please... don't...
+b: lütfen... yapma...
 
-h: Your energy bar's looking awfully low there, wolf.
+h: Enerji korkunç derecede azalmış, kurt.
 
-h: If I were you, I'd choose your next words very carefully.
+h: Senin yerinde olsaydım, sonraki kelimelerimi çok dikkatli seçerdim.
 
 `bb({ eyes:"normal" });`
 
-[Fine. I'm done protecting you.](#act3_bad_2_jump) `bb({ mouth:"ignore", eyes:"ignore" });`
+[Peki. Seni artık korumayacağım.](#act3_bad_2_jump) `bb({ mouth:"ignore", eyes:"ignore" });`
 
-[I was right all along.](#act3_bad_2_right)
+[Başından beri haklıydım.](#act3_bad_2_right)
 
-[I'm sorry.](#act3_good_2b) `bb({mouth:"sorry", eyes:"sorry_down"});`
+[Üzgünüm.](#act3_good_2b) `bb({mouth:"sorry", eyes:"sorry_down"});`
 
 
 # act3_bad_2_jump
 
-b: So, go ahead and jump. See what I care.
+b: Hadi git ve atla. Artık umurumda değil.
 
 `hong({ eyes:"look_right", mouth:"normal", MOUTH_LOCK:true });`
 
@@ -552,14 +553,14 @@ hong({ eyes:"less_angry", mouth:"normal" });
 bb({ eyes:"ignore_oh_crap" });
 ```
 
-h: Okay then. Bottoms up.
+h: Tamam o zaman. Gidiyoruz.
 
 ```
 bb({ mouth:"normal", eyes:"oh_crap" });
 Game.OVERRIDE_TEXT_SPEED = 2;
 ```
 
-b: WAIT NO THAT WAS REVERSE PSYCHOLOGY YOU WERE SUPPOSED TO DO THE *OPPOSITE* OF WHAT I SA--
+b: BEKLE HAYIR BU SADECE TERS PSİKOLOJİYDİ NE DEDİYSEM *TERSİNİ* YAPMA--
 
 (#act3_bad_3)
 
@@ -569,13 +570,13 @@ b: WAIT NO THAT WAS REVERSE PSYCHOLOGY YOU WERE SUPPOSED TO DO THE *OPPOSITE* OF
 
 `bb({ eyes:"angry" });`
 
-b: You *are* putting yourself in danger. Your so-called friends *are* using you. And *you* are using your so-called friends.
+b: Kendini *tehlikeye* atıyorsun. Arkadaşım diye çağırdıkların *seni* kullanıyor ve sen de *onları* kullanıyorsun.
 
 `bb({ eyes:"sad" });`
 
-b: So please, human... why don't you believe me?!
+b: Lütfen, insan... niye bana inanmıyorsun?!
 
-h: Because you never believed in *me*.
+h: Çünkü sen *bana* asla inanmadın.
 
 (#act3_bad_3)
 
@@ -584,13 +585,13 @@ h: Because you never believed in *me*.
 
 `bb({ eyes:"angry" });`
 
-b: Other guard-wolves have humans who actually take time to patiently train them, to *learn* to work together,
+b: Öteki insanlar koruyucu kurtlarını eğitmek ve onlarla birlikte çalışmayı *öğrenmek* için zaman harcıyorlar,
 
-b: Rather than hate the guard-wolves for trying to protect them! So why can't you jus--
+b: Bizden nefret etmek yerine onlar da bizi korumaya çalışıyor! Sen niye biraz onlar gi--
 
 `bb({ eyes:"normal" });`
 
-h: Wrong ^fuck^ing answer.
+h: Yanlış cevap.
 
 (#act3_bad_3)
 
@@ -615,74 +616,70 @@ bb({ body:"dead" });
 
 (...999)
 
-h: *"The only thing to fear is fear itself."*
+h: *"Korkacak tek şey korkunun kendisidir."*
 
 `hong({ body:"look_up", mouth:"happy", eyes:"blank" });`
 
-h: *"Don't worry, be happy!"*
+h: *"Endişelenme, mutlu ol!"*
 
 `hong({ body:"normal", mouth:"normal", eyes:"normal" });`
 
-h: All the wise folk of our time agree: negative emotions are *bad!*
+h: Günümüzün tüm bilgelerinin anlaştığı şey: negatif duygular *kötüdür!*
 
 `hong({ eyes:"less_angry" });`
 
-h: Duh! That's why they're called *negative!*
+h: İşte bu yüzden *negatifler!*
 
-b: human... please...
+b: insan... lütfen...
 
 `hong({ eyes:"normal" });`
 
-h: A while back, I said: “I just want to be free from all this pain.”
+h: Önceden söylediğim gibi: “Sadece bu acıdan kurtulmak istiyorum.”
 
-h: I got my wish. I no longer feel pain, or fear, or anxiety...
+h: Dileğim gerçekleşti. Artık acı, korku ya da kaygı... hissetmiyorum
 
-h: I don't feel anything at all.
+h: Hiçbir şey hissetmiyorum.
 
 `_.a3_ending = "jump";`
 
 (#act3_end)
 
-
-
 # act3_good_2a
 
 `bb({mouth:"sorry", eyes:"sorry_down"});`
 
-b: I was so obsessed with making sure nothing else hurt you, that I didn't realize *I* was creating the hurt.
+b: Hiçbir şeyin seni incitmemesine o kadar odaklanmıştım ki, seni incitenin *ben* olduğumu fark edemedim.
 
 ```
 bb({ eyes:"sorry"});
 hong({ body:"yell_2", mouth:"yell", eyes:"blank" });
 ```
 
-h: NO. S^HIT^.
+h: HA^SİKTİR^.
 
 `hong({ body:"yell_1" });`
 
-h: ^GODDAMN^. It really took you this long to finally figure it out?!
+h: ^SİKTİR^. Gerçekten de sonunda fark edebildin?!
 
 `hong({ body:"cry", mouth:"cry", eyes:"blank" });`
 
-h: You could've saved us so much trouble, you big fluffy dumb^ass^. Why didn't you realize this sooner?...
+h: Bizi tüm bu belalardan kurtarabilirdin, seni koca *şapşal*. Niye daha önce fark etmedin?...
 
 `_.apologized_for_hurt = true;`
 
 (#act3_good_2q)
 
-
-
 # act3_good_2b
 
 `hong({ body:"normal", mouth:"angry", eyes:"look_right" });`
 
-h: ...you're *sorry.*
+h: ...*üzgünsün.*
 
 `hong({ eyes:"angry", MOUTH_LOCK:true });`
 
 h: ...
 
-h: Sorry for *what*?
+h: *Ne* için üzgünsün?
 
 (#act3_good_2q)
 
@@ -704,42 +701,39 @@ h: Sorry for *what*?
 
 `hong({ body:"normal", mouth:"angry", eyes:"less_angry" });`
 
-[I'm sorry I wasn't a good protector.](#act3_good_3_protector)
+[Seni iyi koruyamadığım için üzgünüm.](#act3_good_3_protector)
 
-[I'm sorry I didn't respect you.](#act3_good_3_respect)
+[Sana saygı göstermediğim için üzgünüm.](#act3_good_3_respect)
 
-[I'm sorry.](#act3_good_4)
-
+[Üzgünüm.](#act3_good_4)
 
 # act3_good_2q_not_already_apologized
 
 `hong({ body:"normal", mouth:"angry", eyes:"angry" }, 0);`
 
-[I'm sorry I have a terrible human!](#act3_bad_2_terrible) `bb({mouth:"normal", eyes:"normal"})`
+[Korkunç bir insanım olduğu için üzgünüm!](#act3_bad_2_terrible) `bb({mouth:"normal", eyes:"normal"})`
 
-[I'm sorry I didn't respect you.](#act3_good_3_respect)
+[Sana saygı göstermediğim için üzgünüm.](#act3_good_3_respect)
 
-[I'm sorry I hurt you.](#act3_good_3_hurt)
-
-
+[Seni incittiğim için üzgünüm.](#act3_good_3_hurt)
 
 # act3_good_3_protector
 
 `bb({eyes:"sorry_down"});`
 
-b: It's my duty to warn you against *real* danger, but I kept barking at cars and the mailman.
+b: *Gerçek* tehlikelere karşı seni korumak benim görevimdi, fakat sadece arabalara ve postacılara havladım
 
 `bb({eyes:"sorry_up"});`
 
-b: Barking at shadows. Barking so much.
+b: Gölgelere havladım. Çok fazla havladım.
 
 `bb({eyes:"sorry"});`
 
-b: It only makes sense that you'd want to muzzle me.
+b: Beni sadece susturmaya çalışmakta haklıydın.
 
 `bb({eyes:"sorry_down"});`
 
-b: I'm sorry.
+b: Üzgünüm.
 
 (#act3_good_4)
 
@@ -749,15 +743,15 @@ b: I'm sorry.
 
 `bb({eyes:"sorry_down"});`
 
-b: I was supposed to be *your* loyal guard-dog, but I acted as if you were supposed to obey *me*.
+b: Sadık *koruyucu-köpeğin* olmam lazımdı, ama senin *bana* itaat etmen gerekiyormuş gibi davrandım.
 
 `bb({eyes:"sorry_up"});`
 
-b: There's a difference between a protector and a prison warden, and I crossed the line.
+b: Koruyucu ile gardiyan arasında bir çüzgi vardı, ben o çizgiyi aştım.
 
 `bb({eyes:"sorry_down"});`
 
-b: I'm sorry.
+b: Üzgünüm.
 
 (#act3_good_4)
 
@@ -767,15 +761,15 @@ b: I'm sorry.
 
 `bb({eyes:"sorry_down"});`
 
-b: I was so obsessed with trying to protect you from being hurt, I never stopped to realize *I* was hurting you.
+b: b: Hiçbir şeyin seni incitmemesine o kadar odaklanmıştım ki, durup seni incitenin *ben* olduğunu fark edemedim.
 
 `bb({eyes:"sorry_up"});`
 
-b: I was a bad dog.
+b: Kötü bir köpektim.
 
 `bb({eyes:"sorry_down"});`
 
-b: I'm sorry.
+b: Üzgünüm.
 
 (#act3_good_4)
 
@@ -793,11 +787,11 @@ h: ...
 hong({ body:"stop", mouth:"stop", eyes:"blank" });
 ```
 
-h: Yeah, well, this was a dumb idea anyway.
+h: Evet, şey, bu zaten aptalca bir fikirdi.
 
-h: I only did this to mess you up, and, well, I messed you up.
+h: Sadece senin canını yakmak istemiştim, ve... yaptım.
 
-h: Let's just call this round a tie, okay?
+h: Öyleyse berabere kaldığımızı kabul edelim
 
 ```
 bb({ mouth:"sorry", eyes:"sorry" });
@@ -806,11 +800,11 @@ bb({ MOUTH_LOCK:true });
 
 b: ...
 
-b: Okay.
+b: Kabul.
 
-h: Okay.
+h: Kabul.
 
-n: *TIE*
+n: *Berabere*
 
 `_.a3_ending = "walkaway";`
 
@@ -886,26 +880,26 @@ publish("act3",["roofhunter",27]);
 
 `Game.FORCE_CANT_SKIP = false;`
 
-r: Oh *come on*. After all that animal's done to you, you're just *giving up?*
+r: Oh *hadi ama*. Bu hayvanın sana yaptığı onca şeyden sonra, *pes* mi ediyorsun ?
 
-r: What's the matter, kid? Are you *scared?*
+r: Ne oldu çocuk? *Korktun* mu?
 
 ```
 publish('hong-next');
 publish("act3",["roofhunter",26]);
 ```
 
-h2: Yes.
+h2: Evet.
 
-h2: I'm scared.
-
-`publish('hong-next')`
-
-h2: And that's okay!
+h2: Korkuyorum.
 
 `publish('hong-next')`
 
-h2: It's okay to be scared.
+h2: Ve bence bu çok normal!
+
+`publish('hong-next')`
+
+h2: Korkmak normal bir şey.
 
 `publish('hong-next')`
 
@@ -974,7 +968,7 @@ publish("act3",["roofhunter",32]);
 publish("act3",["roofhunter",33]);
 ```
 
-r: Did they just lock the door?
+r: Az önce kapıyı mı kilitlediler?
 
 ```
 Game.clearAll();
@@ -1083,7 +1077,7 @@ publish('hong-next');
 
 `publish('hong-next')`
 
-b: no no no
+b: Hayır Hayır
 
 (...501)
 
@@ -1151,7 +1145,7 @@ Game.FORCE_TEXT_Y = 325;
 Game.OVERRIDE_FONT_SIZE = 50;
 ```
 
-b: NO!
+b: HAYIR!
 
 (...400)
 
