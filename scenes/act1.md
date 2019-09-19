@@ -708,7 +708,7 @@ h: p-EKİ, Snapchat'e bakalım.
 
 `hong({mouth:"smile", eyes:"neutral"});`
 
-h: Heh yaa çok şirin, retweet'ledim, Sanı--
+h: Aaa yaa çok şirin, retweet'ledim, Sanı--
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -959,7 +959,6 @@ bb({body:"fear", eyes:"fear", mouth:"normal"});
 Game.OVERRIDE_TEXT_SPEED = 1.7;
 ```
 
-b: We're gonna get called out and cancelled and dragged with a rope on horseback down the information superhighway!
 b: Rezil olacağız, dışlanacağız ve bilgi otoyolundan at arkasına bir ip ile bağlanıp sürükleneceğiz.
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -1278,7 +1277,6 @@ attack("18p", "bad");
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
 {{if _.whitebread}}
-b: They'll trap you in a well and force-feed you white bread to fatten you up so they can wear your skin like a suit!
 b: Seni bir kuyuya tıkacak ve beyaz ekmek ile besleyip şişmanlatacaklar ki derini yüzüp giyebilsinler!
 {{/if}}
 
@@ -1351,7 +1349,6 @@ b: Her şey güzel olacak.
 
 `bb({body:"point_heart", eyes:"look_sad_smile", mouth:"smile"});`
 
-b: As your loyal guard-wolf, I'll always keep an eye out for danger, and do my best to keep you safe.
 b: Sadık koruyucu-kurdun olarak , tehlikelere karşı gözüm hep açık olacak ve seni korumak için elimden geleni yapacağım.
 
 `bb({body:"normal", eyes:"look_sad", mouth:"smile"});`
@@ -1430,7 +1427,6 @@ b: ne?
 h: Parti için GİTMELİYİZ diyeceğim,
 
 {{if _.act1g=="go"}}
-h: NOT because you want me to, but because *I* want to.
 h: sen dedin diye DEĞİL, *ben* öyle istiyorum diye.
 {{/if}}
 
