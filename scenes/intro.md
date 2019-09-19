@@ -35,7 +35,7 @@ _.PLAYED_BEFORE = !!window.localStorage.continueChapter;
 {{/if}}
 
 {{if _.PLAYED_BEFORE && window.localStorage.continueChapter=="replay"}}
-[#play1# TEKRAR! #play2#](#intro-start) `publish("intro-to-game-1"); Game.OVERRIDE_CHOICE_LINE=true;`
+[#play1# YENİDEN! #play2#](#intro-start) `publish("intro-to-game-1"); Game.OVERRIDE_CHOICE_LINE=true;`
 {{/if}}
 
 {{if _.PLAYED_BEFORE}}
@@ -95,13 +95,15 @@ _.PLAYED_BEFORE = !!window.localStorage.continueChapter;
 n3: Merhabalar! Bu, bir "oyundan" ziyade daha çok etkileşimli bir hikaye. Umarım okumayı seviyorsundur, kardo!
 
 n3: Başlamadan önce, *nasıl* okumayı seversin?
+
 `publish("show_options_bottom")`
 
 # intro-start-2
 
-n3: Mükemmel! Not: ayarları aşağıdaki ⚙ simgesinden her zaman değiştirebilirsin, Ayrıca oyun her bölümde kayıt edilir!
+n3: Mükemmel! Not: ayarları aşağıdaki ⚙ simgesinden her zaman değiştirebilirsin, ayrıca oyun her bölümde kayıt edilir!
 
 n3: Şimdi, hadi hikayemize başlayalım...
+
 `clearText()`
 
 (...1000)
