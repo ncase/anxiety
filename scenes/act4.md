@@ -320,7 +320,7 @@ h: Ölümün eşiğindeki tecrübene rağmen oldukça sakin görünüyorsun.
 {{/if}}
 
 {{if !_.INJURED}}
-h: Ölümün *eşiğinin de eşiğindeki* tecrübene rağmen oldukça sakin görünüyorsun
+h: Ölümün *eşiğinin de eşiğindeki* tecrübene rağmen oldukça sakin görünüyorsun.
 {{/if}}
 
 ```
@@ -328,7 +328,7 @@ hong({eyes:"normal"});
 bb({eyes:"annoyed_d", mouth:"narrow"});
 ```
 
-b: Bu herşeyi kısmen daha az korkunç yapıyor. Ayrıca beni düşüncelere itti
+b: Bu herşeyi kısmen daha az korkunç yapıyor. Ayrıca beni düşüncelere itti.
 
 `bb({eyes:"normal", mouth:"normal"});`
 
@@ -381,7 +381,7 @@ music('dontfight',{fade:5, volume:0.6});
 bb({eyes:"annoyed_d"});
 ```
 
-b: Ne *Büyük Kötü Kurt'um* ne de *Koruyucu-Kurt*.
+b: Ne *Büyük Kötü Kurt*'um ne de *Koruyucu-Kurt*.
 
 `bb({eyes:"sad_d"})`
 
@@ -541,7 +541,7 @@ h: Ve *bu* bizi zarar görmekten koruyacak!
 
 `hong({ eyes:"normal", mouth:"normal" });`
 
-h: Yani: bu bir *kendimizi koruma* çalışması*.
+h: Yani: bu bir *kendimizi koruma* çalışması.
 
 `bb({ eyes:"normal_r" })`
 
@@ -565,7 +565,6 @@ sfx("hiya");
 
 `bb({ eyes:"normal" });`
 
-h: True, there's no way to 100% protect ourselves...
 h: Doğru, kendimizi %100 koruyabilmemizin bir yolu yok...
 
 `hong({ body:"one_up" });`
@@ -699,7 +698,7 @@ h: Bilmiyorum. Ama bana *yardım edebilirsin!?*
 
 `hong({ eyes:"normal", body:"normal" })`
 
-h: Seninle çalışmak ve anlaşmak, çiziyi burada çizeceğiz.
+h: Seninle çalışmak ve anlaşmak, çizgiyi burada çizeceğiz.
 
 `bb({ body:"paw", mouth:"narrow", eyes:"closed" })`
 
@@ -728,9 +727,9 @@ h: Hayır sen haklısın. Birisi çok ileriye *gidilebilir*.
 
 `hong({ eyes:"normal" });`
 
-h: Bu yüzden, maruz kalma terapisini yaparsak, ufaktan başlayacağız ve yukarıya doğru ufak adımlar atacağız
+h: Bu yüzden, maruz kalma terapisini yaparsak, ufaktan başlar ve yukarıya doğru ufak adımlar atarız
 
-h: Tam da *gerçek* tehlikeden önce, duracağız.
+h: Tam da *gerçek* tehlikeden önce, dururuz.
 
 `bb({ eyes:"annoyed_r", mouth:"narrow" });`
 
@@ -851,33 +850,33 @@ _.a4_fears_discussed += 1;
 
 `bb({ eyes:"sad_d" });`
 
-b: I want to make sure you fulfil that deep, human need to belong...
+b: İçindeki, bir yere ait olma ihtiyacını giderdiğimizden emin olacağım...
 
 `bb({ eyes:"sad_u" });`
 
-b: But I worry that if anyone ever knew us – the *real* us – we'd scare them all away.
+b: Fakat insanların bizi - *gerçek* bizi - görürse korkup kaçacaklarından kokuyorum.
 
 `bb({ eyes:"sad" });`
 
 {{if _.a4_fears_discussed==1}}
-b: I dunno, enough of *me* choosing what to say next. What do *you* say, human?
+b: Konuşacağımız şeyleri hep ben seçtim, sıra sende insan. *Sen* ne diyorsun?
 {{/if}}
 
 {{if _.a4_fears_discussed==2}}
-b: Again, back to you, human. What do you think?
+b: Tekrar, sendeyizi, insan. Ne düşünüyorsun?
 {{/if}}
 
 {{if _.a4_fears_discussed==3}}
-b: More thoughts, human?
+b: Başka bir şey, insan?
 {{/if}}
 
 `Game.OVERRIDE_CHOICE_SPEAKER = "h"`
 
-[I agree: let's work on our social life.](#act4_alone_skills)
+[Katılıyorum: sosyal hayatımıza odaklanalım.](#act4_alone_skills)
 
-[I think people like us. Let's find out?](#act4_alone_experiment)
+[İnsanlar bizden hoşlanabilir. Deneyip görelim?](#act4_alone_experiment)
 
-[Thank you.](#act4_thanks) `_.thanks_for = "social belonging";`
+[Teşekkürler.](#act4_thanks) `_.thanks_for = "social belonging";`
 
 # act4_alone_skills
 
@@ -886,60 +885,59 @@ bb({ eyes:"normal" });
 hong({ body:"chin" });
 ```
 
-h: We could practice skills like asking questions, listening and empathizing, being open and vulnerable, etc?
+h: Soru sormak, dinlemek ve empati kurmak, açık ve korumasız olmak gibi yanlarımız üzerine çalışmalıyız belki?
 
 `hong({ eyes:"normal_l" });`
 
-h: Or make better social habits, like scheduling time with friends or regularly going to meetups?
+h: Ya da daha iyi sosyal alışkanlıklar ediniriz, arkadaşlarla görüşmek veya düzenli toplanmak? 
 
 `hong({ body:"one_up" });`
 
-h: Could also learn to get more comfortable with rejection.
+h: Reddedilmek ile daha iyi başa çıkmayı da öğrenebiliriz.
 
 `hong({ eyes:"normal" });`
 
-h: Or learn to know when people *aren't* rejecting us, they're just tired or have Resting ^Bitch^ Face.
-
+h: Ya da insanların aslında bizi *reddetmediği*, sadece yorgun ve o an *Muşmula Suratlı* olduğunu öğrenebiliriz.
 ```
 hong({ body:"normal" });
 bb({ eyes:"annoyed_r" });
 ```
 
-b: That's a lot of options. But, about "learning social skills"...
+b: Seçenekler bol. Fakat "sosyal yetenekler öğrenmek" hakkında...
 
-[Isn't that *manipulative?*](#act4_alone_skills_manipulative)
+[Diğerlerini *kandırmak* olmaz mı?](#act4_alone_skills_manipulative)
 
-[Won't that make us *easier to manipulate?*](#act4_alone_skills_manipulated)
+[Bizi *kandırılmaya müsait* yapmaz mı?*](#act4_alone_skills_manipulated)
 
-[What if we still fail?](#act4_alone_skills_fail)
+[Peki yine başarısız olursak?](#act4_alone_skills_fail)
 
 # act4_alone_skills_manipulative
 
 `bb({ eyes:"suspect" });`
 
-b: Aren't serial killers who can read their victims' emotions great at "empathy"?
+b: Kurbanının hislerini okuyabilen seri katiller de empati kurmakta iyi değiller mi?
 
 `bb({ eyes:"annoyed" });`
 
-b: Didn't Charles Manson win friends and influence people?
+b: Charles Manson da arkadaş edinim insanları etkisi altında bırakmadı mı?
 
 `hong({ eyes:"annoyed", body:"chin" });`
 
-h: No, you're right.
+h: Hayır, haklısın.
 
-h: "Social skills" mean nothing if we don't genuinely care *for* people.
+h: "sosyal yetenekler" eğer insanların *iyiliği için* değilse bir değer taşımaz.
 
 `hong({ body:"normal" });`
 
-h: Basically, just don't be a ^dick^.
+h: Kısacası, ^sik kafalı^ birisi olma.
 
 `bb({ eyes:"annoyed", mouth:"smile" });`
 
-b: That's a motivational poster caption right there.
+b: İşte postere yazılacak bir söz.
 
 `hong({ body:"shrug", mouth:"narrow" });`
 
-h: “Don't Be A ^Dick^™”
+h: “^Sik Kafalı^ Birisi Olma™”
 
 (#act4_something_else)
 
@@ -947,29 +945,25 @@ h: “Don't Be A ^Dick^™”
 
 `bb({ eyes:"angry" })`
 
-b: We'll become a Welcome doormat, saying Please and Thank You as people wipe their feet on us!
-
+b: Mükemmel bir kapı paspası olacağız, insanlar ayaklarını üzerimizde silerken Lütfen ve Teşekkürler diyeceğiz!
 `bb({ mouth:"scream", eyes:"scream" })`
 
-b: We'll kiss so much butt, it'll look like we're wearing brown lipstick!
-
+b: O kadar çok kıç öpeceğiz ki kahve rengi ruj sürmüşüz gibi görünecek!
 ```
 bb({ mouth:"normal", eyes:"normal" });
 hong( body:"chin" });
 ```
 
-h: Nah, you're right. "Social skills" can't be just about pleasing others, it's also got to be about setting *boundaries.*
-
+h: Hayır, haklısın. "Sosyal yetenekler" diğerlerini memnun etmekten ibaret olamaz, ayrıca *sınırları* da çizmekla alakalıdır.
 `hong( body:"one_up" });`
 
-h: We can't invite others into our home, if we have no walls to hold up our home.
-
+h: İnsanları evimize çağıramayız, eğer evimizi ayakta tutacak direğimiz yoksa.
 ```
 hong( eyes:"angry", mouth:"narrow" });
 bb( eyes:"annoyed", mouth:"smile" });
 ```
 
-h: Also... re: that lipstick mental image... *ew??*
+h: Ayrıca... ynt: şu ruj resmi...*öhk??*
 
 (#act4_something_else)
 
@@ -978,25 +972,25 @@ h: Also... re: that lipstick mental image... *ew??*
 `bb({ eyes:"annoyed" });`
 
 h: We might fail. Actually, we *will* fail.
-
+h: Başaramayabiliriz. Aslına, *başaramayacağız.*
 ```
 bb({ eyes:"normal" });
 hong({ eyes:"surprise", body:"shrug" });
 ```
 
-h: And that's fine! Failing is how anyone learns anything new at first!
+h: Ve bu gayet normal! Başarısız olmak yeni şeyleri öğrenirkenki ilk adımdır!
 
 `hong({ body:"normal", eyes:"normal" });`
 
-h: So let's fail forward together, yeah?
+h: O halde, hadi beraber baraşısız olalım?
 
 `bb({ eyes:"normal_r" });`
 
-b: Sure, I guess... worst-case scenario, we can just skip town and get a new identity.
+b: Olur, sanırım... en kötü ihtimalle kasabadan ayrılı rve yeni bir kimlikle yaşarız.
 
 `bb({ eyes:"normal" });`
 
-h: Yeah I think that only costs two bitcoins these days.
+h: Evet, günümüzde 2 bitcoin ile bunu yapabiliyorsun.
 
 (#act4_something_else)
 
@@ -1007,23 +1001,23 @@ hong({ body:"one_up" });
 bb({ eyes:"normal" });
 ```
 
-h: We could try some experiments!
+h: Bazı denemeler yapmalıyız!
 
 `hong({ body:"chin" });`
 
-h: We could ping a friend to hang out, reconnect with an old pal, or even just chat with a barista.
+h: Bir arkadaş takılabiliriz, eski dostlarla buluşabilir, hatta kasiyer ile muhabbet edebiliriz.
 
 `hong({ body:"normal" });`
 
-h: I think we may find we're more likeable than we suspect.
+h: Sandığımızdan daha da sevilesi olduğumuzu keşfedebiliriz.
 
 `bb({ eyes:"annoyed" });`
 
-[What if these are small, cheap "wins"?](#act4_alone_experiment_cheap)
+[Ya bunlar içi boş, ufak "zaferler" ise?](#act4_alone_experiment_cheap)
 
-[What if this is a burden to others?](#act4_alone_experiment_burden)
+[Ya bunlar diğerlerine külfet ise?](#act4_alone_experiment_burden)
 
-[But small talk isn't the *real* us!](#act4_alone_experiment_real_us)
+[Ama bu ufak sohbetler *gerçek* biz değiliz!](#act4_alone_experiment_real_us)
 
 # act4_alone_experiment_real_us
 
