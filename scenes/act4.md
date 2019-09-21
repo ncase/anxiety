@@ -1366,29 +1366,29 @@ b: Bekle.
 
 `bb({ eyes:"angry", body:"one_up" });`
 
-b: Do you think Martin Luther King would've said, "Shucks we can't sit in the front of the bus, let's just *accept* it?"
+b: Mustafa Kemal "Tüh İngilizler geldi, neyse artık bunu böyle kabul edelim" der miydi sanıyorsun?
 
 `bb({ eyes:"angry_r", body:"two_up" });`
 
-b: Why does the Self-Help Industrial Complex think waving the white flag is some *profound wisdom?*
+b: Beyaz bayrağı sallamak kişisel gelişim sektörü tarafından neden *derin bilgelik* olarak görülüyor ki?
 
 `bb({ eyes:"annoyed", body:"normal" });`
 
-h: I think therapists mean "accept" bad things as in: acknowledging they exist and are hard to change,
+h: Sanırım terapistlerin kötü şeyleri "kabullen" ile demek istedikleri: orada olduklarını ve değiştirmenin zor olduğunu bilmek,
 
-h: But not necessarily giving up a commitment to change.
+h: ama değişime olan inanca da sahip olmak
 
 `bb({ eyes:"suspect" });`
 
-b: Then therapists should say *acknowledge*, not *accept*.
+b: O zaman terapistler *bil* demeli *kabullen* değil.
 
 `hong({ body:"chin", eyes:"annoyed" });`
 
-h: Yeah come to think of it, "accept" is kinda confusing.
+h: Evet düşününce "kabullen" biraz kafa karıştırıcı.
 
 `bb({ eyes:"closed", mouth:"narrow" });`
 
-b: Well, I *acknowledge* that.
+b: Bunu *biliyorum*.
 
 (#act4_something_else)
 
@@ -1396,40 +1396,40 @@ b: Well, I *acknowledge* that.
 
 `bb({ eyes:"angry" });`
 
-b: Like it's *good* that we're broken or something? No!
+b: Bozukluğumuzun olması *iyi* bir şey mi?
 
 `bb({ eyes:"angry_r", body:"one_up" });`
 
-b: All those dang Hollywood screenwriters who romanticize mental illness are full of crud!
+b: Tüm bu zihinsel hastalıkları romanlaştıran o Hollywood senaristleri rezil insanlar!
 
 `bb({ eyes:"angry", body:"two_up" });`
 
-b: Having a mental disorder *sucks!* It robs people of *lives!* Why should we "accept" that?!
+b: Zihinsel hastalığının olması *iğrenç!*. İnsanların *yaşamlarını* çalıyor! Neden bunu *kabul* etmeliymişiz ki?!
 
 `bb({ body:"normal" });`
 
-h: I think therapists mean "accept" our emotions as in: be patient with them.
+h: Sanırım terapistlerin kötü şeyleri "kabullen" ile demek istedikleri: onlara karşı anlayışlı olmak.
 
 ```
 hong({ body:"one_up" });
 bb({ eyes:"normal" });
 ```
 
-h: Like how struggling in quicksand makes you sink faster, and the solution is to patiently lie flat,
+h: Tıpkı bataklıkta debelenen birisinin daha hızlı batması gibi, bu durumda da çözüm sabırla beklemek,
 
 `hong({ eyes:"surprise" });`
 
 {{if _.INJURED}}
-h: Fighting against you, my fear, lead me to jump off a roof.
+h: Seninle, korkumla, olan çatışmam beni bir çatıdan atlattı.
 {{/if}}
 
 {{if !_.INJURED}}
-h: Fighting against you, my fear, almost lead me to jump off a roof.
+h: Seninle, korkumla, olan çatışmam beni neredeyse bir çatıdan atlatıyordu.
 {{/if}}
 
 `hong({ body:"normal", eyes:"normal" });`
 
-h: Instead, the solution is to do what we're doing now – not to fight, but to patiently be with each other.
+h: Oysa, çözüm aslında şuan yaptğımız şey - çatışmamak, onun yerine birbirimize katlanmak.
 
 `bb({ eyes:"annoyed" });`
 
