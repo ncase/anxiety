@@ -429,16 +429,16 @@ h: 나 초대까지 받았는데?
 
 b: 그럼 답이 나왔네!
 
-[Say yes, or we'll die from loneliness!](#act1c_loner)
+[승낙해, 그러지 않으면 우린 외로워서 죽어버릴 거야!](#act1c_loner)
 
-[Say no, it's full of poisonous drugs!](#act1c_drugs)
+[거절해, 그 파티는 해로운 마약밭이라고!](#act1c_drugs)
 
-[Ignore it, we just make parties sad.](#act1c_sad)
+[그냥 무시해, 우리가 가봤자 분위기만 해칠 뿐이잖아.](#act1c_sad)
 
 # act1c_loner
 
 {{if _.fifteencigs}}
-b: Fifteen cigarettes a day, human! Fifteen!
+b: 하루에 담배 열 다섯 개비라고! 열 다섯 개비!
 {{/if}}
 
 {{if !_.fifteencigs}}
@@ -446,11 +446,11 @@ b: Fifteen cigarettes a day, human! Fifteen!
 {{/if}}
 
 {{if !_.fifteencigs}}
-b: Then no one will show up at our funeral, they'll dump our ashes into the ocean, we get eaten by a whale,
+b: 그럼 아무도 우리 장례식에 안 찾아올 거고, 우린 화장당하고 바닷속에 버려져서, 고래한테 잡아먹히고,
 {{/if}}
 
 {{if !_.fifteencigs}}
-b: and we become WHALE POOP!
+b: 고래 똥이 될 거라고!
 {{/if}}
 
 {{if !_.fifteencigs}} `_.whalepoop = true` {{/if}}
@@ -467,11 +467,11 @@ attack("18p", "alone");
 `bb({eyes:"normal"});`
 
 {{if !_.fifteencigs}}
-b: So yeah we should go to that party!
+b: 그래, 그러니까 그 파티라면 당연히 가야지!
 {{/if}}
 
 {{if _.parasite}}
-b: Just bring the laptop so we can do work, and not be a society-parasite.
+b: 사회의 기생충이 되지 않기 위해서 일하게 노트북 챙겨가는 거 잊지 말고.
 {{/if}}
 
 {{if _.whitebread}}
