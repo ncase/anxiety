@@ -1426,11 +1426,11 @@ h: Like how struggling in quicksand makes you sink faster, and the solution is t
 `hong({ eyes:"surprise" });`
 
 {{if _.INJURED}}
-h: Fighting against you, my fear, lead me to jump off a roof.
+h: Fighting against you, my fear, led me to jump off a roof.
 {{/if}}
 
 {{if !_.INJURED}}
-h: Fighting against you, my fear, almost lead me to jump off a roof.
+h: Fighting against you, my fear, almost led me to jump off a roof.
 {{/if}}
 
 `hong({ body:"normal", eyes:"normal" });`

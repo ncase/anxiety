@@ -184,6 +184,11 @@ French:
 
 This was a bad system I have made.
 
+P.S: To jump around different scenes, type `Game.debug()` into the Javascript console.
+If you hover over a gray box on the left, you'll see a sidebar that lets you jump to any scene.
+(Note: this make break stuff!) You can also uncomment the lines in `main.js` to test out the game
+starting from different chapters.
+
 ### Step 4:
 
 Translate `index.html`. (about 70 words) There's further instructions in that file itself. (Feel free to add yourself + your collaborators as translators in the top-left corner!)
@@ -223,7 +228,7 @@ This game also has a link to a list of Mental Health Tips & Resources, [on a dif
 
 ### Step 7: TELL ME YOU ARE *DONE* 🎉🎉🎉
 
-Ping @ncase on the Github Issue you created in Step 2 so I know! Or email me at ![](misc/email.png)
+Email me at ![](misc/email.png) so I know you're done!
 
 Do ***NOT*** send a Pull Request to *this* repo, because that will change the *original* game. I will, however, edit the original game to have a link to your translation!
 
