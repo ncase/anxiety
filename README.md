@@ -120,6 +120,10 @@ Translating this thing will *suck.*
 
 Thus, I highly recommend collaborating online on a translation! There's about 9,000 words to translate, the rules of what to translate or not are a bit weird, and you'll need to edit some images. But if you're still up for it...
 
+### Step 0:
+
+[Check the existing issues](https://github.com/ncase/anxiety/issues?utf8=✓&q=is%3Aissue+is%3Aopen+translation) to see if everyone else has already started your desired translation. If someone already started, go help them! :)
+
 ### Step 1:
 
 [Make a fork](https://help.github.com/en/articles/fork-a-repo) on Github!
