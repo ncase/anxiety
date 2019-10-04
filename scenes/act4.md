@@ -809,7 +809,7 @@ h: It's not like life gives you a list of 3 pre-made dialogue responses.
 
 `hong({ eyes:"normal", mouth:"smile", body:"normal" })`
 
-h: But for now, at least I can at least say thanks.
+h: But for now, I can at least say thanks.
 
 b: Well, thank you too, for listening to me patiently.
 
