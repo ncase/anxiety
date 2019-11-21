@@ -112,7 +112,9 @@ B Cavello, EmilyKate McDonough, Glen Chiacchieri, Mikayla Hutchinson, Monica Sri
 **TRANSLATIONS COMPLETE:** 
 [Русский](https://notdotteam.github.io/anxiety/),
 [Português do Brasil](https://lucasgcb.github.io/anxiety/),
-[Deutsch](https://jonasreich.github.io/anxiety/)
+[Deutsch](https://jonasreich.github.io/anxiety/),
+[Español (Europeo)](https://jorgeygari.github.io/anxiety/),
+[Español (Latino)](https://fantasmashy.github.io/anxiety-Es-La/)
 
 Okay. I super, super seriously apologize in advance.
 
