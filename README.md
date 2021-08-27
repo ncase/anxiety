@@ -109,12 +109,14 @@ B Cavello, EmilyKate McDonough, Glen Chiacchieri, Mikayla Hutchinson, Monica Sri
 
 ## How To Translate
 
-**TRANSLATIONS COMPLETE:** 
+**TRANSLATIONS COMPLETE:**
+[Français](https://nathsom.github.io/ncase-anxiety/),
 [Русский](https://notdotteam.github.io/anxiety/),
 [Português do Brasil](https://lucasgcb.github.io/anxiety/),
 [Deutsch](https://jonasreich.github.io/anxiety/),
 [Español (Europeo)](https://jorgeygari.github.io/anxiety/),
 [Español (Latino)](https://fantasmashy.github.io/anxiety-Es-La/),
+[Türkçe](https://gokdumano.github.io/forks/anxiety/index.html),
 [中文](https://z-lyen.github.io/anxiety/),
 [中文（臺灣）](https://audreyt.github.io/anxiety/),
 
@@ -248,6 +250,3 @@ Do ***NOT*** send a Pull Request to *this* repo, because that will change the *o
 I'm usually busy and/or bad at email, so it'll take me a while to get around to it, but if I don't respond for a week, ping me again!
 
 Thank you you're the beeeeeest 💖🐺💖
-
-
-
