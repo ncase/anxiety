@@ -120,7 +120,8 @@ B Cavello, EmilyKate McDonough, Glen Chiacchieri, Mikayla Hutchinson, Monica Sri
 [中文](https://z-lyen.github.io/anxiety/),
 [中文（臺灣）](https://audreyt.github.io/anxiety/),
 [Polski](https://ostapczuk.github.io/anxiety/),
-[ภาษาไทย](https://rambanjo.github.io/anxiety/)
+[ภาษาไทย](https://rambanjo.github.io/anxiety/),
+[bahasa indonesia](https://ganiaaldi.github.io/anxiety/)
 
 Okay. I super, super seriously apologize in advance.
 
