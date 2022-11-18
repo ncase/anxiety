@@ -1,11 +1,5 @@
 # How to contribute
 
-## Coding Style
-
-Please keep a consistent style, find patterns and attempt to replicate them.
-
-When confused/in-doubt, just ask ncase!
-
 ## Translation
 
 **TRANSLATIONS COMPLETE:**
@@ -153,3 +147,10 @@ Do ***NOT*** send a Pull Request to *this* repo, because that will change the *o
 I'm usually busy and/or bad at email, so it'll take me a while to get around to it, but if I don't respond for a week, ping me again!
 
 Thank you you're the beeeeeest 💖🐺💖
+
+
+## Coding Style
+
+Please keep a consistent style, find patterns and attempt to replicate them.
+
+When confused/in-doubt, just ask me!
