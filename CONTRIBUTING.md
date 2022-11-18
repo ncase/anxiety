@@ -6,7 +6,7 @@ Please keep a consistent style, find patterns and attempt to replicate them.
 
 When confused/in-doubt, just ask ncase!
 
-## How To Translate
+## Translation
 
 **TRANSLATIONS COMPLETE:**
 [Français](https://nathsom.github.io/ncase-anxiety/),
