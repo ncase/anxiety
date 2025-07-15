@@ -6,9 +6,9 @@ SceneSetup.act1();
 
 (...300)
 
-n: AND THIS IS THE HUMAN'S ANXIETY
+n: DAN ANDA IALAH KERESAHAN MANUSIA
 
-n: _YOU_ ARE THE ANXIETY
+n: _ANDA_ IALAH KERESAHAN ITU
 
 {{if window.localStorage.continueChapter=="replay"}}
 (#act1_replay)
@@ -24,17 +24,17 @@ n: _YOU_ ARE THE ANXIETY
 
 `hong({mouth:"0_neutral", eyes:"0_neutral"})`
 
-h: Oh hey! We're back here again?
+h: Oh hai! Kita di sini lagi?
 
 `hong({eyes:"0_neutral"})`
 
-n: YOUR JOB IS TO PROTECT YOUR HUMAN FROM *DANGER*
+n: TUGAS ANDA ADALAH UNTUK MELINDUNGI MANUSIA ANDA DARIPADA *BAHAYA*
 
 `bb({eyes:"look", mouth:"small_lock"})`
 
-n: IN FACT, REPLAYING THIS GAME IS PUTTING THEM IN *DANGER* RIGHT NOW
+n: MALAH, ANDA MELETAKKAN MEREKA DALAM *BAHAYA* APABILA PERMAINAN INI DIMAINKAN SEMULA
 
-n: QUICK, WARN THEM!
+n: CEPAT, BERI MEREKA AMARAN!
 
 ```
 sfx("squeak");
@@ -42,13 +42,13 @@ bb({body:"squeeze_talk"});
 hong({body:"0_squeeze"});
 ```
 
-b: Human! Listen, we're in danger! The player...
+b: Manusia! Dengar sini, kita dalam bahaya! Pemain tu…
 
-[...is gonna torture us again!](#act1_replay_torture)
+[...akan seksa kita lagi!](#act1_replay_torture)
 
-[...won't find an alternate ending!](#act1_replay_alternate)
+[...tak akan jumpa pengakhiran lain!](#act1_replay_alternate)
 
-[...will get ludonarrative dissonance!](#act1_replay_dissonance)
+[...akan timbul percanggahan antara jalan cerita dan permainan!](#act1_replay_dissonance)
 
 # act1_replay_torture
 
@@ -59,32 +59,32 @@ hong({body:"0_sammich"});
 ```
 
 {{if window.HACK_REPLAY.act1_ending=="fight"}}
-b: They'll make us curl up into a ball and cry!
+b: Mereka akan buat kita meringkuk sambil menangis!
 {{/if}}
 
 {{if window.HACK_REPLAY.act1_ending=="flight"}}
-b: They'll make us kill your phone for giving you a panic attack!
+b: Mereka paksa kita hancurkan telefon kerana menjadi punca serangan panik kau!
 {{/if}}
 
 {{if window.HACK_REPLAY.a2_ending=="fight"}}
-b: They'll make us *NOT* punch the party host!
+b: Mereka akan paksa kita untuk *TAK* memukul tuan rumah!
 {{/if}}
 
 {{if window.HACK_REPLAY.a2_ending=="flight"}}
-b: They'll make us punch the Sympathetic Anti-Villain party host!
+b: Mereka akan paksa kita pukul tuan rumah yang jahat tapi berhati mulia tu!
 {{/if}}
 
 {{if window.HACK_REPLAY.a3_ending=="jump"}}
-h: Well at least we might not jump off the roof this ti--
+h: Sekurang-kurangnya kita tak akan lompat dari bumbung kali n--
 {{/if}}
 
 {{if window.HACK_REPLAY.a3_ending=="walkaway"}}
-b: THEY'LL MAKE US JUMP OFF THE ROOF.
+b: MEREKA AKAN SURUH KITA LOMPAT DARI BUMBUNG.
 {{/if}}
 
 `bb({body:"fear"});`
 
-b: ALL THESE NEW TERRIBLE THINGS WILL HAPPEN TO US, AND THEN WE'LL--
+b: SEMUA PERKARA BURUK AKAN TERJADI KEPADA KITA, DAN KITA AKAN--
 
 (#act1_replay_end)
 
@@ -96,11 +96,11 @@ bb({body:"normal", mouth:"normal", eyes:"fear"});
 hong({body:"0_sammich"});
 ```
 
-h: Sure, the story as a *whole* is the same, but each chapter has two possible endings, plus all the branching dialogue opti--
+h: Betul, jalan cerita *keseluruhannya* adalah sama, tapi setiap bab ada dua pengakhiran yang berbeza, termasuk semua pilihan cabang dialo--
 
 `bb({body:"fear"});`
 
-b: The player will be disappointed, close this browser tab, delete our software, and then we'll--
+b: Pemain akan kecewa, tutup permainan ni, padamkan perisian, kemudian kita akan--
 
 (#act1_replay_end)
 
@@ -112,27 +112,27 @@ bb({body:"normal", mouth:"normal", eyes:"fear"});
 hong({body:"0_sammich"});
 ```
 
-h: A lewd-what now?
+h: Apa benda lucah pula ni?
 
 `bb({eyes:"normal"});`
 
-b: The story arc was about how you can *CHOOSE* to build a healthy collaboration with your fear,
+b: Jalan cerita ni sebenarnya tentang bagaimana kau boleh *PILIH* untuk bekerjasama dengan rasa takut kau,
 
 `bb({eyes:"normal_right"});`
 
-b: But replaying the game will give the same story, implying your *CHOICES* don't matter,
+b: Tapi apabila permainan ni dimainkan semula, jalan cerita tetap sama, seolah-olah *PILIHAN* kau tak ada makna,
 
 `bb({eyes:"narrow_eyebrow"});`
 
-b: Thus showing a contradiction between the game's message and mechanics,
+b: Jadi, ia menunjukkan percanggahan antara mesej game ni dan mekaniknya,
 
 `bb({eyes:"fear"});`
 
-b: Thus unraveling the fabric of this narrative universe,
+b: Dari situ, seluruh alam naratif ni mula runtuh,
 
 `bb({body:"fear"});`
 
-b: And then we'll--
+b: Dan kemudian kita akan--
 
 (#act1_replay_end)
 
@@ -141,7 +141,7 @@ b: And then we'll--
 
 `bb({body:"panic"})`
 
-b: DIEEEEEEEEEEEEEEEEEEE
+b: MATIIIIIIIIIIIIIIIIIIIIII
 
 ```
 bb({body:"normal", mouth:"normal", eyes:"normal"});
@@ -164,13 +164,13 @@ bb({body:"normal", mouth:"normal", eyes:"normal"});
 hong({body:"0_sammich"});
 ```
 
-h: Okay let's get back into character.
+h: Okey, mari balik kepada watak.
 
 ```
 Game.clearText();
 ```
 
-n4: (LET _YOUR_ ANXIETY BLAH BLAH BLAH MOST SIMILAR TO WHAT _YOUR_ FEAR BLAH BLAH YOU KNOW THE DRILL)
+n4: (BIARKAN_KERESAHAN_ANDA BLAH BLAH BLAH YANG PALING SERUPA DENGAN KETAKUTAN_ANDA_BLAH BLAH MESTI ANDA TAHU LANGKAHNYA)
 
 ```
 sfx("squeak");
@@ -186,17 +186,17 @@ bb({body:"squeeze"});
 
 `hong({mouth:"0_neutral", eyes:"0_annoyed"})`
 
-h: Oh good, my wolf's back. Faaaaantastic.
+h: Baguslah, serigala aku dah kembali. Terbaaaiikkk.
 
 `hong({eyes:"0_neutral"})`
 
-n: YOUR JOB IS TO PROTECT YOUR HUMAN FROM *DANGER*
+n: TUGAS ANDA ADALAH UNTUK MELINDUNGI MANUSIA ANDA DARIPADA *BAHAYA*
 
 `bb({eyes:"look", mouth:"small_lock"})`
 
-n: IN FACT, THAT SANDWICH IS PUTTING THEM IN *DANGER* RIGHT NOW
+n: MALAH, SANDWIC TU MELETAKKAN MEREKA DALAM *BAHAYA* SEKARANG
 
-n: QUICK, WARN THEM!
+n: CEPAT, BERI MEREKA AMARAN!
 
 ```
 sfx("squeak");
@@ -204,21 +204,21 @@ bb({body:"squeeze_talk"});
 hong({body:"0_squeeze"});
 ```
 
-b: Human! Listen, we're in danger! The danger is...
+b: Manusia! Dengar sini, kita dalam bahaya! Ancamannya adalah…
 
 `bb({body:"squeeze"})`
 
-n4: (LET _YOUR_ ANXIETY COME OUT TO PLAY! PICK WHAT'S MOST SIMILAR TO WHAT _YOUR_ FEAR TELLS YOU)
+n4: (BIARKAN_KERESAHAN_ANDA BERAKSI! PILIH JAWAPAN YANG PALING MENCERMINKAN KETAKUKAN _ANDA_)
 
 (#act1_normal_choice)
 
 # act1_normal_choice
 
-[We're eating alone for lunch! Again!](#act1a_alone) `bb({body:"squeeze_talk"})`
+[Kita makan tengah hari seorang diri lagi!](#act1a_alone) `bb({body:"squeeze_talk"})`
 
-[We're not productive while eating!](#act1a_productive) `bb({body:"squeeze_talk"})`
+[Kita tak produktif semasa makan!](#act1a_productive) `bb({body:"squeeze_talk"})`
 
-[That white bread's bad for us!](#act1a_bread) `bb({body:"squeeze_talk"})`
+[Roti putih tu tak elok untuk kita!](#act1a_bread) `bb({body:"squeeze_talk"})`
 
 # act1a_alone
 
@@ -227,27 +227,27 @@ bb({body:"normal", mouth:"small", eyes:"narrow"});
 hong({body:"0_sammich"});
 ```
 
-b: Don't you know loneliness is associated with premature death as much as smoking 15 cigarettes a day?-
+b: Kau tahu tak, kesunyian tu dikaitkan dengan risiko mati awal sama macam merokok 15 batang rokok sehari?-
 
 `Game.OVERRIDE_TEXT_SPEED = 2;`
 
 `bb({mouth:"normal", eyes:"normal_right"})`
 
-b: (Holt-Lunstad 2010, PLoS Medicine)
+b: (Holt-Lunstad, 2010, PLoS Medicine)
 
 `hong({eyes:"0_annoyed"})`
 
-h: Um, thanks for citing your sources but--
+h: Hm, terima kasih sebab bagi sumber rujukan tapi--
 
 `Game.OVERRIDE_TEXT_SPEED = 2;`
 
 `bb({body:"fear", mouth:"normal", eyes:"fear"})`
 
-b: Which means if we don't hang out with someone *right now* we're gonna-
+b: Maksudnya kalau kita tak lepak dengan seseorang *sekarang juga*, kita akan--
 
 `bb({body:"panic"})`
 
-b: DIEEEEEEEEEEEEEEEEEEE
+b: MATIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 ```
 bb({body:"normal", mouth:"normal", eyes:"normal"});
@@ -260,7 +260,7 @@ publish("hp_show");
 
 `_.fifteencigs = true`
 
-n: YOU USED *FEAR OF BEING UNLOVED*
+n: ANDA MEMILIH *TAKUT TIDAK DISAYANGI*
 
 (#act1b)
 
@@ -271,27 +271,27 @@ bb({body:"normal", mouth:"small", eyes:"normal"});
 hong({body:"0_sammich"});
 ```
 
-b: Whip out your laptop and do some work right now!
+b: Cepat buka komputer riba dan buat kerja sekarang juga!
 
 `hong({eyes:"0_annoyed"})`
 
-h: Um, I'd rather not get crumbs in my keyboa--
+h: Hm, aku tak naklah serdak roti masuk celah papan kekun--
 
 ```
 bb({mouth:"normal", eyes:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: If we're not contributing to the body of society then we're a society-parasite!
+b: Kalau kita tak menyumbang kepada badan masyarakat, kita adalah sampah masyarakat!
 
-b: The society-body will go to the society-doctor for medication to kill their society-parasites then we'll--
+b: Badan masyarakat akan berjumpa doktor masyarakat untuk mendapatkan ubat bagi merawat sampah masyarakat, kemudian kita akan--
 
 ```
 bb({body:"panic", mouth:"normal", eyes:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: DIEEEEEEEEEEEEEEEEEEE
+b: MATIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 ```
 bb({body:"normal", mouth:"normal", eyes:"normal"});
@@ -304,7 +304,7 @@ publish("hp_show");
 
 `_.parasite = true`
 
-n: YOU USED *FEAR OF BEING A BAD PERSON*
+n: ANDA MEMILIH *TAKUT JADI ORANG JAHAT*
 
 (#act1b)
 
@@ -315,18 +315,18 @@ bb({body:"normal", mouth:"normal", eyes:"fear"});
 hong({body:"0_sammich", eyes:"0_annoyed"});
 ```
 
-h: Have those studies been replicat--
+h: Adakah kajian-kajian tu sudah dikaji semul--
 
 ```
 bb({body:"fear", mouth:"normal", eyes:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: Processed wheat will spike our blood sugar so they'll have to amputate all our limbs and then we'll-
+b: Gandum terproses akan menaikkan gula dalam darah kita, kemudian mereka perlu potong semua anggota badan kita dan kita akan--
 
 `bb({body:"panic"})`
 
-b: DIEEEEEEEEEEEEEEEEEEE
+b: MATIIIIIIIIIIIIIIIIIIII
 
 ```
 bb({body:"normal", mouth:"normal", eyes:"normal"});
@@ -339,37 +339,37 @@ publish("hp_show");
 
 `_.whitebread = true`
 
-n: YOU USED *FEAR OF BEING HARMED*
+n: ANDA MEMILIH *TAKUT DICEDERAKAN*
 
 (#act1b)
 
 # act1b
 
-n: IT'S SUPER EFFECTIVE
+n: IA SANGAT BERKESAN!
 
 `bb({mouth:"smile", eyes:"smile"});`
 
-b: See, human? I am your loyal guard-wolf!
+b: Nampak tak, manusia? Aku ni serigala pengawal yang setia!
 
 `bb({body:"pride_talk"});`
 
-b: Trust your gut! Your feelings are always valid!
+b: Percayalah pada naluri kau! Perasaan kau sentiasa wajar!
 
 `bb({body:"pride"});`
 
-n: GET YOUR HUMAN'S ENERGY BAR TO ZERO
+n: TURUNKAN TENAGA MANUSIA ANDA KE TAHAP SIFAR
 
-n: TO PROTECT THEIR PHYSICAL + SOCIAL + MORAL NEEDS, YOU CAN USE:
+n: UNTUK MELINDUNGI KEPERLUAN FIZIKAL + SOSIAL + MORAL MANUSIA ANDA, ANDA BOLEH PILIH:
 
-n: FEAR OF *BEING HARMED* #harm#
+n: TAKUT *DICEDERAKAN* #harm#
 
-n: FEAR OF *BEING UNLOVED* #alone#
+n: TAKUT *TIDAK DISAYANGI* #alone#
 
-n: AND FEAR OF *BEING A BAD PERSON* #bad#
+n: DAN TAKUT *JADI ORANG YANG JAHAT* #bad#
 
 `Game.OVERRIDE_TEXT_SPEED = 1.25;`
 
-n4: (PRO-TIP: PLAY THE CHOICES THAT PERSONALLY HIT YOUR DEEPEST, DARKEST FEARS!~)
+n4: (TIPS: GUNAKAN PILIHAN YANG PALING MENAKUTKAN ANDA~)
 
 h: ...
 
@@ -383,18 +383,18 @@ bb({body:"normal", mouth:"normal", eyes:"normal"});
 
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
-h: you know what maybe it's time to check my phone.
+h: rasanya dah tiba masa untuk main telefon aku.
 
 ```
 sfx("rustle2");
 hong({body:"phone1", mouth:"neutral", eyes:"neutral"})
 ```
 
-n: PROTECT YOUR HUMAN
+n: LINDUNGI MANUSIA ANDA.
 
-n: FROM THE WORLD. FROM OTHER PEOPLE. FROM THEMSELF.
+n: DARIPADA DUNIA. DARIPADA ORANG LAIN. DARIPADA DIRI MEREKA SENDIRI.
 
-n: GOOD LUCK
+n: SEMOGA BERJAYA.
 
 (...500)
 
@@ -408,38 +408,38 @@ n: GOOD LUCK
 
 `music('battle', {volume:0.5})`
 
-n: ROUND ONE: *FIGHT!*
+n: PUSINGAN PERTAMA: *MULA!*
 
 `bb({body:"normal", mouth:"normal", eyes:"normal"});`
 
-h: Huh. Facebook feed says there's a party happening this weekend.
+h: Hah. Facebook kata hujung minggu ni ada parti.
 
 `bb({eyes:"uncertain"});`
 
-b: Doesn't that weirdo throw a party *every* weekend?
+b: Bukankah si pelik tu buat parti *setiap* hujung minggu?
 
 `bb({eyes:"uncertain_right"});`
 
-b: What inner void are they trying to fill? They must be deeply messed up inside!
+b: Kekosongan dalaman apa yang dia cuba isi agaknya? Mesti jiwa dia kacau!
 
 `hong({eyes:"surprise"});`
 
-h: Also, I got an invite?
+h: Tapi…aku dapat jemputan?
 
 `bb({eyes:"fear", mouth:"normal"});`
 
-b: Well then!
+b: Oh kalau macam tu!
 
-[Say yes, or we'll die from loneliness!](#act1c_loner)
+[Terima. Atau kita akan mati disebabkan kesunyian](#act1c_loner)
 
-[Say no, it's full of poisonous drugs!](#act1c_drugs)
+[Tolak. Parti tu penuh dengan dadah!](#act1c_drugs)
 
-[Ignore it, we just make parties sad.](#act1c_sad)
+[Abaikan saja, kita akan buat suasana parti jadi muram.](#act1c_sad)
 
 # act1c_loner
 
 {{if _.fifteencigs}}
-b: Fifteen cigarettes a day, human! Fifteen!
+b: 15 batang rokok sehari, manusia! 15!
 {{/if}}
 
 {{if !_.fifteencigs}}
@@ -447,11 +447,11 @@ b: Fifteen cigarettes a day, human! Fifteen!
 {{/if}}
 
 {{if !_.fifteencigs}}
-b: Then no one will show up at our funeral, they'll dump our ashes into the ocean, we get eaten by a whale,
+b: Kemudian tak ada siapa pun datang ke pengebumian kita, abu kita dicampak ke laut, kita dimakan ikan paus,
 {{/if}}
 
 {{if !_.fifteencigs}}
-b: and we become WHALE POOP!
+b: dan akhirnya kita jadi NAJIS PAUS!
 {{/if}}
 
 {{if !_.fifteencigs}} `_.whalepoop = true` {{/if}}
@@ -468,25 +468,25 @@ attack("18p", "alone");
 `bb({eyes:"normal"});`
 
 {{if !_.fifteencigs}}
-b: So yeah we should go to that party!
+b: Jadi ya, kita kena pergi ke parti tu!
 {{/if}}
 
 {{if _.parasite}}
-b: Just bring the laptop so we can do work, and not be a society-parasite.
+b: Tapi bawa komputer riba sekali supaya kita boleh buat kerja dan tak jadi sampah masyarakat.
 {{/if}}
 
 {{if _.whitebread}}
-b: Just as long as they don't serve WHITE BREAD
+b: Asalkan mereka tak hidang ROTI PUTIH.
 {{/if}}
 
 `hong({mouth:"anger", eyes:"anger"});`
 
-h: GOD. If it'll make you shut up, fine.
+h: YA TUHAN. Kalau tu boleh buat kau diam, baiklah.
 
-h: I'll say yes.
+h: Aku akan terima jemputan tu.
 
 {{if _.whalepoop}}
-b: Whale poop, human! Whale poop!
+b: Najis paus manusia! Najis paus!
 {{/if}}
 
 `_.partyinvite="yes"`
@@ -498,7 +498,7 @@ b: Whale poop, human! Whale poop!
 `bb({mouth:"small", eyes:"fear"});`
 
 {{if _.whitebread}}
-b: or even worse... WHITE BREAD
+b: Atau lebih teruk lagi... ROTI PUTIH.
 {{/if}}
 
 {{if _.whitebread}}
@@ -506,11 +506,11 @@ b: or even worse... WHITE BREAD
 {{/if}}
 
 {{if _.whitebread}}
-b: We'll overdose on so much meth and white bread they won't be able to fit our fat corpse into the cremation furnace!
+b: Kita akan terlebih ambil syabu dan roti putih sampai mayat kita tak muat masuk dalam relau pembakaran mayat!
 {{/if}}
 
 {{if !_.whitebread}}
-b: We'll overdose on so many drugs the undertaker will wonder how our body was *already* pre-embalmed!
+b: Kita akan terlebih dos dengan macam-macam dadah sampai pengurus jenazah pun pelik macam mana badan kita *sudah siap* dirias terlebih dahulu!
 {{/if}}
 
 ```
@@ -521,14 +521,14 @@ attack("18p", "harm");
 (...2500)
 
 {{if _.parasite}}
-b: Besides, can't party, we need to do work or we're a terrible society-parasite!
+b: Lagipun, tak boleh berparti. Kita kena buat kerja. Kalau tak, kita ni sampah masyarakat yang teruk!
 {{/if}}
 
 `hong({mouth:"anger", eyes:"anger"});`
 
-h: GOD. If it'll make you shut up, fine.
+h: YA TUHAN. Kalau tu boleh buat kau diam, baiklah.
 
-h: I'll say no.
+h: Aku akan tolak jemputan tu.
 
 `_.partyinvite="no"`
 
@@ -541,15 +541,15 @@ h: I'll say no.
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
 {{if _.fifteencigs}}
-b: All we ever do is cry in a corner about how loneliness is as deadly as 15 cigarettes a day.
+b: Kita hanya menangis di sudut bilik memikirkan kesunyian yang sama bahaya seperti merokok 15 batang sehari.
 {{/if}}
 
 {{if _.parasite}}
-b: All we ever do at parties is worry about how we should be productive instead.
+b: Perkara yang kita buat di parti pun cuma risau yang kita sepatutnya jadi produktif.
 {{/if}}
 
 {{if _.whitebread}}
-b: All we ever do is worry about how the unhealthy food options are going to kill us.
+b: Kita asyik risau makanan tak sihat di situ akan membunuh kita!
 {{/if}}
 
 ```
@@ -557,19 +557,19 @@ bb({mouth:"normal", eyes:"normal"});
 hong({mouth:"neutral", eyes:"lookaway"});
 ```
 
-h: gee i wonder why.
+h: Hm, aku tertanya-tanya.
 
 `hong({eyes:"neutral"});`
 
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
-b: So if we go we'll make them feel bad, but if we reject their invite we'll also make them feel bad!
+b: Kalau kita pergi, kita akan buat orang rasa tak selesa, tapi kalau kita tolak jemputan pun kita buat orang rasa sedih!
 
 `bb({body:"fear", eyes:"fear"});`
 
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
-b: ALL WE DO IS MAKE PEOPLE FEEL BAD, SO WE SHOULD FEEL BAD
+b: KITA ASYIK BUAT ORANG RASA TAK SELESA, JADI KITA PATUT RASA BERSALAH
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -580,9 +580,9 @@ attack("18p", "bad");
 
 `hong({mouth:"anger", eyes:"anger"});`
 
-h: Ugh. If it'll make you shut up, fine.
+h: Kalau tu boleh buat kau diam, baiklah.
 
-h: I'll ignore the invite.
+h: Aku akan abaikan jemputan tu.
 
 `_.partyinvite="ignore"`
 
@@ -595,19 +595,19 @@ bb({body:"normal", mouth:"normal", eyes:"normal"});
 hong({mouth:"neutral", eyes:"annoyed"});
 ```
 
-h: Anyway. Facebook's too much. I need something calmer, less anxiety-producing.
+h: Apa-apalah. Facebook ni serabut sangat. Aku perlukan sesuatu yang tenang sikit, yang kurang buat aku cemas.
 
 `hong({eyes:"neutral"});`
 
-h: What's new on Twitter?
+h: Apa cerita kat Twitter?
 
 `bb({eyes:"look"});`
 
-[Oh no, look at that horrible news story!](#act1d_news)
+[Eh, tengok berita buruk tu!](#act1d_news)
 
-[Oh no, is that tweet secretly about *us?*](#act1d_subtweet)
+[Alamak, adakah ciapan tu sebenarnya tentang *kita?*](#act1d_subtweet)
 
-[Hey, a GIF of a cat drinking milk](#act1d_milk)
+[Eh, GIF kucing minum susu!](#act1d_milk)
 
 
 # act1d_news
@@ -617,14 +617,14 @@ bb({eyes:"pained1"});
 music(null, {fade:2});
 ```
 
-b: God, it feels like the world's burning, isn't it?
+b: Ya Tuhan, rasa macam dunia tengah terbakar, kan?
 
 ```
 bb({eyes:"pained2"});
 hong({mouth:"sad", eyes:"sad"});
 ```
 
-b: It feels like it's all ending, like everything's dying and we're doomed and there's nothing we can do about it.
+b: Rasa macam semuanya nak kiamat, macam semua akan mati dan kita tak boleh buat apa-apa pun.
 
 ```
 Game.OVERRIDE_TEXT_SPEED = 0.5;
@@ -635,7 +635,7 @@ b: ...
 
 `bb({mouth:"smile", eyes:"smile"});`
 
-b: Let's retweet that story!
+b: Jom kita retweet cerita tu!
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -653,11 +653,11 @@ bb({body:"normal", mouth:"normal", eyes:"normal"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-h: Okay I'll retweet it just please be quiet!
+h: Okey, aku retweet. Janji kau diam!
 
 `hong({mouth:"neutral", eyes:"annoyed"});`
 
-h: Screw it, let's look at Snapchat.
+h: Argh, sudahlah, mari tengok Snapchat.
 
 (#act1e)
 
@@ -666,35 +666,35 @@ h: Screw it, let's look at Snapchat.
 
 `bb({eyes:"fear"});`
 
-b: It's a subtweet! A sneaky, sneaky subtweet!
+b: Tu subtweet! Subtweet yang licik dan penuh makna tersembunyi!
 
 `hong({eyes:"annoyed"});`
 
-h: It's probably not?
+h: Mungkin tak?
 
 `bb({eyes:"narrow", mouth:"small"});`
 
-b: but what if they're all talking behind our back
+b: Tapi macam mana kalau semua orang mengata kita?
 
-h: They're n--
+h: Mereka ta--
 
 `bb({body:"fear", eyes:"fear", mouth:"normal"});`
 
-b: IN FRONT OF OUR BACK
+b: DI BELAKANG KITA!
 
 `hong({eyes:"sad", mouth:"sad"});`
 
-h: I d--
+h: Aku t--
 
 `bb({eyes:"narrow", mouth:"small"});`
 
-b: but *what if*
+b: tapi *kalau betul*
 
-h: S--
+h: A--
 
 `bb({eyes:"narrow_eyebrow"});`
 
-b: *what if*
+b: *kalau betul*
 
 ```
 Game.OVERRIDE_TEXT_SPEED = 0.5;
@@ -719,7 +719,7 @@ hong({mouth:"anger", eyes:"annoyed"});
 bb({body:"normal", mouth:"normal", eyes:"normal"});
 ```
 
-h: o-KAY, gonna try Snapchat.
+h: o–KEY, nak cuba Snapchat.
 
 (#act1e)
 
@@ -727,7 +727,7 @@ h: o-KAY, gonna try Snapchat.
 
 `hong({mouth:"smile", eyes:"neutral"});`
 
-h: Heh ya that's cute, just retweeted it, I thi--
+h: Hah, comel juga ni. Baru je retweet tadi, aku ras—
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -735,7 +735,7 @@ bb({body:"scream"});
 Game.OVERRIDE_TEXT_SPEED = 1.8;
 ```
 
-b: CATS CAN'T DIGEST MILK AND WE'RE TERRIBLE PEOPLE FOR ENJOYING ANIMAL ABUSE
+b: KUCING TAK BOLEH HADAM SUSU DAN KITA ORANG YANG KEJI SEBAB SUKA PENYEKSAAN HAIWAN!
 
 ```
 bb({body:"normal", mouth:"normal", eyes:"fear"});
@@ -752,7 +752,7 @@ hong({mouth:"anger", eyes:"annoyed"});
 bb({body:"normal", mouth:"normal", eyes:"normal"});
 ```
 
-h: o-KAY, gonna try Snapchat.
+h: o–KEY, nak cuba Snapchat.
 
 (#act1e)
 
@@ -760,7 +760,7 @@ h: o-KAY, gonna try Snapchat.
 
 `hong({mouth:"neutral", eyes:"neutral"});`
 
-h: Huh, photos from yesterday night. So *that's* what those weekly parties are like.
+h: Eh, gambar malam tadi! Jadi *macam tu* rupanya parti mingguan.
 
 {{if _.partyinvite=="yes"}} (#act1e_said_yes) {{/if}}
 
@@ -772,29 +772,29 @@ h: Huh, photos from yesterday night. So *that's* what those weekly parties are l
 
 `hong({mouth:"sad", eyes:"annoyed"});`
 
-h: Oof, looks way too crowded for my anxiety.
+h: Alamak, parti ni macam terlalu sesak untuk tahap keresahan aku.
 
-h: Maybe I shouldn't have said yes to the invite?
+h: Mungkin aku tak patut terima jemputan tu?
 
 ```
 hong({mouth:"neutral", eyes:"neutral"});
 bb({mouth:"normal", eyes:"normal"});
 ```
 
-[Change our answer? Like a jerk?!](#act1e_yes_dontchange)
+[Ubah jawapan kita? Seperti orang tiada pendirian?!](#act1e_yes_dontchange)
 
-[Change our answer! It's too crowded!](#act1e_yes_changetono)
+[Ubah jawapan kita! Terlalu sesaklah!](#act1e_yes_changetono)
 
 {{if _.subtweet}}
-[Yeah they were totally subtweeting us.](#act1e_ignore_subtweet)
+[Ya, mereka memang subtweet kita.](#act1e_ignore_subtweet)
 {{/if}}
 
 {{if _.badnews}}
-[Wait we retweeted without fact-checking.](#act1e_ignore_factcheck)
+[Eh, kita retweet tanpa semak fakta tadi.](#act1e_ignore_factcheck)
 {{/if}}
 
 {{if (!_.subtweet && !_.badnews)}}
-[You know, you've got really bad posture?](#act1e_ignore_posture)
+[Tahu tak, postur badan kau sangat teruk?](#act1e_ignore_posture)
 {{/if}}
 
 # act1e_yes_dontchange
@@ -804,14 +804,14 @@ bb({eyes:"anger"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: They were counting on us to come and now we're betraying their trust? Do you wanna die alone?!
+b: Mereka harapkan kita datang dan tiba-tiba kita nak khianati kepercayaan mereka? Kau nak mati keseorangan ke?!
 
 {{if _.fifteencigs}}
-b: FIFTEEN. CIGARETTES.
+b: LIMA. BELAS. BATANG. ROKOK.
 {{/if}}
 
 {{if _.whalepoop}}
-b: WHALE. POOP.
+b: NAJIS. PAUS.
 {{/if}}
 
 ```
@@ -826,7 +826,7 @@ hong({mouth:"anger", eyes:"anger"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-h: Shut up shut up I'll keep it as yes!
+h: Diam, diam, aku nak pergi juga!
 
 (#act1f)
 
@@ -837,7 +837,7 @@ bb({eyes:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: Don't you know about human stampedes?
+b: Kau tahu tak tentang rempuhan manusia?
 
 ```
 bb({body:"fear", mouth:"small", eyes:"narrow"});
@@ -845,7 +845,7 @@ hong({eyes:"sad", mouth:"sad"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: In 2003 a Rhode Island nightclub had a fire and the panic made people jam the exits so 100 people burned to death-
+b: Pada tahun 2003, sebuah kelab malam di Rhode Island terbakar, orang berebut nak keluar menyebabkan pintu tersekat dan 100 orang terbakar sampai mati-
 
 ```
 bb({body:"normal", mouth:"normal", eyes:"fear"});
@@ -853,14 +853,14 @@ hong({mouth:"shock"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: DO YOU WANT THAT TO HAPPEN TO US-
+b: KAU NAK BENDA TU JADI KAT KITA KE-
 
 ```
 bb({body:"scream"});
 Game.OVERRIDE_TEXT_SPEED = 2.5;
 ```
 
-b: SAY NO SAY NO SAY NO SAY NO SAY NO SAY NO SAY NO SAY NO SAY N-
+b: TAK NAK, TAK NAK, TAK NAK, TAK NAK, TAK NAK, TAK NAK, TAK NAK, TAK NAK, TAK N-
 
 
 ```
@@ -876,7 +876,7 @@ hong({eyes:"anger", mouth:"anger"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-h: Shut up shut up I'll change my answer to no! God!
+h: Diam, diam! Okey, okey aku tolak jemputan tu! Kau ni!
 
 (#act1f)
 
@@ -884,35 +884,35 @@ h: Shut up shut up I'll change my answer to no! God!
 
 `hong({mouth:"sad", eyes:"sad"});`
 
-h: Hm... that looks really fun.
+h: Hmm… tapi nampak macam seronok.
 
-h: Maybe I shouldn't have said no to the invite?
+h: Mungkin aku tak patut tolak jemputan tu?
 
 `bb({mouth:"normal", eyes:"normal"});`
 
-[Change our answer? Like a jerk?!](#act1e_no_dontchange)
+[Ubah jawapan kita? Macam orang tiada pendirian?!](#act1e_no_dontchange)
 
-[Change our answer! Don't die alone!](#act1e_no_changetoyes)
+[Ubah jawapan kita! Jangan mati keseorangan!](#act1e_no_changetoyes)
 
 {{if _.subtweet}}
-[Yeah they were totally subtweeting us.](#act1e_ignore_subtweet)
+[Ya, mereka memang subtweet kita.](#act1e_ignore_subtweet)
 {{/if}}
 
 {{if _.badnews}}
-[Wait we retweeted without fact-checking.](#act1e_ignore_factcheck)
+[Eh, kita retweet tanpa semak fakta!](#act1e_ignore_factcheck)
 {{/if}}
 
 {{if (!_.subtweet && !_.badnews)}}
-[You know, you've got really bad posture?](#act1e_ignore_posture)
+[Kau tahu tak, postur badan kau sangat teruk?](#act1e_ignore_posture)
 {{/if}}
 
 # act1e_no_dontchange
 
 `bb({eyes:"anger"})`
 
-b: Everybody was counting on us!
+b: Semua orang mengharapkan kita!
 
-b: ...to leave them alone and let them have a nice party without a horrible disgusting {{if _.whitebread}}white-bread-munching{{/if}} creep like u--
+b: …untuk meninggalkan mereka dan biar mereka menikmati parti tu tanpa makhluk menjijikkan {{if _.whitebread}}white-bread-munching{{/if}}macam kit-
 
 
 ```
@@ -928,7 +928,7 @@ hong({mouth:"anger", eyes:"anger"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-h: Shut up shut up I'll keep it as no!
+h: Diam diam, aku tak nak pergi juga!
 
 (#act1f)
 
@@ -939,7 +939,7 @@ bb({body:"fear", eyes:"fear", mouth:"normal"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: Chronic loneliness increases our cortisol levels as well as risk for cardiovascular disease and stroke!
+b: Kesunyian kronik boleh naikkan paras kortisol kita dan juga risiko penyakit jantung serta strok!
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -949,7 +949,7 @@ attack("18p", "harm");
 (...2500)
 
 {{if _.fifteencigs}}
-b: FIFTEEN. CIGARETTES.
+b: LIMA. BELAS. BATANG. ROKOK.
 {{/if}}
 
 ```
@@ -958,7 +958,7 @@ hong({mouth:"anger", eyes:"anger"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-h: Shut up shut up I'll change my answer to yes! God!
+h: Diam, diam! Okey, okey, aku terima jemputan tu! Kau ni!
 
 (#act1f)
 
@@ -969,14 +969,14 @@ bb({eyes:"fear", mouth:"small"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: All our problematic tweets have come back to roost!
+b: Semua ciapan bermasalah kita dulu akan kembali menghantui kita!
 
 ```
 bb({body:"fear", eyes:"fear", mouth:"normal"});
 Game.OVERRIDE_TEXT_SPEED = 1.7;
 ```
 
-b: We're gonna get called out and cancelled and dragged with a rope on horseback down the information superhighway!
+b: Kita akan dikecam dan diikat pada kuda lalu diheret ke mahkamah media sosial!
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -991,7 +991,7 @@ hong({mouth:"anger", eyes:"anger"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-h: Why are you like this?!
+h: Kenapa kau macam ni?!
 
 (#act1f)
 
@@ -1002,14 +1002,14 @@ bb({eyes:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: We're spreading disinformation! We're destroying trust in a free press!
+b: Kita sedang sebarkan maklumat palsu! Kita rosakkan kepercayaan orang terhadap media bebas!
 
 ```
 bb({body:"scream"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: We're the reason fascism will arise from the rubble of democracy!
+b: Kita menjadi punca fahaman fasis bangkit daripada runtuhan demokrasi!
 
 ```
 bb({body:"normal", eyes:"anger"});
@@ -1025,7 +1025,7 @@ Game.OVERRIDE_TEXT_SPEED = 1.5;
 _.factcheck = true;
 ```
 
-h: Why are you like this?!
+h: Kenapa kau macam ni?!
 
 (#act1f)
 
@@ -1036,13 +1036,13 @@ bb({eyes:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: Do you want to have a pretzel for a spine?! Stop hunching over your screen!
+b: Kau nak tulang belakang bentuk pretzel ke?! Jangan duduk bongkok depan skrin!
 
 ```
 bb({body:"meta"});
 ```
 
-b: That means you too.
+b: Ya, kau juga!
 
 ```
 bb({body:"normal", mouth:"normal"});
@@ -1058,7 +1058,7 @@ hong({mouth:"anger", eyes:"anger"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-h: Why are you like this?!
+h: Kenapa kau macam ni?!
 
 (#act1f)
 
@@ -1066,27 +1066,27 @@ h: Why are you like this?!
 
 `hong({mouth:"sad", eyes:"sad"});`
 
-h: Hm... that looks really fun.
+h: Hmm… tapi nampak macam seronok.
 
-h: Maybe I shouldn't have ignored the invite?
+h: Mungkin aku tak patut abaikan jemputan tu?
 
 `bb({mouth:"normal", eyes:"normal"});`
 
-[Keep ignoring, we're still party poopers.](#act1e_ignore_continue)
+[Abaikan je. Kita tetap si perosak parti.](#act1e_ignore_continue)
 
-[Actually, say yes.](#act1e_ignore_changetoyes)
+[Terima jelah.](#act1e_ignore_changetoyes)
 
-[Actually, say no.](#act1e_ignore_changetono)
+[Tolak jelah.](#act1e_ignore_changetono)
 
 # act1e_ignore_continue
 
 `hong({eyes:"annoyed"});`
 
-h: It's kinda rude to keep ignoring them though, no?
+h: Tapi… macam biadab kan kalau terus abaikan mereka?
 
 `bb({eyes:"normal_right"});`
 
-b: Well other people always ignore *us*, so
+b: Orang lain pun selalu abaikan *kita*, jadi
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -1097,7 +1097,7 @@ attack("18p", "alone");
 
 `bb({eyes:"normal"});`
 
-b: so let's just call it even.
+b: Jadi anggaplah kita balas balik.
 
 (#act1f)
 
@@ -1105,9 +1105,9 @@ b: so let's just call it even.
 
 `hong({eyes:"surprise", mouth:"smile"});`
 
-h: You're... letting me have fun?
+h: Kau… bagi aku untuk berseronok?
 
-b: Well, I mean, loneliness *can* kill us.
+b: Yelah, lagipun, kesunyian tu *boleh* membunuh kita.
 
 `hong({eyes:"neutral", mouth:"neutral"});`
 
@@ -1117,7 +1117,7 @@ b: Well, I mean, loneliness *can* kill us.
 
 `bb({eyes:"narrow"});`
 
-b: It's too crowded. Crowds are dangerous.
+b: Sesak sangatlah. Orang ramai boleh membahayakan kita.
 
 (#act1e_yes_changetono)
 
@@ -1129,60 +1129,60 @@ hong({mouth:"neutral", eyes:"neutral"});
 bb({body:"normal", mouth:"normal", eyes:"normal"});
 ```
 
-h: Whatever. New Tinder notification.
+h: Apa-apalah. Eh, notifikasi Tinder baru!
 
 `bb({eyes:"uncertain"})`
 
-b: What, that hookup app?
+b: Apa? Aplikasi cari pasangan tu?
 
 `hong({eyes:"annoyed"})`
 
-h: It's not a hookup app, it's just a way to meet new peopl--
+h: Bukan aplikasi cari pasangan, cuma cara lain nak kenal orang baru-
 
 `bb({eyes:"narrow"})`
 
-b: It's a hookup app.
+b: Tu aplikasi cari pasangan.
 
 ```
 hong({eyes:"surprise", mouth:"smile"});
 bb({eyes:"normal"});
 ```
 
-h: Oh, I got a match! They look cute!
+h: Oh! Aku dapat match! Comelnya dia!
 
 ```
 bb({eyes:"narrow_eyebrow"});
 hong({eyes:"sad", mouth:"anger"})
 ```
 
-h: Please don't ruin this for m--
+h: Tolong jangan rosakkan--
 
 ```
 bb({body:"panic"});
 Game.OVERRIDE_TEXT_SPEED = 2.0;
 ```
 
-b: DANGER DANGER DANGER DANGER DANGER DANGER
+b: BAHAYA BAHAYA BAHAYA BAHAYA BAHAYA BAHAYA
 
 `bb({body:"fear", eyes:"fear", mouth:"normal"})`
 
-[We're being *used* by other people.](#act1f_used_by_others)
+[Kita *dipergunakan* oleh orang lain.](#act1f_used_by_others)
 
-[We're just *using* other people.](#act1f_using_others)
+[Kita cuma *mempergunakan* orang lain.](#act1f_using_others)
 
-[YOUR MATCH IS A SERIAL KILLER](#act1f_killer)
+[DIA TU SEORANG PEMBUNUH BERSIRI](#act1f_killer)
 
 # act1f_used_by_others
 
 `bb({body:"point_crotch", eyes:"normal", mouth:"normal"})`
 
-b: Random hookups may be able to fill the hole down there,
+b: Hubungan kasual mungkin boleh mengisi masa lapang kita,
 
-b: but they can never fill the hole...
+b: tapi ia takkan pernah isi kekosongan...
 
 `bb({body:"point_heart", eyes:"pretty", mouth:"small"})`
 
-b: in *here*.
+b: di *sini*.
 
 (...1000)
 
@@ -1191,7 +1191,7 @@ bb({body:"normal", mouth:"normal", eyes:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: The point is WE'RE GOING TO DIE ALONE
+b: Maksudnya, KITA AKAN MATI KESEORANGAN!
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -1208,7 +1208,7 @@ attack("18p", "alone");
 
 `bb({eyes:"narrow", mouth:"small"})`
 
-b: You think other people's genitals are Pokémon for us to collect?
+b: Kau fikir hati orang lain macam Pokémon yang kita boleh kumpul?
 
 ```
 bb({body:"sing", eyes:"pretty", mouth:"shut"});
@@ -1222,7 +1222,7 @@ Game.FORCE_TEXT_DURATION = 1000;
 Game.FORCE_NO_VOICE = true;
 ```
 
-b: ♫ (pokemon theme song)-
+b: ♫ (lagu tema Pokémon)
 
 (...5600)
 
@@ -1231,7 +1231,7 @@ bb({mouth:"normal"});
 Game.FORCE_TEXT_DURATION = 2400;
 ```
 
-b: ♫ I wanna be, the ^slut^ti-est-
+b: ♫ Aku nak jadi yang terbaik,
 
 (...500)
 
@@ -1240,7 +1240,7 @@ bb({eyes:"narrow", mouth:"small"});
 Game.FORCE_TEXT_DURATION = 2100;
 ```
 
-b: ♫ Like no one ever was-
+b: ♫ Tiada siapa dapat lawan,
 
 (...1500)
 
@@ -1249,7 +1249,7 @@ bb({eyes:"pretty"});
 Game.FORCE_TEXT_DURATION = 2300;
 ```
 
-b: ♫ Thighs n' ^ass^, voluptuous breast-
+b: ♫ Hati bertahut, senyum berseri,
 
 (...500)
 
@@ -1258,7 +1258,7 @@ bb({eyes:"fear", mouth:"normal"});
 Game.FORCE_TEXT_DURATION = 2000;
 ```
 
-b: ♫ with sweaty ^dick^ and balls!-
+b: ♫ Dalam misi cinta sejati!
 
 (...1000)
 
@@ -1267,7 +1267,7 @@ bb({eyes:"smile", mouth:"smile"});
 Game.FORCE_TEXT_DURATION = 1000;
 ```
 
-b: ♫ PERVY-MON! GOTTA CA-
+b: ♫ RAKSASA-MIANG! TANGKAP DI-
 
 ```
 Game.FORCE_CANT_SKIP = false;
@@ -1277,7 +1277,7 @@ bb({body:"normal", mouth:"normal", eyes:"normal"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: The point is we're a manipulative creep.
+b: Masalahnya, kita manusia jijik yang suka memanipulasi orang lain.
 
 ```
 hong({mouth:"shock", eyes:"shock"});
@@ -1295,19 +1295,19 @@ attack("18p", "bad");
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
 {{if _.whitebread}}
-b: They'll trap you in a well and force-feed you white bread to fatten you up so they can wear your skin like a suit!
+b: Mereka akan buang kita dalam perigi, paksa kita makan roti putih sampai kita gemuk dan pakai kulit kita sebagai sut.
 {{/if}}
 
 {{if _.parasite}}
-b: They'll bludgeon you with a pomodoro timer and say "YOU SHOULDA BEEN MORE PRODUCTIVE YOU PARASITE"
+b: Mereka akan hempuk kau dengan jam pomodoro dan jerit “PARASIT MACAM KAU PATUT JADI LEBIH PRODUKTIF”
 {{/if}}
 
 {{if !_.whitebread && !_.parasite}}
-b: They'll tear your flesh to gory confetti, turn your entrails into streamers, and mix your blood into a punch bowl!
+b: Mereka akan hancurkan daging kau menjadi konfeti, gunakan usus kau sebagai ular-ular dan jadikan darah kau sebagai air sirap! 
 {{/if}}
 
 {{if !_.whitebread && !_.parasite}}
-b: How's THAT for a party invite?!
+b: HAH! Kau nak jumpa orang-orang macam ni kat parti tu?!
 {{/if}}
 
 ```
@@ -1334,44 +1334,44 @@ h: ...
 
 (...500)
 
-h: i'm so sick of this game.
+h: aku dah tak tahan dengan semua ni.
 
 (...700)
 
 `Game.OVERRIDE_TEXT_SPEED = 1.5;`
 
 h:
-{{if _.fifteencigs}}"loneliness will kill us"... {{/if}}
-{{if _.parasite}}"we're a society-parasite"... {{/if}}
-{{if _.whitebread}}"don't eat that, it'll kill us"... {{/if}}
-{{if _.subtweet}}"they're talking behind our back"... {{/if}}
-{{if _.badnews}}"the world is burning"... {{/if}}
-{{if _.hookuphole}}"we'll die alone"... {{/if}}
-{{if _.serialkiller}}"they're a serial killer"... {{/if}}
-{{if _.catmilk}}"cats can't digest milk"... {{/if}}
-{{if _.pokemon}}a ^crappy^ parody song... {{/if}}
+{{if _.fifteencigs}}"kesunyian boleh membunuh kita"... {{/if}}
+{{if _.parasite}}"kita menjadi sampah masyarakat"... {{/if}}
+{{if _.whitebread}}"jangan makan itu ini"... {{/if}}
+{{if _.subtweet}}"mereka mengutuk kita"... {{/if}}
+{{if _.badnews}}"dunia tengah terbakar"... {{/if}}
+{{if _.hookuphole}}"kita akan mati keseorangan"... {{/if}}
+{{if _.serialkiller}}"mereka pembunuh bersiri"... {{/if}}
+{{if _.catmilk}}"kucing tak boleh hadam susu"... {{/if}}
+{{if _.pokemon}}lagu parodi pokemon... {{/if}}
 
-h: i just want to live my life.
+h: aku nak hidup cara aku.
 
-h: i just want to be free from all this... pain.
+h: aku nak lari dari semua…kesengsaraan ni.
 
 `bb({eyes:"look_sad"});`
 
-b: Hey... human...
+b: Manusia…
 
 `Game.OVERRIDE_TEXT_SPEED = 0.5;`
 
-b: It'll be okay.
+b: Semua akan baik-baik je.
 
 (...600)
 
 `bb({body:"point_heart", eyes:"look_sad_smile", mouth:"smile"});`
 
-b: As your loyal guard-wolf, I'll always keep an eye out for danger, and do my best to keep you safe.
+b: Sebagai serigala pengawal yang setia, aku akan buat sebaik mungkin untuk mengawasi dan memastikan kau selamat.
 
 `bb({body:"normal", eyes:"look_sad", mouth:"smile"});`
 
-b: I promise.
+b: Aku janji.
 
 (...600)
 
@@ -1380,29 +1380,29 @@ bb({body:"normal", eyes:"normal", mouth:"normal"});
 hong({body:"phone1", eyes:"neutral", mouth:"neutral"});
 ```
 
-h: Last app. Instagram. What you got?
+h: Aplikasi terakhir. Instagram. Apa yang menarik?
 
 `hong({eyes:"sad"});`
 
-h: It's... more party pictures.
+h: Penuh dengan…gambar parti.
 
 `hong({mouth:"sad"});`
 
-h: Everyone looks so happy. Free from worry. Free from anxiety.
+h: Semua orang nampak gembira. Bebas dari kerisauan. Bebas dari keresahan.
 
 `hong({mouth:"anger"});`
 
-h: God, why can't I be like them? Why can't I just be *normal?*
+h: Ya Tuhan, kenapa aku tak boleh jadi macam mereka? Kenapa aku tak boleh jadi *orang biasa?*
 
 `bb({eyes:"normal_right"});`
 
-b: Speaking of parties, about this weekend's invite. Here's my FINAL decision:
+b: Cakap tentang parti, ni keputusan TERAKHIR aku untuk jemputan hujung minggu ni:
 
 `bb({eyes:"normal"});`
 
-[We should go.](#act1g_go) `Game.OVERRIDE_CHOICE_LINE=true`
+[Kita patut pergi.](#act1g_go) `Game.OVERRIDE_CHOICE_LINE=true`
 
-[We should not go.](#act1g_dont) `Game.OVERRIDE_CHOICE_LINE=true`
+[Kita tak patut pergi.](#act1g_dont) `Game.OVERRIDE_CHOICE_LINE=true`
 
 # act1g_go
 
@@ -1418,39 +1418,39 @@ b: Speaking of parties, about this weekend's invite. Here's my FINAL decision:
 
 # act1h
 
-b: We sh--
+b: Kita pat–
 
 ```
 bb({eyes:"wat", mouth:"small"});
 hong({body:"2_fuck"});
 ```
 
-h: *^FUCK^.*
+h: *^SIAL^.*
 
 `hong({body:"2_you"});`
 
-h: YOU.
+h: KAU.
 
 (...500)
 
-b: w
+b: a
 
 (...1500)
 
 `bb({eyes:"wat_2"});`
 
-b: wha?
+b: apa?
 
 `hong({body:"phone1", eyes:"anger", mouth:"anger"});`
 
-h: I'm going to say YES to that party,
+h: Aku akan beritahu mereka yang aku AKAN PERGI ke parti tu
 
 {{if _.act1g=="go"}}
-h: NOT because you want me to, but because *I* want to.
+h: BUKAN sebab kau yang suruh aku pergi, tapi sebab *AKU* yang nak pergi.
 {{/if}}
 
 {{if _.act1g=="dont"}}
-h: Precisely BECAUSE you don't want me to.
+h: SEBAB kau tak nak aku pergi.
 {{/if}}
 
 ```
@@ -1458,14 +1458,14 @@ hong({body:"putaway"});
 sfx("rustle");
 ```
 
-h: You're NOT in control of me.
+h: Kau *TAK BOLEH* kawal aku.
 
 ```
 sfx("rustle2");
 hong({body:"0_sammich", eyes:"0_annoyed", mouth:"0_neutral"});
 ```
 
-h: Now excuse me while I eat this delicious sandwich in ^goddamn^ peace.
+h: Dah, jangan kacau aku. Aku nak makan sandwic ni dengan tenang.
 
 `hong({body:"2_sammich_eat"});`
 
@@ -1503,11 +1503,11 @@ b: ..................
 
 `bb({mouth:"normal"});`
 
-[AHHHH WE'RE GONNA DIE](#act1h_death) `Game.OVERRIDE_CHOICE_LINE = true;`
+[AHHHH KITA AKAN MATI](#act1h_death) `Game.OVERRIDE_CHOICE_LINE = true;`
 
-[AHHHH EVERYONE HATES US](#act1h_loneliness) `Game.OVERRIDE_CHOICE_LINE = true;`
+[AHHHH SEMUA ORANG BENCI KITA](#act1h_loneliness) `Game.OVERRIDE_CHOICE_LINE = true;`
 
-[AHHHH WE'RE HORRIBLE PEOPLE](#act1h_worthless) `Game.OVERRIDE_CHOICE_LINE = true;`
+[AHHHH KITA ORANG YANG KEJI](#act1h_worthless) `Game.OVERRIDE_CHOICE_LINE = true;`
 
 # act1h_death
 
@@ -1516,7 +1516,7 @@ bb({body:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 3;
 ```
 
-b: AHHHH WE'RE GONNA DIE AAAAAAHHHHHHH
+b: AHHHH KITA AKAN MATI AAAAAAHHHHHHH
 
 ```
 hong({body:"3_defeated1"});
@@ -1534,7 +1534,7 @@ bb({body:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 3;
 ```
 
-b: AHHHH EVERYONE HATES US AAAAAAHHHHHHH
+b: AHHHH SEMUA ORANG BENCI KITA AAAAAAHHHHHHH
 
 ```
 hong({body:"3_defeated1"});
@@ -1552,7 +1552,7 @@ bb({body:"fear"});
 Game.OVERRIDE_TEXT_SPEED = 3;
 ```
 
-b: AHHHH WE'RE HORRIBLE PEOPLE AAAAAAHHHHHHH
+b: AHHHH KITA ORANG YANG KEJI AAAAAAHHHHHHH
 
 ```
 hong({body:"3_defeated1"});
@@ -1570,39 +1570,39 @@ bb({mouth:"smile_lock", eyes:"smile", body:"normal"});
 music('battle', {volume:0.5});
 ```
 
-n: CONGRATULATIONS
+n: TAHNIAH
 
 (...500)
 
-n: YOU'VE SUCCESSFULLY PROTECTED YOUR HUMAN'S PHYSICAL + SOCIAL + MORAL NEEDS
+n: ANDA BERJAYA MELINDUNGI KEPERLUAN FIZIKAL + SOSIAL + MORAL MANUSIA ANDA
 
-n: WHY, LOOK HOW GRATEFUL THEY ARE!
+n: WAH, LIHAT BETAPA BERTERIMA KASIHNYA MEREKA!
 
 (...500)
 
-n: NOW THAT THEIR ENERGY IS ZERO, YOU CAN DIRECTLY CONTROL THEIR ACTIONS
+n: SEKARANG MEREKA TIADA TENAGA, ANDA BOLEH MENGAWAL SEGALA GERAK-GERI MEREKA
 
 `bb({mouth:"smile", eyes:"normal"});`
 
-n: PICK YOUR ENDING MOVE
+n: PILIH GERAKAN PENGHABISAN ANDA
 
 `bb({mouth:"small_lock", eyes:"fear"});`
 
-n: *FINISH THEM*
+n: *HANCURKAN MEREKA*
 
-[{FIGHT: Punish your stressful phone!}](#act1i_phone) `Game.OVERRIDE_CHOICE_LINE=true`
+[{LAWAN: Hancurkan telefon pintarnya!}](#act1i_phone) `Game.OVERRIDE_CHOICE_LINE=true`
 
-[{FLIGHT: Curl up in a ball and cry!}](#act1i_cry) `Game.OVERRIDE_CHOICE_LINE=true`
+[{LARI: Suruh dia meringkuk macam bola dan menangis!}](#act1i_cry) `Game.OVERRIDE_CHOICE_LINE=true`
 
 # act1i_phone
 
 `bb({mouth:"normal", eyes:"narrow"})`
 
-b: Your phone was giving you a panic attack!
+b: Telefon pintar kaulah punca serangan panik kau!
 
 `bb({eyes:"anger"})`
 
-b: Zuckerberg and Co are hijacking your mental health for venture capitalist money!
+b: Zuckerberg dan syarikatnya sedang menjadikan kesihatan mental kau sebagai alat untuk mengaut keuntungan!
 
 ```
 bb({body:"fear", eyes:"fear"});
@@ -1610,7 +1610,7 @@ hong({body:"3_defeated2"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: Punish your phone! Destroy it! Kill it!
+b: Buang telefon pintar kau! Pecahkannya! Hancurkannya!
 
 ```
 Game.OVERRIDE_TEXT_SPEED = 2.5;
@@ -1619,7 +1619,7 @@ hong({body:"3_defeated3"});
 _.act1_ending = "fight";
 ```
 
-b: KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL I--
+b: HANCURKAN HANCURKAN HANCURKAN HANCURKAN HANCURKAN HANCURKAN HANCURKAN HANCURK--
 
 (#act1j)
 
@@ -1627,7 +1627,7 @@ b: KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL IT KILL 
 
 `bb({eyes:"fear", mouth:"normal"})`
 
-b: The whole world is filled with danger!
+b: Dunia ni penuh dengan ancaman!
 
 ```
 bb({body:"fear"});
@@ -1635,7 +1635,7 @@ hong({body:"3_defeated2"});
 Game.OVERRIDE_TEXT_SPEED = 1.5;
 ```
 
-b: Do like the armadillo! Curl up into a ball for self-defense!
+b: Buat macam armadilo! Meringkuk macam bola untuk lindungi diri kau!
 
 ```
 Game.OVERRIDE_TEXT_SPEED = 2.5;
@@ -1644,7 +1644,7 @@ hong({body:"3_defeated3"});
 _.act1_ending = "flight";
 ```
 
-b: CURL UP AND CRY CURL UP AND CRY CURL UP AND CRY CURL UP AND CRY CURL UP AND CRY CURL UP AND CR-- 
+b: MERINGKUK DAN MENANGIS MERINGKUK DAN MENANGIS MERINGKUK DAN MENANGIS MERINGKUK DAN MENANG--
 
 (#act1j)
 
